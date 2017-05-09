@@ -23,22 +23,40 @@ Partial Public Class project
     Protected WithEvents B_newFolder As Global.System.Web.UI.HtmlControls.HtmlButton
     
     '''<summary>
-    '''DD_project control.
+    '''DD_project1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DD_project As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DD_project1 As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
-    '''SqlProjects control.
+    '''sqlProyectos control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents SqlProjects As Global.System.Web.UI.WebControls.SqlDataSource
+    Protected WithEvents sqlProyectos As Global.System.Web.UI.WebControls.SqlDataSource
+    
+    '''<summary>
+    '''GridProjects control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents GridProjects As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''Sqlproject_Grid control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Sqlproject_Grid As Global.System.Web.UI.WebControls.SqlDataSource
     
     '''<summary>
     '''T_newfolder control.
