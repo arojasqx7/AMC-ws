@@ -72,9 +72,9 @@
                     <div class="form-group">
                       <div class=" form-inline col-sm-10 col-sm-offset-2 center-block">               
                             <asp:DropDownList ID="DD_style" CssClass="form-control" runat="server" DataSourceID="SqlGenre" DataTextField="name"></asp:DropDownList>
-                            <asp:SqlDataSource ID="SqlGenre" runat="server" ConnectionString="<%$ ConnectionStrings:db0007ConnectionString %>" SelectCommand="SELECT 'Select a Style or Genre' AS name UNION ALL SELECT name FROM map_genres"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="SqlGenre" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT 'Select a Style or Genre' AS name UNION ALL SELECT name FROM map_genres"></asp:SqlDataSource>
                           <asp:DropDownList ID="DD_tempo" CssClass="form-control" runat="server" DataSourceID="Sqltempo" DataTextField="name" DataValueField="name"></asp:DropDownList>
-                            <asp:SqlDataSource ID="Sqltempo" runat="server" ConnectionString="<%$ ConnectionStrings:db0007ConnectionString %>" SelectCommand="SELECT 'Select a Tempo' AS name UNION ALL SELECT DISTINCT name FROM map_tempos_tracks"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="Sqltempo" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT 'Select a Tempo' AS name UNION ALL SELECT DISTINCT name FROM map_tempos_tracks"></asp:SqlDataSource>
                           <asp:TextBox ID="T_keyword" CssClass="form-control" runat="server"></asp:TextBox>
                           <class="input-group-btn">
                           <asp:Button ID="BSearch_Genre" runat="server" CssClass="btn btn-search" Text="GO"></asp:Button>
@@ -85,7 +85,7 @@
                     <div class="form-group">
                      
                           <asp:DropDownList ID="DD_Composer" class="form-control" runat="server" DataSourceID="SqlComposer" DataTextField="ComposerName" DataValueField="ComposerName"></asp:DropDownList>
-                        <asp:SqlDataSource runat="server" ID="SqlComposer" ConnectionString='<%$ ConnectionStrings:db0007ConnectionString %>' SelectCommand="SELECT 'Select a Composer' AS ComposerName UNION ALL SELECT DISTINCT [ComposerName] FROM [V_Composers]"></asp:SqlDataSource>
+                        <asp:SqlDataSource runat="server" ID="SqlComposer" ConnectionString='<%$ ConnectionStrings:AMC %>' SelectCommand="SELECT 'Select a Composer' AS ComposerName UNION ALL SELECT DISTINCT [ComposerName] FROM [V_Composers]"></asp:SqlDataSource>
 <asp:Button ID="BSearch_Composer" runat="server" Text="GO" />
                     </div>
                   </div>
@@ -94,7 +94,7 @@
                    
                           <asp:DropDownList class="form-control" ID="DD_Album" runat="server" DataSourceID="SqlAlbum" DataTextField="Album" DataValueField="Album"></asp:DropDownList>
 
-                          <asp:SqlDataSource runat="server" ID="SqlAlbum" ConnectionString='<%$ ConnectionStrings:db0007ConnectionString %>' SelectCommand="SELECT 'Select a Album' AS Album UNION ALL SELECT DISTINCT [Album] FROM [V_Album]"></asp:SqlDataSource>
+                          <asp:SqlDataSource runat="server" ID="SqlAlbum" ConnectionString='<%$ ConnectionStrings:AMC %>' SelectCommand="SELECT 'Select a Album' AS Album UNION ALL SELECT DISTINCT [Album] FROM [V_Album]"></asp:SqlDataSource>
                           <asp:Button ID="BSearch_Album" runat="server" Text="GO" />
                         
                     </div>

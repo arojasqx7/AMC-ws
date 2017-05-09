@@ -32,6 +32,15 @@ Partial Public Class project
     Protected WithEvents DD_project As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
+    '''SqlProjects control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SqlProjects As Global.System.Web.UI.WebControls.SqlDataSource
+    
+    '''<summary>
     '''T_newfolder control.
     '''</summary>
     '''<remarks>
