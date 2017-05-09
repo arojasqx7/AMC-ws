@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <!-- InstanceBegin template="/Templates/amc-temp.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <!--<link rel="stylesheet" href="../css/jquery.mobile-1.4.5.min.css">-->
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Music Catalog | American Music Company</title>
+    <!-- InstanceEndEditable -->
+    <!-- InstanceBeginEditable name="head" -->
+    <!-- InstanceEndEditable -->
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <div class="container-fluid topHeader">
+        <div class="row">
+          <section class="col-sm-3"> </section>
+          <section class="col-sm-6 logo"> <a href="index.html"> <img src="images/AMC-logo-b.png"
+                alt="logo"> </a> </section>
+          <section class="col-sm-3 sign-in" align="right"> <span class="glyphicon glyphicon-chevron-right"
+              aria-hidden="true"></span> <button type="button" class="btn btn-sign"
+              data-toggle="modal" data-target="#SignInForm"> <span class="glyphicon glyphicon-user"
+                aria-hidden="true"></span> Sign in </button>
+            <!--SignInForm-->
+            <div class="modal fade" id="SignInForm" align="left">
+              <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                  <div class="modal-header"> <button type="button" class="close"
+                      data-dismiss="modal">×</button>
+                    <h3 class="modal-title" align="center">Log In Information</h3>
+                  </div>
+                  <div class="modal-body">
+                    <form class="form-horizontal">
+                      <div class="form-group inputUser">
+                        <div class="input-group"> <span class="input-group-addon glyphicon glyphicon-user"></span>
+                          <input class="form-control" id="username" placeholder="user name"
+                            type="text"> </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="input-group"> <span class="input-group-addon glyphicon glyphicon-lock"></span>
+                          <input class="form-control" id="password" placeholder="password"
+                            type="text"> </div>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Sign In</button>
+                      <div class="checkbox"> <label> <input type="checkbox">
+                          Remember me </label> </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer"> <a href="#">Forget Username or
+                      Password?</a>
+                    <!--<a href="join.html">
+                                        <button type="button" class="btn btn-sign">                                        <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span> Join
+                                        </button>                                    </a>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <nav class="nav navbar-inverse" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <p class="navbar-text"> <i class="brand">"Music that skips a beat!"</i>
+            </p>
+          </div>
+          <!-- InstanceBeginEditable name="EditRegion-nav" -->
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">Home</a></li>
+            <li class="active"><a href="catalog.html">Music Catalog</a></li>
+            <li><a href="licensing.html">Licensing Info</a></li>
+            <li><a href="musicsearch.html">Music Search</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="join.html">Join Us</a></li>
+            <li> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-haspopup="true" aria-expanded="false">User Name <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="userMenu">
+                <li><a href="#"></a>My Projects</li>
+                <li><a href="#"></a>My Information</li>
+                <li><a href="#"></a>My History</li>
+                <li><a href="#"></a>Logout</li>
+              </ul>
+            </li>
+          </ul>
+          <!-- InstanceEndEditable --></div>
+      </nav>
+    </header>
+    <div class="bodyBg">
+      <!-- InstanceBeginEditable name="Edit-content" -->
+      <!-- content -->
+      <div class="content container">
+        <div class="container">
+          <div class="row">
+            <section class="col-sm-1"> </section>
+            <section class="col-sm-9">
+              <div class="subTitle">
+                <h2 class="subH2">Name of Album</h2>
+              </div>
+              <div class="container col-sm-12">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Track #</th>
+                      <th>Track Name</th>
+                      <th>Description</th>
+                      <th>Instruments</th>
+                      <th><span class="glyphicons glyphicon glyphicon-volume-up"></span><br>
+                      </th>
+                      <th><span class="glyphicons glyphicon glyphicon-save"></span><br>
+                      </th>
+                      <th><span class="glyphicon glyphicon-folder-open"></span><br>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Track 1</td>
+                      <td>American Honor 3:35e</td>
+                      <td>majestic, inspiring, grand, noble, triumphant, proud</td>
+                      <td>ull orchestra, strings, woodwinds, brass, harp,
+                        timpani, shaker, snare drum, cymbals, tubular bells,
+                        glockenspiel</td>
+                      <td><span class="glyphicons glyphicon glyphicon-play"></span><br>
+                      </td>
+                      <td><label class="checkbox-inline"><input value="" type="checkbox"></label></td>
+                      <td><label class="checkbox-inline"><input value="" type="checkbox"></label></td>
+                    </tr>
+                    <tr>
+                      <td>Track 2</td>
+                      <td>American Honor 3:35e</td>
+                      <td>majestic, inspiring, grand, noble, triumphant, proud</td>
+                      <td>ull orchestra, strings, woodwinds, brass, harp,
+                        timpani, shaker, snare drum, cymbals, tubular bells,
+                        glockenspiel</td>
+                      <td><span class="glyphicons glyphicon glyphicon-play"></span><br>
+                      </td>
+                      <td><label class="checkbox-inline"><input value="" type="checkbox"></label></td>
+                      <td><label class="checkbox-inline"><input value="" type="checkbox"></label></td>
+                    </tr>
+                    <tr>
+                      <td>Track 3</td>
+                      <td>American Honor 3:35e</td>
+                      <td>majestic, inspiring, grand, noble, triumphant, proud</td>
+                      <td>ull orchestra, strings, woodwinds, brass, harp,
+                        timpani, shaker, snare drum, cymbals, tubular bells,
+                        glockenspiel</td>
+                      <td><span class="glyphicons glyphicon glyphicon-play"></span><br>
+                      </td>
+                      <td><label class="checkbox-inline"><input value="" type="checkbox"></label></td>
+                      <td><label class="checkbox-inline"><input value="" type="checkbox"></label></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <!-- <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  					<div class="panel panel-default">    					<div class="panel-heading" role="tab" id="headingOne">
+     						<h4 class="panel-title">        					<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          					Track Name - <i class="comptype">TRT</i>        					</a>
+      						</h4>   						 </div>
+    				<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">     					<div class="panel-body">
+        <h6>Description</h6>        <blockquote>vibrant, sizzling, exciting, hot, latin, dance
+        </blockquote>         <h6>Instruments</h6>
+        <blockquote>piano, percussion, trumpet, saxophone, trombone, electric guitar, drums, nylon guitar, bass        </blockquote>
+      					</div>    				</div>-->
+            <section> </section>
+            <!-- InstanceEndEditable --> <img src="images/saxsiluette.png" class="bgCor"
+              alt="cornerImg">
+          </div>
+          <!-- footer -->
+          <div id="footer">
+            <h5 align="center">©American Music Company - All rights reserved
+              2016</h5>
+          </div>
+          <script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.52/wavesurfer.min.js"></script>
+          <script src="js/jquery-2.2.3.min.js"></script>
+          <!--<script src="../js/jquery.mobile-1.4.5.min.js"></script>-->
+          <script src="js/bootstrap.min.js"></script>
+          <script src="js/script.js"></script>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- InstanceEnd -->
+</html>

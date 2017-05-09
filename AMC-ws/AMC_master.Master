@@ -1,0 +1,182 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="AMC_master.master.vb" Inherits="AMC_ws.AMC_master" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv ="Page-Enter" content ="blendTrans(Duration=0)"/>
+<meta http-equiv="Page-Exit"content="blendTrans(Duration=0)"/>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="js/jquery-2.2.3.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
+    <script type="text/javascript">
+        function ErrorLogin() {
+            swal({
+                title: 'Loggin',
+                text: 'User or password invalid',
+                type: 'error'
+            });
+        }
+        function Datosincompletos() {
+            swal({
+                title: 'To start session',
+                text: 'Must type a valid username and password',
+                type: 'error'
+            });
+        }
+    </script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>American Music Company</title>
+    <!-- InstanceEndEditable -->
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+    <form id="form1" runat="server">
+    <header>
+      <div class="container-fluid topHeader">         
+        <div class="row">
+          <section class="col-sm-3">
+          </section>
+          <section class="col-sm-6 logo"> 
+              <a href="index.html"> <img src="images/AMC-logo-b.png"
+                alt="logo"> </a> 
+          </section>
+          <section class="col-sm-3 sign-in" align="right"> <span id="bt_loginarrow" runat="server" class="glyphicon glyphicon-chevron-right"
+
+              aria-hidden="true"></span> <button id="bt_login" runat="server" type="button" class="btn btn-sign"
+
+              data-toggle="modal" data-target="#SignInForm"> <span class="glyphicon glyphicon-user"
+
+                aria-hidden="true"></span> Sign in </button>
+            <!--SignInForm-->
+            <div class="modal fade" id="SignInForm" align="left">
+              <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                  <div class="modal-header"> 
+                      <button type="button" class="close" data-dismiss="modal">×</button>
+                      <h3 class="modal-title" align="center">Log In Information</h3>
+                  </div>
+                  <div class="modal-body">        
+                      <div class="form-group inputUser">
+                        <div class="input-group"> <span class="input-group-addon glyphicon glyphicon-user"></span> 
+                            <asp:TextBox ID="username1" runat="server" class="form-control" placeholder="user name"></asp:TextBox>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="input-group"> <span class="input-group-addon glyphicon glyphicon-lock"></span> 
+                            <asp:TextBox ID="password1" runat="server" class="form-control" placeholder="password" TextMode="Password"></asp:TextBox>
+                          </div>
+                      </div>
+                      <asp:Button ID="signIn" runat="server" Text="Sign In" CssClass="btn btn-primary" />
+                  </div>
+                  <div class="modal-footer">
+                      <asp:LinkButton ID="BL_forPass" runat="server" data-toggle="modal" data-target="#forPass"
+                          Text="Forget Username or Password?" />
+                      
+                  </div>
+                </div>
+              </div>
+            </div>
+              <!--ForgotPassword-->
+            <div class="modal fade" id="forPass" align="left">
+              <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                  <div class="modal-header"> 
+                      <button type="button" class="close" data-dismiss="modal">×</button>
+                      <h3 class="modal-title" align="center">Forgot Your Password?</h3>
+                  </div>
+                  <div class="modal-body">
+                      <p>Please enter your email address below and your username and password will be emailed to you. 
+                         If you have any questions or require further assistance please call us directly at <b>516.764.1466</b> and someone will assist you right away. 
+                          Thank you for choosing <i>American Music Company</i>.</p>
+                        <br />
+                                
+                      
+                      <div class="form-group">
+                        <div class="input-group"> <span class="input-group-addon glyphicon glyphicon-envelope"></span> 
+                            <asp:TextBox ID="useremail" runat="server" class="form-control" placeholder="email" TextMode="email"></asp:TextBox>
+                          </div>
+                      </div>
+                      <asp:Button ID="B_subEmail" runat="server" Text="Submit" CssClass="btn btn-primary" />
+                  </div>
+                  <div class="modal-footer"> 
+                      <h5>Our office hours are Monday thru Friday, 7:30am to 8:00pm Eastern</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+            
+        </div>
+      </div>
+      <nav class="nav navbar-inverse" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <p class="navbar-text"> <i class="brand">"Music that skips a beat!"</i>
+            </p>
+          </div>
+          <!-- InstanceBeginEditable name="EditRegion-nav" -->
+          <ul class="nav navbar-nav">
+            <li><a href="default.aspx" tag="home">Home</a></li>
+            <li><a href="catalog.aspx">Music Catalog</a></li>
+            <li><a href="licensing.aspx">Licensing Info</a></li>
+            <li><a href="musicsearch.aspx">Music Search</a></li>
+            <li><a href="aboutus.aspx">About Us</a></li>
+            <li><a href="contactus.aspx">Contact Us</a></li>
+            <li id="m_joinus" runat="server" visible="true"><a href="join.aspx">Join Us</a></li>
+            <li id="m_usuario" runat="server" visible="false" hidden="hidden"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+
+                aria-haspopup="true" aria-expanded="false" tag="username"><asp:Label ID="L_UserName" runat="server" Text="Label"></asp:Label>
+                 <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="userMenu">
+                <li>
+                    <asp:LinkButton ID="LB_Project" runat="server">My Projects</asp:LinkButton>
+                </li>
+                <li>
+                    <asp:LinkButton ID="LB_PinVer" runat="server">My Information</asp:LinkButton>
+                </li>
+                <li>
+                    <asp:LinkButton ID="LB_History" runat="server">My History</asp:LinkButton>
+
+                </li>
+                <li><asp:LinkButton ID="LB_Logout" runat="server">Logout</asp:LinkButton>
+                    </li>
+              </ul>
+            </li>
+          </ul>
+            
+          <!-- InstanceEndEditable --></div>
+      </nav>
+    </header>
+
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+<!-- InstanceEndEditable --> 
+    <img src="images/saxsiluette.png" class="bgCor"
+        alt="cornerImg" />
+
+<footer class="panel-footer">
+ 	<div id="footer">
+      <h5 align="center">©American Music Company - All rights reserved 2017</h5>
+    </div>
+ </footer>
+
+    <script src="js/jquery-2.2.3.min.js"></script>
+    <!--<script src="../js/jquery.mobile-1.4.5.min.js"></script>-->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+</form>
+</body>
+</html>
