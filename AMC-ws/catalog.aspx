@@ -112,20 +112,8 @@
                   </Columns>
               </asp:GridView>
             </div>  
-           </section>        
-                          
-                      
-                  
-                 
-              
-              
-              
-                  
-                          
-                      
-                  
-                 
-              
+           </section>            
+                                            
         </div>
       </div>
 

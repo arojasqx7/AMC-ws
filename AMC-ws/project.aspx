@@ -24,11 +24,11 @@
 
                             <br />
 
-                        <h4>Select Project Folder:</h4>     
-                          <asp:DropDownList ID="DD_project" runat="server" DataSourceID="SqlProjects" DataTextField="projectName" DataValueField="projectName" style="width:165px;height:32px;border-radius:4px;">
+                        <h5>Select Project Folder:</h5>     
+                          <asp:DropDownList ID="DD_project1" runat="server" DataSourceID="sqlProyectos" DataTextField="projectName" DataValueField="projectName" AutoPostBack="true" OnSelectedIndexChanged="DD_project_SelectedIndexChanged" style="width:165px;height:32px;border-radius:4px;">
                               <asp:ListItem>Choose a Project</asp:ListItem>
                           </asp:DropDownList>
-                            <asp:SqlDataSource ID="SqlProjects" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [projectName] FROM [projects] ORDER BY 1"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="sqlProyectos" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [projectName] FROM [projects] ORDER BY [projectName]"></asp:SqlDataSource>
                         </div>   
                         
                         <div class="col-sm-4">
@@ -37,12 +37,34 @@
                     </section>                  
                 </div>
                 
-                <br />
-                <br />
                 <div class="row">
                      <section class="col-sm-offset-2">
-                         <h4>Hola</h4>
+                         <br />
+                         <br />
+                         <asp:GridView ID="GridProjects" runat="server" AutoGenerateColumns="False" DataSourceID="Sqlproject_Grid" Width="500px" CssClass="table table-bordered" style="text-align:center; margin-top: 0px;" DataKeyNames="id">
+                             <Columns >
+                                 <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" Visible="false"/>
+                                 <asp:BoundField DataField="projectName" HeaderText="PROJECT NAME" SortExpression="projectName" HeaderStyle-CssClass="text-center" >
+                                 <HeaderStyle CssClass="text-center" />
+                                 </asp:BoundField>
+                                 <asp:CommandField ShowDeleteButton="True" ButtonType="Button" DeleteText="Delete" ControlStyle-CssClass="btn btn-danger" />
+                             </Columns>
+
+                         </asp:GridView>
+                         <asp:SqlDataSource ID="Sqlproject_Grid" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [projectName], [id] FROM [projects] WHERE ([projectName] = @projectName)" DeleteCommand="DELETE FROM [projects] WHERE ([id] = @id)">
+                             <DeleteParameters>
+                                 <asp:Parameter Name="id" Type="Int32" />    
+                             </DeleteParameters>
+                             <SelectParameters>
+                                 <asp:ControlParameter ControlID="DD_project1" Name="projectName" PropertyName="SelectedValue" Type="String"  /> 
+                             </SelectParameters>
+<%--                             <UpdateParameters>
+                                 <asp:Parameter Name="projectName" Type="String" />
+                                 <asp:Parameter Name="id" Type="Int64" />
+                             </UpdateParameters>--%>
+                         </asp:SqlDataSource>
                      </section>
+
                 </div>
             </div>
         </div>
@@ -71,4 +93,9 @@
         <!-- Termina Pop up-->
     </div>
 
+    <script>
+        $("#DD_project1").on('change', function () {
+            $("#GridProjects").show();
+        });
+    </script>
 </asp:Content>
