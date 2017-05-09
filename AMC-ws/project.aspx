@@ -24,18 +24,25 @@
 
                             <br />
 
-                        <h3>Select Project Folder:</h3>     
-                          <asp:DropDownList ID="DD_project" runat="server" DataSourceID="SqlProjects" DataTextField="projectName" DataValueField="projectName">
+                        <h4>Select Project Folder:</h4>     
+                          <asp:DropDownList ID="DD_project" runat="server" DataSourceID="SqlProjects" DataTextField="projectName" DataValueField="projectName" style="width:165px;height:32px;border-radius:4px;">
                               <asp:ListItem>Choose a Project</asp:ListItem>
                           </asp:DropDownList>
-                            <asp:SqlDataSource ID="SqlProjects" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [projectName] FROM [projects]"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="SqlProjects" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [projectName] FROM [projects] ORDER BY 1"></asp:SqlDataSource>
                         </div>   
                         
                         <div class="col-sm-4">
                             <h4>Here is an easy and simple way for you to save all of your various music searches. Create your own project folders instantly. Manage your own files and keep track of your clients music jobs. It's as quick as snapping your fingers!</h4>
                         </div>         
-                    </section>           
-                             
+                    </section>                  
+                </div>
+                
+                <br />
+                <br />
+                <div class="row">
+                     <section class="col-sm-offset-2">
+                         <h4>Hola</h4>
+                     </section>
                 </div>
             </div>
         </div>
@@ -46,13 +53,13 @@
                 <div class="modal-content">
                     <div class="modal-header song_sel_panel-header"> 
                       <button type="button" class="close" data-dismiss="modal">×</button>
-                      <h3 class="modal-title">Add new Project</h3>
+                      <h3 class="modal-title"> <span class="glyphicon glyphicon-folder-open"></span>        Add new Project</h3>
                     </div>
 
                     <div class="modal-body">  
                          <h6>Add your favorite songs to your project folder</h6>      
                         <div class="input-group"> 
-                            <asp:TextBox ID="T_newfolder" runat="server" class="form-control" placeholder="New Project Folder"></asp:TextBox>
+                            <asp:TextBox ID="T_newfolder" runat="server" class="form-control" placeholder="New Project Folder..."></asp:TextBox>
                             <div class="input-group-btn">
                                 <asp:Button ID="B_addfolder" runat="server" class="btn btn-search" Text="+" />
                             </div> 
@@ -64,5 +71,4 @@
         <!-- Termina Pop up-->
     </div>
 
-    
 </asp:Content>
