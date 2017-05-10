@@ -20,15 +20,18 @@
                             <button id="B_newFolder" runat="server" type="button" class="btn btn-search"
                             data-toggle="modal" data-target="#newProject"> <span class="glyphicon glyphicon-plus"
                             aria-hidden="true"></span> New Project Folder </button>
-                        <br />
-
+                            <br />
                             <br />
 
                         <h5>Select Project Folder:</h5>     
                           <asp:DropDownList ID="DD_project1" runat="server" DataSourceID="sqlProyectos" DataTextField="projectName" DataValueField="projectName" AutoPostBack="true" OnSelectedIndexChanged="DD_project_SelectedIndexChanged" style="width:165px;height:32px;border-radius:4px;">
                               <asp:ListItem>Choose a Project</asp:ListItem>
                           </asp:DropDownList>
-                            <asp:SqlDataSource ID="sqlProyectos" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [projectName] FROM [projects] ORDER BY [projectName]"></asp:SqlDataSource>
+                                <asp:SqlDataSource ID="sqlProyectos" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [projects].[projectName] FROM [projects] JOIN [users] ON [projects].[fk_userID] = [users].[id] WHERE ([users].[username] =@username) ORDER BY [projects].[projectName]">
+                                    <SelectParameters>
+                                        <asp:SessionParameter Name="username" SessionField="Username" />
+                                    </SelectParameters>
+                                </asp:SqlDataSource>
                         </div>   
                         
                         <div class="col-sm-4">
@@ -41,7 +44,7 @@
                      <section class="col-sm-offset-2">
                          <br />
                          <br />
-                         <asp:GridView ID="GridProjects" runat="server" AutoGenerateColumns="False" DataSourceID="Sqlproject_Grid" Width="500px" CssClass="table table-bordered" style="text-align:center; margin-top: 0px;" DataKeyNames="id">
+                         <asp:GridView ID="GridProjects" runat="server" AutoGenerateColumns="False" DataSourceID="Sqlproject_Grid" Width="500px" CssClass="table table-bordered" style="text-align:center; margin-top: 0px;" DataKeyNames="id" ShowHeader="false">
                              <Columns >
                                  <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" Visible="false"/>
                                  <asp:BoundField DataField="projectName" HeaderText="PROJECT NAME" SortExpression="projectName" HeaderStyle-CssClass="text-center" >
