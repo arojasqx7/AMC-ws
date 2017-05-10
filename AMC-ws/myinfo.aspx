@@ -1,6 +1,15 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/AMC_master.Master" CodeBehind="myinfo.aspx.vb" Inherits="AMC_ws.myinfo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+ <script type="text/javascript">
+     function SuccessUpdate() {
+         swal("My Information", "My Information has been updated successfully!", "success")
+     }
+     function PassVerify() {
+         swal("Password Mismatch", "Confirm password does not match!", "error")
+     }
+    </script>
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="form-horizontal" id="registrationForm"> 
     <div class="bodyBg"> 
@@ -66,7 +75,7 @@
                                  </div>
                                  <div class="form-group"> 
                                      <label class="col-sm-2 control-label"
-                                      id="Laddress2"></label>
+                                      id="Laddress2">Address 2</label>
                                      <div class="col-sm-10">
                                         <asp:TextBox ID="Taddress2" runat="server" class="form-control" placeholder="Address"></asp:TextBox>
                                     </div>
@@ -389,7 +398,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label"
-                                        id="Lphone2"></label>
+                                        id="Lphone2">Telephone 2</label>
                                         <div class="col-sm-10">
                                             <asp:TextBox ID="Tphone2" runat="server" class="form-control" placeholder="Telephone" TextMode="Phone"></asp:TextBox>
                                         </div>
