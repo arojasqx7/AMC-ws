@@ -1,9 +1,11 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Web.UI.WebControls
 
 Public Class album
     Inherits System.Web.UI.Page
 
     Dim connection As String = "Data Source=.\SQLEXPRESS;Initial Catalog=AMC;Integrated Security=True;"
+
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Me.GV_tracks.Rows.Count() <= 0 Then
@@ -12,18 +14,21 @@ Public Class album
             Dim T_cd = New AMC_ws.DataSet1TableAdapters.cdTableAdapter()
             Dim W_cd = T_cd.GetDataById(L_idAlbum)
             Me.T_albumTitle.Text = W_cd(0).cd_title
-
+            Me.T_trackId.Text = W_cd(0).id
             Dim Dt_tracks = New AMC_ws.DataSet1TableAdapters.tracksTableAdapter()
 
             Dim T_tracks = Dt_tracks.GetData(L_idAlbum)
+
             Me.GV_tracks.DataSource = T_tracks
             GV_tracks.DataBind()
-            Me.BindGrid_ProjectList()
+            Me.BindGrid_ProjectList() 'Here we will bind the Grid on Page load
+            '        Me.lbl_title.Text = 
+            'ReturnTrackName()
         End If
     End Sub
 
     Private Sub BindGrid_ProjectList()
-
+#Region "Bind Grid View With project's data"
         Using con As New SqlConnection(connection)
             Using cmd As New SqlCommand("SELECT [projects].[projectName] FROM [projects] JOIN [users] ON [projects].[fk_userID] = [users].[id] WHERE ([users].[username] = '" & Session("Username") & "') ORDER BY [projects].[projectName]")
                 Using sda As New SqlDataAdapter()
@@ -38,14 +43,24 @@ Public Class album
                 End Using
             End Using
         End Using
+#End Region
     End Sub
 
     Protected Sub OnRowDataBound(sender As Object, e As GridViewRowEventArgs)
+#Region "Check's selection in Grid"
         If e.Row.RowType = DataControlRowType.DataRow Then
             Dim checkBox As CheckBox = TryCast(e.Row.Cells(0).Controls(0), CheckBox)
             checkBox.Enabled = True
         End If
+#End Region
     End Sub
+
+    Protected Sub OnSelectedIndexChanged(sender As Object, e As EventArgs)
+        Dim row As GridViewRow = GV_tracks.SelectedRow
+        Me.Label1.Text = TryCast(row.FindControl("T_title"), LinkButton).Text
+    End Sub
+
+
 
     Protected Sub track_Click(sender As Object, e As EventArgs)
         Dim lno As LinkButton = sender
@@ -77,7 +92,7 @@ Public Class album
         '    Dim T_tracks = Dt_tracks.GetData(lno.CommandArgument)
 
         '    Me.T_titlePop.Text = T_tracks(0).title
-        '    Me.T_trackId.Text = T_tracks(0).cd_number
+        'Me.T_trackId.Text = T_tracks(0).cd_number
         '    Me.T_compPop.Text = T_tracks(0).fname & " " & T_tracks(0).lname
         '    Me.T_pubPop.Text = T_tracks(0)._alias & " " & T_tracks(0).name
         '    ScriptManager.RegisterStartupScript(Me, Page.GetType, "songS", "$('#songS').modal();", True)
@@ -89,9 +104,6 @@ Public Class album
 
     End Sub
 
-    Protected Sub GV_tracks_SelectedIndexChanged(sender As Object, e As EventArgs) Handles GV_tracks.SelectedIndexChanged
-
-    End Sub
     Protected Sub track_Click_download(sender As Object, e As EventArgs)
         Dim lno As LinkButton = sender
 
@@ -113,5 +125,14 @@ Public Class album
         'Don't forget to add the following line
         Response.[End]()
 
+    End Sub
+
+    Protected Sub lnkSelect_Click(sender As Object, e As EventArgs)
+        ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "openModal();", True)
+    End Sub
+
+    Protected Sub btnAddProjects_Click(sender As Object, e As EventArgs)
+
+        ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "AddSuccess();", True)
     End Sub
 End Class

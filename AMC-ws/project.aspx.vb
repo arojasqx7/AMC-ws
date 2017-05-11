@@ -2,14 +2,15 @@
 
 Public Class project
     Inherits System.Web.UI.Page
-
+#Region "Conn String"
     Dim connection As String = "Data Source=.\SQLEXPRESS;Initial Catalog=AMC;Integrated Security=True;"
+#End Region
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
     End Sub
 
     Private Sub B_addfolder_Click(sender As System.Object, e As System.EventArgs) Handles B_addfolder.Click
-
+#Region "Insert new project"
         Dim sqlConnection1 As New System.Data.SqlClient.SqlConnection(connection)
         Dim cmd As New System.Data.SqlClient.SqlCommand
         cmd.CommandType = System.Data.CommandType.Text
@@ -21,6 +22,7 @@ Public Class project
         'Reset()
         Response.Redirect("project.aspx")
         sqlConnection1.Close()
+#End Region
     End Sub
 
     Protected Sub DD_project_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DD_project1.SelectedIndexChanged
