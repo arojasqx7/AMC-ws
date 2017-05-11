@@ -27,7 +27,7 @@
                           <asp:DropDownList ID="DD_project1" runat="server" DataSourceID="sqlProyectos" DataTextField="projectName" DataValueField="projectName" AutoPostBack="true" OnSelectedIndexChanged="DD_project_SelectedIndexChanged" style="width:165px;height:32px;border-radius:4px;" >
                                       <asp:ListItem Text="Choose a Project" Value="" />  
                           </asp:DropDownList>
-                                <asp:SqlDataSource ID="sqlProyectos" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT DISTINCT [projects].[projectName] FROM [projects] JOIN [users] ON [projects].[fk_userID] = [users].[id] WHERE ([users].[username] =@username) AND [projects].[projectName] IS NOT NULL ORDER BY [projects].[projectName]">
+                                <asp:SqlDataSource ID="sqlProyectos" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [projects].[projectName] FROM [projects] JOIN [users] ON [projects].[fk_userID] = [users].[id] WHERE ([users].[username] =@username) AND [projects].[projectName] IS NOT NULL ORDER BY [projects].[projectName]">
                                     <SelectParameters>
                                         <asp:SessionParameter Name="username" SessionField="Username" />
                                     </SelectParameters>

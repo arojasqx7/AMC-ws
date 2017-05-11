@@ -50,14 +50,14 @@
             </asp:BoundField>
             <asp:TemplateField HeaderText="Save">
                 <ItemTemplate>
-                    <asp:LinkButton ID="T_songSave" CssClass="btn btn-danger" runat="server"
-                        
-                        CommandArgument='<%# Bind("id") %>' OnClick="T_songMain">
-                        <span class="glyColor glyphicons glyphicon glyphicon-folder-open"/>
 
+                    <!-- Open select project pop up -->
+
+                    <asp:LinkButton ID="T_songSave" CssClass="btn btn-danger" runat="server"
+                        CommandArgument='<%# Bind("id") %>' data-toggle="modal" data-target="#ProjectList">
+                        <span class="glyColor glyphicons glyphicon glyphicon-folder-open"/>
                     </asp:LinkButton>
 
-                   
                 </ItemTemplate>
                 <ItemStyle Width="5%" HorizontalAlign="Center" VerticalAlign="Top" ForeColor="White" />
             </asp:TemplateField>
@@ -156,7 +156,36 @@
         </div>
     </div>
         </div>
+
+                <!--New Project Folder-->
+            <div class="modal fade" id="ProjectList">
+              <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header song_sel_panel-header"> 
+                      <button type="button" class="close" data-dismiss="modal">×</button>
+                      <h3 class="modal-title"> <span class="glyphicon glyphicon-floppy-save"></span>        Save to Project</h3>
+                    </div>
+
+                    <div class="modal-body">  
+                         <h5>Choose a Project to add this Track to:</h5> 
+                        <h6 id="trackName">Track Name..</h6>
+                        <br />
+                        <div class="input-group" style="margin-left:30px;"> 
+                            <asp:GridView ID="GridProjectList" runat="server" CssClass="table table-bordered" OnRowDataBound = "OnRowDataBound">
+                            </asp:GridView>
+                            <br />
+                            <asp:Button ID="btnAddProjects" runat="server" Text="Add" CssClass="btn btn-success" Width="200px"/>
+                        </div>
+                    </div>
+                </div>
+               </div>
+            </div>
+        <!-- Termina Pop up-->
+
+
+      </div>  <!-- End div main body -->
      
+
         <style type="text/css">
                 #Player {
                 position: fixed;
@@ -168,6 +197,7 @@
                 }
                 a:link{cursor:pointer}a:link{color:#1a0dab}
               </style>
+
     <!-- Incluimos wavesurfer.js desde cdnjs -->
               <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.4/wavesurfer.min.js"></script>
     <!-- Define los elementos HTML donde waveform se cargara -->
@@ -194,6 +224,8 @@
                         <span class="glyphicon glyphicon-volume-off" aria-hidden="true"></span>
                     </button>
                 </div>
+              </div>  <!-- end div player -->
+
   <script>
 
     var wavesurfer = WaveSurfer.create({

@@ -86,6 +86,24 @@ Partial Public Class album
     Protected WithEvents G_wav As Global.System.Web.UI.WebControls.GridView
     
     '''<summary>
+    '''GridProjectList control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents GridProjectList As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''btnAddProjects control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnAddProjects As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
     '''L_titlePlayer control.
     '''</summary>
     '''<remarks>
