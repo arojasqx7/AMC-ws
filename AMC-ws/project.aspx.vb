@@ -13,13 +13,12 @@ Public Class project
         Dim sqlConnection1 As New System.Data.SqlClient.SqlConnection(connection)
         Dim cmd As New System.Data.SqlClient.SqlCommand
         cmd.CommandType = System.Data.CommandType.Text
-        cmd.CommandText = "INSERT INTO projects (projectName,fk_userID) VALUES ('" & T_newfolder.Text & "',(SELECT TOP 1 [users].[id] FROM [users] JOIN [projects] ON  [users].[id] = [projects].[fk_userID] WHERE [users].[username] ='" & Session("Username") & "'))"
+        cmd.CommandText = "INSERT INTO projects (projectName,fk_userID) VALUES ('" & T_newfolder.Text & "',(SELECT TOP 1 [users].[id] FROM [users] WHERE [users].[username] ='" & Session("Username") & "'))"
         cmd.Connection = sqlConnection1
-
         sqlConnection1.Open()
         cmd.ExecuteNonQuery()
         DD_project1.DataBind()
-        Reset()
+        'Reset()
         Response.Redirect("project.aspx")
         sqlConnection1.Close()
     End Sub
