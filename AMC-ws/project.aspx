@@ -71,6 +71,14 @@
                                  <asp:Parameter Name="id" Type="Int64" />
                              </UpdateParameters>--%>
                          </asp:SqlDataSource>
+
+
+                         <asp:GridView ID="GridTracksInProject" runat="server" AutoGenerateColumns="False" Width="500px" CssClass="table table-bordered" style="text-align:center; margin-top: 0px;" ShowHeader="False" Height="16px">
+                             <Columns>
+                                 <asp:BoundField DataField="title" HeaderText="Title" SortExpression="title" />
+                             </Columns>
+                         </asp:GridView>
+
                      </section>
 
                 </div>
