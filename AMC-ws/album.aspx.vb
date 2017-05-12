@@ -21,46 +21,15 @@ Public Class album
 
             Me.GV_tracks.DataSource = T_tracks
             GV_tracks.DataBind()
-            Me.BindGrid_ProjectList() 'Here we will bind the Grid on Page load
-            '        Me.lbl_title.Text = 
-            'ReturnTrackName()
         End If
     End Sub
 
-    Private Sub BindGrid_ProjectList()
-#Region "Bind Grid View With project's data"
-        Using con As New SqlConnection(connection)
-            Using cmd As New SqlCommand("SELECT [projects].[projectName] FROM [projects] JOIN [users] ON [projects].[fk_userID] = [users].[id] WHERE ([users].[username] = '" & Session("Username") & "') ORDER BY [projects].[projectName]")
-                Using sda As New SqlDataAdapter()
-                    cmd.Connection = con
-                    sda.SelectCommand = cmd
-                    Using dt As New DataTable()
-                        dt.Columns.Add("Action", GetType(Boolean))
-                        sda.Fill(dt)
-                        GridProjectList.DataSource = dt
-                        GridProjectList.DataBind()
-                    End Using
-                End Using
-            End Using
-        End Using
-#End Region
-    End Sub
-
-    Protected Sub OnRowDataBound(sender As Object, e As GridViewRowEventArgs)
-#Region "Check's selection in Grid"
-        If e.Row.RowType = DataControlRowType.DataRow Then
-            Dim checkBox As CheckBox = TryCast(e.Row.Cells(0).Controls(0), CheckBox)
-            checkBox.Enabled = True
-        End If
-#End Region
-    End Sub
 
     Protected Sub OnSelectedIndexChanged(sender As Object, e As EventArgs)
         Dim row As GridViewRow = GV_tracks.SelectedRow
         Me.Label1.Text = TryCast(row.FindControl("T_title"), LinkButton).Text
+        Me.Label2.Text = TryCast(row.FindControl("T_ID"), LinkButton).Text
     End Sub
-
-
 
     Protected Sub track_Click(sender As Object, e As EventArgs)
         Dim lno As LinkButton = sender
@@ -132,7 +101,25 @@ Public Class album
     End Sub
 
     Protected Sub btnAddProjects_Click(sender As Object, e As EventArgs)
+        Dim sqlConnection1 As New System.Data.SqlClient.SqlConnection(connection)
+        Dim cmd As New System.Data.SqlClient.SqlCommand
+        cmd.CommandType = System.Data.CommandType.Text
+        Dim t_id = Me.Label2.Text
 
+        For Each row As GridViewRow In GridProjectList.Rows
+            If row.RowType = DataControlRowType.DataRow Then
+                Dim chkRow As CheckBox = TryCast(row.Cells(0).FindControl("chkRow"), CheckBox)
+                If chkRow.Checked Then
+                    Dim projectName As String = row.Cells(1).Text
+                    cmd.CommandText = "INSERT INTO map_projects (fk_projectID,fk_trackID,fk_userID) SELECT [projects].[id],[users].[id],[tracks].[id] FROM [projects],[users],[tracks] WHERE [projects].[projectName] ='" & projectName & "' AND [users].[username] ='" & Session("Username") & "' AND [tracks].[id]='" & t_id & "'"
+                    cmd.Connection = sqlConnection1
+                    sqlConnection1.Open()
+                    cmd.ExecuteNonQuery()
+                    sqlConnection1.Close()
+
+                End If
+            End If
+        Next
         ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "AddSuccess();", True)
     End Sub
 End Class

@@ -37,7 +37,12 @@
                             <asp:GridView ID="GV_tracks" runat="server" AutoGenerateColumns="False" GridLines="None" OnSelectedIndexChanged ="OnSelectedIndexChanged" DataKeyNames="id">
                                 <Columns>
 
-                                    <asp:BoundField DataField="id" HeaderText="Id" ItemStyle-Width="30" Visible="false"/>
+                                    <asp:TemplateField HeaderText="Id" Visible="false">
+                                        <ItemTemplate>
+                                        <asp:LinkButton ID="T_ID" runat="server" Text='<%# Bind("id") %>' CommandArgument='<%# Bind("id") %>'>
+                                        </asp:LinkButton>
+                                       </ItemTemplate>
+                                    </asp:TemplateField>
                                     
                                     <asp:BoundField DataField="track_number" HeaderText="Track #">
                                         <ItemStyle Width="10%" HorizontalAlign="Center" VerticalAlign="Top" />
@@ -180,11 +185,28 @@
                     <div class="modal-body">
                         <h5>Choose a Project to add this Track to:</h5>
                         <strong><span class="glyphicon glyphicon-music"> </span><asp:Label ID="Label1" runat="server" Text="Label" style="margin-left: 30px;"/></strong>
+                        <asp:Label ID="Label2" runat="server" Text="Label" style="margin-left: 30px;" Visible="false"/>
                          <br />
                         <br />
                         <div class="input-group" style="margin-left: 10px;">
-                            <asp:GridView ID="GridProjectList" runat="server" CssClass="table table-bordered" OnRowDataBound="OnRowDataBound">
-                            </asp:GridView>
+
+                            <asp:GridView ID="GridProjectList" runat="server" CssClass="table table-bordered" DataSourceID="SqlprojectList_Grid" AutoGenerateColumns="false">
+                           <Columns>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:CheckBox ID="chkRow" runat="server"/>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="projectName" HeaderText="Project"/>
+                           </Columns>
+                           </asp:GridView>
+
+                            <asp:SqlDataSource ID="SqlprojectList_Grid" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [projects].[projectName] FROM [projects] JOIN [users] ON [projects].[fk_userID] = [users].[id] WHERE ([users].[username] =@username) ORDER BY [projects].[projectName]">
+                              <SelectParameters>
+                                  <asp:SessionParameter Name="username" SessionField="Username" />
+                              </SelectParameters>
+                             </asp:SqlDataSource>
+
                             <br />
                             <asp:Button ID="btnAddProjects" runat="server" Text="Add" CssClass="btn btn-success" Width="200px" OnClick="btnAddProjects_Click" />
                         </div>
@@ -205,17 +227,8 @@
             bottom: 0;
             margin-bottom: 50px;
             align-content: center;
-   :
-
-              b
-            ackgrou nd-colo;
-        r
-
-        :light g
-            rey;            
-                   ;
-         
-                 a:link{cursor:pointer}a:link{color:#1a0dab}
+            background-color:lightgrey;            /*a:link{cursor:pointer}a:link{color:#1a0dab}*/
+                }
     </style>
 
     <!-- Incluimos wavesurfer.js desde cdnjs -->
