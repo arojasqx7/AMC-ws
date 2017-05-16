@@ -9,6 +9,7 @@ Public Class project
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         BindGridTracksInProject()
+
     End Sub
 
     Private Sub B_addfolder_Click(sender As System.Object, e As System.EventArgs) Handles B_addfolder.Click
@@ -29,10 +30,12 @@ Public Class project
 
     Protected Sub DD_project_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DD_project1.SelectedIndexChanged
         Me.GridProjects.DataBind()
+
     End Sub
 
     Protected Sub GridProjects_RowDeleting(sender As Object, e As EventArgs) Handles GridProjects.RowDeleting
         Me.DD_project1.DataBind()
+        Me.DD_project1.Items.Insert(0, New ListItem("Choose Project", ""))
     End Sub
 
     Protected Sub BindGridTracksInProject()
@@ -46,4 +49,44 @@ Public Class project
         GridTracksInProject.DataBind()
         sqlConnection1.Close()
     End Sub
+
+    Protected Sub Button1_Click(sender As Object, e As EventArgs)
+        Dim sqlConnection1 As New System.Data.SqlClient.SqlConnection(connection)
+        Dim cmd As New System.Data.SqlClient.SqlCommand
+        cmd.CommandType = System.Data.CommandType.Text
+        cmd.CommandText = "DELETE FROM [projects] WHERE [projectName] ='" & Me.DD_project1.SelectedValue & "'"
+        cmd.Connection = sqlConnection1
+        sqlConnection1.Open()
+        cmd.ExecuteNonQuery()
+        ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "SuccessDelete();", True)
+        DD_project1.DataBind()
+        Response.Redirect("project.aspx")
+        sqlConnection1.Close()
+    End Sub
+
+    Protected Sub GridTracksInProject_RowDeleting(sender As Object, e As GridViewDeleteEventArgs)
+        Dim sqlConnection1 As New System.Data.SqlClient.SqlConnection(connection)
+        Dim cmd As New System.Data.SqlClient.SqlCommand
+        cmd.CommandType = System.Data.CommandType.Text
+        cmd.CommandText = "DELETE FROM [map_projects] WHERE [fk_trackID] ='" & Me.GridTracksInProject.SelectedValue & "'"
+        cmd.Connection = sqlConnection1
+        sqlConnection1.Open()
+        cmd.ExecuteNonQuery()
+        Response.Redirect("project.aspx")
+        sqlConnection1.Close()
+    End Sub
+
+    'Protected Sub Button2_Click(sender As Object, e As EventArgs)
+    '    Dim sqlConnection1 As New System.Data.SqlClient.SqlConnection(connection)
+    '    Dim cmd As New System.Data.SqlClient.SqlCommand
+    '    cmd.CommandType = System.Data.CommandType.Text
+    '    cmd.CommandText = "DELETE FROM [map_projects] WHERE [title] ='" &  & "'"
+    '    cmd.Connection = sqlConnection1
+    '    sqlConnection1.Open()
+    '    cmd.ExecuteNonQuery()
+    '    ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "SuccessDelete();", True)
+    '    DD_project1.DataBind()
+    '    Response.Redirect("project.aspx")
+    '    sqlConnection1.Close()
+    'End Sub
 End Class

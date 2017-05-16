@@ -7,14 +7,16 @@
 <meta http-equiv ="Page-Enter" content ="blendTrans(Duration=0)"/>
 <meta http-equiv="Page-Exit"content="blendTrans(Duration=0)"/>
     <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/typeahead.css" />
     <link href="css/styles.css" rel="stylesheet" />
     <script src="js/jquery-2.2.3.min.js"></script>
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="dist/sweetalert.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
+    <link rel="stylesheet" type="text/css" href="dist/sweetalert.css"/>
+    
     <script type="text/javascript">
         function ErrorLogin() {
             swal({
@@ -185,6 +187,7 @@
     <script src="js/jquery-2.2.3.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/bootstrap3-typeahead.min.js"></script>
 </form>
 </body>
 </html>

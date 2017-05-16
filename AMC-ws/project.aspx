@@ -24,7 +24,7 @@
                             <br />
 
                         <h5>Select Project Folder:</h5>     
-                          <asp:DropDownList ID="DD_project1" runat="server" DataSourceID="sqlProyectos" DataTextField="projectName" DataValueField="projectName" AutoPostBack="true" OnSelectedIndexChanged="DD_project_SelectedIndexChanged" style="width:165px;height:32px;border-radius:4px;" >
+                          <asp:DropDownList ID="DD_project1" runat="server" DataSourceID="sqlProyectos" DataTextField="projectName" AppendDataBoundItems="true" DataValueField="projectName" AutoPostBack="true" OnSelectedIndexChanged="DD_project_SelectedIndexChanged" style="width:165px;height:32px;border-radius:4px;" >
                                       <asp:ListItem Text="Choose a Project" Value="" />  
                           </asp:DropDownList>
                                 <asp:SqlDataSource ID="sqlProyectos" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [projects].[projectName] FROM [projects] JOIN [users] ON [projects].[fk_userID] = [users].[id] WHERE ([users].[username] =@username) AND [projects].[projectName] IS NOT NULL ORDER BY [projects].[projectName]">
@@ -44,7 +44,7 @@
                      <section class="col-sm-offset-2">
                          <br />
                          <br />
-                         <asp:GridView ID="GridProjects" runat="server" AutoGenerateColumns="False" DataSourceID="Sqlproject_Grid" Width="500px" CssClass="table table-bordered" style="text-align:center; margin-top: 0px;" DataKeyNames="id" ShowHeader="False">
+                         <asp:GridView ID="GridProjects" runat="server" AutoGenerateColumns="False" DataSourceID="Sqlproject_Grid" Width="500px" CssClass="table table-bordered" style="text-align:center; margin-top: 0px;" DataKeyNames="id" ShowHeader="False" BackColor="#1A6ECD" ForeColor="White" >
                              <Columns >
                                  <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" Visible="false"/>
                                  <asp:BoundField DataField="projectName" HeaderText="PROJECT NAME" SortExpression="projectName" HeaderStyle-CssClass="text-center" >
@@ -52,30 +52,31 @@
                                  </asp:BoundField>
                                  <asp:TemplateField ShowHeader="False">
                                      <ItemTemplate>
-                                         <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" OnClientClick="return confirm('Are you sure you want to delete?');" PostBackUrl="~/project.aspx"/>
+                                         <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" OnClick="Button1_Click"/>
                                      </ItemTemplate>
                                      <ControlStyle CssClass="btn btn-danger" />
                                  </asp:TemplateField>
                              </Columns>
 
                          </asp:GridView>
-                         <asp:SqlDataSource ID="Sqlproject_Grid" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [projectName], [id] FROM [projects] WHERE ([projectName] = @projectName)" DeleteCommand="DELETE FROM [projects] WHERE ([id] = @id)">
-                             <DeleteParameters>
-                                 <asp:Parameter Name="id" Type="Int32" />    
-                             </DeleteParameters>
+
+                         <asp:SqlDataSource ID="Sqlproject_Grid" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [projectName], [id] FROM [projects] WHERE ([projectName] = @projectName)">
                              <SelectParameters>
                                  <asp:ControlParameter ControlID="DD_project1" Name="projectName" PropertyName="SelectedValue" Type="String"  /> 
                              </SelectParameters>
-<%--                             <UpdateParameters>
-                                 <asp:Parameter Name="projectName" Type="String" />
-                                 <asp:Parameter Name="id" Type="Int64" />
-                             </UpdateParameters>--%>
                          </asp:SqlDataSource>
 
-
-                         <asp:GridView ID="GridTracksInProject" runat="server" AutoGenerateColumns="False" Width="500px" CssClass="table table-bordered" style="text-align:center; margin-top: 0px;" ShowHeader="False" Height="16px">
+                         <asp:GridView ID="GridTracksInProject" runat="server" AutoGenerateColumns="False" Width="500px" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" ShowHeader="False" Height="16px" AlternatingRowStyle-BackColor="#d3d3d3" OnRowDeleting="GridTracksInProject_RowDeleting">
+                             <AlternatingRowStyle BackColor="LightGray"></AlternatingRowStyle>
                              <Columns>
                                  <asp:BoundField DataField="title" HeaderText="Title" SortExpression="title" />
+                                 <asp:TemplateField  ShowHeader="False">
+                                     <ItemTemplate>
+                                         <asp:LinkButton ID="Button2" runat="server" CausesValidation="False" CommandName="Delete" CssClass="btn btn-danger" OnClientClick="return confirm('Do you Want to Delete this Record?');" >
+                                             <span class="glyphicon glyphicon-trash"></span>
+                                         </asp:LinkButton>
+                                     </ItemTemplate>
+                                 </asp:TemplateField>
                              </Columns>
                          </asp:GridView>
 
@@ -110,8 +111,8 @@
     </div>
 
     <script>
-        $("#DD_project1").on('change', function () {
-            $("#GridProjects").show();
-        });
+         function SuccessDelete() {
+             swal("Project Delete", "Your project has been deleted successfully!", "success")
+         }
     </script>
 </asp:Content>

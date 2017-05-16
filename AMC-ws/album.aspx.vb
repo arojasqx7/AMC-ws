@@ -116,7 +116,9 @@ Public Class album
                     sqlConnection1.Open()
                     cmd.ExecuteNonQuery()
                     sqlConnection1.Close()
-
+                    'Else
+                    '    ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "NoProjectChecked();", True)
+                    '    Exit Sub
                 End If
             End If
         Next
