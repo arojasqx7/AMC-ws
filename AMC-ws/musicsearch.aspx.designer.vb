@@ -20,7 +20,16 @@ Partial Public Class musicsearch
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents T_mainsearch As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents T_mainsearch As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''hfTrackId control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents hfTrackId As Global.System.Web.UI.WebControls.HiddenField
     
     '''<summary>
     '''B_Search control.
@@ -30,6 +39,42 @@ Partial Public Class musicsearch
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents B_Search As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''CheckStyleGenre control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckStyleGenre As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckComposer control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckComposer As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckAlbum control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckAlbum As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''LinkButton1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents LinkButton1 As Global.System.Web.UI.WebControls.LinkButton
     
     '''<summary>
     '''DD_style control.
@@ -68,22 +113,13 @@ Partial Public Class musicsearch
     Protected WithEvents Sqltempo As Global.System.Web.UI.WebControls.SqlDataSource
     
     '''<summary>
-    '''T_keyword control.
+    '''btnSearchStyle control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents T_keyword As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''BSearch_Genre control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents BSearch_Genre As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents btnSearchStyle As Global.System.Web.UI.WebControls.LinkButton
     
     '''<summary>
     '''DD_Composer control.
@@ -104,13 +140,13 @@ Partial Public Class musicsearch
     Protected WithEvents SqlComposer As Global.System.Web.UI.WebControls.SqlDataSource
     
     '''<summary>
-    '''BSearch_Composer control.
+    '''btnSearchComposers control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents BSearch_Composer As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents btnSearchComposers As Global.System.Web.UI.WebControls.LinkButton
     
     '''<summary>
     '''DD_Album control.
@@ -131,20 +167,83 @@ Partial Public Class musicsearch
     Protected WithEvents SqlAlbum As Global.System.Web.UI.WebControls.SqlDataSource
     
     '''<summary>
-    '''BSearch_Album control.
+    '''btnSearchAlbums control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents BSearch_Album As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents btnSearchAlbums As Global.System.Web.UI.WebControls.LinkButton
     
     '''<summary>
-    '''TrackList control.
+    '''LblCheck control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TrackList As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents LblCheck As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''lblCheckAll control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblCheckAll As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''lblOneFilter control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblOneFilter As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''GV_tracks control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents GV_tracks As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''SqlTrackInfo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SqlTrackInfo As Global.System.Web.UI.WebControls.SqlDataSource
+    
+    '''<summary>
+    '''GridStylesGenre control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents GridStylesGenre As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''Label1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Label2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
 End Class

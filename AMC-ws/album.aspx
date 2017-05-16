@@ -294,6 +294,14 @@
             });
         }
 
+        function NoProjectChecked() {
+            swal({
+                title: 'No Project(s) Selected!',
+                text:  'No project(s) checked to add track',
+                type:  'warning'
+            });
+        }
+
         function openModal() {
             $('#ProjectList').modal('show');
         }

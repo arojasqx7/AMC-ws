@@ -111,12 +111,14 @@ Public Class album
                 Dim chkRow As CheckBox = TryCast(row.Cells(0).FindControl("chkRow"), CheckBox)
                 If chkRow.Checked Then
                     Dim projectName As String = row.Cells(1).Text
-                    cmd.CommandText = "INSERT INTO map_projects (fk_projectID,fk_trackID,fk_userID) SELECT [projects].[id],[users].[id],[tracks].[id] FROM [projects],[users],[tracks] WHERE [projects].[projectName] ='" & projectName & "' AND [users].[username] ='" & Session("Username") & "' AND [tracks].[id]='" & t_id & "'"
+                    cmd.CommandText = "INSERT INTO map_projects (fk_projectID,fk_trackID,fk_userID) SELECT [projects].[id],[tracks].[id],[users].[id] FROM [projects],[users],[tracks] WHERE [projects].[projectName] ='" & projectName & "' AND [users].[username] ='" & Session("Username") & "' AND [tracks].[id]='" & t_id & "'"
                     cmd.Connection = sqlConnection1
                     sqlConnection1.Open()
                     cmd.ExecuteNonQuery()
                     sqlConnection1.Close()
-
+                    'Else
+                    '    ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "NoProjectChecked();", True)
+                    '    Exit Sub
                 End If
             End If
         Next

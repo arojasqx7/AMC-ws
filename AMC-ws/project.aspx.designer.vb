@@ -59,6 +59,15 @@ Partial Public Class project
     Protected WithEvents Sqlproject_Grid As Global.System.Web.UI.WebControls.SqlDataSource
     
     '''<summary>
+    '''GridTracksInProject control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents GridTracksInProject As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
     '''T_newfolder control.
     '''</summary>
     '''<remarks>
