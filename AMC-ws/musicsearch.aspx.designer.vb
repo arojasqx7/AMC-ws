@@ -230,6 +230,15 @@ Partial Public Class musicsearch
     Protected WithEvents GridStylesGenre As Global.System.Web.UI.WebControls.GridView
     
     '''<summary>
+    '''SqlStylesGenre control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SqlStylesGenre As Global.System.Web.UI.WebControls.SqlDataSource
+    
+    '''<summary>
     '''GridCDs control.
     '''</summary>
     '''<remarks>
