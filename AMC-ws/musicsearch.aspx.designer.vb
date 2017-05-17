@@ -32,13 +32,13 @@ Partial Public Class musicsearch
     Protected WithEvents hfTrackId As Global.System.Web.UI.WebControls.HiddenField
     
     '''<summary>
-    '''B_Search control.
+    '''BtnSearch control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents B_Search As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents BtnSearch As Global.System.Web.UI.WebControls.LinkButton
     
     '''<summary>
     '''CheckStyleGenre control.
@@ -66,15 +66,6 @@ Partial Public Class musicsearch
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents CheckAlbum As Global.System.Web.UI.WebControls.CheckBox
-    
-    '''<summary>
-    '''LinkButton1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents LinkButton1 As Global.System.Web.UI.WebControls.LinkButton
     
     '''<summary>
     '''DD_style control.
@@ -291,4 +282,31 @@ Partial Public Class musicsearch
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''GridProjectList control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents GridProjectList As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''SqlprojectList_Grid control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SqlprojectList_Grid As Global.System.Web.UI.WebControls.SqlDataSource
+    
+    '''<summary>
+    '''btnAddProjects control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnAddProjects As Global.System.Web.UI.WebControls.Button
 End Class
