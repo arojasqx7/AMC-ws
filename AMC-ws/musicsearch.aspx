@@ -94,17 +94,18 @@
                                             <div class="input-group">
                                                 <asp:TextBox ID="T_mainsearch" CssClass="form-control" placeholder="Search..." runat="server" autocomplete="off" Style="width: 400px;"> </asp:TextBox>
                                                 <asp:HiddenField ID="hfTrackId" runat="server" />
-                                                <asp:Button ID="B_Search" runat="server" Text="GO" CssClass="btn btn-primary" OnClick="B_Search_Click"/>
+                                                <asp:LinkButton ID="BtnSearch" runat="server" CssClass="btn btn-primary" OnClick="B_Search_Click">
+                                                    <span aria-hidden="true" class="glyphicon glyphicon-search"></span>
+                                                    </asp:LinkButton>
                                             </div>
                                         </div>
                                     </div>
                                     <br />
 
                                     <div style="display: inline-flex; margin-top: 25px;">
-                                        <asp:CheckBox ID="CheckStyleGenre" Text="Style or Genre" runat="server"/>
-                                        <asp:CheckBox ID="CheckComposer" Text="Composer" runat="server" CssClass="mycheckbox" />
-                                        <asp:CheckBox ID="CheckAlbum" Text="Album" runat="server" CssClass="mycheckbox" />
-                                        <asp:LinkButton ID="LinkButton1" runat="server" Style="margin-left: 60px;" OnClick="LinkButton1_Click">Show Filter</asp:LinkButton>
+                                        <asp:CheckBox ID="CheckStyleGenre" Text="Style or Genre" AutoPostBack="true" runat="server" OnCheckedChanged="CheckStyleGenre_CheckedChanged"/>
+                                        <asp:CheckBox ID="CheckComposer" Text="Composer" runat="server" AutoPostBack="true" CssClass="mycheckbox" OnCheckedChanged="CheckComposer_CheckedChanged" />
+                                        <asp:CheckBox ID="CheckAlbum" Text="Album" runat="server" CssClass="mycheckbox" AutoPostBack="true" OnCheckedChanged="CheckAlbum_CheckedChanged"/>
                                     </div>
 
                                     <div style="display: inline-flex; margin-top: 25px;">
@@ -180,10 +181,15 @@
                 <div class="row">   <!-- Grid for Quick search -->
                     <section class="col-sm-1"></section>
                     <section class="col-sm-9">
-                        <asp:GridView ID="GV_tracks" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" DataKeyNames="id" DataSourceID="SqlTrackInfo" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" Visible="false">
+                        <asp:GridView ID="GV_tracks" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" DataKeyNames="id" OnSelectedIndexChanged ="OnSelectedIndexChanged" DataSourceID="SqlTrackInfo" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" Visible="false">
                             <Columns>
 
-                                <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" Visible="false" />
+                                <asp:TemplateField HeaderText="Id" Visible="false">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="T_ID" runat="server" Text='<%# Bind("id") %>' CommandArgument='<%# Bind("id") %>'>
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
 
                                 <asp:TemplateField HeaderText="Track Name">
                                     <ItemTemplate>
@@ -239,15 +245,16 @@
                     <section class="col-sm-1"></section>
                     <section class="col-sm-9">
                         <br />
-                        <asp:GridView ID="GridStylesGenre" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" DataKeyNames="id" DataSourceID="SqlStylesGenre" Visible="false">
+                        <asp:GridView ID="GridStylesGenre" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" DataKeyNames="id" DataSourceID="SqlStylesGenre" OnSelectedIndexChanged ="OnSelectedIndexChanged2" Visible="false">
                             <Columns>
-                                <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" Visible="false"/>
+                                <asp:TemplateField HeaderText="Id" Visible="false">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="T_ID" runat="server" Text='<%# Bind("id") %>' CommandArgument='<%# Bind("id") %>'>
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
 
-                                <asp:BoundField DataField="Genre" HeaderText="Genre" SortExpression="Genre">
-                                    <ItemStyle Width="20%" HorizontalAlign="Left" VerticalAlign="Top" />
-                                </asp:BoundField>
-
-                                 <asp:TemplateField HeaderText="Track Name">
+                                <asp:TemplateField HeaderText="Track Name">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="T_title" runat="server" Text='<%# Bind("title") %>'
                                             CommandArgument='<%# Bind("id") %>'>
@@ -255,6 +262,10 @@
                                     </ItemTemplate>
                                     <ItemStyle Width="30%" HorizontalAlign="Left" VerticalAlign="Top" />
                                 </asp:TemplateField>
+
+                                <asp:BoundField DataField="Genre" HeaderText="Genre" SortExpression="Genre">
+                                    <ItemStyle Width="20%" HorizontalAlign="Left" VerticalAlign="Top" />
+                                </asp:BoundField>
 
                                 <asp:BoundField DataField="Tempo" HeaderText="Tempo" SortExpression="Tempo">
                                      <ItemStyle Width="20%" HorizontalAlign="Left" VerticalAlign="Top" />
@@ -296,9 +307,14 @@
                 <div class="row"><!-- Grid for Albums -->
                     <section class="col-sm-1"></section>
                     <section class="col-sm-9">  
-                        <asp:GridView ID="GridCDs" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" DataSourceID="SqlCDs" Visible="false">
+                        <asp:GridView ID="GridCDs" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" DataSourceID="SqlCDs" OnSelectedIndexChanged ="OnSelectedIndexChanged3" Visible="false">
                            <Columns>
-                                <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" Visible="false" />
+                               <asp:TemplateField HeaderText="Id" Visible="false">
+                                   <ItemTemplate>
+                                       <asp:LinkButton ID="T_ID" runat="server" Text='<%# Bind("id") %>' CommandArgument='<%# Bind("id") %>'>
+                                       </asp:LinkButton>
+                                   </ItemTemplate>
+                               </asp:TemplateField>
 
                                 <asp:BoundField DataField="cd_title" HeaderText="CD" SortExpression="cd_title">
                                     <ItemStyle Width="20%" HorizontalAlign="Left" VerticalAlign="Top" />
@@ -356,9 +372,14 @@
                 <div class="row"><!-- Grid for Composers -->
                     <section class="col-sm-1"></section>
                     <section class="col-sm-9">  
-                        <asp:GridView ID="GridComposers" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" DataSourceID="SqlComposers" Visible="False" DataKeyNames="id">
+                        <asp:GridView ID="GridComposers" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" DataSourceID="SqlComposers" Visible="False" DataKeyNames="id" OnSelectedIndexChanged ="OnSelectedIndexChanged4">
                            <Columns>
-                               <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" Visible="false" />
+                               <asp:TemplateField HeaderText="Id" Visible="false">
+                                   <ItemTemplate>
+                                       <asp:LinkButton ID="T_ID" runat="server" Text='<%# Bind("id") %>' CommandArgument='<%# Bind("id") %>'>
+                                       </asp:LinkButton>
+                                   </ItemTemplate>
+                               </asp:TemplateField>
                               
                                 <asp:BoundField DataField="cd_title" HeaderText="CD" SortExpression="cd_title">
                                     <ItemStyle Width="20%" HorizontalAlign="Left" VerticalAlign="Top" />
@@ -416,31 +437,33 @@
 
             </div>
 
-            <div class="form-group"> <br>
-
+            <div class="form-group">
+                <br/>
             </div>
-            <div> <br/>
+            <div>
+                <br />
             </div>
             <div class="row">
-              <section class="col-sm-3 col-sm-offset-1"> <a class="btn-group subhead-blue"
-
-                  href="#"> <img src="images/licensing-hp-icon.png" class="img-responsive center-block"
-
-                    alt="headphoneIcon"> </a> </section>
-              <section class="col-sm-3"> <a class="btn-group subhead-blue" href="#">
-                  <img src="images/licensing-bass-icon.png" class="img-responsive center-block"
-
-                    alt="bassIcon"> </a> </section>
-              <section class="col-sm-3"> <a class="btn-group subhead-blue" href="#">
-                  <img src="images/licensing-mic-icon.png" class="img-responsive center-block"
-
-                    alt="micIcon"> </a> </section>
+                <section class="col-sm-3 col-sm-offset-1">
+                    <a class="btn-group subhead-blue"
+                        href="#">
+                        <img src="images/licensing-hp-icon.png" class="img-responsive center-block" alt="headphoneIcon"/>
+                    </a>
+                </section>
+                <section class="col-sm-3">
+                    <a class="btn-group subhead-blue" href="#">
+                        <img src="images/licensing-bass-icon.png" class="img-responsive center-block"  alt="bassIcon"/>
+                    </a>
+                </section>
+                <section class="col-sm-3">
+                    <a class="btn-group subhead-blue" href="#">
+                        <img src="images/licensing-mic-icon.png" class="img-responsive center-block" alt="micIcon"/>
+                    </a>
+                </section>
             </div>
           </div>
 
-
-
-           <!--New Project Folder-->
+        <!--New Project Folder-->
         <div class="modal fade" id="ProjectList">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
@@ -451,32 +474,33 @@
 
                     <div class="modal-body">
                         <h5>Choose a Project to add this Track to:</h5>
-                        <strong><span class="glyphicon glyphicon-music"> </span><asp:Label ID="Label1" runat="server" Text="Label" style="margin-left: 30px;"/></strong>
-                        <asp:Label ID="Label2" runat="server" Text="Label" style="margin-left: 30px;" Visible="false"/>
-                         <br />
+                        <strong><span class="glyphicon glyphicon-music"></span>
+                        <asp:Label ID="Label1" runat="server" Text="Label" Style="margin-left: 30px;" /></strong>
+                        <asp:Label ID="Label2" runat="server" Text="Label" Style="margin-left: 30px;" Visible="false" />
                         <br />
-<%--                        <div class="input-group" style="margin-left: 10px;">
+                        <br />
+                        <div class="input-group" style="margin-left: 10px;">
 
                             <asp:GridView ID="GridProjectList" runat="server" CssClass="table table-bordered" DataSourceID="SqlprojectList_Grid" AutoGenerateColumns="false">
-                           <Columns>
-                            <asp:TemplateField>
-                                <ItemTemplate>
-                                    <asp:CheckBox ID="chkRow" runat="server"/>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:BoundField DataField="projectName" HeaderText="Project"/>
-                           </Columns>
-                           </asp:GridView>
+                                <Columns>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:CheckBox ID="chkRow" runat="server" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="projectName" HeaderText="Project" />
+                                </Columns>
+                            </asp:GridView>
 
                             <asp:SqlDataSource ID="SqlprojectList_Grid" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [projects].[projectName] FROM [projects] JOIN [users] ON [projects].[fk_userID] = [users].[id] WHERE ([users].[username] =@username) ORDER BY [projects].[projectName]">
-                              <SelectParameters>
-                                  <asp:SessionParameter Name="username" SessionField="Username" />
-                              </SelectParameters>
-                             </asp:SqlDataSource>
+                                <SelectParameters>
+                                    <asp:SessionParameter Name="username" SessionField="Username" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
 
                             <br />
                             <asp:Button ID="btnAddProjects" runat="server" Text="Add" CssClass="btn btn-success" Width="200px" OnClick="btnAddProjects_Click" />
-                        </div>--%>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -495,6 +519,15 @@
              title: 'Log In',
              text: 'You must be logged in to use this feature',
              type: 'error'
+         });
+     }
+
+
+     function AddSuccess() {
+         swal({
+             title: 'Track Added!',
+             text: 'The track selected was added successfully to project(s)',
+             type: 'success'
          });
      }
     </script>

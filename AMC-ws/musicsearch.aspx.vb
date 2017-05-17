@@ -10,7 +10,6 @@ Public Class musicsearch
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
     End Sub
 
-
     <WebMethod()>
     Public Shared Function GetTracks(prefix As String) As String()
         Dim tracks As New List(Of String)()
@@ -39,163 +38,6 @@ Public Class musicsearch
         End If
     End Sub
 
-    Protected Sub LinkButton1_Click(sender As Object, e As EventArgs)
-        If CheckStyleGenre.Checked = True Then
-            Me.T_mainsearch.Text = ""
-            Me.LblCheck.Visible = False
-            Me.DD_Composer.Visible = False
-            Me.DD_Album.Visible = False
-            Me.lblCheckAll.Visible = False
-            Me.lblOneFilter.Visible = False
-            Me.btnSearchComposers.Visible = False
-            Me.btnSearchAlbums.Visible = False
-            Me.GridCDs.Visible = False
-            Me.GV_tracks.Visible = False
-            Me.GridComposers.Visible = False
-            Me.DD_tempo.Visible = True
-            Me.DD_style.Visible = True
-            Me.btnSearchStyle.Visible = True
-            Me.GridStylesGenre.Visible = True
-        End If
-
-        If CheckComposer.Checked = True Then
-            Me.T_mainsearch.Text = ""
-            Me.LblCheck.Visible = False
-            Me.DD_style.Visible = False
-            Me.DD_tempo.Visible = False
-            Me.DD_Album.Visible = False
-            Me.lblCheckAll.Visible = False
-            Me.lblOneFilter.Visible = False
-            Me.btnSearchStyle.Visible = False
-            Me.btnSearchComposers.Visible = False
-            Me.btnSearchAlbums.Visible = False
-            Me.GridCDs.Visible = False
-            Me.GV_tracks.Visible = False
-            Me.GridStylesGenre.Visible = False
-            Me.GridComposers.Visible = True
-            Me.DD_Composer.Visible = True
-            Me.btnSearchComposers.Visible = True
-        End If
-
-        If CheckAlbum.Checked = True Then
-            Me.T_mainsearch.Text = ""
-            Me.LblCheck.Visible = False
-            Me.DD_style.Visible = False
-            Me.DD_tempo.Visible = False
-            Me.DD_Composer.Visible = False
-            Me.lblCheckAll.Visible = False
-            Me.lblOneFilter.Visible = False
-            Me.btnSearchStyle.Visible = False
-            Me.btnSearchComposers.Visible = False
-            Me.DD_Album.Visible = True
-            Me.btnSearchAlbums.Visible = True
-        End If
-
-        If CheckStyleGenre.Checked = False And CheckComposer.Checked = False And CheckAlbum.Checked = False Then
-            Me.T_mainsearch.Text = ""
-            Me.DD_style.Visible = False
-            Me.DD_tempo.Visible = False
-            Me.DD_Album.Visible = False
-            Me.DD_Composer.Visible = False
-            Me.lblCheckAll.Visible = False
-            Me.lblOneFilter.Visible = False
-            Me.btnSearchStyle.Visible = False
-            Me.btnSearchComposers.Visible = False
-            Me.btnSearchAlbums.Visible = False
-            Me.GridCDs.Visible = False
-            Me.GV_tracks.Visible = False
-            Me.GridStylesGenre.Visible = False
-            Me.LblCheck.Visible = True
-        End If
-
-        If CheckStyleGenre.Checked = True And CheckComposer.Checked = True And CheckAlbum.Checked = True Then
-            Me.T_mainsearch.Text = ""
-            Me.DD_style.Visible = False
-            Me.DD_tempo.Visible = False
-            Me.DD_Album.Visible = False
-            Me.DD_Composer.Visible = False
-            Me.LblCheck.Visible = False
-            Me.lblOneFilter.Visible = False
-            Me.btnSearchStyle.Visible = False
-            Me.btnSearchComposers.Visible = False
-            Me.btnSearchAlbums.Visible = False
-            Me.GridCDs.Visible = False
-            Me.GV_tracks.Visible = False
-            Me.GridStylesGenre.Visible = False
-            Me.lblCheckAll.Visible = True
-        End If
-
-        If CheckStyleGenre.Checked = True And CheckComposer.Checked = True And CheckAlbum.Checked = False Then
-            Me.T_mainsearch.Text = ""
-            Me.DD_style.Visible = False
-            Me.DD_tempo.Visible = False
-            Me.DD_Album.Visible = False
-            Me.DD_Composer.Visible = False
-            Me.LblCheck.Visible = False
-            Me.lblCheckAll.Visible = False
-            Me.btnSearchStyle.Visible = False
-            Me.btnSearchComposers.Visible = False
-            Me.btnSearchAlbums.Visible = False
-            Me.GridCDs.Visible = False
-            Me.GV_tracks.Visible = False
-            Me.GridStylesGenre.Visible = False
-            Me.lblOneFilter.Visible = True
-        End If
-
-        If CheckStyleGenre.Checked = True And CheckComposer.Checked = False And CheckAlbum.Checked = True Then
-            Me.T_mainsearch.Text = ""
-            Me.DD_style.Visible = False
-            Me.DD_tempo.Visible = False
-            Me.DD_Album.Visible = False
-            Me.DD_Composer.Visible = False
-            Me.LblCheck.Visible = False
-            Me.lblCheckAll.Visible = False
-            Me.btnSearchStyle.Visible = False
-            Me.btnSearchComposers.Visible = False
-            Me.btnSearchAlbums.Visible = False
-            Me.GridCDs.Visible = False
-            Me.GV_tracks.Visible = False
-            Me.GridStylesGenre.Visible = False
-            Me.lblOneFilter.Visible = True
-        End If
-
-        If CheckStyleGenre.Checked = False And CheckComposer.Checked = True And CheckAlbum.Checked = True Then
-            Me.T_mainsearch.Text = ""
-            Me.DD_style.Visible = False
-            Me.DD_tempo.Visible = False
-            Me.DD_Album.Visible = False
-            Me.DD_Composer.Visible = False
-            Me.LblCheck.Visible = False
-            Me.lblCheckAll.Visible = False
-            Me.btnSearchStyle.Visible = False
-            Me.btnSearchComposers.Visible = False
-            Me.btnSearchAlbums.Visible = False
-            Me.GridCDs.Visible = False
-            Me.GV_tracks.Visible = False
-            Me.GridStylesGenre.Visible = False
-            Me.lblOneFilter.Visible = True
-        End If
-    End Sub
-
-    Protected Sub B_Search_Click(sender As Object, e As EventArgs)
-        Me.GV_tracks.Visible = True
-        Me.GridCDs.Visible = False
-        Me.GridStylesGenre.Visible = False
-        Me.CheckAlbum.Checked = False
-        Me.CheckComposer.Checked = False
-        Me.CheckStyleGenre.Checked = False
-        Me.DD_style.Visible = False
-        Me.DD_tempo.Visible = False
-        Me.DD_Album.Visible = False
-        Me.DD_Composer.Visible = False
-        Me.LblCheck.Visible = False
-        Me.lblCheckAll.Visible = False
-        Me.btnSearchStyle.Visible = False
-        Me.btnSearchComposers.Visible = False
-        Me.btnSearchAlbums.Visible = False
-        Me.lblOneFilter.Visible = False
-    End Sub
-
     Protected Sub btnSearchAlbums_Click(sender As Object, e As EventArgs)
         Me.T_mainsearch.Text = ""
         Me.GridCDs.Visible = True
@@ -217,5 +59,131 @@ Public Class musicsearch
         Me.GV_tracks.Visible = False
         Me.GridComposers.Visible = False
         Me.GridStylesGenre.Visible = True
+    End Sub
+
+    Protected Sub OnSelectedIndexChanged(sender As Object, e As EventArgs)
+        Dim row As GridViewRow = GV_tracks.SelectedRow
+        Me.Label2.Text = TryCast(row.FindControl("T_ID"), LinkButton).Text
+        Me.Label1.Text = TryCast(row.FindControl("T_title"), LinkButton).Text
+    End Sub
+
+    Protected Sub OnSelectedIndexChanged2(sender As Object, e As EventArgs)
+        Dim row As GridViewRow = GridStylesGenre.SelectedRow
+        Me.Label2.Text = TryCast(row.FindControl("T_ID"), LinkButton).Text
+        Me.Label1.Text = TryCast(row.FindControl("T_title"), LinkButton).Text
+    End Sub
+
+    Protected Sub OnSelectedIndexChanged3(sender As Object, e As EventArgs)
+        Dim row As GridViewRow = GridCDs.SelectedRow
+        Me.Label2.Text = TryCast(row.FindControl("T_ID"), LinkButton).Text
+        Me.Label1.Text = TryCast(row.FindControl("T_title"), LinkButton).Text
+    End Sub
+
+    Protected Sub OnSelectedIndexChanged4(sender As Object, e As EventArgs)
+        Dim row As GridViewRow = GridComposers.SelectedRow
+        Me.Label2.Text = TryCast(row.FindControl("T_ID"), LinkButton).Text
+        Me.Label1.Text = TryCast(row.FindControl("T_title"), LinkButton).Text
+    End Sub
+
+    Protected Sub btnAddProjects_Click(sender As Object, e As EventArgs)
+        Dim sqlConnection1 As New System.Data.SqlClient.SqlConnection(connection)
+        Dim cmd As New System.Data.SqlClient.SqlCommand
+        cmd.CommandType = System.Data.CommandType.Text
+        Dim t_id = Me.Label2.Text
+
+        For Each row As GridViewRow In GridProjectList.Rows
+            If row.RowType = DataControlRowType.DataRow Then
+                Dim chkRow As CheckBox = TryCast(row.Cells(0).FindControl("chkRow"), CheckBox)
+                If chkRow.Checked Then
+                    Dim projectName As String = row.Cells(1).Text
+                    cmd.CommandText = "INSERT INTO map_projects (fk_projectID,fk_trackID,fk_userID) SELECT [projects].[id],[tracks].[id],[users].[id] FROM [projects],[users],[tracks] WHERE [projects].[projectName] ='" & projectName & "' AND [users].[username] ='" & Session("Username") & "' AND [tracks].[id]='" & t_id & "'"
+                    cmd.Connection = sqlConnection1
+                    sqlConnection1.Open()
+                    cmd.ExecuteNonQuery()
+                    sqlConnection1.Close()
+                    'Else
+                    '    ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "NoProjectChecked();", True)
+                    '    Exit Sub
+                End If
+            End If
+        Next
+        ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "AddSuccess();", True)
+    End Sub
+
+    Protected Sub CheckAlbum_CheckedChanged(sender As Object, e As EventArgs)
+        If CheckAlbum.Checked = True Then
+            Me.T_mainsearch.Text = ""
+            Me.DD_style.Visible = False
+            Me.DD_tempo.Visible = False
+            Me.DD_Composer.Visible = False
+            Me.btnSearchStyle.Visible = False
+            Me.btnSearchComposers.Visible = False
+            Me.CheckStyleGenre.Checked = False
+            Me.CheckComposer.Checked = False
+            Me.GridComposers.Visible = False
+            Me.GV_tracks.Visible = False
+            Me.GridStylesGenre.Visible = False
+            Me.DD_Album.Visible = True
+            Me.btnSearchAlbums.Visible = True
+            Me.GridCDs.Visible = True
+        End If
+    End Sub
+
+    Protected Sub CheckStyleGenre_CheckedChanged(sender As Object, e As EventArgs)
+        If CheckStyleGenre.Checked = True Then
+            Me.T_mainsearch.Text = ""
+            Me.DD_Composer.Visible = False
+            Me.DD_Album.Visible = False
+            Me.btnSearchComposers.Visible = False
+            Me.btnSearchAlbums.Visible = False
+            Me.GridCDs.Visible = False
+            Me.GV_tracks.Visible = False
+            Me.GridComposers.Visible = False
+            Me.CheckComposer.Checked = False
+            Me.CheckAlbum.Checked = False
+            Me.DD_tempo.Visible = True
+            Me.DD_style.Visible = True
+            Me.btnSearchStyle.Visible = True
+            Me.GridStylesGenre.Visible = True
+        End If
+    End Sub
+
+    Protected Sub CheckComposer_CheckedChanged(sender As Object, e As EventArgs)
+        If CheckComposer.Checked = True Then
+            Me.T_mainsearch.Text = ""
+            Me.DD_style.Visible = False
+            Me.DD_tempo.Visible = False
+            Me.DD_Album.Visible = False
+            Me.btnSearchStyle.Visible = False
+            Me.btnSearchComposers.Visible = False
+            Me.btnSearchAlbums.Visible = False
+            Me.GridCDs.Visible = False
+            Me.GV_tracks.Visible = False
+            Me.GridStylesGenre.Visible = False
+            Me.CheckAlbum.Checked = False
+            Me.CheckStyleGenre.Checked = False
+            Me.GridComposers.Visible = True
+            Me.DD_Composer.Visible = True
+            Me.btnSearchComposers.Visible = True
+        End If
+    End Sub
+
+    Protected Sub B_Search_Click(sender As Object, e As EventArgs)
+        Me.GV_tracks.Visible = True
+        Me.GridCDs.Visible = False
+        Me.GridStylesGenre.Visible = False
+        Me.CheckAlbum.Checked = False
+        Me.CheckComposer.Checked = False
+        Me.CheckStyleGenre.Checked = False
+        Me.DD_style.Visible = False
+        Me.DD_tempo.Visible = False
+        Me.DD_Album.Visible = False
+        Me.DD_Composer.Visible = False
+        Me.LblCheck.Visible = False
+        Me.lblCheckAll.Visible = False
+        Me.btnSearchStyle.Visible = False
+        Me.btnSearchComposers.Visible = False
+        Me.btnSearchAlbums.Visible = False
+        Me.lblOneFilter.Visible = False
     End Sub
 End Class

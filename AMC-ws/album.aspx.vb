@@ -97,7 +97,11 @@ Public Class album
     End Sub
 
     Protected Sub lnkSelect_Click(sender As Object, e As EventArgs)
-        ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "openModal();", True)
+        If (Session("fullname") IsNot Nothing) Then
+            ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "openModal();", True)
+        Else
+            ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "ErrorLogin();", True)
+        End If
     End Sub
 
     Protected Sub btnAddProjects_Click(sender As Object, e As EventArgs)
