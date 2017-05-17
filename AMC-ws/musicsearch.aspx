@@ -119,7 +119,7 @@
                                         </div>
 
                                         <div class="form-group" style="margin-left: 10px;">
-                                            <asp:LinkButton ID="btnSearchStyle" runat="server" CssClass="btn btn-primary" Visible="false">
+                                            <asp:LinkButton ID="btnSearchStyle" runat="server" CssClass="btn btn-primary" Visible="false" OnClick="btnSearchStyle_Click">
                                                 <span aria-hidden="true" class="glyphicon glyphicon-search"></span>
                                             </asp:LinkButton>
                                         </div>
@@ -239,7 +239,57 @@
                     <section class="col-sm-1"></section>
                     <section class="col-sm-9">
                         <br />
-                        <asp:GridView ID="GridStylesGenre" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" DataKeyNames="id"></asp:GridView>
+                        <asp:GridView ID="GridStylesGenre" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" DataKeyNames="id" DataSourceID="SqlStylesGenre" Visible="false">
+                            <Columns>
+                                <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" Visible="false"/>
+
+                                <asp:BoundField DataField="Genre" HeaderText="Genre" SortExpression="Genre">
+                                    <ItemStyle Width="20%" HorizontalAlign="Left" VerticalAlign="Top" />
+                                </asp:BoundField>
+
+                                 <asp:TemplateField HeaderText="Track Name">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="T_title" runat="server" Text='<%# Bind("title") %>'
+                                            CommandArgument='<%# Bind("id") %>'>
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                    <ItemStyle Width="30%" HorizontalAlign="Left" VerticalAlign="Top" />
+                                </asp:TemplateField>
+
+                                <asp:BoundField DataField="Tempo" HeaderText="Tempo" SortExpression="Tempo">
+                                     <ItemStyle Width="20%" HorizontalAlign="Left" VerticalAlign="Top" />
+                                </asp:BoundField>
+
+                                <asp:TemplateField HeaderText="Save">
+                                    <ItemTemplate>
+                                        <!-- Open select project pop up -->
+                                        <asp:LinkButton ID="lnkSelect" runat="server" CssClass="btn btn-danger" CommandName="Select" OnClick="lnkSelect_Click">
+                                 <span class="glyColor glyphicons glyphicon glyphicon-folder-open" />
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                    <ItemStyle Width="5%" HorizontalAlign="Center" VerticalAlign="Top" ForeColor="White" />
+                                </asp:TemplateField>
+
+                                <asp:TemplateField HeaderText="Download">
+
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="T_songMain" CssClass="btn btn-info" runat="server"
+                                            CommandArgument='<%# Bind("id") %>'>
+                                <span class="glyphicons glyphicon glyphicon-save"/>
+                                        </asp:LinkButton>
+
+                                    </ItemTemplate>
+                                    <ItemStyle Width="5%" HorizontalAlign="Center" VerticalAlign="Top" />
+                                </asp:TemplateField>
+
+                            </Columns>
+                        </asp:GridView>
+                        <asp:SqlDataSource ID="SqlStylesGenre" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [id], [Genre], [title], [Tempo] FROM [View_StylesGenre] WHERE (([Genre] = @Genre) AND ([Tempo] = @Tempo))">
+                            <SelectParameters>
+                                <asp:ControlParameter ControlID="DD_style" Name="Genre" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="DD_tempo" Name="Tempo" PropertyName="SelectedValue" Type="String" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>
                     </section>
                 </div> <!-- End Grid Style & Genre-->
 
@@ -438,6 +488,14 @@
     <script>
      function openModal() {
             $('#ProjectList').modal('show');
-        }
+     }
+
+     function ErrorLogin() {
+         swal({
+             title: 'Log In',
+             text: 'You must be logged in to use this feature',
+             type: 'error'
+         });
+     }
     </script>
 </asp:Content>

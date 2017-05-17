@@ -32,7 +32,11 @@ Public Class musicsearch
     End Function
 
     Protected Sub lnkSelect_Click(sender As Object, e As EventArgs)
-        ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "openModal();", True)
+        If (Session("fullname") IsNot Nothing) Then
+            ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "openModal();", True)
+        Else
+            ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "ErrorLogin();", True)
+        End If
     End Sub
 
     Protected Sub LinkButton1_Click(sender As Object, e As EventArgs)
@@ -200,6 +204,18 @@ Public Class musicsearch
     End Sub
 
     Protected Sub btnSearchComposers_Click(sender As Object, e As EventArgs)
+        Me.T_mainsearch.Text = ""
+        Me.GridCDs.Visible = False
+        Me.GV_tracks.Visible = False
+        Me.GridStylesGenre.Visible = False
         Me.GridComposers.Visible = True
+    End Sub
+
+    Protected Sub btnSearchStyle_Click(sender As Object, e As EventArgs)
+        Me.T_mainsearch.Text = ""
+        Me.GridCDs.Visible = False
+        Me.GV_tracks.Visible = False
+        Me.GridComposers.Visible = False
+        Me.GridStylesGenre.Visible = True
     End Sub
 End Class
