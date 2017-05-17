@@ -45,7 +45,8 @@
 
                   class="img-responsive center-block" alt="phoneContact"> </a>
             </section>
-          </div>
+
+           </div>
         </div>
       </div>
 </asp:Content>

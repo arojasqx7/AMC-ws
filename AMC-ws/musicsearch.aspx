@@ -94,7 +94,7 @@
                                             <div class="input-group">
                                                 <asp:TextBox ID="T_mainsearch" CssClass="form-control" placeholder="Search..." runat="server" autocomplete="off" Style="width: 400px;"> </asp:TextBox>
                                                 <asp:HiddenField ID="hfTrackId" runat="server" />
-                                                <asp:Button ID="B_Search" runat="server" Text="GO" CssClass="btn btn-primary" />
+                                                <asp:Button ID="B_Search" runat="server" Text="GO" CssClass="btn btn-primary" OnClick="B_Search_Click"/>
                                             </div>
                                         </div>
                                     </div>
@@ -127,12 +127,14 @@
 
                                     <div style="display: inline-flex; margin-top: 25px;">
                                         <div class="form-group">
-                                            <asp:DropDownList ID="DD_Composer" class="form-control" runat="server" DataSourceID="SqlComposer" DataTextField="ComposerName" DataValueField="ComposerName" Style="width: 200px;" Visible="false"></asp:DropDownList>
-                                            <asp:SqlDataSource runat="server" ID="SqlComposer" ConnectionString='<%$ ConnectionStrings:AMC %>' SelectCommand="SELECT 'Select a Composer' AS ComposerName UNION ALL SELECT DISTINCT [ComposerName] FROM [V_Composers]"></asp:SqlDataSource>
+                                            <asp:DropDownList ID="DD_Composer" class="form-control" runat="server" DataSourceID="SqlComposer"  DataTextField="fullname" DataValueField="fullname" Style="width: 200px;" Visible="false" AppendDataBoundItems="true">
+                                                <asp:ListItem Text="Select a Composer" Value="" />
+                                            </asp:DropDownList>
+                                            <asp:SqlDataSource runat="server" ID="SqlComposer" ConnectionString='<%$ ConnectionStrings:AMC %>' SelectCommand="SELECT CONCAT([fname],' ',[lname]) AS fullname FROM [composers] ORDER BY [fname]"></asp:SqlDataSource>
                                         </div>
 
                                         <div class="form-group" style="margin-left: 10px;">
-                                            <asp:LinkButton ID="btnSearchComposers" runat="server" CssClass="btn btn-primary" Visible="false">
+                                            <asp:LinkButton ID="btnSearchComposers" runat="server" CssClass="btn btn-primary" Visible="false" OnClick="btnSearchComposers_Click">
                                                 <span aria-hidden="true" class="glyphicon glyphicon-search"></span>
                                             </asp:LinkButton>
                                         </div>
@@ -145,7 +147,7 @@
                                         </div>
 
                                         <div class="form-group" style="margin-left: 10px;">
-                                            <asp:LinkButton ID="btnSearchAlbums" runat="server" CssClass="btn btn-primary" Visible="false">
+                                            <asp:LinkButton ID="btnSearchAlbums" runat="server" CssClass="btn btn-primary" Visible="false" OnClick="btnSearchAlbums_Click">
                                                 <span aria-hidden="true" class="glyphicon glyphicon-search"></span>
                                             </asp:LinkButton>
                                         </div>
@@ -178,9 +180,7 @@
                 <div class="row">   <!-- Grid for Quick search -->
                     <section class="col-sm-1"></section>
                     <section class="col-sm-9">
-                        <br />
-                        <br />
-                        <asp:GridView ID="GV_tracks" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" DataKeyNames="id" DataSourceID="SqlTrackInfo" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White">
+                        <asp:GridView ID="GV_tracks" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" DataKeyNames="id" DataSourceID="SqlTrackInfo" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" Visible="false">
                             <Columns>
 
                                 <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" Visible="false" />
@@ -239,10 +239,131 @@
                     <section class="col-sm-1"></section>
                     <section class="col-sm-9">
                         <br />
-                        <br />
-                        <asp:GridView ID="GridStylesGenre" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White"></asp:GridView>
+                        <asp:GridView ID="GridStylesGenre" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" DataKeyNames="id"></asp:GridView>
                     </section>
-                </div>
+                </div> <!-- End Grid Style & Genre-->
+
+                <div class="row"><!-- Grid for Albums -->
+                    <section class="col-sm-1"></section>
+                    <section class="col-sm-9">  
+                        <asp:GridView ID="GridCDs" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" DataSourceID="SqlCDs" Visible="false">
+                           <Columns>
+                                <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" Visible="false" />
+
+                                <asp:BoundField DataField="cd_title" HeaderText="CD" SortExpression="cd_title">
+                                    <ItemStyle Width="20%" HorizontalAlign="Left" VerticalAlign="Top" />
+                                </asp:BoundField>
+
+                                <asp:TemplateField HeaderText="Track Name">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="T_title" runat="server" Text='<%# Bind("title") %>'
+                                            CommandArgument='<%# Bind("id") %>'>
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                    <ItemStyle Width="30%" HorizontalAlign="Left" VerticalAlign="Top" />
+                                </asp:TemplateField>
+
+                                <asp:BoundField DataField="descrip" HeaderText="Description" SortExpression="descrip">
+                                    <ItemStyle Width="20%" HorizontalAlign="Left" VerticalAlign="Top" />
+                                </asp:BoundField>
+
+                                <asp:BoundField DataField="instruments" HeaderText="Instruments" HeaderStyle-CssClass="colpad" SortExpression="instruments">
+                                    <ItemStyle CssClass="colpad" Width="30%" HorizontalAlign="Left" VerticalAlign="Top" />
+                                </asp:BoundField>
+
+                                <asp:TemplateField HeaderText="Save">
+                                    <ItemTemplate>
+                                        <!-- Open select project pop up -->
+                                        <asp:LinkButton ID="lnkSelect" runat="server" CssClass="btn btn-danger" CommandName="Select" OnClick="lnkSelect_Click">
+                                 <span class="glyColor glyphicons glyphicon glyphicon-folder-open" />
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                    <ItemStyle Width="5%" HorizontalAlign="Center" VerticalAlign="Top" ForeColor="White" />
+                                </asp:TemplateField>
+
+                                <asp:TemplateField HeaderText="Download">
+
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="T_songMain" CssClass="btn btn-info" runat="server"
+                                            CommandArgument='<%# Bind("id") %>'>
+                                <span class="glyphicons glyphicon glyphicon-save"/>
+                                        </asp:LinkButton>
+
+                                    </ItemTemplate>
+                                    <ItemStyle Width="5%" HorizontalAlign="Center" VerticalAlign="Top" />
+                                </asp:TemplateField>
+
+                            </Columns>
+                        </asp:GridView>
+                         <asp:SqlDataSource ID="SqlCDs" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [tracks].[id],[cd].[cd_title],[tracks].[title], [tracks].[descrip], [tracks].[instruments] FROM [tracks] JOIN [cd] ON [tracks].[fk_cd_id] = [cd].[id] WHERE ([cd].[cd_title] = @cd_title)">
+                            <SelectParameters>
+                                <asp:ControlParameter ControlID="DD_Album" Name="cd_title" PropertyName="SelectedValue" Type="String" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>
+                    </section>
+                </div> <!-- End Grid Albums-->
+
+                <div class="row"><!-- Grid for Composers -->
+                    <section class="col-sm-1"></section>
+                    <section class="col-sm-9">  
+                        <asp:GridView ID="GridComposers" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" DataSourceID="SqlComposers" Visible="False" DataKeyNames="id">
+                           <Columns>
+                               <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" Visible="false" />
+                              
+                                <asp:BoundField DataField="cd_title" HeaderText="CD" SortExpression="cd_title">
+                                    <ItemStyle Width="20%" HorizontalAlign="Left" VerticalAlign="Top" />
+                                </asp:BoundField>
+
+                                <asp:TemplateField HeaderText="Track Name">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="T_title" runat="server" Text='<%# Bind("title") %>'
+                                            CommandArgument='<%# Bind("id") %>'>
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                    <ItemStyle Width="30%" HorizontalAlign="Left" VerticalAlign="Top" />
+                                </asp:TemplateField>
+
+                                <asp:BoundField DataField="name" HeaderText="Publisher Name" SortExpression="name">
+                                    <ItemStyle Width="20%" HorizontalAlign="Left" VerticalAlign="Top" />
+                                </asp:BoundField>
+
+                                <asp:BoundField DataField="ComposerName" HeaderText="Composer Name" ReadOnly="True" SortExpression="ComposerName">
+                                    <ItemStyle Width="20%" HorizontalAlign="Left" VerticalAlign="Top" />
+                                </asp:BoundField>
+
+                                <asp:TemplateField HeaderText="Save">
+                                    <ItemTemplate>
+                                        <!-- Open select project pop up -->
+                                        <asp:LinkButton ID="lnkSelect" runat="server" CssClass="btn btn-danger" CommandName="Select" OnClick="lnkSelect_Click">
+                                 <span class="glyColor glyphicons glyphicon glyphicon-folder-open" />
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                    <ItemStyle Width="5%" HorizontalAlign="Center" VerticalAlign="Top" ForeColor="White" />
+                                </asp:TemplateField>
+
+                                <asp:TemplateField HeaderText="Download">
+
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="T_songMain" CssClass="btn btn-info" runat="server"
+                                            CommandArgument='<%# Bind("id") %>'>
+                                <span class="glyphicons glyphicon glyphicon-save"/>
+                                        </asp:LinkButton>
+
+                                    </ItemTemplate>
+                                    <ItemStyle Width="5%" HorizontalAlign="Center" VerticalAlign="Top" />
+                                </asp:TemplateField>
+
+                            </Columns>
+                        </asp:GridView>
+
+                         <asp:SqlDataSource ID="SqlComposers" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [id],[cd_title], [title], [name], [ComposerName] FROM [View_Composers] WHERE ([ComposerName] = @ComposerName)">
+                            <SelectParameters>
+                                <asp:ControlParameter ControlID="DD_Composer" Name="ComposerName" PropertyName="SelectedValue" Type="String" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>
+                    </section>
+                </div> <!-- End Grid Albums-->
+
             </div>
 
             <div class="form-group"> <br>
