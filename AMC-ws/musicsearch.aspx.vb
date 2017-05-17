@@ -8,73 +8,7 @@ Public Class musicsearch
     Dim connection As String = "Data Source=.\SQLEXPRESS;Initial Catalog=AMC;Integrated Security=True;"
 #End Region
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        'CheckBoxList1.Attributes.Add("onclick", "return HandleOnCheck()")
     End Sub
-
-    'Private Sub B_Search_Click(sender As Object, e As EventArgs) Handles B_Search.Click
-    '    Dim searchtext As String
-    '    Dim T_search = New AMC_ws.DataSet1TableAdapters.SearchTableAdapter()
-    '    searchtext = "%" & Me.T_mainsearch.Text & "%"
-    '    Replace(searchtext, "", "%")
-    '    Try
-    '        Dim T_tracks As New AMC_ws.DataSet1.SearchDataTable()
-    '        T_tracks.Constraints.Clear()
-    '        T_search.FillByText(T_tracks, searchtext)
-    '        Me.TrackList.DataSource = T_tracks
-    '        TrackList.DataBind()
-    '    Catch ex As Exception
-
-    '    End Try
-    'End Sub
-
-    'Private Sub BSearch_Album_Click(sender As Object, e As EventArgs) Handles BSearch_Album.Click
-    '    Dim searchtext As String
-    '    Dim T_search = New AMC_ws.DataSet1TableAdapters.SearchTableAdapter()
-    '    searchtext = "%" & Me.T_keyword.Text & "%"
-    '    Replace(searchtext, "", "%")
-    '    Try
-    '        Dim T_tracks As New AMC_ws.DataSet1.SearchDataTable()
-    '        T_tracks.Constraints.Clear()
-    '        T_search.FillByAlbum(T_tracks, Me.DD_Album.Text)
-    '        Me.TrackList.DataSource = T_tracks
-    '        TrackList.DataBind()
-    '    Catch ex As Exception
-
-    '    End Try
-    'End Sub
-
-    'Private Sub BSearch_Composer_Click(sender As Object, e As EventArgs) Handles BSearch_Composer.Click
-    '    Dim searchtext As String
-    '    Dim T_search = New AMC_ws.DataSet1TableAdapters.SearchTableAdapter()
-    '    searchtext = "%" & Me.T_keyword.Text & "%"
-    '    Replace(searchtext, "", "%")
-    '    Try
-    '        Dim T_tracks As New AMC_ws.DataSet1.SearchDataTable()
-    '        T_tracks.Constraints.Clear()
-    '        T_search.FillByComposer(T_tracks, Me.DD_Composer.Text)
-    '        Me.TrackList.DataSource = T_tracks
-    '        TrackList.DataBind()
-    '    Catch ex As Exception
-
-    '    End Try
-    'End Sub
-
-    'Private Sub BSearch_Genre_Click(sender As Object, e As EventArgs) Handles BSearch_Genre.Click
-    '    Dim searchtext As String
-    '    Dim T_search = New AMC_ws.DataSet1TableAdapters.SearchTableAdapter()
-    '    searchtext = "%" & Me.T_keyword.Text & "%"
-    '    Replace(searchtext, "", "%")
-    '    Try
-    '        Dim T_tracks As New AMC_ws.DataSet1.SearchDataTable()
-    '        T_tracks.Constraints.Clear()
-    '        T_search.FillByGenre(T_tracks, searchtext, Me.DD_style.Text, Me.DD_tempo.Text)
-    '        Me.TrackList.DataSource = T_tracks
-    '        TrackList.DataBind()
-    '    Catch ex As Exception
-
-    '    End Try
-    'End Sub
-
 
 
     <WebMethod()>
@@ -111,9 +45,13 @@ Public Class musicsearch
             Me.lblOneFilter.Visible = False
             Me.btnSearchComposers.Visible = False
             Me.btnSearchAlbums.Visible = False
+            Me.GridCDs.Visible = False
+            Me.GV_tracks.Visible = False
+            Me.GridComposers.Visible = False
             Me.DD_tempo.Visible = True
             Me.DD_style.Visible = True
             Me.btnSearchStyle.Visible = True
+            Me.GridStylesGenre.Visible = True
         End If
 
         If CheckComposer.Checked = True Then
@@ -127,6 +65,10 @@ Public Class musicsearch
             Me.btnSearchStyle.Visible = False
             Me.btnSearchComposers.Visible = False
             Me.btnSearchAlbums.Visible = False
+            Me.GridCDs.Visible = False
+            Me.GV_tracks.Visible = False
+            Me.GridStylesGenre.Visible = False
+            Me.GridComposers.Visible = True
             Me.DD_Composer.Visible = True
             Me.btnSearchComposers.Visible = True
         End If
@@ -156,6 +98,9 @@ Public Class musicsearch
             Me.btnSearchStyle.Visible = False
             Me.btnSearchComposers.Visible = False
             Me.btnSearchAlbums.Visible = False
+            Me.GridCDs.Visible = False
+            Me.GV_tracks.Visible = False
+            Me.GridStylesGenre.Visible = False
             Me.LblCheck.Visible = True
         End If
 
@@ -170,6 +115,9 @@ Public Class musicsearch
             Me.btnSearchStyle.Visible = False
             Me.btnSearchComposers.Visible = False
             Me.btnSearchAlbums.Visible = False
+            Me.GridCDs.Visible = False
+            Me.GV_tracks.Visible = False
+            Me.GridStylesGenre.Visible = False
             Me.lblCheckAll.Visible = True
         End If
 
@@ -184,6 +132,9 @@ Public Class musicsearch
             Me.btnSearchStyle.Visible = False
             Me.btnSearchComposers.Visible = False
             Me.btnSearchAlbums.Visible = False
+            Me.GridCDs.Visible = False
+            Me.GV_tracks.Visible = False
+            Me.GridStylesGenre.Visible = False
             Me.lblOneFilter.Visible = True
         End If
 
@@ -198,6 +149,9 @@ Public Class musicsearch
             Me.btnSearchStyle.Visible = False
             Me.btnSearchComposers.Visible = False
             Me.btnSearchAlbums.Visible = False
+            Me.GridCDs.Visible = False
+            Me.GV_tracks.Visible = False
+            Me.GridStylesGenre.Visible = False
             Me.lblOneFilter.Visible = True
         End If
 
@@ -212,7 +166,40 @@ Public Class musicsearch
             Me.btnSearchStyle.Visible = False
             Me.btnSearchComposers.Visible = False
             Me.btnSearchAlbums.Visible = False
+            Me.GridCDs.Visible = False
+            Me.GV_tracks.Visible = False
+            Me.GridStylesGenre.Visible = False
             Me.lblOneFilter.Visible = True
         End If
+    End Sub
+
+    Protected Sub B_Search_Click(sender As Object, e As EventArgs)
+        Me.GV_tracks.Visible = True
+        Me.GridCDs.Visible = False
+        Me.GridStylesGenre.Visible = False
+        Me.CheckAlbum.Checked = False
+        Me.CheckComposer.Checked = False
+        Me.CheckStyleGenre.Checked = False
+        Me.DD_style.Visible = False
+        Me.DD_tempo.Visible = False
+        Me.DD_Album.Visible = False
+        Me.DD_Composer.Visible = False
+        Me.LblCheck.Visible = False
+        Me.lblCheckAll.Visible = False
+        Me.btnSearchStyle.Visible = False
+        Me.btnSearchComposers.Visible = False
+        Me.btnSearchAlbums.Visible = False
+        Me.lblOneFilter.Visible = False
+    End Sub
+
+    Protected Sub btnSearchAlbums_Click(sender As Object, e As EventArgs)
+        Me.T_mainsearch.Text = ""
+        Me.GridCDs.Visible = True
+        Me.GV_tracks.Visible = False
+        Me.GridStylesGenre.Visible = False
+    End Sub
+
+    Protected Sub btnSearchComposers_Click(sender As Object, e As EventArgs)
+        Me.GridComposers.Visible = True
     End Sub
 End Class

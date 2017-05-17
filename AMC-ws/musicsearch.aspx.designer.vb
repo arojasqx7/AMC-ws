@@ -230,6 +230,42 @@ Partial Public Class musicsearch
     Protected WithEvents GridStylesGenre As Global.System.Web.UI.WebControls.GridView
     
     '''<summary>
+    '''GridCDs control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents GridCDs As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''SqlCDs control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SqlCDs As Global.System.Web.UI.WebControls.SqlDataSource
+    
+    '''<summary>
+    '''GridComposers control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents GridComposers As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''SqlComposers control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SqlComposers As Global.System.Web.UI.WebControls.SqlDataSource
+    
+    '''<summary>
     '''Label1 control.
     '''</summary>
     '''<remarks>
