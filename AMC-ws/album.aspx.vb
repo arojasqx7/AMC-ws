@@ -114,8 +114,8 @@ Public Class album
             If row.RowType = DataControlRowType.DataRow Then
                 Dim chkRow As CheckBox = TryCast(row.Cells(0).FindControl("chkRow"), CheckBox)
                 If chkRow.Checked Then
-                    Dim projectName As String = row.Cells(1).Text
-                    cmd.CommandText = "INSERT INTO map_projects (fk_projectID,fk_trackID,fk_userID) SELECT [projects].[id],[tracks].[id],[users].[id] FROM [projects],[users],[tracks] WHERE [projects].[projectName] ='" & projectName & "' AND [users].[username] ='" & Session("Username") & "' AND [tracks].[id]='" & t_id & "'"
+                    Dim projectId = row.Cells(1)  'Tratar de convertir el ID y no el nombre del proyecto..
+                    cmd.CommandText = "INSERT INTO map_projects (fk_projectID,fk_trackID,fk_userID) SELECT [projects].[id],[tracks].[id],[users].[id] FROM [projects],[tracks],[users] WHERE [projects].[id] ='" & projectId.Text & "' AND [tracks].[id]='" & t_id & "' AND [users].[username] ='" & Session("Username") & "'"
                     cmd.Connection = sqlConnection1
                     sqlConnection1.Open()
                     cmd.ExecuteNonQuery()
