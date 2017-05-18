@@ -21,6 +21,10 @@
         .colpad {
             padding-left: 5px;
         }
+        .hiddencol
+          {
+            display: none;
+          }
     </style>
 
     <div class="bodyBg">
@@ -190,18 +194,21 @@
                         <br />
                         <div class="input-group" style="margin-left: 10px;">
 
-                            <asp:GridView ID="GridProjectList" runat="server" CssClass="table table-bordered" DataSourceID="SqlprojectList_Grid" AutoGenerateColumns="false">
+                            <asp:GridView ID="GridProjectList" runat="server" CssClass="table table-bordered" DataSourceID="SqlprojectList_Grid" AutoGenerateColumns="false" DataKeyNames="id">
                            <Columns>
-                            <asp:TemplateField>
+                            <asp:TemplateField HeaderText="Select">
                                 <ItemTemplate>
                                     <asp:CheckBox ID="chkRow" runat="server"/>
                                 </ItemTemplate>
                             </asp:TemplateField>
+
+                            <asp:BoundField DataField="id" HeaderText="Id" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol"/>
+
                             <asp:BoundField DataField="projectName" HeaderText="Project"/>
                            </Columns>
                            </asp:GridView>
 
-                            <asp:SqlDataSource ID="SqlprojectList_Grid" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [projects].[projectName] FROM [projects] JOIN [users] ON [projects].[fk_userID] = [users].[id] WHERE ([users].[username] =@username) ORDER BY [projects].[projectName]">
+                            <asp:SqlDataSource ID="SqlprojectList_Grid" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [projects].[id],[projects].[projectName] FROM [projects] JOIN [users] ON [projects].[fk_userID] = [users].[id] WHERE ([users].[username] =@username) ORDER BY [projects].[projectName]">
                               <SelectParameters>
                                   <asp:SessionParameter Name="username" SessionField="Username" />
                               </SelectParameters>

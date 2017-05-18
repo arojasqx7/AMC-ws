@@ -60,13 +60,14 @@
 
                          </asp:GridView>
 
-                         <asp:SqlDataSource ID="Sqlproject_Grid" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [projectName], [id] FROM [projects] WHERE ([projectName] = @projectName)">
+                         <asp:SqlDataSource ID="Sqlproject_Grid" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [projectName],[id] FROM [projects] WHERE (([projectName] = @projectName) AND ([fk_userID] = (SELECT TOP 1 [users].[id] FROM [users] WHERE [users].[username] = @userName) ))">
                              <SelectParameters>
                                  <asp:ControlParameter ControlID="DD_project1" Name="projectName" PropertyName="SelectedValue" Type="String"  /> 
+                                 <asp:SessionParameter Name="userName" SessionField="Username" Type="String" />
                              </SelectParameters>
                          </asp:SqlDataSource>
 
-                         <asp:GridView ID="GridTracksInProject" runat="server" AutoGenerateColumns="False" Width="500px" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" ShowHeader="False" Height="16px" AlternatingRowStyle-BackColor="#d3d3d3" OnRowDeleting="GridTracksInProject_RowDeleting">
+                         <asp:GridView ID="GridTracksInProject" runat="server" AutoGenerateColumns="False" Width="500px" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" ShowHeader="False" Height="16px" AlternatingRowStyle-BackColor="#d3d3d3" OnRowDeleting="GridTracksInProject_RowDeleting" DataKeyNames="fk_trackID">
                              <AlternatingRowStyle BackColor="LightGray"></AlternatingRowStyle>
                              <Columns>
                                  <asp:BoundField DataField="title" HeaderText="Title" SortExpression="title" />
@@ -113,6 +114,14 @@
     <script>
          function SuccessDelete() {
              swal("Project Delete", "Your project has been deleted successfully!", "success")
+         }
+
+         function ValidateEmptyFolder() {
+             swal("Project Creation", "You need to fill project name field!", "warning")
+         }
+
+         function ProjectExists() {
+             swal("Project Creation", "This project already exists!", "warning")
          }
     </script>
 </asp:Content>
