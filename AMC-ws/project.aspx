@@ -52,7 +52,7 @@
                                  </asp:BoundField>
                                  <asp:TemplateField ShowHeader="False">
                                      <ItemTemplate>
-                                         <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" OnClick="Button1_Click"/>
+                                         <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Delete" Text="Remove" OnClick="Button1_Click"/>
                                      </ItemTemplate>
                                      <ControlStyle CssClass="btn btn-danger" />
                                  </asp:TemplateField>
@@ -67,17 +67,18 @@
                              </SelectParameters>
                          </asp:SqlDataSource>
 
-                         <asp:GridView ID="GridTracksInProject" runat="server" AutoGenerateColumns="False" Width="500px" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" ShowHeader="False" Height="16px" AlternatingRowStyle-BackColor="#d3d3d3" OnRowDeleting="GridTracksInProject_RowDeleting" DataKeyNames="fk_trackID">
+                         <asp:GridView ID="GridTracksInProject" runat="server" AutoGenerateColumns="False" Width="500px" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" ShowHeader="False" Height="16px" AlternatingRowStyle-BackColor="#d3d3d3" OnRowDeleting="GridTracksInProject_RowDeleting" DataKeyNames="fk_trackID" OnRowDataBound="GridTracksInProject_RowDataBound">
                              <AlternatingRowStyle BackColor="LightGray"></AlternatingRowStyle>
                              <Columns>
                                  <asp:BoundField DataField="title" HeaderText="Title" SortExpression="title" />
-                                 <asp:TemplateField  ShowHeader="False">
+<%--                                 <asp:TemplateField  ShowHeader="False">
                                      <ItemTemplate>
-                                         <asp:LinkButton ID="Button2" runat="server" CausesValidation="False" CommandName="Delete" CssClass="btn btn-danger" OnClientClick="return confirm('Do you Want to Delete this Record?');" >
+                                         <asp:LinkButton ID="Button2" runat="server" CausesValidation="False" CommandName="Delete" CssClass="btn btn-danger"  >
                                              <span class="glyphicon glyphicon-trash"></span>
                                          </asp:LinkButton>
                                      </ItemTemplate>
-                                 </asp:TemplateField>
+                                 </asp:TemplateField>--%>
+                                 <asp:CommandField ShowDeleteButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-danger" DeleteText="Remove" />
                              </Columns>
                          </asp:GridView>
 
