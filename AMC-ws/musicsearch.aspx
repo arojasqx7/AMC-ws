@@ -13,6 +13,10 @@
     { 
         margin-right: 5px; 
     }
+.hiddencol
+    {
+        display: none;
+    }
 </style>
 
 <script src="js/jquery-2.2.3.min.js"></script>
@@ -488,11 +492,12 @@
                                             <asp:CheckBox ID="chkRow" runat="server" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
+                                     <asp:BoundField DataField="id" HeaderText="Id" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol"/>
                                     <asp:BoundField DataField="projectName" HeaderText="Project" />
                                 </Columns>
                             </asp:GridView>
 
-                            <asp:SqlDataSource ID="SqlprojectList_Grid" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [projects].[projectName] FROM [projects] JOIN [users] ON [projects].[fk_userID] = [users].[id] WHERE ([users].[username] =@username) ORDER BY [projects].[projectName]">
+                            <asp:SqlDataSource ID="SqlprojectList_Grid" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [projects].[id],[projects].[projectName] FROM [projects] JOIN [users] ON [projects].[fk_userID] = [users].[id] WHERE ([users].[username] =@username) ORDER BY [projects].[projectName]">
                                 <SelectParameters>
                                     <asp:SessionParameter Name="username" SessionField="Username" />
                                 </SelectParameters>
