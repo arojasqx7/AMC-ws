@@ -44,11 +44,12 @@
                      <section class="col-sm-offset-2">
                          <br />
                          <br />
-                         <asp:GridView ID="GridProjects" runat="server" AutoGenerateColumns="False" DataSourceID="Sqlproject_Grid" Width="500px" CssClass="table table-bordered" style="text-align:center; margin-top: 0px;" DataKeyNames="id" ShowHeader="False" BackColor="#1A6ECD" ForeColor="White" >
+                         <asp:GridView ID="GridProjects" runat="server" AutoGenerateColumns="False" DataSourceID="Sqlproject_Grid" Width="500px" CssClass="table table-bordered" style="text-align:center; margin-top: 0px;" DataKeyNames="id" ShowHeader="False" BackColor="#4d88ff" ForeColor="White" >
                              <Columns >
                                  <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" Visible="false"/>
                                  <asp:BoundField DataField="projectName" HeaderText="PROJECT NAME" SortExpression="projectName" HeaderStyle-CssClass="text-center" >
                                  <HeaderStyle CssClass="text-center" />
+                                     <ItemStyle Width="70%" HorizontalAlign="Center" VerticalAlign="Top" />
                                  </asp:BoundField>
                                  <asp:TemplateField ShowHeader="False">
                                      <ItemTemplate>
@@ -70,14 +71,9 @@
                          <asp:GridView ID="GridTracksInProject" runat="server" AutoGenerateColumns="False" Width="500px" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" ShowHeader="False" Height="16px" AlternatingRowStyle-BackColor="#d3d3d3" OnRowDeleting="GridTracksInProject_RowDeleting" DataKeyNames="fk_trackID" OnRowDataBound="GridTracksInProject_RowDataBound">
                              <AlternatingRowStyle BackColor="LightGray"></AlternatingRowStyle>
                              <Columns>
-                                 <asp:BoundField DataField="title" HeaderText="Title" SortExpression="title" />
-<%--                                 <asp:TemplateField  ShowHeader="False">
-                                     <ItemTemplate>
-                                         <asp:LinkButton ID="Button2" runat="server" CausesValidation="False" CommandName="Delete" CssClass="btn btn-danger"  >
-                                             <span class="glyphicon glyphicon-trash"></span>
-                                         </asp:LinkButton>
-                                     </ItemTemplate>
-                                 </asp:TemplateField>--%>
+                                 <asp:BoundField DataField="title" HeaderText="Title" SortExpression="title">
+                                     <ItemStyle Width="70%" HorizontalAlign="Center" VerticalAlign="Top" />
+                                     </asp:BoundField>
                                  <asp:CommandField ShowDeleteButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-danger" DeleteText="Remove" />
                              </Columns>
                          </asp:GridView>

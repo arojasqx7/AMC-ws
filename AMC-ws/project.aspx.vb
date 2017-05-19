@@ -91,7 +91,7 @@ Public Class project
         Dim sqlConnection1 As New System.Data.SqlClient.SqlConnection(connection)
         Dim cmd As New System.Data.SqlClient.SqlCommand
         cmd.CommandType = System.Data.CommandType.Text
-        cmd.CommandText = "DELETE FROM [map_projects] WHERE [map_projects].[fk_trackID] = '" & trackId & "' AND [map_projects].[fk_userID] = (SELECT TOP 1 [users].[id] FROM [users] WHERE [users].[username] ='" & Session("Username") & "')"
+        cmd.CommandText = "DELETE FROM [map_projects] WHERE [map_projects].[fk_trackID] = '" & trackId & "' AND [map_projects].[fk_userID] = (SELECT TOP 1 [users].[id] FROM [users] WHERE [users].[username] ='" & Session("Username") & "') AND [map_projects].[fk_projectID]= (SELECT [projects].[id] FROM [projects] WHERE [projects].[projectName]='" & Me.DD_project1.SelectedValue & "')"
         cmd.Connection = sqlConnection1
         sqlConnection1.Open()
         cmd.ExecuteNonQuery()
@@ -105,7 +105,7 @@ Public Class project
             Dim item As String = e.Row.Cells(0).Text
             For Each button As Button In e.Row.Cells(1).Controls.OfType(Of Button)()
                 If button.CommandName = "Delete" Then
-                    button.Attributes("onclick") = "if(!confirm('Do you want to delete " + item + "?')){ return false; };"
+                    button.Attributes("onclick") = "if(!confirm('Do you want to delete track " + item + "?')){ return false; };"
                 End If
             Next
         End If
