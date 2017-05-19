@@ -86,9 +86,8 @@ Public Class musicsearch
     End Sub
 
     Protected Sub btnAddProjects_Click(sender As Object, e As EventArgs)
-        Dim sqlConnection1 As New System.Data.SqlClient.SqlConnection(connection)
-        Dim cmd As New System.Data.SqlClient.SqlCommand
-        cmd.CommandType = System.Data.CommandType.Text
+        Dim conn As String = "Data Source=.\SQLEXPRESS;Initial Catalog=AMC;Integrated Security=True;"
+        Dim sqlCon As New SqlConnection(conn)
         Dim t_id = Me.Label2.Text
 
         For Each row As GridViewRow In GridProjectList.Rows
@@ -96,18 +95,26 @@ Public Class musicsearch
                 Dim chkRow As CheckBox = TryCast(row.Cells(0).FindControl("chkRow"), CheckBox)
                 If chkRow.Checked Then
                     Dim projectId = row.Cells(1)  'Tratar de convertir el ID y no el nombre del proyecto..
-                    cmd.CommandText = "INSERT INTO map_projects (fk_projectID,fk_trackID,fk_userID) SELECT [projects].[id],[tracks].[id],[users].[id] FROM [projects],[tracks],[users] WHERE [projects].[id] ='" & projectId.Text & "' AND [tracks].[id]='" & t_id & "' AND [users].[username] ='" & Session("Username") & "'"
-                    cmd.Connection = sqlConnection1
-                    sqlConnection1.Open()
-                    cmd.ExecuteNonQuery()
-                    sqlConnection1.Close()
-                    'Else
-                    '    ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "NoProjectChecked();", True)
-                    '    Exit Sub
+                    sqlCon.Open()
+                    Dim cmd0 As New SqlCommand("SELECT [fk_projectID],[fk_trackID],[fk_userID] FROM [map_projects] WHERE [fk_projectID]=@fk_projectID AND [fk_trackID]=@fk_trackID AND [fk_userID]= (SELECT TOP 1 [users].[id] FROM [users] WHERE [users].[username] = @userName)", sqlCon)
+                    cmd0.Parameters.AddWithValue("@fk_projectID", projectId.Text)
+                    cmd0.Parameters.AddWithValue("@fk_trackID", t_id)
+                    cmd0.Parameters.AddWithValue("@userName", Session("Username"))
+
+                    Dim reader0 As SqlDataReader = cmd0.ExecuteReader()
+                    If (reader0.HasRows) Then
+                        ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "TrackExists();", True)
+                    Else
+                        sqlCon.Close()
+                        sqlCon.Open()
+                        Dim cmd1 As New SqlCommand("INSERT INTO map_projects (fk_projectID,fk_trackID,fk_userID) SELECT [projects].[id],[tracks].[id],[users].[id] FROM [projects],[tracks],[users] WHERE [projects].[id] ='" & projectId.Text & "' AND [tracks].[id]='" & t_id & "' AND [users].[username] ='" & Session("Username") & "'", sqlCon)
+                        cmd1.ExecuteNonQuery()
+                        ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "AddSuccess();", True)
+                    End If
+                    sqlCon.Close()
                 End If
             End If
         Next
-        ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "AddSuccess();", True)
     End Sub
 
     Protected Sub CheckAlbum_CheckedChanged(sender As Object, e As EventArgs)
