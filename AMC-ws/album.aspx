@@ -309,6 +309,10 @@
             });
         }
 
+        function TrackExists() {
+            swal("Track to Project", "This track already exists in this project!", "warning")
+        }
+
         function openModal() {
             $('#ProjectList').modal('show');
         }

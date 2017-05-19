@@ -535,5 +535,9 @@
              type: 'success'
          });
      }
+
+     function TrackExists() {
+         swal("Track to Project", "This track already exists in this project!", "warning")
+     }
     </script>
 </asp:Content>
