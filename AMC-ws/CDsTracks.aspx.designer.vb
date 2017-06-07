@@ -41,6 +41,24 @@ Partial Public Class CDsTracks
     Protected WithEvents Button1 As Global.System.Web.UI.HtmlControls.HtmlButton
     
     '''<summary>
+    '''DropDownCDS control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DropDownCDS As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''SqlCDS control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SqlCDS As Global.System.Web.UI.WebControls.SqlDataSource
+    
+    '''<summary>
     '''txtCatalogNo control.
     '''</summary>
     '''<remarks>
@@ -302,6 +320,816 @@ Partial Public Class CDsTracks
     Protected WithEvents CheckBox24 As Global.System.Web.UI.WebControls.CheckBox
     
     '''<summary>
+    '''CheckBox25 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox25 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox26 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox26 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox27 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox27 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox28 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox28 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox29 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox29 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox30 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox30 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox31 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox31 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox32 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox32 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox33 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox33 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox34 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox34 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox35 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox35 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox36 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox36 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox37 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox37 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox38 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox38 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox39 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox39 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox40 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox40 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox41 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox41 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox42 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox42 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox43 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox43 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox44 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox44 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox45 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox45 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox46 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox46 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox47 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox47 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox48 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox48 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox49 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox49 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox50 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox50 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox51 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox51 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox52 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox52 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox53 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox53 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox54 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox54 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox55 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox55 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox56 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox56 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox57 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox57 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox58 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox58 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox59 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox59 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox60 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox60 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox61 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox61 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox62 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox62 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox63 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox63 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox64 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox64 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox65 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox65 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox66 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox66 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox67 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox67 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox68 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox68 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox69 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox69 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox70 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox70 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox71 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox71 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox72 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox72 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox73 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox73 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox74 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox74 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox75 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox75 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox76 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox76 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox77 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox77 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox78 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox78 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox79 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox79 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox80 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox80 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox81 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox81 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox82 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox82 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox83 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox83 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox84 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox84 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox85 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox85 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox86 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox86 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox87 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox87 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox88 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox88 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox89 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox89 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox90 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox90 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox91 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox91 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox92 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox92 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox93 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox93 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox94 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox94 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox95 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox95 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox96 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox96 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox97 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox97 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox98 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox98 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox99 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox99 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox100 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox100 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox101 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox101 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox102 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox102 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox103 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox103 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox104 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox104 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox105 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox105 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox106 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox106 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox107 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox107 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox108 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox108 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox109 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox109 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox110 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox110 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox111 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox111 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox112 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox112 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox113 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox113 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox114 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox114 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
     '''btnAdd control.
     '''</summary>
     '''<remarks>
@@ -309,4 +1137,1165 @@ Partial Public Class CDsTracks
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnAdd As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''DropCD2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DropCD2 As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''SqlCDS2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SqlCDS2 As Global.System.Web.UI.WebControls.SqlDataSource
+    
+    '''<summary>
+    '''txtTrackNo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtTrackNo As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''RegularExpressionValidator1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator1 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+    
+    '''<summary>
+    '''txtTrackTitle control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtTrackTitle As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''txtDescTrack control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtDescTrack As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''CheckBox229 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox229 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox230 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox230 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox231 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox231 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox232 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox232 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox233 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox233 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox115 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox115 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox116 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox116 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox117 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox117 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox118 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox118 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox119 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox119 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox120 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox120 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox121 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox121 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox122 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox122 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox123 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox123 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox124 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox124 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox125 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox125 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox126 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox126 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox127 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox127 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox128 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox128 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox129 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox129 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox130 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox130 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox131 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox131 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox132 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox132 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox133 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox133 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox134 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox134 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox135 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox135 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox136 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox136 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox137 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox137 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox138 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox138 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox139 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox139 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox140 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox140 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox141 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox141 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox142 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox142 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox143 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox143 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox144 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox144 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox145 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox145 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox146 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox146 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox147 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox147 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox148 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox148 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox149 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox149 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox150 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox150 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox151 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox151 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox152 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox152 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox153 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox153 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox154 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox154 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox155 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox155 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox156 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox156 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox157 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox157 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox158 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox158 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox159 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox159 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox160 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox160 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox161 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox161 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox162 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox162 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox163 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox163 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox164 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox164 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox165 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox165 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox166 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox166 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox167 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox167 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox168 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox168 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox169 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox169 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox170 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox170 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox171 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox171 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox172 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox172 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox173 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox173 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox174 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox174 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox175 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox175 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox176 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox176 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox177 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox177 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox178 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox178 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox179 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox179 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox180 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox180 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox181 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox181 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox182 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox182 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox183 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox183 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox184 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox184 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox185 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox185 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox186 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox186 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox187 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox187 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox188 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox188 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox189 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox189 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox190 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox190 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox191 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox191 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox192 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox192 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox193 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox193 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox194 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox194 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox195 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox195 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox196 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox196 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox197 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox197 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox198 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox198 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox199 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox199 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox200 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox200 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox201 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox201 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox202 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox202 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox203 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox203 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox204 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox204 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox205 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox205 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox206 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox206 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox207 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox207 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox208 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox208 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox209 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox209 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox210 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox210 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox211 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox211 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox212 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox212 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox213 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox213 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox214 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox214 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox215 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox215 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox216 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox216 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox217 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox217 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox218 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox218 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox219 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox219 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox220 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox220 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox221 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox221 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox222 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox222 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox223 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox223 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox224 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox224 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox225 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox225 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox226 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox226 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox227 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox227 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''CheckBox228 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBox228 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''txtInstruments control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtInstruments As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''txtKeywords control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtKeywords As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''txtStyleLikes control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtStyleLikes As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''btnAddTracktoBD control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnAddTracktoBD As Global.System.Web.UI.WebControls.Button
 End Class

@@ -269,6 +269,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSet2.vb">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="helpfulhints.aspx.designer.vb">
       <DependentUpon>helpfulhints.aspx</DependentUpon>
     </Compile>
