@@ -47,28 +47,28 @@ Public Class album
 
 
     Protected Sub T_songMain(sender As Object, e As EventArgs)
-        'If (Session("fullname") IsNot Nothing) Then
-        '    Dim lno As LinkButton = sender
-        '    Dim Track_cd = New AMC_ws.DataSet1TableAdapters.map_clipsTableAdapter()
-        '    Dim T_mp3 = Track_cd.GetDataByFormat(lno.CommandArgument, "mp3")
-        '    Dim T_wav = Track_cd.GetDataByFormat(lno.CommandArgument, "wav")
-        '    Me.G_mp3.DataSource = T_mp3
-        '    G_mp3.DataBind()
-        '    Me.G_wav.DataSource = T_wav
-        '    G_wav.DataBind()
+        If (Session("fullname") IsNot Nothing) Then
+            Dim lno As LinkButton = sender
+            Dim Track_cd = New AMC_ws.DataSet1TableAdapters.map_clipsTableAdapter()
+            Dim T_mp3 = Track_cd.GetDataByFormat(lno.CommandArgument, "mp3")
+            Dim T_wav = Track_cd.GetDataByFormat(lno.CommandArgument, "wav")
+            Me.G_mp3.DataSource = T_mp3
+            G_mp3.DataBind()
+            Me.G_wav.DataSource = T_wav
+            G_wav.DataBind()
 
-        '    Dim Dt_tracks = New AMC_ws.DataSet1TableAdapters.track_infoTableAdapter()
-        '    Dim T_tracks = Dt_tracks.GetData(lno.CommandArgument)
+            Dim Dt_tracks = New AMC_ws.DataSet1TableAdapters.track_infoTableAdapter()
+            Dim T_tracks = Dt_tracks.GetData(lno.CommandArgument)
 
-        '    Me.T_titlePop.Text = T_tracks(0).title
-        'Me.T_trackId.Text = T_tracks(0).cd_number
-        '    Me.T_compPop.Text = T_tracks(0).fname & " " & T_tracks(0).lname
-        '    Me.T_pubPop.Text = T_tracks(0)._alias & " " & T_tracks(0).name
-        '    ScriptManager.RegisterStartupScript(Me, Page.GetType, "songS", "$('#songS').modal();", True)
+            Me.T_titlePop.Text = T_tracks(0).title
+            Me.T_trackId.Text = T_tracks(0).cd_number
+            Me.T_compPop.Text = T_tracks(0).fname & " " & T_tracks(0).lname
+            Me.T_pubPop.Text = T_tracks(0)._alias & " " & T_tracks(0).name
+            ScriptManager.RegisterStartupScript(Me, Page.GetType, "songS", "$('#songS').modal();", True)
 
-        'Else
-        '    ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "ErrorLogin();", True)
-        'End If
+        Else
+            ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "ErrorLogin();", True)
+        End If
 
 
     End Sub

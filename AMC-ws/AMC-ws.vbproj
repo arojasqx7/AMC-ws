@@ -138,11 +138,14 @@
   <ItemGroup>
     <Content Include="aboutus.aspx" />
     <Content Include="accountpin.aspx" />
+    <Content Include="Admin-Home.aspx" />
     <Content Include="alacartelic.aspx" />
     <Content Include="album.aspx" />
     <Content Include="annualsubs.aspx" />
     <Content Include="catalog.aspx" />
+    <Content Include="CDsTracks.aspx" />
     <Content Include="composer.aspx" />
+    <Content Include="Composers.aspx" />
     <Content Include="contactus.aspx" />
     <Content Include="helpfulhints.aspx" />
     <Content Include="joinnow.aspx" />
@@ -152,6 +155,7 @@
     <Content Include="myhistory.aspx" />
     <Content Include="myinfo.aspx" />
     <Content Include="project.aspx" />
+    <Content Include="Publishers.aspx" />
     <Content Include="signin.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -175,6 +179,13 @@
       <DependentUpon>accountpin.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="Admin-Home.aspx.designer.vb">
+      <DependentUpon>Admin-Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin-Home.aspx.vb">
+      <DependentUpon>Admin-Home.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="alacartelic.aspx.designer.vb">
       <DependentUpon>alacartelic.aspx</DependentUpon>
     </Compile>
@@ -188,6 +199,13 @@
     <Compile Include="album.aspx.vb">
       <DependentUpon>album.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="AMC_Admin.Master.designer.vb">
+      <DependentUpon>AMC_Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AMC_Admin.Master.vb">
+      <DependentUpon>AMC_Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AMC_master.Master.designer.vb">
       <DependentUpon>AMC_master.Master</DependentUpon>
@@ -210,11 +228,25 @@
       <DependentUpon>catalog.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="CDsTracks.aspx.designer.vb">
+      <DependentUpon>CDsTracks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CDsTracks.aspx.vb">
+      <DependentUpon>CDsTracks.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="composer.aspx.designer.vb">
       <DependentUpon>composer.aspx</DependentUpon>
     </Compile>
     <Compile Include="composer.aspx.vb">
       <DependentUpon>composer.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Composers.aspx.designer.vb">
+      <DependentUpon>Composers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Composers.aspx.vb">
+      <DependentUpon>Composers.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="contactus.aspx.designer.vb">
@@ -231,6 +263,11 @@
     </Compile>
     <Compile Include="DataSet1.vb">
       <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet2.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet2.xsd</DependentUpon>
     </Compile>
     <Compile Include="helpfulhints.aspx.designer.vb">
       <DependentUpon>helpfulhints.aspx</DependentUpon>
@@ -314,6 +351,13 @@
       <DependentUpon>project.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="Publishers.aspx.designer.vb">
+      <DependentUpon>Publishers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Publishers.aspx.vb">
+      <DependentUpon>Publishers.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="signin.aspx.designer.vb">
       <DependentUpon>signin.aspx</DependentUpon>
     </Compile>
@@ -349,6 +393,7 @@
     <Content Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Content>
+    <Content Include="AMC_Admin.Master" />
     <None Include="DataSet1.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -356,6 +401,17 @@
     </None>
     <Content Include="DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Content>
+    <Content Include="DataSet2.xsc">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSet2.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet2.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="DataSet2.xss">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
     </Content>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
