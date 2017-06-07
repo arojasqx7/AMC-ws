@@ -17,9 +17,55 @@
     {
         display: none;
     }
+/*gridview*/
+.table table  tbody  tr  td a ,
+.table table  tbody  tr  td  span {
+position: relative;
+float: left;
+padding: 6px 12px;
+
+margin-left: -1px;
+line-height: 1.42857143;
+color: #337ab7;
+text-decoration: none;
+background-color: #fff;
+border: 1px solid #ddd;
+}
+
+.table table > tbody > tr > td > span {
+z-index: 3;
+color: #fff;
+cursor: default;
+background-color: #337ab7;
+border-color: #337ab7;
+}
+
+.table table > tbody > tr > td:first-child > a,
+.table table > tbody > tr > td:first-child > span {
+margin-left: 0;
+border-top-left-radius: 4px;
+border-bottom-left-radius: 4px;
+}
+
+.table table > tbody > tr > td:last-child > a,
+.table table > tbody > tr > td:last-child > span {
+border-top-right-radius: 4px;
+border-bottom-right-radius: 4px;
+}
+
+.table table > tbody > tr > td > a:hover,
+.table   table > tbody > tr > td > span:hover,
+.table table > tbody > tr > td > a:focus,
+.table table > tbody > tr > td > span:focus {
+z-index: 2;
+color: #23527c;
+background-color: #eee;
+border-color: #ddd;
+}
+/*end gridview */
 </style>
 
-<script src="js/jquery-2.2.3.min.js"></script>
+
     <script type="text/javascript">
     $(function () {
         $('[id*=T_mainsearch]').typeahead({
@@ -135,7 +181,7 @@
                                             <asp:DropDownList ID="DD_Composer" class="form-control" runat="server" DataSourceID="SqlComposer"  DataTextField="fullname" DataValueField="fullname" Style="width: 200px;" Visible="false" AppendDataBoundItems="true">
                                                 <asp:ListItem Text="Select a Composer" Value="" />
                                             </asp:DropDownList>
-                                            <asp:SqlDataSource runat="server" ID="SqlComposer" ConnectionString='<%$ ConnectionStrings:AMC %>' SelectCommand="SELECT CONCAT([fname],' ',[lname]) AS fullname FROM [composers] ORDER BY [fname]"></asp:SqlDataSource>
+                                            <asp:SqlDataSource runat="server" ID="SqlComposer" ConnectionString='<%$ ConnectionStrings:AMC %>' SelectCommand="SELECT DISTINCT CONCAT([fname],' ',[lname]) AS fullname FROM [composers] ORDER BY CONCAT([fname],' ',[lname])"></asp:SqlDataSource>
                                         </div>
 
                                         <div class="form-group" style="margin-left: 10px;">
@@ -185,7 +231,7 @@
                 <div class="row">   <!-- Grid for Quick search -->
                     <section class="col-sm-1"></section>
                     <section class="col-sm-9">
-                        <asp:GridView ID="GV_tracks" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" DataKeyNames="id" OnSelectedIndexChanged ="OnSelectedIndexChanged" DataSourceID="SqlTrackInfo" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" Visible="false">
+                        <asp:GridView ID="GV_tracks" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" DataKeyNames="id" OnSelectedIndexChanged ="OnSelectedIndexChanged" DataSourceID="SqlTrackInfo" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" Visible="false" PageSize="10" AllowPaging="true">
                             <Columns>
 
                                 <asp:TemplateField HeaderText="Id" Visible="false">
@@ -249,7 +295,7 @@
                     <section class="col-sm-1"></section>
                     <section class="col-sm-9">
                         <br />
-                        <asp:GridView ID="GridStylesGenre" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" DataKeyNames="id" DataSourceID="SqlStylesGenre" OnSelectedIndexChanged ="OnSelectedIndexChanged2" Visible="false">
+                        <asp:GridView ID="GridStylesGenre" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" DataKeyNames="id" DataSourceID="SqlStylesGenre" OnSelectedIndexChanged ="OnSelectedIndexChanged2" Visible="false" PageSize="10" AllowPaging="true">
                             <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="false">
                                     <ItemTemplate>
@@ -311,7 +357,7 @@
                 <div class="row"><!-- Grid for Albums -->
                     <section class="col-sm-1"></section>
                     <section class="col-sm-9">  
-                        <asp:GridView ID="GridCDs" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" DataSourceID="SqlCDs" OnSelectedIndexChanged ="OnSelectedIndexChanged3" Visible="false">
+                        <asp:GridView ID="GridCDs" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" DataSourceID="SqlCDs" OnSelectedIndexChanged ="OnSelectedIndexChanged3" Visible="false" PageSize="10" AllowPaging="true">
                            <Columns>
                                <asp:TemplateField HeaderText="Id" Visible="false">
                                    <ItemTemplate>
@@ -376,7 +422,7 @@
                 <div class="row"><!-- Grid for Composers -->
                     <section class="col-sm-1"></section>
                     <section class="col-sm-9">  
-                        <asp:GridView ID="GridComposers" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" DataSourceID="SqlComposers" Visible="False" DataKeyNames="id" OnSelectedIndexChanged ="OnSelectedIndexChanged4">
+                        <asp:GridView ID="GridComposers" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" DataSourceID="SqlComposers" Visible="False" DataKeyNames="id" OnSelectedIndexChanged ="OnSelectedIndexChanged4" PageSize="10" AllowPaging="true">
                            <Columns>
                                <asp:TemplateField HeaderText="Id" Visible="false">
                                    <ItemTemplate>
@@ -399,10 +445,6 @@
                                 </asp:TemplateField>
 
                                 <asp:BoundField DataField="name" HeaderText="Publisher Name" SortExpression="name">
-                                    <ItemStyle Width="20%" HorizontalAlign="Left" VerticalAlign="Top" />
-                                </asp:BoundField>
-
-                                <asp:BoundField DataField="ComposerName" HeaderText="Composer Name" ReadOnly="True" SortExpression="ComposerName">
                                     <ItemStyle Width="20%" HorizontalAlign="Left" VerticalAlign="Top" />
                                 </asp:BoundField>
 
@@ -431,13 +473,13 @@
                             </Columns>
                         </asp:GridView>
 
-                         <asp:SqlDataSource ID="SqlComposers" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [id],[cd_title], [title], [name], [ComposerName] FROM [View_Composers] WHERE ([ComposerName] = @ComposerName)">
+                         <asp:SqlDataSource ID="SqlComposers" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [id],[cd_title], [title], [name] FROM [View_Composers] WHERE ([ComposerName] = @ComposerName)">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="DD_Composer" Name="ComposerName" PropertyName="SelectedValue" Type="String" />
                             </SelectParameters>
                         </asp:SqlDataSource>
                     </section>
-                </div> <!-- End Grid Albums-->
+                </div> <!-- End Grid Composers-->
 
             </div>
 

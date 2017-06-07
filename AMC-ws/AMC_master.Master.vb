@@ -29,6 +29,7 @@ Public Class AMC_master
             Session("username") = t_user(0).username
             Session("email") = t_user(0).email
             Session("pin") = t_user(0).accountpin
+            Session("type") = t_user(0).type
             Session.Timeout = 10
             Me.m_usuario.Visible = True
             Me.bt_login.Visible = False
@@ -40,9 +41,19 @@ Public Class AMC_master
             strIPAddress = System.Net.Dns.GetHostByName(strHostName).AddressList(0).ToString()
             Dim userloggin = New AMC_ws.DataSet1TableAdapters.userloginsTableAdapter
             userloggin.Insert(t_user(0).id, Now, strIPAddress)
-            Response.Redirect("welcome.aspx")
+            Dim type = t_user(0).type
+
+            Select Case type
+                Case "1"
+                    Response.Redirect("welcome.aspx")
+                Case "2"
+                    Response.Redirect("Admin-Home.aspx")
+            End Select
+
+
+
         Else
-            ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "ErrorLogin();", True)
+                ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "ErrorLogin();", True)
 
         End If
 
