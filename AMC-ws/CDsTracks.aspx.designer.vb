@@ -59,6 +59,42 @@ Partial Public Class CDsTracks
     Protected WithEvents SqlCDS As Global.System.Web.UI.WebControls.SqlDataSource
     
     '''<summary>
+    '''GridCDSelected control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents GridCDSelected As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''SqlCDSelected2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SqlCDSelected2 As Global.System.Web.UI.WebControls.SqlDataSource
+    
+    '''<summary>
+    '''GridTracksInCD control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents GridTracksInCD As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''SqlTracksInCD control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SqlTracksInCD As Global.System.Web.UI.WebControls.SqlDataSource
+    
+    '''<summary>
     '''txtCatalogNo control.
     '''</summary>
     '''<remarks>
@@ -102,6 +138,15 @@ Partial Public Class CDsTracks
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtDesc As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Table1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Table1 As Global.System.Web.UI.WebControls.Table
     
     '''<summary>
     '''CheckBox1 control.
@@ -1193,6 +1238,15 @@ Partial Public Class CDsTracks
     Protected WithEvents txtDescTrack As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
+    '''Table3 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Table3 As Global.System.Web.UI.WebControls.Table
+    
+    '''<summary>
     '''CheckBox229 control.
     '''</summary>
     '''<remarks>
@@ -1236,6 +1290,15 @@ Partial Public Class CDsTracks
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents CheckBox233 As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''Table2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Table2 As Global.System.Web.UI.WebControls.Table
     
     '''<summary>
     '''CheckBox115 control.
