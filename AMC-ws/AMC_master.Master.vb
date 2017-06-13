@@ -46,8 +46,8 @@ Public Class AMC_master
             Select Case type
                 Case "1"
                     Response.Redirect("welcome.aspx")
-                Case "2"
-                    Response.Redirect("Admin-Home.aspx")
+                Case "8"
+                    Response.Redirect("Users.aspx")
             End Select
 
 

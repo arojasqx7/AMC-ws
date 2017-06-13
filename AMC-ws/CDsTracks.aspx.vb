@@ -83,4 +83,8 @@ Public Class CDsTracks
         GridCDSelected.Visible = True
         GridTracksInCD.Visible = True
     End Sub
+
+    Protected Sub LinkTrackDetails_Click(sender As Object, e As EventArgs)
+        ScriptManager.RegisterStartupScript(Me, Page.GetType(), "Popup", "openModalEditTrack();", True)
+    End Sub
 End Class

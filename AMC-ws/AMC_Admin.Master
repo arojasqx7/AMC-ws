@@ -50,7 +50,7 @@
                     </div>
                     <!-- InstanceBeginEditable name="EditRegion-nav" -->
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Users</a></li>
+                        <li><a href="Users.aspx">Users</a></li>
                         <li><a href="Publishers.aspx">Publishers</a></li>
                         <li><a href="Composers.aspx">Composers</a></li>
                         <li><a href="CDsTracks.aspx">CD´s & Tracks</a></li>

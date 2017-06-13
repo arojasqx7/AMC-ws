@@ -70,17 +70,23 @@
                         </asp:SqlDataSource>
 
                         <asp:GridView ID="GridTracksInCD" runat="server" style="margin-left:110px;" AutoGenerateColumns="False" DataSourceID="SqlTracksInCD" Width="590px" Visible="False" CssClass="table table-bordered" AlternatingRowStyle-BackColor="#d3d3d3" ShowHeader="False">
-<AlternatingRowStyle BackColor="LightGray"></AlternatingRowStyle>
+                            <AlternatingRowStyle BackColor="LightGray"></AlternatingRowStyle>
                             <Columns>
                                  <asp:BoundField DataField="track_number" HeaderText="Track #" SortExpression="track_number" HeaderStyle-Width="20%" ItemStyle-Width="20%" >
                                     <HeaderStyle Width="20%"></HeaderStyle>
                                     <ItemStyle Width="20%"></ItemStyle>
                                  </asp:BoundField>
                                  <asp:BoundField DataField="title" HeaderText="Track Name" SortExpression="title" />
-                                 <asp:HyperLinkField Text="Details" />
+                                 <asp:TemplateField ShowHeader="False">
+                                     <ItemTemplate>
+                                         <asp:LinkButton ID="LinkTrackDetails" runat="server" CausesValidation="false" CommandName="" Text="Details" OnClick="LinkTrackDetails_Click"></asp:LinkButton>
+                                     </ItemTemplate>
+                                 </asp:TemplateField>
                                  <asp:HyperLinkField Text="Composers" />
                                  <asp:HyperLinkField Text="Sound Clips" />
-                                 <asp:HyperLinkField Text="Delete" ControlStyle-ForeColor="Red"/>
+                                 <asp:HyperLinkField Text="Delete" ControlStyle-ForeColor="Red">
+                                    <ControlStyle ForeColor="Red"></ControlStyle>
+                                 </asp:HyperLinkField>
                             </Columns>
                         </asp:GridView>
                         <asp:SqlDataSource ID="SqlTracksInCD" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [track_number], [title] FROM [tracks] WHERE ([fk_cd_id] = @fk_cd_id)">
@@ -642,7 +648,314 @@
                 </div>
                 </div>
             </div>
+         </div>
                 <!-- Termina Pop up-->
 
+                 <!--Track To Edit-->
+            <div class="modal fade" id="TrackToEdit">
+              <div class="modal-dialog modal-sm" style="width:640px;">
+                <div class="modal-content" style="width:640px;">
+                    <div class="modal-header song_sel_panel-header"> 
+                      <button type="button" class="close" data-dismiss="modal">×</button>
+                      <h3 class="modal-title"> <span class="glyphicon glyphicon-music"></span>        Add new Track</h3>
+                    </div>
+
+                    <div class="modal-body" style="width:600px;">
+
+                        <div class="input-group" style="width:610px;">
+                            <label>CD:</label>
+                            <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlCDS2" AppendDataBoundItems="true" CssClass="form-control" DataTextField="cdResult" DataValueField="id">
+                                <asp:ListItem Text="Select a CD" Value="" />
+                            </asp:DropDownList>
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [id], CONCAT([cd_number] ,' - ', [cd_title]) AS cdResult FROM [cd] ORDER BY [cd_number]"></asp:SqlDataSource>
+
+                            <br />
+                            <label style="margin-top:10px;">Track Number:</label>
+                            <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Track Number.." TextMode="Number" MaxLength="2"></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" ControlToValidate="txtTrackNo" runat="server" ErrorMessage="Only Numbers allowed" ValidationExpression="\d+" ForeColor="Red"></asp:RegularExpressionValidator>
+
+                            <br />
+                            <label style="margin-top:10px;">Track Title:</label>
+                            <asp:TextBox ID="TextBox2" runat="server" class="form-control" placeholder="Track Title.." ></asp:TextBox>
+
+                            <br />
+                            <label style="margin-top:10px;">Description:</label>
+                            <asp:TextBox ID="TextBox3" runat="server" TextMode="MultiLine" class="form-control" placeholder="Description..."></asp:TextBox>
+
+                            <br />
+
+                            <div class="panel panel-default" style="margin-top: 70px;">
+                                <div class="panel-heading" role="tab" id="headingSix">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree"><span class="glyphicon glyphicon-sort"></span>Tempo </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                    <div class="panel-body">
+                                        <div id="collapseOne6" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFour">
+                                            <div class="panel-body">
+                                                <asp:Table ID="Table4" runat="server" >
+                                                    <asp:TableRow> 
+                                                        <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox234" runat="server" Text="Slow Tempo" /></asp:TableCell>
+                                                    </asp:TableRow>
+                                                    <asp:TableRow> 
+                                                        <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox235" runat="server" Text="Slow / Mid Tempo" /></asp:TableCell>
+                                                    </asp:TableRow>
+                                                    <asp:TableRow> 
+                                                        <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox236" runat="server" Text="Mid Tempo" /></asp:TableCell>
+                                                    </asp:TableRow>
+                                                    <asp:TableRow> 
+                                                        <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox237" runat="server" Text="Mid / Up Tempo" /></asp:TableCell>
+                                                    </asp:TableRow>
+                                                    <asp:TableRow> 
+                                                        <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox238" runat="server" Text="Up Tempo" /></asp:TableCell>
+                                                    </asp:TableRow>
+                                                 </asp:Table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingFive">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><span class="glyphicon glyphicon-sort"></span>Genre</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                    <div class="panel-body">
+                                        <div id="collapseOne5" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                            <div class="panel-body">
+                                             <asp:Table ID="Table5" runat="server" >
+                                                <asp:TableRow> 
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox239" runat="server" Text="Acoustic"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox240" runat="server" Text="Heavy Suspense"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox241" runat="server" Text="Religious"/></asp:TableCell>
+                                                </asp:TableRow>
+                                               <asp:TableRow> 
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox242" runat="server" Text="Adult Contemporary"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox243" runat="server" Text="Heroic"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox244" runat="server" Text="Rock"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox245" runat="server" Text="Adventure"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox246" runat="server" Text="Hip Hop"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox247" runat="server" Text="Rock Ballads"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox248" runat="server" Text="Americana"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox249" runat="server" Text="Historic"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox250" runat="server" Text="Rock-Light"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox251" runat="server" Text="Atmospheric"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox252" runat="server" Text="Holiday"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox253" runat="server" Text="Rock-Hard"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox254" runat="server" Text="Ballads"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox255" runat="server" Text="Horror"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox256" runat="server" Text="Rock-Metal"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox257" runat="server" Text="Big Band"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox258" runat="server" Text="Hymns"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox259" runat="server" Text="Rock-Southern"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox260" runat="server" Text="Bluegrass"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox261" runat="server" Text="Inspirational"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox262" runat="server" Text="Romantic"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                     <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox263" runat="server" Text="Blues"/></asp:TableCell>
+                                                     <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox264" runat="server" Text="Jazz"/></asp:TableCell>
+                                                     <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox265" runat="server" Text="Sad"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                     <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox266" runat="server" Text="Calypso"/></asp:TableCell>
+                                                     <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox267" runat="server" Text="Large Group"/></asp:TableCell>
+                                                     <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox268" runat="server" Text="Sci-Fi"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox269" runat="server" Text="Caribbean"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox270" runat="server" Text="Latin"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox271" runat="server" Text="Science"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                     <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox272" runat="server" Text="Children"/></asp:TableCell>
+                                                     <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox273" runat="server" Text="Latin Jazz"/></asp:TableCell>
+                                                     <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox274" runat="server" Text="Sexy"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox275" runat="server" Text="Christmas"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox276" runat="server" Text="Latin Pop"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox277" runat="server" Text="Small Group"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox278" runat="server" Text="Classical"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox279" runat="server" Text="Latin Rock"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox280" runat="server" Text="Solo Instruments"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox281" runat="server" Text="Comedy"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox282" runat="server" Text="Light Drama"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox283" runat="server" Text="Soul"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox284" runat="server" Text="Contemporary"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox285" runat="server" Text="Light News"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox286" runat="server" Text="Soulful"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox287" runat="server" Text="Corporate"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox288" runat="server" Text="Light Rock"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox289" runat="server" Text="Southern Rock"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox290" runat="server" Text="Country"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox291" runat="server" Text="Light Suspense"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox292" runat="server" Text="Spanish"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox293" runat="server" Text="Dance"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox294" runat="server" Text="Nature"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox295" runat="server" Text="Sports"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox296" runat="server" Text="Drama"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox297" runat="server" Text="New Age"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox298" runat="server" Text="Sports Rock"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox299" runat="server" Text="Drama-Light"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox300" runat="server" Text="News"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox301" runat="server" Text="Suspense"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox302" runat="server" Text="Drama-Medium"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox303" runat="server" Text="News-Light"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox304" runat="server" Text="Suspense-Light"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox305" runat="server" Text="Drama-Heavy"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox306" runat="server" Text="News-Medium"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox307" runat="server" Text="Suspense-Medium"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox308" runat="server" Text="Easy Listening"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox309" runat="server" Text="News-Heavy"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox310" runat="server" Text="Suspense-Heavy"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox311" runat="server" Text="Electronica"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox312" runat="server" Text="Nostalgia"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox313" runat="server" Text="Swing"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                     <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox314" runat="server" Text="Exotic"/></asp:TableCell>
+                                                     <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox315" runat="server" Text="Orchestal"/></asp:TableCell>
+                                                     <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox316" runat="server" Text="Symphonic"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox317" runat="server" Text="Extreme Sports"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox318" runat="server" Text="Panoramic"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox319" runat="server" Text="Techno"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                     <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox320" runat="server" Text="Ethereal"/></asp:TableCell>
+                                                     <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox321" runat="server" Text="Pastoral"/></asp:TableCell>
+                                                     <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox322" runat="server" Text="Technology"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox323" runat="server" Text="Fantasy"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox324" runat="server" Text="Patriotic"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox325" runat="server" Text="Theatrical"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox326" runat="server" Text="Fashion"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox327" runat="server" Text="Period Music"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox328" runat="server" Text="Underscore"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox329" runat="server" Text="Folk"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox330" runat="server" Text="Political"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox331" runat="server" Text="Urban"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox332" runat="server" Text="Foreign Lands"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox333" runat="server" Text="Pop"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox334" runat="server" Text="Vocals"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox335" runat="server" Text="Funk"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox336" runat="server" Text="Prod.Elements"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox337" runat="server" Text="Well Known"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox338" runat="server" Text="Funky"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox339" runat="server" Text="Psychedelic"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox340" runat="server" Text="Western"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                     <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox341" runat="server" Text="Gospel"/></asp:TableCell>
+                                                     <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox342" runat="server" Text="Quirky"/></asp:TableCell>
+                                                     <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox343" runat="server" Text="World Music"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox344" runat="server" Text="Happy"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox345" runat="server" Text="Rap"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox346" runat="server" Text="Zany"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox347" runat="server" Text="Hard Rock"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox348" runat="server" Text="R&B"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox349" runat="server" Text="Heart Warming"/></asp:TableCell>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox350" runat="server" Text="Reggae"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox351" runat="server" Text="Heavy Drama"/></asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox352" runat="server" Text="Heavy Metal"/></asp:TableCell>
+                                                </asp:TableRow>
+                                              </asp:Table>
+                                                
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <label >Instruments:</label>
+                            <asp:TextBox ID="TextBox4" runat="server" TextMode="MultiLine" class="form-control" placeholder="Instruments..."></asp:TextBox>
+
+                            <br />
+                            <label style="margin-top:10px;">Keywords:</label>
+                            <asp:TextBox ID="TextBox5" runat="server" TextMode="MultiLine" class="form-control" placeholder="Keywords..."></asp:TextBox>
+
+                            <br />
+                            <label style="margin-top:10px;">Style-A-Likes:</label>
+                            <asp:TextBox ID="TextBox6" runat="server" TextMode="MultiLine" class="form-control" placeholder="Style-A-Likes..."></asp:TextBox>
+
+                             <br />
+                            <div><asp:Button ID="Button2" runat="server" Text="Apply Changes" CssClass="btn btn-success form-control" style="margin-top:25px;" OnClick="btnAddTracktoBD_Click"/></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                </div>
+            </div>
+                <!-- Termina Pop up-->
     </div>
+ </div>
+
+        <script>
+            function openModalEditTrack() {
+                $('#TrackToEdit').modal('show');
+            }
+        </script>
+
 </asp:Content>

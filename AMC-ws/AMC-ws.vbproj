@@ -157,6 +157,7 @@
     <Content Include="project.aspx" />
     <Content Include="Publishers.aspx" />
     <Content Include="signin.aspx" />
+    <Content Include="Users.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -366,6 +367,13 @@
     </Compile>
     <Compile Include="signin.aspx.vb">
       <DependentUpon>signin.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Users.aspx.designer.vb">
+      <DependentUpon>Users.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users.aspx.vb">
+      <DependentUpon>Users.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="WebForm2.aspx.designer.vb">
