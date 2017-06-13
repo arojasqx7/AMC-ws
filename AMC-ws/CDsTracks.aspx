@@ -4,6 +4,12 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<style type="text/css">
+     .hidden
+     {
+         display:none;
+     }
+</style>
     <div class="bodyBg">
         <div class="content container">
             <div class="container">
@@ -69,27 +75,39 @@
                             </SelectParameters>
                         </asp:SqlDataSource>
 
-                        <asp:GridView ID="GridTracksInCD" runat="server" style="margin-left:110px;" AutoGenerateColumns="False" DataSourceID="SqlTracksInCD" Width="590px" Visible="False" CssClass="table table-bordered" AlternatingRowStyle-BackColor="#d3d3d3" ShowHeader="False">
+                        <!-- ************ GRID TRACKS IN CD -->
+
+                        <asp:GridView ID="GridTracksInCD" runat="server" style="margin-left:110px;" AutoGenerateColumns="False" DataSourceID="SqlTracksInCD" Width="590px" Visible="False" CssClass="table table-bordered" AlternatingRowStyle-BackColor="#d3d3d3" ShowHeader="False" OnSelectedIndexChanged="GridTracksInCD_SelectedIndexChanged">
                             <AlternatingRowStyle BackColor="LightGray"></AlternatingRowStyle>
                             <Columns>
+                                <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
                                  <asp:BoundField DataField="track_number" HeaderText="Track #" SortExpression="track_number" HeaderStyle-Width="20%" ItemStyle-Width="20%" >
                                     <HeaderStyle Width="20%"></HeaderStyle>
                                     <ItemStyle Width="20%"></ItemStyle>
                                  </asp:BoundField>
                                  <asp:BoundField DataField="title" HeaderText="Track Name" SortExpression="title" />
-                                 <asp:TemplateField ShowHeader="False">
+                                 <asp:BoundField DataField="fk_cd_id" HeaderText="fk_cd_id" SortExpression="fk_cd_id" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                                 <asp:BoundField DataField="descrip" HeaderText="descrip" SortExpression="descrip" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                                 <asp:BoundField DataField="sounds_like" HeaderText="sounds_like" SortExpression="sounds_like" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                                 <asp:BoundField DataField="keywords" HeaderText="keywords" SortExpression="keywords" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" /> 
+                                 <asp:BoundField DataField="instruments" HeaderText="instruments" SortExpression="instruments" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" /> 
+                                <asp:TemplateField ShowHeader="False">
                                      <ItemTemplate>
-                                         <asp:LinkButton ID="LinkTrackDetails" runat="server" CausesValidation="false" CommandName="" Text="Details" OnClick="LinkTrackDetails_Click"></asp:LinkButton>
+                                         <asp:LinkButton ID="LinkTrackDetails" runat="server" CausesValidation="false" CommandName="Select" Text="Details"></asp:LinkButton>
                                      </ItemTemplate>
                                  </asp:TemplateField>
-                                 <asp:HyperLinkField Text="Composers" />
+                                 <asp:TemplateField ShowHeader="False">
+                                     <ItemTemplate>
+                                         <asp:LinkButton ID="LinkAddComposers" runat="server" CausesValidation="false" CommandName="" Text="Composers" OnClick="LinkAddComposers_Click"></asp:LinkButton>
+                                     </ItemTemplate>
+                                 </asp:TemplateField>
                                  <asp:HyperLinkField Text="Sound Clips" />
                                  <asp:HyperLinkField Text="Delete" ControlStyle-ForeColor="Red">
                                     <ControlStyle ForeColor="Red"></ControlStyle>
                                  </asp:HyperLinkField>
                             </Columns>
                         </asp:GridView>
-                        <asp:SqlDataSource ID="SqlTracksInCD" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [track_number], [title] FROM [tracks] WHERE ([fk_cd_id] = @fk_cd_id)">
+                        <asp:SqlDataSource ID="SqlTracksInCD" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [id],[track_number], [title],[fk_cd_id],[descrip],[sounds_like],[keywords],[instruments] FROM [tracks] WHERE ([fk_cd_id] = @fk_cd_id)">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="DropDownCDS" Name="fk_cd_id" PropertyName="SelectedValue" Type="Int64" />
                             </SelectParameters>
@@ -657,44 +675,46 @@
                 <div class="modal-content" style="width:640px;">
                     <div class="modal-header song_sel_panel-header"> 
                       <button type="button" class="close" data-dismiss="modal">×</button>
-                      <h3 class="modal-title"> <span class="glyphicon glyphicon-music"></span>        Add new Track</h3>
+                      <h3 class="modal-title"> <span class="glyphicon glyphicon-music"></span>        Edit Track</h3>
                     </div>
 
                     <div class="modal-body" style="width:600px;">
 
                         <div class="input-group" style="width:610px;">
+
+                            <asp:HiddenField ID="hd_trackID" Value='<%# Eval("id") %>' runat="server"/>
+
                             <label>CD:</label>
-                            <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlCDS2" AppendDataBoundItems="true" CssClass="form-control" DataTextField="cdResult" DataValueField="id">
-                                <asp:ListItem Text="Select a CD" Value="" />
+                            <asp:DropDownList ID="DropDownCD_Edit" runat="server" DataSourceID="SqlCDS2" CssClass="form-control" DataTextField="cdResult" DataValueField="id">
                             </asp:DropDownList>
                             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [id], CONCAT([cd_number] ,' - ', [cd_title]) AS cdResult FROM [cd] ORDER BY [cd_number]"></asp:SqlDataSource>
 
                             <br />
                             <label style="margin-top:10px;">Track Number:</label>
-                            <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Track Number.." TextMode="Number" MaxLength="2"></asp:TextBox>
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" ControlToValidate="txtTrackNo" runat="server" ErrorMessage="Only Numbers allowed" ValidationExpression="\d+" ForeColor="Red"></asp:RegularExpressionValidator>
+                            <asp:TextBox ID="txtTrackNo_Edit" runat="server" class="form-control" placeholder="Track Number.." TextMode="Number" MaxLength="2"></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" ControlToValidate="txtTrackNo_Edit" runat="server" ErrorMessage="Only Numbers allowed" ValidationExpression="\d+" ForeColor="Red"></asp:RegularExpressionValidator>
 
                             <br />
                             <label style="margin-top:10px;">Track Title:</label>
-                            <asp:TextBox ID="TextBox2" runat="server" class="form-control" placeholder="Track Title.." ></asp:TextBox>
+                            <asp:TextBox ID="txtTrackTitle_Edit" runat="server" class="form-control" placeholder="Track Title.." ></asp:TextBox>
 
                             <br />
                             <label style="margin-top:10px;">Description:</label>
-                            <asp:TextBox ID="TextBox3" runat="server" TextMode="MultiLine" class="form-control" placeholder="Description..."></asp:TextBox>
+                            <asp:TextBox ID="txtTrackDesc_Edit" runat="server" TextMode="MultiLine" class="form-control" placeholder="Description..."></asp:TextBox>
 
                             <br />
 
                             <div class="panel panel-default" style="margin-top: 70px;">
-                                <div class="panel-heading" role="tab" id="headingSix">
+                                <div class="panel-heading" role="tab" id="headingNin">
                                     <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree"><span class="glyphicon glyphicon-sort"></span>Tempo </a>
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix"><span class="glyphicon glyphicon-sort"></span>Tempo </a>
                                     </h4>
                                 </div>
-                                <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNin">
                                     <div class="panel-body">
-                                        <div id="collapseOne6" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFour">
+                                        <div id="collapseOne9" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingNin">
                                             <div class="panel-body">
-                                                <asp:Table ID="Table4" runat="server" >
+                                                <asp:Table ID="TableTemposEdit" runat="server" >
                                                     <asp:TableRow> 
                                                         <asp:TableCell CssClass="col-md-4"><asp:CheckBox ID="CheckBox234" runat="server" Text="Slow Tempo" /></asp:TableCell>
                                                     </asp:TableRow>
@@ -718,12 +738,12 @@
                             </div>
 
                             <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingFive">
+                                <div class="panel-heading" role="tab" id="headingTen">
                                     <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><span class="glyphicon glyphicon-sort"></span>Genre</a>
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive"><span class="glyphicon glyphicon-sort"></span>Genre</a>
                                     </h4>
                                 </div>
-                                <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTen">
                                     <div class="panel-body">
                                         <div id="collapseOne5" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                             <div class="panel-body">
@@ -930,31 +950,77 @@
                             </div>
 
                             <label >Instruments:</label>
-                            <asp:TextBox ID="TextBox4" runat="server" TextMode="MultiLine" class="form-control" placeholder="Instruments..."></asp:TextBox>
+                            <asp:TextBox ID="txtInstruments_Edit" runat="server" TextMode="MultiLine" class="form-control" placeholder="Instruments..."></asp:TextBox>
 
                             <br />
                             <label style="margin-top:10px;">Keywords:</label>
-                            <asp:TextBox ID="TextBox5" runat="server" TextMode="MultiLine" class="form-control" placeholder="Keywords..."></asp:TextBox>
+                            <asp:TextBox ID="txtKeywords_Edit" runat="server" TextMode="MultiLine" class="form-control" placeholder="Keywords..."></asp:TextBox>
 
                             <br />
                             <label style="margin-top:10px;">Style-A-Likes:</label>
-                            <asp:TextBox ID="TextBox6" runat="server" TextMode="MultiLine" class="form-control" placeholder="Style-A-Likes..."></asp:TextBox>
+                            <asp:TextBox ID="txtStyles_Edit" runat="server" TextMode="MultiLine" class="form-control" placeholder="Style-A-Likes..."></asp:TextBox>
 
                              <br />
-                            <div><asp:Button ID="Button2" runat="server" Text="Apply Changes" CssClass="btn btn-success form-control" style="margin-top:25px;" OnClick="btnAddTracktoBD_Click"/></div>
+                            <div><asp:Button ID="btnApplyEdit" runat="server" Text="Apply Changes" CssClass="btn btn-success form-control" style="margin-top:25px;" OnClick="btnApplyEdit_Click"/></div>
                         </div>
                         
                     </div>
                 </div>
                 </div>
             </div>
-                <!-- Termina Pop up-->
-    </div>
+            </div> <!-- Termina Pop up-->
+            
+           <!--Edit Composers Pop Up-->
+            <div class="modal fade" id="EditComposers">
+              <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header song_sel_panel-header"> 
+                      <button type="button" class="close" data-dismiss="modal">×</button>
+                      <h3 class="modal-title"> <span class="glyphicon glyphicon-align-left"></span>        Edit Composers</h3>
+                    </div>
+
+                    <div class="modal-body">    
+                        <div class="input-group"> 
+                            <label>Add Composer:</label>
+                            <asp:DropDownList ID="DropDownComposersToAdd" runat="server" DataSourceID="SqlComposersList" CssClass="form-control" AppendDataBoundItems="true" DataTextField="ComposerName" DataValueField="id">
+                                <asp:ListItem Text="Select a Composer" Value=""></asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:SqlDataSource ID="SqlComposersList" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [id], CONCAT([lname] , ' , ' , [fname]) AS ComposerName FROM [composers] ORDER BY [ComposerName]"></asp:SqlDataSource>
+                            <br />
+                            <div><asp:Button ID="btnAddComposerToTrack" runat="server" Text="Add" CssClass="btn btn-success form-control" style="margin-top:25px;"/></div>
+                            <br />
+                            <br />
+                            <label style="margin-top:20px;">Entered Composer(s) for</label> <asp:Label ID="lblTrackName" runat="server" style="margin-top:20px;"> </asp:Label>
+                            <asp:GridView ID="GridEditComposersInList" runat="server">
+
+                            </asp:GridView>
+                        
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        <!-- Termina Pop up-->
+
+    
  </div>
 
+    <script src="dist/sweetalert.min.js"></script>
         <script>
             function openModalEditTrack() {
                 $('#TrackToEdit').modal('show');
+            }
+
+            function openModalEditComposer() {
+                $('#EditComposers').modal('show');
+            }
+
+            function SuccessUpdated() {
+                swal({
+                    title: 'Track Updated',
+                    text:  'Track has been updated sucessfully',
+                    type:  'success'
+                });
             }
         </script>
 
