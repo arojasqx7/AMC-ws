@@ -54,14 +54,12 @@ Public Class project
     End Sub
 
     Protected Sub BindGridTracksInProject()
-
-        Dim sqlConnection1 As New System.Data.SqlClient.SqlConnection(connection)
+        Dim sqlConnection1 As New SqlConnection(connection)
         sqlConnection1.Open()
         Dim query As String = "SELECT [map_projects].[fk_trackID],[tracks].[title] FROM [tracks] JOIN [map_projects] ON [tracks].[id] = [map_projects].[fk_trackID] JOIN [projects] ON [map_projects].[fk_projectID] = [projects].[id] JOIN [users] ON [projects].[fk_userID] = [users].[id] WHERE [projectName]='" & Me.DD_project1.SelectedValue & "' AND [users].[username] ='" & Session("Username") & "' ORDER BY [tracks].[title]"
         Dim Adpt As New SqlDataAdapter(query, sqlConnection1)
         Dim ds As New DataSet()
         Adpt.Fill(ds)
-        'ViewState("dt") = query
         GridTracksInProject.DataSource = ds
         GridTracksInProject.DataBind()
         sqlConnection1.Close()
