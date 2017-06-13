@@ -3,6 +3,10 @@
 Public Class CDsTracks
     Inherits System.Web.UI.Page
 
+#Region "Conn String"
+    Dim connection As String = "Data Source=.\SQLEXPRESS;Initial Catalog=AMC;Integrated Security=True;"
+#End Region
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
     End Sub
 
@@ -74,8 +78,6 @@ Public Class CDsTracks
                 Next
             Next
         Next
-
-        'ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "SuccessAdded();", True)
         Response.Redirect("CDsTracks.aspx")
     End Sub
 
@@ -84,7 +86,35 @@ Public Class CDsTracks
         GridTracksInCD.Visible = True
     End Sub
 
-    Protected Sub LinkTrackDetails_Click(sender As Object, e As EventArgs)
+
+    Protected Sub GridTracksInCD_SelectedIndexChanged(sender As Object, e As EventArgs)
         ScriptManager.RegisterStartupScript(Me, Page.GetType(), "Popup", "openModalEditTrack();", True)
+        hd_trackID.Value = GridTracksInCD.SelectedRow.Cells(0).Text
+        DropDownCD_Edit.SelectedItem.Text = DropDownCDS.SelectedItem.Text
+        txtTrackNo_Edit.Text = GridTracksInCD.SelectedRow.Cells(1).Text
+        txtTrackTitle_Edit.Text = GridTracksInCD.SelectedRow.Cells(2).Text
+        txtTrackDesc_Edit.Text = GridTracksInCD.SelectedRow.Cells(4).Text.Replace("&nbsp;", "")
+        txtStyles_Edit.Text = GridTracksInCD.SelectedRow.Cells(5).Text.Replace("&nbsp;", "")
+        txtKeywords_Edit.Text = GridTracksInCD.SelectedRow.Cells(6).Text.Replace("&nbsp;", "")
+        txtInstruments_Edit.Text = GridTracksInCD.SelectedRow.Cells(7).Text.Replace("&nbsp;", "")
+    End Sub
+
+    Protected Sub btnApplyEdit_Click(sender As Object, e As EventArgs)
+        'Me.hd_trackID.Value = GridTracksInCD.SelectedRow.Cells(0).Text
+        Dim sqlConnection1 As New SqlClient.SqlConnection(connection)
+        Dim cmd As New SqlClient.SqlCommand
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = "UPDATE [tracks] SET [fk_cd_id] = '" & DropDownCD_Edit.SelectedItem.Value & "', [track_number] = '" & txtTrackNo_Edit.Text & "', [title] = '" & txtTrackTitle_Edit.Text & "', [descrip] = '" & txtTrackDesc_Edit.Text & "', [sounds_like] = '" & txtStyles_Edit.Text & "', [keywords] = '" & txtKeywords_Edit.Text & "', [instruments] = '" & txtInstruments_Edit.Text & "' WHERE [id]='" & hd_trackID.Value & "'"
+        cmd.Connection = sqlConnection1
+        sqlConnection1.Open()
+        cmd.ExecuteNonQuery()
+        GridTracksInCD.DataBind()
+        GridCDSelected.DataBind()
+        ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "SuccessUpdated();", True)
+        sqlConnection1.Close()
+    End Sub
+
+    Protected Sub LinkAddComposers_Click(sender As Object, e As EventArgs)
+        ScriptManager.RegisterStartupScript(Me, Page.GetType(), "Popup", "openModalEditComposer();", True)
     End Sub
 End Class

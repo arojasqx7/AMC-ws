@@ -54,7 +54,6 @@
         GridUserBlanket.DataBind()
         ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "SuccessUpdated();", True)
         sqlConnection1.Close()
-
     End Sub
 
     Protected Sub btnDeleteUser_Click(sender As Object, e As EventArgs)

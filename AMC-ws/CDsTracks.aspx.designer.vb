@@ -2363,13 +2363,22 @@ Partial Public Class CDsTracks
     Protected WithEvents btnAddTracktoBD As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
-    '''DropDownList1 control.
+    '''hd_trackID control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DropDownList1 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents hd_trackID As Global.System.Web.UI.WebControls.HiddenField
+    
+    '''<summary>
+    '''DropDownCD_Edit control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DropDownCD_Edit As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
     '''SqlDataSource1 control.
@@ -2381,13 +2390,13 @@ Partial Public Class CDsTracks
     Protected WithEvents SqlDataSource1 As Global.System.Web.UI.WebControls.SqlDataSource
     
     '''<summary>
-    '''TextBox1 control.
+    '''txtTrackNo_Edit control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtTrackNo_Edit As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
     '''RegularExpressionValidator2 control.
@@ -2399,31 +2408,31 @@ Partial Public Class CDsTracks
     Protected WithEvents RegularExpressionValidator2 As Global.System.Web.UI.WebControls.RegularExpressionValidator
     
     '''<summary>
-    '''TextBox2 control.
+    '''txtTrackTitle_Edit control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox2 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtTrackTitle_Edit As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''TextBox3 control.
+    '''txtTrackDesc_Edit control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox3 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtTrackDesc_Edit As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Table4 control.
+    '''TableTemposEdit control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Table4 As Global.System.Web.UI.WebControls.Table
+    Protected WithEvents TableTemposEdit As Global.System.Web.UI.WebControls.Table
     
     '''<summary>
     '''CheckBox234 control.
@@ -3506,38 +3515,83 @@ Partial Public Class CDsTracks
     Protected WithEvents CheckBox352 As Global.System.Web.UI.WebControls.CheckBox
     
     '''<summary>
-    '''TextBox4 control.
+    '''txtInstruments_Edit control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox4 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtInstruments_Edit As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''TextBox5 control.
+    '''txtKeywords_Edit control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox5 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtKeywords_Edit As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''TextBox6 control.
+    '''txtStyles_Edit control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox6 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtStyles_Edit As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Button2 control.
+    '''btnApplyEdit control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Button2 As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents btnApplyEdit As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''DropDownComposersToAdd control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DropDownComposersToAdd As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''SqlComposersList control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SqlComposersList As Global.System.Web.UI.WebControls.SqlDataSource
+    
+    '''<summary>
+    '''btnAddComposerToTrack control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnAddComposerToTrack As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''lblTrackName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblTrackName As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''GridEditComposersInList control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents GridEditComposersInList As Global.System.Web.UI.WebControls.GridView
 End Class
