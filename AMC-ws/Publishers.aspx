@@ -76,7 +76,7 @@
 
                    <section class="col-sm-9" style="margin-left:100px;">
                          <br />
-                       <asp:GridView ID="GridPublishers" runat="server" EnableViewState="True"  AutoGenerateColumns="False" DataSourceID="SqlPublishers" Width="500px" CssClass="table table-bordered" DataKeyNames="id">
+                       <asp:GridView ID="GridPublishers" runat="server" EnableViewState="True"  AutoGenerateColumns="False" DataSourceID="SqlPublishers" Width="500px" CssClass="table table-bordered table-hover" DataKeyNames="id">
                            <Columns>                             
                                <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" InsertVisible="False" ReadOnly="false" Visible="false"/>
                                <asp:BoundField DataField="name" HeaderText="Publisher Name" SortExpression="name" />
@@ -91,9 +91,11 @@
                                     </ItemTemplate>
                                     <ControlStyle ForeColor="Blue" />
                                </asp:TemplateField>
-                               <asp:CommandField ShowDeleteButton="True" ControlStyle-ForeColor="Red">      
-                                <ControlStyle ForeColor="Red"></ControlStyle>
-                               </asp:CommandField>
+                               <asp:TemplateField ShowHeader="False">
+                                     <ItemTemplate>
+                                         <asp:LinkButton ID="LinkDeletePublisher" runat="server" CausesValidation="false"  CommandName="Delete" Text="Delete" OnClientClick="return confirm('Are you sure you want to delete this publisher?');" ForeColor="Red"></asp:LinkButton>
+                                     </ItemTemplate>
+                                 </asp:TemplateField>
                            </Columns>
                          </asp:GridView>
                          <asp:SqlDataSource ID="SqlPublishers" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT * FROM [publishers] ORDER BY [name]" DeleteCommand="DELETE FROM [publishers] WHERE [id] = @id" UpdateCommand="UPDATE [publishers] SET [name] = @name, [alias] = @alias WHERE [id] = @id">

@@ -3551,6 +3551,15 @@ Partial Public Class CDsTracks
     Protected WithEvents btnApplyEdit As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
+    '''HiddenFieldTrackIDToComposer control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents HiddenFieldTrackIDToComposer As Global.System.Web.UI.WebControls.HiddenField
+    
+    '''<summary>
     '''DropDownComposersToAdd control.
     '''</summary>
     '''<remarks>
@@ -3594,4 +3603,94 @@ Partial Public Class CDsTracks
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents GridEditComposersInList As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''SqlComposersPerTrack control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SqlComposersPerTrack As Global.System.Web.UI.WebControls.SqlDataSource
+    
+    '''<summary>
+    '''HiddenFieldIDSoundClip control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents HiddenFieldIDSoundClip As Global.System.Web.UI.WebControls.HiddenField
+    
+    '''<summary>
+    '''lblTrackNameInClips control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblTrackNameInClips As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''DropClipLength control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DropClipLength As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''DropDigFormat control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DropDigFormat As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''txtClipDuration control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtClipDuration As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''FileUpload1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents FileUpload1 As Global.System.Web.UI.WebControls.FileUpload
+    
+    '''<summary>
+    '''btnAddClip control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnAddClip As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''GridClips control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents GridClips As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''SqlGridClips control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SqlGridClips As Global.System.Web.UI.WebControls.SqlDataSource
 End Class

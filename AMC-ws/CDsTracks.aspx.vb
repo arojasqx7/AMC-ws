@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.IO
 
 Public Class CDsTracks
     Inherits System.Web.UI.Page
@@ -90,6 +91,7 @@ Public Class CDsTracks
     Protected Sub GridTracksInCD_SelectedIndexChanged(sender As Object, e As EventArgs)
         ScriptManager.RegisterStartupScript(Me, Page.GetType(), "Popup", "openModalEditTrack();", True)
         hd_trackID.Value = GridTracksInCD.SelectedRow.Cells(0).Text
+        HiddenFieldTrackIDToComposer.Value = GridTracksInCD.SelectedRow.Cells(0).Text
         DropDownCD_Edit.SelectedItem.Text = DropDownCDS.SelectedItem.Text
         txtTrackNo_Edit.Text = GridTracksInCD.SelectedRow.Cells(1).Text
         txtTrackTitle_Edit.Text = GridTracksInCD.SelectedRow.Cells(2).Text
@@ -97,6 +99,9 @@ Public Class CDsTracks
         txtStyles_Edit.Text = GridTracksInCD.SelectedRow.Cells(5).Text.Replace("&nbsp;", "")
         txtKeywords_Edit.Text = GridTracksInCD.SelectedRow.Cells(6).Text.Replace("&nbsp;", "")
         txtInstruments_Edit.Text = GridTracksInCD.SelectedRow.Cells(7).Text.Replace("&nbsp;", "")
+        lblTrackName.Text = txtTrackTitle_Edit.Text
+        lblTrackNameInClips.Text = txtTrackTitle_Edit.Text
+        'HiddenFieldIDSoundClip.Value = GridClips.SelectedRow.Cells(0).Text
     End Sub
 
     Protected Sub btnApplyEdit_Click(sender As Object, e As EventArgs)
@@ -117,4 +122,28 @@ Public Class CDsTracks
     Protected Sub LinkAddComposers_Click(sender As Object, e As EventArgs)
         ScriptManager.RegisterStartupScript(Me, Page.GetType(), "Popup", "openModalEditComposer();", True)
     End Sub
+
+    Protected Sub btnAddComposerToTrack_Click(sender As Object, e As EventArgs)
+        Dim t_MapComposersTracks = New DataSet2.map_composers_tracksDataTable()
+        Dim adapter3 = New DataSet2TableAdapters.map_composers_tracksTableAdapter()
+        adapter3.Insert(HiddenFieldTrackIDToComposer.Value, DropDownComposersToAdd.SelectedItem.Value)
+        ScriptManager.RegisterStartupScript(Me, Page.GetType(), "Popup", "ComposerAdded();", True)
+        GridEditComposersInList.DataBind()
+    End Sub
+
+    Protected Sub LinkSoundClips_Click(sender As Object, e As EventArgs)
+        ScriptManager.RegisterStartupScript(Me, Page.GetType(), "Popup", "openModalSoundClips();", True)
+    End Sub
+
+    Protected Sub btnAddClip_Click(sender As Object, e As EventArgs)
+        Dim t_MapClips = New DataSet2.map_clipsDataTable()
+        Dim adapter4 = New DataSet2TableAdapters.map_clipsTableAdapter()
+        Dim filename As String = Path.GetFileName(FileUpload1.PostedFile.FileName)
+        adapter4.Insert(HiddenFieldTrackIDToComposer.Value, DropClipLength.SelectedItem.Value, DropDigFormat.SelectedItem.Value, txtClipDuration.Text)
+        FileUpload1.PostedFile.SaveAs((Server.MapPath("~/SoundClips/") + filename))
+        ScriptManager.RegisterStartupScript(Me, Page.GetType(), "Popup", "ClipAdded();", True)
+        Response.Redirect("CDsTracks.aspx")
+    End Sub
+
+
 End Class

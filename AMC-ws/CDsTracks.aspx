@@ -26,9 +26,9 @@
                         <div class="form-group">
                             <div class="col-sm-10">
                                 <br />
-                                <button id="btnAddCD" runat="server" type="button" class="btn btn-search" data-toggle="modal" data-target="#newCD" style="margin-left: 90px;"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add a CD </button>
-                                <button id="btnAddTrack" runat="server" type="button" class="btn btn-search" data-toggle="modal" data-target="#newTrack" style="margin-left: 20px;"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add a Track </button>
-                                <button id="Button1" runat="server" type="button" class="btn btn-search" data-toggle="modal" data-target="#ViewIDTrack" style="margin-left: 20px;"> View ID numbers of Tracks</button>
+                                <button id="btnAddCD" runat="server" type="button" class="btn btn-primary" data-toggle="modal" data-target="#newCD" style="margin-left: 90px;">Add a CD </button>
+                                <button id="btnAddTrack" runat="server" type="button" class="btn btn-danger" data-toggle="modal" data-target="#newTrack" style="margin-left: 20px;">Add a Track </button>
+                                <button id="Button1" runat="server" type="button" class="btn btn-default" data-toggle="modal" data-target="#ViewIDTrack" style="margin-left: 20px;"> View ID numbers of Tracks</button>
                             </div>
                         </div>
                     </section>
@@ -77,10 +77,10 @@
 
                         <!-- ************ GRID TRACKS IN CD -->
 
-                        <asp:GridView ID="GridTracksInCD" runat="server" style="margin-left:110px;" AutoGenerateColumns="False" DataSourceID="SqlTracksInCD" Width="590px" Visible="False" CssClass="table table-bordered" AlternatingRowStyle-BackColor="#d3d3d3" ShowHeader="False" OnSelectedIndexChanged="GridTracksInCD_SelectedIndexChanged">
+                        <asp:GridView ID="GridTracksInCD" runat="server" style="margin-left:110px;" DataKeyNames="TrackId" AutoGenerateColumns="False" DataSourceID="SqlTracksInCD" Width="590px" Visible="False" CssClass="table table-bordered" AlternatingRowStyle-BackColor="#d3d3d3" ShowHeader="False" OnSelectedIndexChanged="GridTracksInCD_SelectedIndexChanged">
                             <AlternatingRowStyle BackColor="LightGray"></AlternatingRowStyle>
                             <Columns>
-                                <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
+                                <asp:BoundField DataField="TrackId" HeaderText="TrackId" SortExpression="TrackId" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
                                  <asp:BoundField DataField="track_number" HeaderText="Track #" SortExpression="track_number" HeaderStyle-Width="20%" ItemStyle-Width="20%" >
                                     <HeaderStyle Width="20%"></HeaderStyle>
                                     <ItemStyle Width="20%"></ItemStyle>
@@ -98,16 +98,26 @@
                                  </asp:TemplateField>
                                  <asp:TemplateField ShowHeader="False">
                                      <ItemTemplate>
-                                         <asp:LinkButton ID="LinkAddComposers" runat="server" CausesValidation="false" CommandName="" Text="Composers" OnClick="LinkAddComposers_Click"></asp:LinkButton>
+                                         <asp:LinkButton ID="LinkAddComposers" runat="server" CausesValidation="false" CommandName="Select" Text="Composers" OnClick="LinkAddComposers_Click"></asp:LinkButton>
                                      </ItemTemplate>
                                  </asp:TemplateField>
-                                 <asp:HyperLinkField Text="Sound Clips" />
-                                 <asp:HyperLinkField Text="Delete" ControlStyle-ForeColor="Red">
-                                    <ControlStyle ForeColor="Red"></ControlStyle>
-                                 </asp:HyperLinkField>
+                                 <asp:TemplateField ShowHeader="False">
+                                     <ItemTemplate>
+                                         <asp:LinkButton ID="LinkSoundClips" runat="server" CausesValidation="false" CommandName="Select" Text="Sound Clips" OnClick="LinkSoundClips_Click"></asp:LinkButton>
+                                     </ItemTemplate>
+                                 </asp:TemplateField>
+                                <asp:TemplateField ShowHeader="False">
+                                     <ItemTemplate>
+                                         <asp:LinkButton ID="LinkDeleteTrack" runat="server" CausesValidation="false"  CommandName="Delete" Text="Delete" OnClientClick="return confirm('Are you sure you want to delete this track?');" ForeColor="Red"></asp:LinkButton>
+                                     </ItemTemplate>
+                                 </asp:TemplateField>
                             </Columns>
                         </asp:GridView>
-                        <asp:SqlDataSource ID="SqlTracksInCD" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [id],[track_number], [title],[fk_cd_id],[descrip],[sounds_like],[keywords],[instruments] FROM [tracks] WHERE ([fk_cd_id] = @fk_cd_id)">
+
+                        <asp:SqlDataSource ID="SqlTracksInCD" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [id] AS TrackId,[track_number], [title],[fk_cd_id],[descrip],[sounds_like],[keywords],[instruments] FROM [tracks] WHERE ([fk_cd_id] = @fk_cd_id)" DeleteCommand="DELETE FROM [tracks] WHERE [id]=@TrackId">
+                            <DeleteParameters>
+                                <asp:ControlParameter ControlID="hd_trackID"  Name="TrackId" PropertyName="Value" Type="Int64" />
+                            </DeleteParameters>
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="DropDownCDS" Name="fk_cd_id" PropertyName="SelectedValue" Type="Int64" />
                             </SelectParameters>
@@ -127,7 +137,7 @@
                     </div>
 
                     <div class="modal-body" style="width:610px;">
-
+                       
                         <div class="input-group" style="width:575px;">
                             <label>Catalog Number:</label>
                             <asp:TextBox ID="txtCatalogNo" runat="server" class="form-control" placeholder="Catalog Number.."></asp:TextBox>
@@ -682,7 +692,7 @@
 
                         <div class="input-group" style="width:610px;">
 
-                            <asp:HiddenField ID="hd_trackID" Value='<%# Eval("id") %>' runat="server"/>
+                            <asp:HiddenField ID="hd_trackID" Value='<%# Eval("TrackId") %>' runat="server"/>
 
                             <label>CD:</label>
                             <asp:DropDownList ID="DropDownCD_Edit" runat="server" DataSourceID="SqlCDS2" CssClass="form-control" DataTextField="cdResult" DataValueField="id">
@@ -972,29 +982,124 @@
             
            <!--Edit Composers Pop Up-->
             <div class="modal fade" id="EditComposers">
-              <div class="modal-dialog modal-sm">
-                <div class="modal-content">
+              <div class="modal-dialog modal-sm" style="width:400px;">
+                <div class="modal-content" style="width:400px;">
                     <div class="modal-header song_sel_panel-header"> 
                       <button type="button" class="close" data-dismiss="modal">×</button>
                       <h3 class="modal-title"> <span class="glyphicon glyphicon-align-left"></span>        Edit Composers</h3>
                     </div>
 
-                    <div class="modal-body">    
-                        <div class="input-group"> 
+                    <div class="modal-body" style="width:400px;">    
+                        <div class="input-group" style="width:350px;"> 
                             <label>Add Composer:</label>
+                             <asp:HiddenField ID="HiddenFieldTrackIDToComposer" Value='<%# Eval("TrackId") %>' runat="server"/>
                             <asp:DropDownList ID="DropDownComposersToAdd" runat="server" DataSourceID="SqlComposersList" CssClass="form-control" AppendDataBoundItems="true" DataTextField="ComposerName" DataValueField="id">
                                 <asp:ListItem Text="Select a Composer" Value=""></asp:ListItem>
                             </asp:DropDownList>
                             <asp:SqlDataSource ID="SqlComposersList" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [id], CONCAT([lname] , ' , ' , [fname]) AS ComposerName FROM [composers] ORDER BY [ComposerName]"></asp:SqlDataSource>
                             <br />
-                            <div><asp:Button ID="btnAddComposerToTrack" runat="server" Text="Add" CssClass="btn btn-success form-control" style="margin-top:25px;"/></div>
+                            <div><asp:Button ID="btnAddComposerToTrack" runat="server" Text="Add" CssClass="btn btn-success form-control" style="margin-top:25px;" OnClick="btnAddComposerToTrack_Click"/></div>
                             <br />
                             <br />
-                            <label style="margin-top:20px;">Entered Composer(s) for</label> <asp:Label ID="lblTrackName" runat="server" style="margin-top:20px;"> </asp:Label>
-                            <asp:GridView ID="GridEditComposersInList" runat="server">
 
+                            <label style="margin-top:20px;">Entered Composer(s) for</label> <asp:Label ID="lblTrackName" runat="server" style="margin-top:20px;margin-left:10px;"> </asp:Label>
+                             
+                            <asp:GridView ID="GridEditComposersInList" runat="server" DataKeyNames="MCT_Id" AutoGenerateColumns="False" DataSourceID="SqlComposersPerTrack" CssClass="table table-bordered" ShowHeader="False" style="margin-top:20px;">
+                                <Columns>
+<%--                                     <asp:BoundField DataField="TrackId" HeaderText="TrackId" SortExpression="TrackId" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />--%>
+                                     <asp:BoundField DataField="MCT_Id" HeaderText="MCT_Id" SortExpression="MCT_Id" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                                     <asp:BoundField DataField="ComposerName" HeaderText="ComposerName" SortExpression="ComposerName" />
+                                       <asp:TemplateField ShowHeader="False">
+                                         <ItemTemplate>
+                                             <asp:LinkButton ID="LinkDeleteComposerInGrid" runat="server" CausesValidation="false"  CommandName="Delete" Text="Delete" OnClientClick="return confirm('Are you sure you want to delete this composer?');" ForeColor="Red"></asp:LinkButton>
+                                         </ItemTemplate>
+                                     </asp:TemplateField>
+                                </Columns>
                             </asp:GridView>
-                        
+                             <asp:SqlDataSource ID="SqlComposersPerTrack" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [map_composers_tracks].[id] AS MCT_Id, CONCAT([lname] , ' , ' , [fname]) AS ComposerName FROM [composers] INNER JOIN [map_composers_tracks] ON [composers].[id] = [map_composers_tracks].[fk_composer_id] INNER JOIN [tracks] ON [map_composers_tracks].[fk_track_id] = [tracks].[id] WHERE [map_composers_tracks].[fk_track_id] = @TrackId" DeleteCommand="DELETE FROM [map_composers_tracks] WHERE [id] = @MCT_Id">
+                                 <DeleteParameters>
+                                     <asp:Parameter Name="MCT_Id" Type="Int64" />
+                                 </DeleteParameters>
+                                 <SelectParameters>
+                                     <asp:ControlParameter ControlID="HiddenFieldTrackIDToComposer" Name="TrackId" PropertyName="Value" Type="Int64" />
+                                 </SelectParameters>
+                             </asp:SqlDataSource>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        <!-- Termina Pop up-->
+
+         <!--Sound Clips Pop Up-->
+            <div class="modal fade" id="SoundClipsPopUp">
+              <div class="modal-dialog modal-sm" style="width:400px;">
+                <div class="modal-content" style="width:400px;">
+                    <div class="modal-header song_sel_panel-header"> 
+                      <button type="button" class="close" data-dismiss="modal">×</button>
+                      <h3 class="modal-title"> <span class="glyphicon glyphicon-save-file"></span>        Edit Sound Clips</h3>
+                    </div>
+
+                    <div class="modal-body" style="width:400px;">    
+                        <div class="input-group" style="width:350px;"> 
+                             <asp:HiddenField ID="HiddenFieldIDSoundClip" Value='<%# Eval("ClipID") %>' runat="server"/>
+                             <label>Add a Sound Clip for</label> <asp:Label ID="lblTrackNameInClips" runat="server" style="margin-left:10px;"> </asp:Label>
+                             <br />
+                            <label style="margin-top:10px;">Select Clip Length:</label>
+                            <asp:DropDownList ID="DropClipLength" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                <asp:ListItem Text="Choose:" Value=""></asp:ListItem>
+                                <asp:ListItem Text="Full" Value="Full"></asp:ListItem>
+                                <asp:ListItem Text="Sting" Value="Sting"></asp:ListItem>
+                                <asp:ListItem Text="Underscore" Value="Underscore"></asp:ListItem>
+                                <asp:ListItem Text="60 sec" Value="60"></asp:ListItem>
+                                <asp:ListItem Text="30 sec" Value="30"></asp:ListItem>
+                                <asp:ListItem Text="15 sec" Value="15"></asp:ListItem>                           
+                            </asp:DropDownList>
+                            <br />
+                            <label style="margin-top:10px;">Select Digital Format:</label>
+                            <asp:DropDownList ID="DropDigFormat" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                <asp:ListItem Text="Choose:" Value=""></asp:ListItem>
+                                <asp:ListItem Text="mp3" Value="mp3"></asp:ListItem>
+                                <asp:ListItem Text="wav" Value="wav"></asp:ListItem>
+                            </asp:DropDownList>
+                            <br />
+                            <label style="margin-top:10px;">Duration:</label>
+                            <asp:TextBox ID="txtClipDuration" runat="server" CssClass="form-control" placeholder="Ex: 3:35"></asp:TextBox>
+                            <br />
+                            <label style="margin-top:10px;">Upload the File:</label>
+                            <asp:FileUpload ID="FileUpload1" runat="server" CssClass="btn btn-default"/>
+                            <br />
+
+                            <div><asp:Button ID="btnAddClip" runat="server" Text="Add" CssClass="btn btn-success form-control" OnClick="btnAddClip_Click"/></div>
+                            <label style="margin-top:20px;">Existing Clips:</label>
+                            
+                            <asp:GridView ID="GridClips" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" style="margin-top:20px;" DataSourceID="SqlGridClips" DataKeyNames="ClipID">
+                                <Columns>
+                                    <asp:BoundField DataField="ClipID" HeaderText="ClipID" SortExpression="ClipID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                                    <asp:BoundField DataField="clip_length" HeaderText="Clip Length" SortExpression="clip_length"/>
+                                    <asp:BoundField DataField="digital_format" HeaderText="Digital Format" SortExpression="digital_format" />
+                                    <asp:BoundField DataField="duration" HeaderText="Duration" SortExpression="duration" />
+                                    <asp:TemplateField ShowHeader="False">
+                                     <ItemTemplate>
+                                         <asp:LinkButton ID="LinkListenSoundClip" runat="server" CausesValidation="false"  CommandName="Select" Text="Listen" ForeColor="Blue"></asp:LinkButton>
+                                     </ItemTemplate>
+                                 </asp:TemplateField>
+                                    <asp:TemplateField ShowHeader="False">
+                                     <ItemTemplate>
+                                         <asp:LinkButton ID="LinkDeleteSoundClip" runat="server" CausesValidation="false"  CommandName="Delete" Text="Delete" OnClientClick="return confirm('Are you sure you want to delete this sound Clip?');" ForeColor="Red"></asp:LinkButton>
+                                     </ItemTemplate>
+                                 </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
+
+                             <asp:SqlDataSource ID="SqlGridClips" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [id] AS ClipID,[clip_length],[digital_format],[duration] FROM [map_clips] WHERE ([fk_trackID] =@TrackId)" DeleteCommand="DELETE FROM [map_clips] WHERE [id] = @ClipId">
+                                 <DeleteParameters>
+                                     <asp:Parameter Name="ClipId" Type="Int64" />
+                                 </DeleteParameters>
+                                 <SelectParameters>
+                                     <asp:ControlParameter ControlID="HiddenFieldTrackIDToComposer" Name="TrackId" PropertyName="Value" Type="Int64" />
+                                 </SelectParameters>
+                             </asp:SqlDataSource>
                         </div>
                     </div>
                 </div>
@@ -1015,10 +1120,28 @@
                 $('#EditComposers').modal('show');
             }
 
+            function openModalSoundClips() {
+                $('#SoundClipsPopUp').modal('show');
+            }
+
             function SuccessUpdated() {
                 swal({
                     title: 'Track Updated',
                     text:  'Track has been updated sucessfully',
+                    type:  'success'
+                });
+            }
+            function ComposerAdded() {
+                swal({
+                    title: 'Composer Added',
+                    text: 'Composer has been added sucessfully',
+                    type: 'success'
+                });
+            }
+            function ClipAdded() {
+                swal({
+                    title: 'Clip Added',
+                    text:  'Sound Clip has been added sucessfully',
                     type:  'success'
                 });
             }
