@@ -75,7 +75,7 @@
 
                    <section class="col-sm-9" style="margin-left:100px;">
                          <br />
-                       <asp:GridView ID="GridComposers" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlComposerss" Width="601px" AllowPaging="True" PageSize="10" CssClass="table table-bordered">
+                       <asp:GridView ID="GridComposers" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlComposerss" Width="601px" AllowPaging="True" PageSize="10" CssClass="table table-bordered table-hover">
                            <Columns>
                                <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" Visible="false"/>
                                <asp:BoundField DataField="fname" HeaderText="First Name" SortExpression="fname" />
@@ -93,9 +93,11 @@
                                    </ItemTemplate>
                                    <ControlStyle ForeColor="Blue" />
                                </asp:TemplateField>
-                               <asp:CommandField ShowDeleteButton="True" ControlStyle-ForeColor="Red" >
-                                <ControlStyle ForeColor="Red"></ControlStyle>
-                               </asp:CommandField>
+                               <asp:TemplateField ShowHeader="False">
+                                     <ItemTemplate>
+                                         <asp:LinkButton ID="LinkDeleteComposer" runat="server" CausesValidation="false"  CommandName="Delete" Text="Delete" OnClientClick="return confirm('Are you sure you want to delete this composer?');" ForeColor="Red"></asp:LinkButton>
+                                     </ItemTemplate>
+                                 </asp:TemplateField>
                             </Columns>
                          </asp:GridView>
                          <asp:SqlDataSource ID="SqlComposerss" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" DeleteCommand="DELETE FROM [composers] WHERE [id] = @id" SelectCommand="SELECT DISTINCT (fname),(lname),id FROM [composers] ORDER BY [fname]" UpdateCommand="UPDATE [composers] SET [fname] = @fname, [middle_initial] = @middle_initial, [lname] = @lname, [fk_publisher] = @fk_publisher, [bio] = @bio WHERE [id] = @id">

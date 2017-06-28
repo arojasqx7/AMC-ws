@@ -55,7 +55,7 @@
                         <li><a href="Composers.aspx">Composers</a></li>
                         <li><a href="CDsTracks.aspx">CD´s & Tracks</a></li>
                         <li><a href="#">Licences</a></li>
-                        <li><a href="#">Client Activity</a></li>
+                        <li><a href="ClientActivity.aspx">Client Activity</a></li>
                         <li id="m_usuario" runat="server" visible="false" hidden="hidden"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                             aria-haspopup="true" aria-expanded="false" tag="username">
                             <asp:Label ID="L_UserName" runat="server" Text="Label"></asp:Label>
