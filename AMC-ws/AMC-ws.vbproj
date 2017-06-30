@@ -173,6 +173,7 @@
     <Content Include="catalog.aspx" />
     <Content Include="CDsTracks.aspx" />
     <Content Include="ClientActivity.aspx" />
+    <Content Include="clips\16_30.mp3" />
     <Content Include="clips\2944_30.mp3" />
     <Content Include="clips\2945_30.mp3" />
     <Content Include="clips\2946_30.mp3" />
@@ -296,7 +297,9 @@
     <Content Include="js\jquery-1.11.3.min.js" />
     <Content Include="js\jquery-2.2.3.min.js" />
     <Content Include="js\jquery-ui.min.css" />
+    <Content Include="js\jquery.maskedinput.js" />
     <Content Include="js\jquery.mobile-1.4.5.min.js" />
+    <Content Include="js\jquery_inputmask_bundle.js" />
     <Content Include="js\moment-with-locales.js" />
     <Content Include="js\moment.js" />
     <Content Include="js\script.js" />

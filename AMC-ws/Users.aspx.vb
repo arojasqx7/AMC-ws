@@ -1,18 +1,22 @@
-﻿Public Class Users
+﻿Imports System.Data.SqlClient
+
+Public Class Users
     Inherits System.Web.UI.Page
 
 #Region "Conn String"
+    Dim IdPerson As Integer
     Dim connection As String = "Data Source=.\SQLEXPRESS;Initial Catalog=AMC;Integrated Security=True;"
 #End Region
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
     End Sub
 
     Protected Sub DropUserType_SelectedIndexChanged(sender As Object, e As EventArgs)
-
+        BindGridUsers()
     End Sub
 
     Protected Sub GridUserBlanket_SelectedIndexChanged(sender As Object, e As EventArgs)
         Dim id As String = GridUserBlanket.SelectedRow.Cells(0).Text
+        IdPerson = id
         Dim UserCompany As String = GridUserBlanket.SelectedRow.Cells(1).Text
         Dim createdDate As String = GridUserBlanket.SelectedRow.Cells(2).Text
         Dim phone1 As String = GridUserBlanket.SelectedRow.Cells(3).Text
@@ -69,4 +73,17 @@
         ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "SuccessDeleted();", True)
         sqlConnection1.Close()
     End Sub
+
+    Protected Sub BindGridUsers()
+        Dim sqlConnection1 As New SqlConnection(connection)
+        sqlConnection1.Open()
+        Dim query As String = "SELECT [users].[id],CONCAT([users].[companyName],' (', [users].[fullname],')') AS UserCompany, [users].[timeStamped] AS ConvertedDate, phone1,address1,username,password,accountpin,comments, (SELECT TOP 1 [userlogins].[dated] FROM [userlogins] WHERE [userlogins].[userid] = '" & IdPerson & "' ORDER BY 1 DESC) AS LastLogin FROM [users] INNER JOIN [userlogins] ON [users].[id] = [userlogins].[userid] WHERE ([users].[type] = '" & DropUserType.SelectedValue & "')"
+        Dim Adpt As New SqlDataAdapter(query, sqlConnection1)
+        Dim ds As New DataSet()
+        Adpt.Fill(ds)
+        GridUserBlanket.DataSource = ds
+        GridUserBlanket.DataBind()
+        sqlConnection1.Close()
+    End Sub
+
 End Class

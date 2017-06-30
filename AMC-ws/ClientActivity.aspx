@@ -38,15 +38,17 @@
                     <section class="col-sm-1"></section>
                     <section class="col-sm-9" style="margin-left:100px;">
                         <br />
-                        <asp:GridView ID="GridClientActivity" runat="server" AutoGenerateColumns="False" DataSourceID="SqlUserActivityInfo" Width="374px" Visible="False" CssClass="table table-bordered table-hover">
+                       <asp:GridView ID="GridClientActivity" runat="server" AutoGenerateColumns="False" DataSourceID="SqlUserActivityInfo" Width="374px" Visible="False" CssClass="table table-bordered table-hover">
                             <Columns>
                                 <asp:BoundField DataField="Dated" HeaderText="Dated" SortExpression="Dated" />
                                 <asp:BoundField DataField="Logins" HeaderText="Logins" SortExpression="Logins" />
                             </Columns>
                         </asp:GridView>
-                        <asp:SqlDataSource ID="SqlUserActivityInfo" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT DISTINCT(CONVERT(VARCHAR(40),[userlogins].[dated],101)) AS Dated, COUNT([userlogins].[dated]) AS Logins FROM [userlogins] INNER JOIN [users] ON [userlogins].[userid] = [users].[id] WHERE ([users].[companyName] = @companyName) GROUP BY CONVERT(VARCHAR(40),[userlogins].[dated],101) ORDER BY 1">
+                        <asp:SqlDataSource ID="SqlUserActivityInfo" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT DISTINCT(CONVERT(VARCHAR(40),[userlogins].[dated],101)) AS Dated, COUNT([userlogins].[dated]) AS Logins FROM [userlogins] INNER JOIN [users] ON [userlogins].[userid] = [users].[id] WHERE ([users].[companyName] = @companyName AND Dated BETWEEN @dated AND @dated2) GROUP BY CONVERT(VARCHAR(40),[userlogins].[dated],101) ORDER BY 1">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="DropDownList1" Name="companyName" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="txtDateFrom" Name="dated" PropertyName="Text" Type="String" />
+                                <asp:ControlParameter ControlID="txtDateTo" Name="dated2" PropertyName="Text" Type="String" />
                             </SelectParameters>
                         </asp:SqlDataSource>
                         </section>                  

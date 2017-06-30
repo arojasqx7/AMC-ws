@@ -30,10 +30,10 @@
                                         <label >Select Filter:</label>
                                         <asp:DropDownList ID="DropUserType" runat="server" CssClass="form-control" AppendDataBoundItems="true" style="margin-left: 20px;" AutoPostBack="true" OnSelectedIndexChanged="DropUserType_SelectedIndexChanged" CausesValidation="false">
                                             <asp:ListItem Text="Select User Type" Value="" />
-                                            <asp:ListItem Text="Active Blanket" Value="0" />
-                                            <asp:ListItem Text="Active Per Use" Value="1" />
-                                            <asp:ListItem Text="Active Leads" Value="2" />
-                                            <asp:ListItem Text="Active View All" Value="" />
+                                            <asp:ListItem Text="Blanket" Value="0" />
+                                            <asp:ListItem Text="Per Use" Value="1" />
+                                            <asp:ListItem Text="Leads" Value="2" />
+                                            <asp:ListItem Text="View All" Value="" />
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -43,7 +43,7 @@
                     <section class="col-sm-1"></section>
                     <section class="col-sm-9">
                         <br />
-                        <asp:GridView ID="GridUserBlanket" runat="server" style="margin-left:110px;" Width="590px" CssClass="table table-bordered" AlternatingRowStyle-BackColor="#d3d3d3" AutoGenerateColumns="False" DataSourceID="SqlBlanketUser" DataKeyNames="id" OnSelectedIndexChanged="GridUserBlanket_SelectedIndexChanged">
+                        <asp:GridView ID="GridUserBlanket" runat="server" style="margin-left:110px;" Width="590px" CssClass="table table-bordered" AlternatingRowStyle-BackColor="#d3d3d3" AutoGenerateColumns="False" DataKeyNames="id" OnSelectedIndexChanged="GridUserBlanket_SelectedIndexChanged">
                             <AlternatingRowStyle BackColor="LightGray"></AlternatingRowStyle>
                             <Columns>
                                 <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
@@ -55,15 +55,16 @@
                                 <asp:BoundField DataField="password" HeaderText="password" SortExpression="password" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
                                 <asp:BoundField DataField="accountpin" HeaderText="accountpin" SortExpression="accountpin" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
                                 <asp:BoundField DataField="comments" HeaderText="comments" SortExpression="comments" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
-                                <asp:BoundField DataField="LastLogin" HeaderText="Last Login" SortExpression="LastLogin"/>
+                                <asp:BoundField DataField="LastLogin" HeaderText="Last Login" SortExpression="LastLogin" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
                                 <asp:ButtonField Text="View Details" CommandName="Select"/>
                             </Columns>
                         </asp:GridView>
-                        <asp:SqlDataSource ID="SqlBlanketUser" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [users].[id],CONCAT([users].[companyName],' (', [users].[fullname],')') AS UserCompany, CONVERT (VARCHAR(10),[users].[timeStamped],101) AS ConvertedDate, phone1,address1,username,password,accountpin,comments,(SELECT MAX([userlogins].[dated]) FROM [userlogins] JOIN [users] ON [users].[id] = [userlogins].[userid] ) AS LastLogin FROM [users] WHERE ([type] = @type)">
+                   
+<%--                        <asp:SqlDataSource ID="SqlBlanketUser" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [users].[id],CONCAT([users].[companyName],' (', [users].[fullname],')') AS UserCompany, CONVERT (VARCHAR(10),[users].[timeStamped],101) AS ConvertedDate, phone1,address1,username,password,accountpin,comments,(SELECT TOP 1 [userlogins].[dated] FROM [userlogins] INNER JOIN [users] ON [userlogins].[userid] = [users].[id] WHERE ([users].[id] = @id) ORDER BY 1 DESC) AS LastLogin FROM [users] WHERE ([type] = @type)">
                             <SelectParameters>
-                                <asp:ControlParameter ControlID="DropUserType" Name="type" PropertyName="SelectedValue" Type="Int32" />
+                                <asp:ControlParameter ControlID="DropUserType" Name="type" PropertyName="SelectedValue" Type="Int32" /> 
                             </SelectParameters>
-                        </asp:SqlDataSource>
+                        </asp:SqlDataSource>--%>
                     </section>
 
                     </div>

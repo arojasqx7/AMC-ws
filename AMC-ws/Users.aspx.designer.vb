@@ -32,15 +32,6 @@ Partial Public Class Users
     Protected WithEvents GridUserBlanket As Global.System.Web.UI.WebControls.GridView
     
     '''<summary>
-    '''SqlBlanketUser control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents SqlBlanketUser As Global.System.Web.UI.WebControls.SqlDataSource
-    
-    '''<summary>
     '''FormView1 control.
     '''</summary>
     '''<remarks>
