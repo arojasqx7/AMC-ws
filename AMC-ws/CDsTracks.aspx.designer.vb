@@ -104,6 +104,15 @@ Partial Public Class CDsTracks
     Protected WithEvents txtCatalogNo As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
+    '''RequiredFieldValidator1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RequiredFieldValidator1 As Global.System.Web.UI.WebControls.RequiredFieldValidator
+    
+    '''<summary>
     '''txtCDTitle control.
     '''</summary>
     '''<remarks>
@@ -113,6 +122,15 @@ Partial Public Class CDsTracks
     Protected WithEvents txtCDTitle As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
+    '''RequiredFieldValidator2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RequiredFieldValidator2 As Global.System.Web.UI.WebControls.RequiredFieldValidator
+    
+    '''<summary>
     '''DropDownPublishers control.
     '''</summary>
     '''<remarks>
@@ -120,6 +138,15 @@ Partial Public Class CDsTracks
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents DropDownPublishers As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''RequiredFieldValidator3 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RequiredFieldValidator3 As Global.System.Web.UI.WebControls.RequiredFieldValidator
     
     '''<summary>
     '''SqlPublisherAlias control.
@@ -1193,6 +1220,15 @@ Partial Public Class CDsTracks
     Protected WithEvents DropCD2 As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
+    '''RequiredFieldValidator4 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RequiredFieldValidator4 As Global.System.Web.UI.WebControls.RequiredFieldValidator
+    
+    '''<summary>
     '''SqlCDS2 control.
     '''</summary>
     '''<remarks>
@@ -1227,6 +1263,15 @@ Partial Public Class CDsTracks
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtTrackTitle As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''RequiredFieldValidator5 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RequiredFieldValidator5 As Global.System.Web.UI.WebControls.RequiredFieldValidator
     
     '''<summary>
     '''txtDescTrack control.

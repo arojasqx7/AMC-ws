@@ -42,7 +42,7 @@ Public Class album
         Dim Dt_tracks = New AMC_ws.DataSet1TableAdapters.tracksTableAdapter()
 
         Dim T_tracks = Dt_tracks.GetDataByid_track(lno.CommandArgument)
-        Me.L_titlePlayer.Text = T_tracks(0).title
+        'Me.L_titlePlayer.Text = T_tracks(0).title
     End Sub
 
 
@@ -60,10 +60,10 @@ Public Class album
             Dim Dt_tracks = New AMC_ws.DataSet1TableAdapters.track_infoTableAdapter()
             Dim T_tracks = Dt_tracks.GetData(lno.CommandArgument)
 
-            Me.T_titlePop.Text = T_tracks(0).title
-            Me.T_trackId.Text = T_tracks(0).cd_number
-            Me.T_compPop.Text = T_tracks(0).fname & " " & T_tracks(0).lname
-            Me.T_pubPop.Text = T_tracks(0)._alias & " " & T_tracks(0).name
+            'Me.T_titlePop.Text = T_tracks(3).title
+            'Me.T_trackId.Text = T_tracks(1).cd_number
+            'Me.T_compPop.Text = T_tracks(0).fname & " " & T_tracks(0).lname
+            'Me.T_pubPop.Text = T_tracks(0)._alias & " " & T_tracks(0).name
             ScriptManager.RegisterStartupScript(Me, Page.GetType, "songS", "$('#songS').modal();", True)
 
         Else
@@ -80,8 +80,8 @@ Public Class album
         Dim Pos_g = InStr(destFileName, "_") - 1
         Dim FK_trackID As Long = Mid(destFileName, 1, Pos_g)
 
-        Dim Pos_p = InStr(destFileName, ".") - destFileName.Length
-        Dim file_lenght As Long = Mid(destFileName, Pos_g + 2, Pos_p)
+        'Dim Pos_p = InStr(destFileName, ".") - destFileName.Length
+        Dim file_lenght As Long = Mid(destFileName, Pos_g + 2)
 
         Dim DT_download = New AMC_ws.DataSet1TableAdapters.map_downloadTableAdapter()
         'DT_download.Insert()

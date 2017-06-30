@@ -141,16 +141,31 @@
                         <div class="input-group" style="width:575px;">
                             <label>Catalog Number:</label>
                             <asp:TextBox ID="txtCatalogNo" runat="server" class="form-control" placeholder="Catalog Number.."></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                ControlToValidate="txtCatalogNo"
+                                ErrorMessage="Required field."
+                                ForeColor="Red">
+                            </asp:RequiredFieldValidator>
 
                             <br />
                             <label style="margin-top:10px;">CD Title:</label>
                             <asp:TextBox ID="txtCDTitle" runat="server" class="form-control" placeholder="CD Title.." ></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                                ControlToValidate="txtCDTitle"
+                                ErrorMessage="Required field."
+                                ForeColor="Red">
+                            </asp:RequiredFieldValidator>
 
                             <br />
                             <label style="margin-top:10px;">Publisher:</label>
                             <asp:DropDownList ID="DropDownPublishers"  DataSourceID="SqlPublisherAlias" runat="server" class="form-control" AppendDataBoundItems="true" DataTextField="alias" DataValueField="id">
                                 <asp:ListItem Text="Choose Publisher" Value="" />
                             </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
+                                ControlToValidate="DropDownPublishers"
+                                ErrorMessage="Required field."
+                                ForeColor="Red">
+                            </asp:RequiredFieldValidator>
                             <asp:SqlDataSource ID="SqlPublisherAlias" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [id], [alias] FROM [publishers]"></asp:SqlDataSource>
 
                             <br />
@@ -395,6 +410,11 @@
                             <asp:DropDownList ID="DropCD2" runat="server" DataSourceID="SqlCDS2" AppendDataBoundItems="true" CssClass="form-control" DataTextField="cdResult" DataValueField="id">
                                 <asp:ListItem Text="Select a CD" Value="" />
                             </asp:DropDownList>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
+                                ControlToValidate="DropCD2"
+                                ErrorMessage="Required field."
+                                ForeColor="Red">
+                            </asp:RequiredFieldValidator>
                             <asp:SqlDataSource ID="SqlCDS2" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [id], CONCAT([cd_number] ,' - ', [cd_title]) AS cdResult FROM [cd] ORDER BY [cd_number]"></asp:SqlDataSource>
 
                             <br />
@@ -405,6 +425,11 @@
                             <br />
                             <label style="margin-top:10px;">Track Title:</label>
                             <asp:TextBox ID="txtTrackTitle" runat="server" class="form-control" placeholder="Track Title.." ></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
+                                ControlToValidate="txtTrackTitle"
+                                ErrorMessage="Required field."
+                                ForeColor="Red">
+                            </asp:RequiredFieldValidator>
 
                             <br />
                             <label style="margin-top:10px;">Description:</label>
@@ -1064,7 +1089,7 @@
                             </asp:DropDownList>
                             <br />
                             <label style="margin-top:10px;">Duration:</label>
-                            <asp:TextBox ID="txtClipDuration" runat="server" CssClass="form-control" placeholder="Ex: 3:35"></asp:TextBox>
+                            <asp:TextBox ID="txtClipDuration" runat="server" CssClass="form-control"></asp:TextBox>
                             <br />
                             <label style="margin-top:10px;">Upload the File:</label>
                             <asp:FileUpload ID="FileUpload1" runat="server" CssClass="btn btn-default"/>
@@ -1111,7 +1136,15 @@
  </div>
 
     <script src="dist/sweetalert.min.js"></script>
+    <script src="js/jquery-2.2.3.min.js"></script>
+    <script src="js/jquery_inputmask_bundle.js"></script>
         <script>
+            $(document).ready(function($){
+                $(function () {
+                    $('input[id$="txtClipDuration"]').inputmask("hh:mm", { placeholder: "HH:MM", insertMode: false, showMaskOnHover: false, hourFormat: 12 });
+                });
+            });
+
             function openModalEditTrack() {
                 $('#TrackToEdit').modal('show');
             }

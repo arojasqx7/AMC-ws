@@ -129,7 +129,7 @@
                             <asp:TextBox ID="txtPerformance" runat="server" class="form-control" placeholder="Performance Society.."></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
                                 ControlToValidate="txtPerformance"
-                                ErrorMessage="Performance Society is a required field."
+                                ErrorMessage="Required field."
                                 ForeColor="Red">
                             </asp:RequiredFieldValidator>
 
@@ -138,7 +138,7 @@
                             <asp:TextBox ID="txtPublisher" runat="server" class="form-control" placeholder="Publisher.."></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                                 ControlToValidate="txtPublisher"
-                                ErrorMessage="Publisher is a required field."
+                                ErrorMessage="Required field."
                                 ForeColor="Red">
                             </asp:RequiredFieldValidator>
 
