@@ -26,8 +26,12 @@
                                 <div class="form-group" style="margin-left:90px;display:inline-flex;">
                                     <asp:TextBox ID="txtDateFrom" runat="server" CssClass="form-control datetimepicker" Width="170px" placeholder="Date From"></asp:TextBox>
                                     <asp:TextBox ID="txtDateTo" runat="server" CssClass="form-control datetimepicker" Width="170px" placeholder="Date To" style="margin-left:25px;"></asp:TextBox>
-                                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" CssClass="form-control" Width="300px" style="margin-left:25px;" DataTextField="NAME" DataValueField="NAME"></asp:DropDownList>
+
+                                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" CssClass="form-control" Width="300px" style="margin-left:25px;" DataTextField="NAME" DataValueField="NAME" AppendDataBoundItems="true">
+                                        <asp:ListItem Text="All" Value="" />
+                                    </asp:DropDownList>
                                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT * FROM [COMPANIES] ORDER BY [NAME]"></asp:SqlDataSource>
+                                    
                                     <asp:Button ID="btnApply" runat="server" Text="Apply" CssClass="btn btn-primary" style="margin-left:20px;" OnClick="btnApply_Click"/> 
 
                                 </div>

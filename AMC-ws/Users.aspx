@@ -55,16 +55,11 @@
                                 <asp:BoundField DataField="password" HeaderText="password" SortExpression="password" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
                                 <asp:BoundField DataField="accountpin" HeaderText="accountpin" SortExpression="accountpin" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
                                 <asp:BoundField DataField="comments" HeaderText="comments" SortExpression="comments" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
-                                <asp:BoundField DataField="LastLogin" HeaderText="Last Login" SortExpression="LastLogin" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
+                                <asp:BoundField DataField="LastLogin" HeaderText="Last Login" SortExpression="LastLogin"/>
+                                <asp:BoundField DataField="totalLogins" HeaderText="totalLogins" SortExpression="totalLogins" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
                                 <asp:ButtonField Text="View Details" CommandName="Select"/>
                             </Columns>
-                        </asp:GridView>
-                   
-<%--                        <asp:SqlDataSource ID="SqlBlanketUser" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [users].[id],CONCAT([users].[companyName],' (', [users].[fullname],')') AS UserCompany, CONVERT (VARCHAR(10),[users].[timeStamped],101) AS ConvertedDate, phone1,address1,username,password,accountpin,comments,(SELECT TOP 1 [userlogins].[dated] FROM [userlogins] INNER JOIN [users] ON [userlogins].[userid] = [users].[id] WHERE ([users].[id] = @id) ORDER BY 1 DESC) AS LastLogin FROM [users] WHERE ([type] = @type)">
-                            <SelectParameters>
-                                <asp:ControlParameter ControlID="DropUserType" Name="type" PropertyName="SelectedValue" Type="Int32" /> 
-                            </SelectParameters>
-                        </asp:SqlDataSource>--%>
+                        </asp:GridView>        
                     </section>
 
                     </div>
@@ -133,7 +128,7 @@
                                             </td>
                                             <td class="col-sm-2"><label style="width:100px;margin-left:20px;">Logins:</label> </td>
                                             <td class="col-sm-10">
-                                                8
+                                                <%# Eval("totalLogins") %>
                                             </td>
                                         </tr>
                                         <tr>
