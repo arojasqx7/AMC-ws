@@ -26,9 +26,10 @@ Public Class Users
         Dim accountPIN As String = GridUserBlanket.SelectedRow.Cells(7).Text
         Dim comments As String = GridUserBlanket.SelectedRow.Cells(8).Text
         Dim lastLogin As String = GridUserBlanket.SelectedRow.Cells(9).Text
+        Dim totalLogins As String = GridUserBlanket.SelectedRow.Cells(10).Text
 
         Dim dt As New DataTable()
-        dt.Columns.AddRange(New DataColumn(9) {New DataColumn("id", GetType(String)),
+        dt.Columns.AddRange(New DataColumn(10) {New DataColumn("id", GetType(String)),
                                                New DataColumn("UserCompany", GetType(String)),
                                                New DataColumn("ConvertedDate", GetType(Date)),
                                                New DataColumn("phone1", GetType(String)),
@@ -37,8 +38,9 @@ Public Class Users
                                                New DataColumn("password", GetType(String)),
                                                New DataColumn("accountpin", GetType(String)),
                                                New DataColumn("comments", GetType(String)),
-                                               New DataColumn("LastLogin", GetType(String))})
-        dt.Rows.Add(id, UserCompany, createdDate, phone1, address1, username, password, accountPIN, comments, lastLogin)
+                                               New DataColumn("LastLogin", GetType(String)),
+                                               New DataColumn("totalLogins", GetType(String))})
+        dt.Rows.Add(id, UserCompany, createdDate, phone1, address1, username, password, accountPIN, comments, lastLogin, totalLogins)
         FormView1.DataSource = dt
         FormView1.DataBind()
         ScriptManager.RegisterStartupScript(Me, Page.GetType(), "Popup", "openModalUserInfo();", True)
@@ -77,7 +79,7 @@ Public Class Users
     Protected Sub BindGridUsers()
         Dim sqlConnection1 As New SqlConnection(connection)
         sqlConnection1.Open()
-        Dim query As String = "SELECT [users].[id],CONCAT([users].[companyName],' (', [users].[fullname],')') AS UserCompany, [users].[timeStamped] AS ConvertedDate, phone1,address1,username,password,accountpin,comments, (SELECT TOP 1 [userlogins].[dated] FROM [userlogins] WHERE [userlogins].[userid] = '" & IdPerson & "' ORDER BY 1 DESC) AS LastLogin FROM [users] INNER JOIN [userlogins] ON [users].[id] = [userlogins].[userid] WHERE ([users].[type] = '" & DropUserType.SelectedValue & "')"
+        Dim query As String = "SELECT distinct [users].[id],CONCAT([users].[companyName],' (', [users].[fullname],')') AS UserCompany,CONVERT(VARCHAR(40),[users].[timeStamped],101) AS ConvertedDate, phone1,address1,username,password,accountpin,comments, max([userlogins].[dated]) as LastLogin, count([userlogins].[userid]) as totalLogins FROM [users] INNER JOIN [userlogins] ON [users].[id] = [userlogins].[userid] WHERE ([users].[type] = '" & DropUserType.SelectedValue & "') group by [users].[id],CONCAT([users].[companyName],' (', [users].[fullname],')'),[users].[timeStamped],phone1,address1,username,password,accountpin,comments"
         Dim Adpt As New SqlDataAdapter(query, sqlConnection1)
         Dim ds As New DataSet()
         Adpt.Fill(ds)
