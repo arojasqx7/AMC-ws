@@ -146,10 +146,10 @@
                                             <td class="col-sm-10">
                                                 <%# Eval("password") %>
                                             </td>
-                                             <td class="col-sm-2"><label style="width:100px; margin-left:20px;">Downloads:</label> </td>
+                                            <%-- <td class="col-sm-2"><label style="width:100px; margin-left:20px;">Downloads:</label> </td>
                                              <td class="col-sm-10">
                                                  24
-                                             </td>
+                                             </td>--%>
                                         </tr>
                                         <tr>
                                             <td class="col-sm-2"><label>Account PIN:</label> </td>

@@ -240,3 +240,5 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/AMC-ws/DataSet3.xss
+/AMC-ws/DataSet3.Designer.vb

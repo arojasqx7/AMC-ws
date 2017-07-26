@@ -24,11 +24,13 @@
                     <section class="col-sm-1"></section>
                     <section class="col-sm-9">
                         <div class="form-group">
-                            <div class="col-sm-10">
+                            <div class="col-xs-10" style="width:1000px;">
                                 <br />
                                 <button id="btnAddCD" runat="server" type="button" class="btn btn-primary" data-toggle="modal" data-target="#newCD" style="margin-left: 90px;">Add a CD </button>
                                 <button id="btnAddTrack" runat="server" type="button" class="btn btn-danger" data-toggle="modal" data-target="#newTrack" style="margin-left: 20px;">Add a Track </button>
                                 <button id="Button1" runat="server" type="button" class="btn btn-default" data-toggle="modal" data-target="#ViewIDTrack" style="margin-left: 20px;"> View ID numbers of Tracks</button>
+                                <asp:LinkButton ID="btnPublish" runat="server" CssClass="btn btn-default" OnClick="btnPublish_Click" style="margin-left:60px;display:none;" CausesValidation="false"><span aria-hidden="true" class="glyphicon glyphicon-cloud-upload"></span>  Publish</asp:LinkButton>
+                                <asp:LinkButton ID="btnUnPublish" runat="server" CssClass="btn btn-default" OnClick="btnUnPublish_Click" style="margin-left:10px;display:none;" CausesValidation="false"><span aria-hidden="true" class="glyphicon glyphicon-cloud-download"></span>  Unpublish</asp:LinkButton>
                             </div>
                         </div>
                     </section>
@@ -384,7 +386,7 @@
                             </div>
 
                              <br />
-                            <div><asp:Button ID="btnAdd" runat="server" Text="Add CD" CssClass="btn btn-success form-control" OnClick="btnAdd_Click"/></div>
+                            <div><asp:Button ID="btnAddCD2" runat="server" Text="Add CD" CssClass="btn btn-success form-control" OnClick="btnAddCD2_Click" CausesValidation="false" /></div>
                         </div>
                         
                     </div>
@@ -694,7 +696,7 @@
                             <asp:TextBox ID="txtStyleLikes" runat="server" TextMode="MultiLine" class="form-control" placeholder="Style-A-Likes..."></asp:TextBox>
 
                              <br />
-                            <div><asp:Button ID="btnAddTracktoBD" runat="server" Text="Add Track" CssClass="btn btn-success form-control" style="margin-top:25px;" OnClick="btnAddTracktoBD_Click"/></div>
+                            <div><asp:Button ID="btnAddTracktoBD" runat="server" Text="Add Track" CssClass="btn btn-success form-control" style="margin-top:25px;" OnClick="btnAddTracktoBD_Click" CausesValidation="false"/></div>
                         </div>
                         
                     </div>
@@ -1104,11 +1106,11 @@
                                     <asp:BoundField DataField="clip_length" HeaderText="Clip Length" SortExpression="clip_length"/>
                                     <asp:BoundField DataField="digital_format" HeaderText="Digital Format" SortExpression="digital_format" />
                                     <asp:BoundField DataField="duration" HeaderText="Duration" SortExpression="duration" />
-                                    <asp:TemplateField ShowHeader="False">
+                                   <%-- <asp:TemplateField ShowHeader="False">
                                      <ItemTemplate>
                                          <asp:LinkButton ID="LinkListenSoundClip" runat="server" CausesValidation="false"  CommandName="Select" Text="Listen" ForeColor="Blue"></asp:LinkButton>
                                      </ItemTemplate>
-                                 </asp:TemplateField>
+                                 </asp:TemplateField>--%>
                                     <asp:TemplateField ShowHeader="False">
                                      <ItemTemplate>
                                          <asp:LinkButton ID="LinkDeleteSoundClip" runat="server" CausesValidation="false"  CommandName="Delete" Text="Delete" OnClientClick="return confirm('Are you sure you want to delete this sound Clip?');" ForeColor="Red"></asp:LinkButton>
@@ -1178,6 +1180,21 @@
                     type:  'success'
                 });
             }
+            function SuccessPublished() {
+                swal({
+                    title: 'CD Published',
+                    text:  'CD has been added published sucessfully',
+                    type:  'success'
+                });
+            }
+            function SuccessUnPublished() {
+                swal({
+                    title: 'CD Unpublished',
+                    text: 'CD has been added Unpublished sucessfully',
+                    type: 'success'
+                });
+            }
+
         </script>
 
 </asp:Content>

@@ -74,17 +74,26 @@ Public Class album
     End Sub
 
     Protected Sub track_Click_download(sender As Object, e As EventArgs)
-        Dim lno As LinkButton = sender
+        Dim conn As SqlConnection = New SqlConnection("Data Source=.\SQLEXPRESS;Initial Catalog=AMC;Integrated Security=True;")
+        Dim userID As Int32
+        Dim loginID As Int32
+        conn.Open()
+        Dim cmd As SqlCommand = New SqlCommand("SELECT TOP 1 [users].[id] FROM [users] WHERE [users].[username] ='" & Session("Username") & "'", conn)
+        Dim cmd2 As SqlCommand = New SqlCommand("SELECT (MAX([userlogins].[id])+1) from [userlogins]", conn)
+        userID = cmd.ExecuteScalar()
+        loginID = cmd2.ExecuteScalar()
+        conn.Close()
 
+        Dim lno As LinkButton = sender
         Dim destFileName = lno.CommandArgument
         Dim Pos_g = InStr(destFileName, "_") - 1
         Dim FK_trackID As Long = Mid(destFileName, 1, Pos_g)
 
         'Dim Pos_p = InStr(destFileName, ".") - destFileName.Length
-        Dim file_lenght As Long = Mid(destFileName, Pos_g + 2)
+        Dim file_lenght = Mid(destFileName, Pos_g + 2)
 
         Dim DT_download = New AMC_ws.DataSet1TableAdapters.map_downloadTableAdapter()
-        'DT_download.Insert()
+        DT_download.Insert(FK_trackID, userID, Now.Date, loginID, destFileName)
 
         Response.ContentType = "APPLICATION/OCTET-STREAM"
         Dim Header As [String] = "Attachment; Filename=" & destFileName

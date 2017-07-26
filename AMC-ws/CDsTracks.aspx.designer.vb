@@ -41,6 +41,24 @@ Partial Public Class CDsTracks
     Protected WithEvents Button1 As Global.System.Web.UI.HtmlControls.HtmlButton
     
     '''<summary>
+    '''btnPublish control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnPublish As Global.System.Web.UI.WebControls.LinkButton
+    
+    '''<summary>
+    '''btnUnPublish control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnUnPublish As Global.System.Web.UI.WebControls.LinkButton
+    
+    '''<summary>
     '''DropDownCDS control.
     '''</summary>
     '''<remarks>
@@ -1202,13 +1220,13 @@ Partial Public Class CDsTracks
     Protected WithEvents CheckBox114 As Global.System.Web.UI.WebControls.CheckBox
     
     '''<summary>
-    '''btnAdd control.
+    '''btnAddCD2 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnAdd As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents btnAddCD2 As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
     '''DropCD2 control.
