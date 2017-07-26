@@ -11,35 +11,6 @@ Public Class CDsTracks
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
     End Sub
 
-    Protected Sub btnAdd_Click(sender As Object, e As EventArgs)
-
-        Dim cdID As Int32
-        Dim sql As String = "SELECT MAX(id) FROM [cd]"
-        Using conn As New SqlConnection("Data Source=.\SQLEXPRESS;Initial Catalog=AMC;Integrated Security=True;")
-            Dim cmd As New SqlCommand(sql, conn)
-            conn.Open()
-            cdID = Convert.ToInt32(cmd.ExecuteScalar()) + 1 'almacena ID del PK
-            conn.Close()
-        End Using
-
-        Dim t_CD = New AMC_ws.DataSet2.cdDataTable()
-        Dim adapter = New AMC_ws.DataSet2TableAdapters.cdTableAdapter()
-        Dim t_MapGenres = New AMC_ws.DataSet2.map_genresDataTable()
-        Dim adapter2 = New AMC_ws.DataSet2TableAdapters.map_genresTableAdapter()
-        adapter.Insert(txtCatalogNo.Text, txtCDTitle.Text, DropDownPublishers.SelectedItem.Value, txtDesc.Text)
-        For Each row As TableRow In Me.Table1.Rows
-            For Each cell As TableCell In row.Cells
-                For Each ctrl As Control In cell.Controls
-                    Dim box As CheckBox = TryCast(ctrl, CheckBox)
-                    If box IsNot Nothing AndAlso box.Checked Then
-                        adapter2.Insert(cdID, box.Text)
-                    End If
-                Next
-            Next
-        Next
-        Response.Redirect("CDsTracks.aspx")
-    End Sub
-
     Protected Sub btnAddTracktoBD_Click(sender As Object, e As EventArgs)
 
         Dim trackID As Int32
@@ -85,6 +56,15 @@ Public Class CDsTracks
     Protected Sub DropDownCDS_SelectedIndexChanged(sender As Object, e As EventArgs)
         GridCDSelected.Visible = True
         GridTracksInCD.Visible = True
+
+        If (DropDownCDS.SelectedItem.Text = "Select CD to edit any information") Then
+            btnPublish.Style.Add("display", "none")
+            btnUnPublish.Style.Add("display", "none")
+        Else
+            btnPublish.Style.Add("display", "inline")
+            btnUnPublish.Style.Add("display", "inline")
+        End If
+
     End Sub
 
 
@@ -145,5 +125,56 @@ Public Class CDsTracks
         Response.Redirect("CDsTracks.aspx")
     End Sub
 
+    Protected Sub btnAddCD2_Click(sender As Object, e As EventArgs)
+        Dim isPublished As String = "N"
+        Dim cdID As Int32
+        Dim sql As String = "SELECT MAX(id) FROM [cd]"
+        Using conn As New SqlConnection("Data Source=.\SQLEXPRESS;Initial Catalog=AMC;Integrated Security=True;")
+            Dim cmd As New SqlCommand(sql, conn)
+            conn.Open()
+            cdID = Convert.ToInt32(cmd.ExecuteScalar()) + 1 'almacena ID del PK
+            conn.Close()
+        End Using
 
+        Dim t_CD = New AMC_ws.DataSet2.cdDataTable()
+        Dim adapter = New AMC_ws.DataSet2TableAdapters.cdTableAdapter
+        Dim t_MapGenres = New AMC_ws.DataSet2.map_genresDataTable()
+        Dim adapter2 = New AMC_ws.DataSet2TableAdapters.map_genresTableAdapter()
+        adapter.Insert(txtCatalogNo.Text, txtCDTitle.Text, DropDownPublishers.SelectedItem.Value, txtDesc.Text, isPublished)
+        For Each row As TableRow In Me.Table1.Rows
+            For Each cell As TableCell In row.Cells
+                For Each ctrl As Control In cell.Controls
+                    Dim box As CheckBox = TryCast(ctrl, CheckBox)
+                    If box IsNot Nothing AndAlso box.Checked Then
+                        adapter2.Insert(cdID, box.Text)
+                    End If
+                Next
+            Next
+        Next
+        Response.Redirect("CDsTracks.aspx")
+    End Sub
+
+    Protected Sub btnPublish_Click(sender As Object, e As EventArgs)
+        Dim sqlConnection1 As New SqlClient.SqlConnection(connection)
+        Dim cmd As New SqlClient.SqlCommand
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = "UPDATE [cd] SET [IsPublished] = 'Y' WHERE [id]='" & DropDownCDS.SelectedItem.Value & "'"
+        cmd.Connection = sqlConnection1
+        sqlConnection1.Open()
+        cmd.ExecuteNonQuery()
+        ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "SuccessPublished();", True)
+        sqlConnection1.Close()
+    End Sub
+
+    Protected Sub btnUnPublish_Click(sender As Object, e As EventArgs)
+        Dim sqlConnection1 As New SqlClient.SqlConnection(connection)
+        Dim cmd As New SqlClient.SqlCommand
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = "UPDATE [cd] SET [IsPublished] = 'N' WHERE [id]='" & DropDownCDS.SelectedItem.Value & "'"
+        cmd.Connection = sqlConnection1
+        sqlConnection1.Open()
+        cmd.ExecuteNonQuery()
+        ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "SuccessUnPublished();", True)
+        sqlConnection1.Close()
+    End Sub
 End Class
