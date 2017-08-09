@@ -58,7 +58,7 @@
                                             <asp:LinkButton ID="T_title" runat="server" Text='<%# Bind("title") %>'
                                                 CommandArgument='<%# Bind("id") %>' OnClick="track_Click">
                                             </asp:LinkButton>
-                                            <asp:Label ID="T_duration" runat="server" Text='<%# Bind("Duration") %>'></asp:Label>
+                                           <%-- <asp:Label ID="T_duration" runat="server" Text='<%# Bind("Duration") %>'></asp:Label>--%>
                                         </ItemTemplate>
                                         <ItemStyle Width="30%" HorizontalAlign="Left" VerticalAlign="Top" />
                                     </asp:TemplateField>
@@ -137,8 +137,8 @@
                                                                 <asp:TemplateField HeaderText="Track Name">
                                                                     <ItemTemplate>
                                                                         <span class="glyphicons glyphicons-disk-save" aria-hidden="true"></span>
-                                                                        <asp:LinkButton ID="T_title" runat="server" Text='<%# Bind("track_lenght") %>'
-                                                                            CommandArgument='<%# Bind("file_name") %>' OnClick="track_Click_download">
+                                                                        <asp:LinkButton ID="T_title" runat="server" Text='<%# Bind("clip_length") %>'
+                                                                            CommandArgument='<%# Bind("id") %>' OnClick="track_Click_download">
                                                                         </asp:LinkButton>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
@@ -151,8 +151,8 @@
                                                                 <asp:TemplateField HeaderText="Track Name">
                                                                     <ItemTemplate>
                                                                         <span class="glyphicons glyphicons-disk-save" aria-hidden="true"></span>
-                                                                        <asp:LinkButton ID="T_title" runat="server" Text='<%# Bind("track_lenght") %>'
-                                                                            CommandArgument='<%# Bind("file_name") %>' OnClick="track_Click_download">
+                                                                        <asp:LinkButton ID="T_title" runat="server" Text='<%# Bind("clip_length") %>'
+                                                                            CommandArgument='<%# Bind("id") %>' OnClick="track_Click_download">
                                                                         </asp:LinkButton>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>

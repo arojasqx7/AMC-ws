@@ -3,8 +3,13 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <style type="text/css">
+     .hidden
+     {
+         display:none;
+     }
+    </style>
     <link href="css/bootstrap-datetimepicker.css" rel="stylesheet" />
-
         <div class="bodyBg">
         <div class="content container">
             <div class="container">
@@ -13,6 +18,7 @@
                     <section class="col-sm-9">
                         <div class="subTitle">
                             <h2 class="subH2">Client Activity</h2>
+                            <asp:Label ID="L_UserName" runat="server" Text="Label" Visible="false"></asp:Label>
                         </div>
                     </section>
 
@@ -42,24 +48,66 @@
                     <section class="col-sm-1"></section>
                     <section class="col-sm-9" style="margin-left:100px;">
                         <br />
-                       <asp:GridView ID="GridClientActivity" runat="server" AutoGenerateColumns="False" DataSourceID="SqlUserActivityInfo" Width="374px" Visible="False" CssClass="table table-bordered table-hover">
+                       <asp:GridView ID="GridClientActivity" runat="server" AutoGenerateColumns="False" Width="374px" Visible="False" CssClass="table table-bordered table-hover" OnSelectedIndexChanged="GridClientActivity_SelectedIndexChanged">
                             <Columns>
-                                <asp:BoundField DataField="Dated" HeaderText="Dated" SortExpression="Dated" />
-                                <asp:BoundField DataField="Logins" HeaderText="Logins" SortExpression="Logins" />
+                               <%-- <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>--%>
+                                <asp:BoundField  DataField="Dated" HeaderText="Dated" SortExpression="Dated" />
+                                <asp:BoundField  DataField="Logins" HeaderText="Logins" SortExpression="Logins" />
+                                <%--<asp:BoundField  DataField="Downloads" HeaderText="Downloads" SortExpression="Downloads" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>--%>
+                                <asp:ButtonField Text="View Details" CommandName="Select"/>
                             </Columns>
                         </asp:GridView>
-                        <asp:SqlDataSource ID="SqlUserActivityInfo" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT DISTINCT(CONVERT(VARCHAR(40),[userlogins].[dated],101)) AS Dated, COUNT([userlogins].[dated]) AS Logins FROM [userlogins] INNER JOIN [users] ON [userlogins].[userid] = [users].[id] WHERE ([users].[companyName] = @companyName AND Dated BETWEEN @dated AND @dated2) GROUP BY CONVERT(VARCHAR(40),[userlogins].[dated],101) ORDER BY 1">
-                            <SelectParameters>
-                                <asp:ControlParameter ControlID="DropDownList1" Name="companyName" PropertyName="SelectedValue" Type="String" />
-                                <asp:ControlParameter ControlID="txtDateFrom" Name="dated" PropertyName="Text" Type="String" />
-                                <asp:ControlParameter ControlID="txtDateTo" Name="dated2" PropertyName="Text" Type="String" />
-                            </SelectParameters>
-                        </asp:SqlDataSource>
                         </section>                  
                     </div>
                 </div>
             </div>
-            </div>
+
+           <!--Pop Up User Info-->
+            <div class="modal fade" id="UserInfo">
+              <div class="modal-dialog modal-sm" style="width:500px;">
+                <div class="modal-content" style="width:500px;">
+                    <div class="modal-header song_sel_panel-header"> 
+                      <button type="button" class="close" data-dismiss="modal">×</button>
+                      <h3 class="modal-title"> <span class="glyphicon glyphicon-stats"></span>        Client Activity Information</h3>
+                    </div>
+
+                    <div class="modal-body" style="width:500px;">  
+                        <div class="input-group" style="width:500px;">
+                            <asp:FormView ID="FormView1" runat="server">
+                                <ItemTemplate>
+                                    <table border="0">
+                                        <tr>
+                                            <td class="col-sm-2"><label>Date:</label></td>
+                                            <td class="col-sm-10">
+                                                <%# Eval("Dated") %>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-sm-2"><label>Logins:</label> </td>
+                                            <td class="col-sm-10">
+                                                <%# Eval("Logins") %>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-9"><label>Downloads History</label> </td>
+                                        </tr>
+                                        <tr>
+                                            <asp:GridView ID="GridDownloadDetails" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-hover">
+                                                <Columns>
+
+                                                </Columns>
+                                            </asp:GridView>
+                                        </tr>
+                                    </table>
+                                </ItemTemplate>
+                            </asp:FormView>
+                        </div>
+                    </div>
+                </div>
+              </div>
+           </div>
+        <!-- Termina Pop up-->
+         </div>
 
     <script src="js/jquery-2.2.3.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -74,7 +122,11 @@
        horizontal: 'auto',
        vertical: 'bottom'
       }
-     });
+       });
+
+       function openModalUserInfo() {
+           $('#UserInfo').modal('show');
+       }
 
     </script>
 </asp:Content>

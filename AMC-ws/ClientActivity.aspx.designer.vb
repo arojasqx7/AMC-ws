@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class ClientActivity
     
     '''<summary>
+    '''L_UserName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents L_UserName As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
     '''txtDateFrom control.
     '''</summary>
     '''<remarks>
@@ -68,11 +77,11 @@ Partial Public Class ClientActivity
     Protected WithEvents GridClientActivity As Global.System.Web.UI.WebControls.GridView
     
     '''<summary>
-    '''SqlUserActivityInfo control.
+    '''FormView1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents SqlUserActivityInfo As Global.System.Web.UI.WebControls.SqlDataSource
+    Protected WithEvents FormView1 As Global.System.Web.UI.WebControls.FormView
 End Class

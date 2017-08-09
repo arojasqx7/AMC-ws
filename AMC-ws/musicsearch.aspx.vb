@@ -5,7 +5,7 @@ Public Class musicsearch
     Inherits System.Web.UI.Page
 
 #Region "Conn String"
-    Dim connection As String = "Data Source=.\SQLEXPRESS;Initial Catalog=AMC;Integrated Security=True;"
+    Dim connection As String = "Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29"
 #End Region
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
     End Sub
@@ -13,7 +13,7 @@ Public Class musicsearch
     <WebMethod()>
     Public Shared Function GetTracks(prefix As String) As String()
         Dim tracks As New List(Of String)()
-        Using conn As New SqlConnection("Data Source=.\SQLEXPRESS;Initial Catalog=AMC;Integrated Security=True;")
+        Using conn As New SqlConnection("Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29")
             Using cmd As New SqlCommand()
                 cmd.CommandText = "SELECT [title], [id] FROM [tracks] where [title] like @SearchText + '%' ORDER BY [title]"
                 cmd.Parameters.AddWithValue("@SearchText", prefix)
@@ -86,7 +86,7 @@ Public Class musicsearch
     End Sub
 
     Protected Sub btnAddProjects_Click(sender As Object, e As EventArgs)
-        Dim conn As String = "Data Source=.\SQLEXPRESS;Initial Catalog=AMC;Integrated Security=True;"
+        Dim conn As String = "Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29"
         Dim sqlCon As New SqlConnection(conn)
         Dim t_id = Me.Label2.Text
 

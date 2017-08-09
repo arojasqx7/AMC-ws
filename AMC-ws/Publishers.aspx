@@ -61,6 +61,7 @@
                     <section class="col-sm-9">
                         <div class="subTitle">
                             <h2 class="subH2">Publishers</h2>
+                            <asp:Label ID="L_UserName" runat="server" Text="Label" Visible="false"></asp:Label>
                         </div>
                     </section>
 

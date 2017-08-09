@@ -4,18 +4,18 @@ Imports System.Web.UI.WebControls
 Public Class album
     Inherits System.Web.UI.Page
 
-    Dim connection As String = "Data Source=.\SQLEXPRESS;Initial Catalog=AMC;Integrated Security=True;"
+    Dim connection As String = "Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29"
 
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Me.GV_tracks.Rows.Count() <= 0 Then
             Dim idAlbum As String = Request.QueryString("idAlbum")
             Dim L_idAlbum = Long.Parse(idAlbum)
-            Dim T_cd = New AMC_ws.DataSet1TableAdapters.cdTableAdapter()
+            Dim T_cd = New DataSet2TableAdapters.cdTableAdapter()
             Dim W_cd = T_cd.GetDataById(L_idAlbum)
             Me.T_albumTitle.Text = W_cd(0).cd_title
             Me.T_trackId.Text = W_cd(0).id
-            Dim Dt_tracks = New AMC_ws.DataSet1TableAdapters.tracksTableAdapter()
+            Dim Dt_tracks = New DataSet2TableAdapters.tracksTableAdapter()
 
             Dim T_tracks = Dt_tracks.GetData(L_idAlbum)
 
@@ -33,23 +33,23 @@ Public Class album
 
     Protected Sub track_Click(sender As Object, e As EventArgs)
         Dim lno As LinkButton = sender
-        Dim Track_cd = New AMC_ws.DataSet1TableAdapters.map_clipsTableAdapter()
+        Dim Track_cd = New AMC_ws.DataSet2TableAdapters.map_clipsTableAdapter()
         Dim T_track = Track_cd.GetData(lno.CommandArgument)
         Dim FileName = "/clips/" & T_track(0).fk_trackID & "_30.mp3"
 
         ClientScript.RegisterStartupScript(Me.GetType(), "LoadSong", "cargarCancion('" & FileName & "');", True)
 
-        Dim Dt_tracks = New AMC_ws.DataSet1TableAdapters.tracksTableAdapter()
+        Dim Dt_tracks = New DataSet2TableAdapters.tracksTableAdapter()
 
-        Dim T_tracks = Dt_tracks.GetDataByid_track(lno.CommandArgument)
-        'Me.L_titlePlayer.Text = T_tracks(0).title
+        Dim T_tracks = Dt_tracks.GetData(lno.CommandArgument)
+        Me.L_titlePlayer.Text = T_tracks(0).title
     End Sub
 
 
     Protected Sub T_songMain(sender As Object, e As EventArgs)
         If (Session("fullname") IsNot Nothing) Then
             Dim lno As LinkButton = sender
-            Dim Track_cd = New AMC_ws.DataSet1TableAdapters.map_clipsTableAdapter()
+            Dim Track_cd = New DataSet2TableAdapters.map_clipsTableAdapter()
             Dim T_mp3 = Track_cd.GetDataByFormat(lno.CommandArgument, "mp3")
             Dim T_wav = Track_cd.GetDataByFormat(lno.CommandArgument, "wav")
             Me.G_mp3.DataSource = T_mp3
@@ -57,8 +57,8 @@ Public Class album
             Me.G_wav.DataSource = T_wav
             G_wav.DataBind()
 
-            Dim Dt_tracks = New AMC_ws.DataSet1TableAdapters.track_infoTableAdapter()
-            Dim T_tracks = Dt_tracks.GetData(lno.CommandArgument)
+            'Dim Dt_tracks = New DataSet3TableAdapters.track_infoTableAdapter()
+            'Dim T_tracks = Dt_tracks.GetData(lno.CommandArgument)
 
             'Me.T_titlePop.Text = T_tracks(3).title
             'Me.T_trackId.Text = T_tracks(1).cd_number
@@ -74,7 +74,7 @@ Public Class album
     End Sub
 
     Protected Sub track_Click_download(sender As Object, e As EventArgs)
-        Dim conn As SqlConnection = New SqlConnection("Data Source=.\SQLEXPRESS;Initial Catalog=AMC;Integrated Security=True;")
+        Dim conn As SqlConnection = New SqlConnection("Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29")
         Dim userID As Int32
         Dim loginID As Int32
         conn.Open()
@@ -86,19 +86,20 @@ Public Class album
 
         Dim lno As LinkButton = sender
         Dim destFileName = lno.CommandArgument
-        Dim Pos_g = InStr(destFileName, "_") - 1
-        Dim FK_trackID As Long = Mid(destFileName, 1, Pos_g)
+        Dim Pos_g = InStr(destFileName, "_30.mp3")
+        Dim FK_trackID As Long = lno.CommandArgument
+        Dim cancion = destFileName + "_30.mp3"
 
         'Dim Pos_p = InStr(destFileName, ".") - destFileName.Length
-        Dim file_lenght = Mid(destFileName, Pos_g + 2)
+        'Dim file_lenght = Mid(destFileName, Pos_g + 2)
 
-        Dim DT_download = New AMC_ws.DataSet1TableAdapters.map_downloadTableAdapter()
-        DT_download.Insert(FK_trackID, userID, Now.Date, loginID, destFileName)
+        Dim DT_download = New DataSet2TableAdapters.map_downloadTableAdapter()
+        DT_download.Insert(FK_trackID, userID, Now.Date, loginID, cancion)
 
         Response.ContentType = "APPLICATION/OCTET-STREAM"
         Dim Header As [String] = "Attachment; Filename=" & destFileName
         Response.AppendHeader("Content-Disposition", Header)
-        Dim Dfile As New System.IO.FileInfo(Server.MapPath("/clips/" & destFileName))
+        Dim Dfile As New System.IO.FileInfo(Server.MapPath("/clips/" & cancion))
         Response.WriteFile(Dfile.FullName)
         'Don't forget to add the following line
         Response.[End]()
@@ -114,7 +115,7 @@ Public Class album
     End Sub
 
     Protected Sub btnAddProjects_Click(sender As Object, e As EventArgs)
-        Dim conn As String = "Data Source=.\SQLEXPRESS;Initial Catalog=AMC;Integrated Security=True;"
+        Dim conn As String = "Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29"
         Dim sqlCon As New SqlConnection(conn)
         Dim t_id = Me.Label2.Text
 

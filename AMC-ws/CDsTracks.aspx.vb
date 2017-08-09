@@ -5,17 +5,28 @@ Public Class CDsTracks
     Inherits System.Web.UI.Page
 
 #Region "Conn String"
-    Dim connection As String = "Data Source=.\SQLEXPRESS;Initial Catalog=AMC;Integrated Security=True;"
+    Dim connection As String = "Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29"
 #End Region
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If (Session("fullname") IsNot Nothing) Then
+            If Session("fullname") = "Admin1" Then
+                Me.L_UserName.Text = Session("fullname")
+                Me.L_UserName.Visible = False
+            Else
+                Response.Redirect("UnauthorizedAccess.aspx")
+            End If
+        Else
+            Me.L_UserName.Visible = False
+            Response.Redirect("UnauthorizedAccess.aspx")
+        End If
     End Sub
 
     Protected Sub btnAddTracktoBD_Click(sender As Object, e As EventArgs)
 
         Dim trackID As Int32
-        Dim sql As String = "SELECT MAX(id) FROM [tracks]"
-        Using conn As New SqlConnection("Data Source=.\SQLEXPRESS;Initial Catalog=AMC;Integrated Security=True;")
+        Dim sql As String = "SELECT ISNULL(MAX(id),0) FROM [tracks]"
+        Using conn As New SqlConnection("Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29")
             Dim cmd As New SqlCommand(sql, conn)
             conn.Open()
             trackID = Convert.ToInt32(cmd.ExecuteScalar()) + 1 'almacena ID del PK
@@ -129,7 +140,7 @@ Public Class CDsTracks
         Dim isPublished As String = "N"
         Dim cdID As Int32
         Dim sql As String = "SELECT MAX(id) FROM [cd]"
-        Using conn As New SqlConnection("Data Source=.\SQLEXPRESS;Initial Catalog=AMC;Integrated Security=True;")
+        Using conn As New SqlConnection("Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29")
             Dim cmd As New SqlCommand(sql, conn)
             conn.Open()
             cdID = Convert.ToInt32(cmd.ExecuteScalar()) + 1 'almacena ID del PK

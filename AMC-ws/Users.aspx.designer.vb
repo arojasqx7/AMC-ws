@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class Users
     
     '''<summary>
+    '''L_UserName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents L_UserName As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
     '''DropUserType control.
     '''</summary>
     '''<remarks>

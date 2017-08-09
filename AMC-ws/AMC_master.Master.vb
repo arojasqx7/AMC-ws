@@ -17,11 +17,23 @@ Public Class AMC_master
         End If
     End Sub
 
+    Protected Sub LB_Logout_Click(sender As Object, e As EventArgs) Handles LB_Logout.Click
+        Session.Abandon()
+        Session.RemoveAll()
+        Response.Redirect("default.aspx")
+    End Sub
 
+    Protected Sub LB_PinVer_Click(sender As Object, e As EventArgs) Handles LB_PinVer.Click
+        Response.Redirect("accountpin.aspx")
+    End Sub
 
-    Private Sub signIn_Click(sender As Object, e As EventArgs) Handles signIn.Click
-        Dim t_user = New AMC_ws.DataSet1.usersDataTable()
-        Dim adapter = New AMC_ws.DataSet1TableAdapters.usersTableAdapter()
+    Private Sub LB_Project_Click(sender As Object, e As EventArgs) Handles LB_Project.Click
+        Response.Redirect("project.aspx")
+    End Sub
+
+    Protected Sub LogIn_Click(sender As Object, e As EventArgs)
+        Dim t_user = New DataSet2.usersDataTable()
+        Dim adapter = New DataSet2TableAdapters.usersTableAdapter()
         adapter.Fill(t_user, Me.username1.Text, Me.password1.Text)
         If (t_user.Count() > 0) Then
             Me.L_UserName.Text = t_user(0).fullname
@@ -39,7 +51,7 @@ Public Class AMC_master
             Dim strIPAddress As String
             strHostName = System.Net.Dns.GetHostName()
             strIPAddress = System.Net.Dns.GetHostByName(strHostName).AddressList(0).ToString()
-            Dim userloggin = New AMC_ws.DataSet1TableAdapters.userloginsTableAdapter
+            Dim userloggin = New DataSet2TableAdapters.userloginsTableAdapter
             userloggin.Insert(t_user(0).id, Now, strIPAddress)
             Dim type = t_user(0).type
 
@@ -53,25 +65,8 @@ Public Class AMC_master
 
 
         Else
-                ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "ErrorLogin();", True)
+            ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "ErrorLogin();", True)
 
         End If
-
-
-
-    End Sub
-
-    Protected Sub LB_Logout_Click(sender As Object, e As EventArgs) Handles LB_Logout.Click
-        Session.Abandon()
-        Session.RemoveAll()
-        Response.Redirect("default.aspx")
-    End Sub
-
-    Protected Sub LB_PinVer_Click(sender As Object, e As EventArgs) Handles LB_PinVer.Click
-        Response.Redirect("accountpin.aspx")
-    End Sub
-
-    Private Sub LB_Project_Click(sender As Object, e As EventArgs) Handles LB_Project.Click
-        Response.Redirect("project.aspx")
     End Sub
 End Class

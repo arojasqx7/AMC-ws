@@ -32,9 +32,9 @@
                     </section>
                     <section class="col-sm-3 sign-in" align="right">
                         <span id="bt_loginarrow" runat="server" class="glyphicon glyphicon-chevron-right"
-                            aria-hidden="true"></span>
+                            aria-hidden="true" visible="false"></span>
                         <button id="bt_login" runat="server" type="button" class="btn btn-sign"
-                            data-toggle="modal" data-target="#SignInForm">
+                            data-toggle="modal" data-target="#SignInForm" visible="false">
                             <span class="glyphicon glyphicon-log-in"
                                 aria-hidden="true"></span>Sign in
                         </button>
@@ -59,6 +59,7 @@
                         <li id="m_usuario" runat="server" visible="false" hidden="hidden"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                             aria-haspopup="true" aria-expanded="false" tag="username">
                             <asp:Label ID="L_UserName" runat="server" Text="Label"></asp:Label>
+                            <asp:Label ID="Label1" runat="server" Text="Label" Visible="false"></asp:Label>
                             <span class="caret"></span>
                         </a>
                             <ul class="dropdown-menu" aria-labelledby="userMenu">

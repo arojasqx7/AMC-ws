@@ -5,12 +5,16 @@ Public Class AMC_Admin
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim pageName As String = Path.GetFileName(Request.Path)
-        If (Session("fullname") IsNot Nothing) Then
-            Me.bt_login.Visible = False
-            Me.bt_loginarrow.Visible = False
-            Me.m_usuario.Visible = True
-            Me.L_UserName.Text = Session("fullname")
 
+        If (Session("fullname") IsNot Nothing) Then
+            If Session("fullname") = "Admin1" Then
+                Me.bt_login.Visible = False
+                Me.bt_loginarrow.Visible = False
+                Me.m_usuario.Visible = True
+                Me.L_UserName.Text = Session("fullname")
+            Else
+                Response.Redirect("UnauthorizedAccess.aspx")
+            End If
         Else
             Me.m_usuario.Visible = False
         End If
