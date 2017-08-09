@@ -63,7 +63,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="bodyBg">
+    <div class="bodyBg" style="height:800px;">
       <!-- InstanceBeginEditable name="Edit-content" -->
       <!-- content -->
       <div class="content container">

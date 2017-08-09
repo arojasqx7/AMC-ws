@@ -4,7 +4,7 @@ Imports System.Security.Cryptography
 Public Class project
     Inherits System.Web.UI.Page
 #Region "Conn String"
-    Dim connection As String = "Data Source=.\SQLEXPRESS;Initial Catalog=AMC;Integrated Security=True;"
+    Dim connection As String = "Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29"
 #End Region
     Dim dt As New DataTable()
 
@@ -14,8 +14,8 @@ Public Class project
     End Sub
 
     Private Sub B_addfolder_Click(sender As System.Object, e As System.EventArgs) Handles B_addfolder.Click
-        Dim conn As SqlConnection = New SqlConnection("Data Source=.\SQLEXPRESS;Initial Catalog=AMC;Integrated Security=True;")
-        Dim conn2 As SqlConnection = New SqlConnection("Data Source=.\SQLEXPRESS;Initial Catalog=AMC;Integrated Security=True;")
+        Dim conn As SqlConnection = New SqlConnection("Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29")
+        Dim conn2 As SqlConnection = New SqlConnection("Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29")
         If Me.T_newfolder.Text = "" Then
             ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "ValidateEmptyFolder();", True)
         Else
@@ -66,11 +66,11 @@ Public Class project
     End Sub
 
     Protected Sub Button1_Click(sender As Object, e As EventArgs)
-        Dim sqlConnection1 As New System.Data.SqlClient.SqlConnection(connection)
-        Dim cmd As New System.Data.SqlClient.SqlCommand
-        Dim cmd2 As New System.Data.SqlClient.SqlCommand
-        cmd.CommandType = System.Data.CommandType.Text
-        cmd2.CommandType = System.Data.CommandType.Text
+        Dim sqlConnection1 As New SqlConnection(connection)
+        Dim cmd As New SqlCommand
+        Dim cmd2 As New SqlCommand
+        cmd.CommandType = CommandType.Text
+        cmd2.CommandType = CommandType.Text
         cmd2.CommandText = "DELETE FROM [map_projects] WHERE [map_projects].[fk_projectID] = (SELECT TOP 1 [projects].[id] FROM [projects] WHERE [projects].[projectName] ='" & Me.DD_project1.SelectedValue & "') AND [map_projects].[fk_userID] = (SELECT TOP 1 [users].[id] FROM [users] WHERE [users].[username] = '" & Session("Username") & "')"
         cmd.CommandText = "DELETE FROM [projects] WHERE [projectName] ='" & Me.DD_project1.SelectedValue & "' AND [fk_userID] = (SELECT TOP 1 [users].[id] FROM [users] WHERE [users].[username] = '" & Session("Username") & "')"
         cmd2.Connection = sqlConnection1

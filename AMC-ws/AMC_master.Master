@@ -85,7 +85,7 @@
 
                       <br />
 
-                      <asp:Button ID="signIn" runat="server" Text="Sign In" CssClass="btn btn-primary" Width="270px" />
+                      <asp:Button ID="LogIn" runat="server" Text="Sign In" CssClass="btn btn-primary" Width="270px" OnClick="LogIn_Click" />
                   </div>
 
                   <div class="modal-footer" style="text-align:center;">

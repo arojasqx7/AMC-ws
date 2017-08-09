@@ -18,6 +18,7 @@
                     <section class="col-sm-9">
                         <div class="subTitle">
                             <h2 class="subH2">CD's & Tracks</h2>
+                            <asp:Label ID="L_UserName" runat="server" Text="Label" Visible="false"></asp:Label>
                         </div>
                     </section>
 
@@ -1097,7 +1098,7 @@
                             <asp:FileUpload ID="FileUpload1" runat="server" CssClass="btn btn-default"/>
                             <br />
 
-                            <div><asp:Button ID="btnAddClip" runat="server" Text="Add" CssClass="btn btn-success form-control" OnClick="btnAddClip_Click"/></div>
+                            <div><asp:Button ID="btnAddClip" runat="server" Text="Add" CssClass="btn btn-success form-control" OnClick="btnAddClip_Click" CausesValidation="false"/></div>
                             <label style="margin-top:20px;">Existing Clips:</label>
                             
                             <asp:GridView ID="GridClips" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" style="margin-top:20px;" DataSourceID="SqlGridClips" DataKeyNames="ClipID">

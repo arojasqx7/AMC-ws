@@ -8,8 +8,8 @@
      {
          display:none;
      }
-</style>
 
+    </style>
      <div class="bodyBg"> 
         <div class="content container">
             <div class="container">
@@ -18,6 +18,7 @@
                     <section class="col-sm-9">
                         <div class="subTitle">
                             <h2 class="subH2">Users</h2>
+                            <asp:Label ID="L_UserName" runat="server" Text="Label" Visible="false"></asp:Label>
                         </div>
                     </section>
 
@@ -57,6 +58,7 @@
                                 <asp:BoundField DataField="comments" HeaderText="comments" SortExpression="comments" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
                                 <asp:BoundField DataField="LastLogin" HeaderText="Last Login" SortExpression="LastLogin"/>
                                 <asp:BoundField DataField="totalLogins" HeaderText="totalLogins" SortExpression="totalLogins" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
+                                <asp:BoundField DataField="Downloads" HeaderText="Downloads" SortExpression="Downloads" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
                                 <asp:ButtonField Text="View Details" CommandName="Select"/>
                             </Columns>
                         </asp:GridView>        
@@ -146,10 +148,10 @@
                                             <td class="col-sm-10">
                                                 <%# Eval("password") %>
                                             </td>
-                                            <%-- <td class="col-sm-2"><label style="width:100px; margin-left:20px;">Downloads:</label> </td>
+                                             <td class="col-sm-2"><label style="width:100px; margin-left:20px;">Downloads:</label> </td>
                                              <td class="col-sm-10">
-                                                 24
-                                             </td>--%>
+                                                <%# Eval("Downloads") %>
+                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="col-sm-2"><label>Account PIN:</label> </td>

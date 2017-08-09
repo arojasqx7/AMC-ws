@@ -7,7 +7,7 @@
     End Sub
     Sub FillData()
 
-        Dim T_composers = New AMC_ws.DataSet1TableAdapters.composersTableAdapter()
+        Dim T_composers = New DataSet2TableAdapters.composersTableAdapter()
         Dim W_composers = T_composers.GetData()
 
         Me.G_composer.DataSource = W_composers

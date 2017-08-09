@@ -4,11 +4,11 @@
     Dim w_standing As Integer
     Dim w_comments As Integer
     Dim w_Original_id As Long
-    Dim connection As String = "Data Source=.\SQLEXPRESS;Initial Catalog=AMC;Integrated Security=True;"
+    Dim connection As String = "Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29"
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Dim t_user = New AMC_ws.DataSet1.usersDataTable()
-        Dim adapter = New AMC_ws.DataSet1TableAdapters.usersTableAdapter()
+        Dim t_user = New AMC_ws.DataSet2.usersDataTable()
+        Dim adapter = New AMC_ws.DataSet2TableAdapters.usersTableAdapter()
 
         If Session("pinit") <> "X" Then
             Response.Redirect("default.aspx")
