@@ -32,15 +32,6 @@ Partial Public Class AMC_master
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
     
     '''<summary>
-    '''bt_loginarrow control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents bt_loginarrow As Global.System.Web.UI.HtmlControls.HtmlGenericControl
-    
-    '''<summary>
     '''bt_login control.
     '''</summary>
     '''<remarks>

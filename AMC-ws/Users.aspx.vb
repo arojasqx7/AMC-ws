@@ -22,7 +22,12 @@ Public Class Users
     End Sub
 
     Protected Sub DropUserType_SelectedIndexChanged(sender As Object, e As EventArgs)
-        BindGridUsers()
+        If DropUserType.SelectedValue <> 3 Then
+            BindGridUsers()
+        Else
+            BindAllUsers()
+        End If
+
     End Sub
 
     Protected Sub GridUserBlanket_SelectedIndexChanged(sender As Object, e As EventArgs)
@@ -42,7 +47,7 @@ Public Class Users
         Dim dt As New DataTable()
         dt.Columns.AddRange(New DataColumn(11) {New DataColumn("id", GetType(String)),
                                                New DataColumn("UserCompany", GetType(String)),
-                                               New DataColumn("ConvertedDate", GetType(Date)),
+                                               New DataColumn("ConvertedDate", GetType(String)),
                                                New DataColumn("phone1", GetType(String)),
                                                New DataColumn("address1", GetType(String)),
                                                New DataColumn("username", GetType(String)),
@@ -91,7 +96,19 @@ Public Class Users
     Protected Sub BindGridUsers()
         Dim sqlConnection1 As New SqlConnection(connection)
         sqlConnection1.Open()
-        Dim query As String = "SELECT distinct [users].[id],CONCAT([users].[companyName],' (', [users].[fullname],')') AS UserCompany,CONVERT(VARCHAR(40),[users].[timeStamped],101) AS ConvertedDate, phone1,address1,username,password,accountpin,comments, max([userlogins].[dated]) as LastLogin, count([userlogins].[userid]) as totalLogins,(SELECT COUNT(md2.fk_userID) FROM [AMC].[dbo].[map_download] md2 JOIN [AMC].[dbo].[users] u2  on(md2.fk_userID=u2.id) where u2.type='" & DropUserType.SelectedValue & "') as Downloads FROM [users] INNER JOIN [userlogins] ON [users].[id] = [userlogins].[userid] WHERE ([users].[type] = '" & DropUserType.SelectedValue & "') group by [users].[id],CONCAT([users].[companyName],' (', [users].[fullname],')'),[users].[timeStamped],phone1,address1,username,password,accountpin,comments"
+        Dim query As String = "SELECT distinct [users].[id],CONCAT([users].[companyName],' (', [users].[fullname],')') AS UserCompany,CONVERT(VARCHAR(40),[users].[timeStamped],101) AS ConvertedDate, phone1,address1,username,password,accountpin,comments, MAX(CONVERT(VARCHAR(10), [userlogins].[dated], 101)) as LastLogin, count([userlogins].[userid]) as totalLogins,(SELECT COUNT(md2.fk_userID) FROM [AMC].[dbo].[map_download] md2 JOIN [AMC].[dbo].[users] u2  on(md2.fk_userID=u2.id) where u2.type='" & DropUserType.SelectedValue & "') as Downloads FROM [users] INNER JOIN [userlogins] ON [users].[id] = [userlogins].[userid] WHERE ([users].[type] = '" & DropUserType.SelectedValue & "') group by [users].[id],CONCAT([users].[companyName],' (', [users].[fullname],')'),[users].[timeStamped],phone1,address1,username,password,accountpin,comments"
+        Dim Adpt As New SqlDataAdapter(query, sqlConnection1)
+        Dim ds As New DataSet()
+        Adpt.Fill(ds)
+        GridUserBlanket.DataSource = ds
+        GridUserBlanket.DataBind()
+        sqlConnection1.Close()
+    End Sub
+
+    Protected Sub BindAllUsers()
+        Dim sqlConnection1 As New SqlConnection(connection)
+        sqlConnection1.Open()
+        Dim query As String = "SELECT distinct [users].[id],CONCAT([users].[companyName],' (', [users].[fullname],')') AS UserCompany,CONVERT(VARCHAR(40),[users].[timeStamped],101) AS ConvertedDate, phone1,address1,username,password,accountpin,comments, MAX(CONVERT(VARCHAR(10), [userlogins].[dated], 101)) as LastLogin, count([userlogins].[userid]) as totalLogins,(SELECT COUNT(md2.fk_userID) FROM [AMC].[dbo].[map_download] md2 JOIN [AMC].[dbo].[users] u2  on(md2.fk_userID=u2.id) where u2.type='" & DropUserType.SelectedValue & "') as Downloads FROM [users] INNER JOIN [userlogins] ON [users].[id] = [userlogins].[userid] where [users].[companyName] <> 'AMC' group by [users].[id],CONCAT([users].[companyName],' (', [users].[fullname],')'),[users].[timeStamped],phone1,address1,username,password,accountpin,comments"
         Dim Adpt As New SqlDataAdapter(query, sqlConnection1)
         Dim ds As New DataSet()
         Adpt.Fill(ds)

@@ -362,7 +362,8 @@
                                         <label class="col-sm-2 control-label"
                                         id="Lzip">Zip Code</label>
                                         <div class="col-sm-10">
-                                            <asp:TextBox ID="Tzip" runat="server" class="form-control" placeholder="Zip Code" TextMode="Number"></asp:TextBox>
+                                            <asp:TextBox ID="Tzip" runat="server" class="form-control" placeholder="Zip Code" TextMode="Number" ></asp:TextBox>
+                                            <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "Tzip" ID="RegularExpressionValidator2" ValidationExpression = "^[\s\S]{4,}$" runat="server" ErrorMessage="Minimum 4 characters required." ForeColor="Red"></asp:RegularExpressionValidator>
                                         </div>
                                     </div>
                                      <div class="form-group">
@@ -415,7 +416,7 @@
                             <label class="col-sm-2 control-label"
                             id="Lpassword1">Password</label>
                             <div class="col-sm-10">
-                                <asp:TextBox ID="Tpassword1" runat="server" class="form-control" placeholder="Password"></asp:TextBox>
+                                <asp:TextBox ID="Tpassword1" runat="server" class="form-control" placeholder="Password" TextMode="Password"></asp:TextBox>
                                 <asp:RequiredFieldValidator id="RequiredFieldValidator7" runat="server"
                                           ControlToValidate="Tpassword1"
                                           ErrorMessage="Password is a required field."
@@ -427,7 +428,7 @@
                             <label class="col-sm-2 control-label"
                             id="Lpassword2">Verify Password</label>
                             <div class="col-sm-10">
-                                <asp:TextBox ID="Tpassword2" runat="server" class="form-control" placeholder="Verify Password"></asp:TextBox>
+                                <asp:TextBox ID="Tpassword2" runat="server" class="form-control" placeholder="Verify Password" TextMode="Password"></asp:TextBox>
                                 <asp:RequiredFieldValidator id="RequiredFieldValidator8" runat="server"
                                           ControlToValidate="Tpassword2"
                                           ErrorMessage="Password is a required field."
@@ -450,6 +451,7 @@
                             id="Lpin1">Pin</label>
                             <div class="col-sm-10">
                                 <asp:TextBox ID="Tpin1" runat="server" class="form-control" placeholder="Pin" TextMode="Number"></asp:TextBox>
+                                <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "Tpin1" ID="RegularExpressionValidator1" ValidationExpression = "^[\s\S]{4,}$" runat="server" ErrorMessage="Minimum 4 characters required." ForeColor="Red"></asp:RegularExpressionValidator>
                             </div>
                         </div>
                         <div class="form-group">
@@ -457,6 +459,7 @@
                             id="Lpin2">Verify Pin</label>
                             <div class="col-sm-10">
                                 <asp:TextBox ID="Tpin2" runat="server" class="form-control" placeholder="Verify Pin" TextMode="Number"></asp:TextBox>
+                             <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "Tpin2" ID="RegularExpressionValidator3" ValidationExpression = "^[\s\S]{4,}$" runat="server" ErrorMessage="Minimum 4 characters required." ForeColor="Red"></asp:RegularExpressionValidator>
                             </div>
                             </div>
                         </fieldset>

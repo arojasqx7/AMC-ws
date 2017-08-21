@@ -10,7 +10,7 @@
      }
 
     </style>
-     <div class="bodyBg"> 
+     <div class="bodyBg" style="height:800px;"> 
         <div class="content container">
             <div class="container">
                 <div class="row">
@@ -34,7 +34,7 @@
                                             <asp:ListItem Text="Blanket" Value="0" />
                                             <asp:ListItem Text="Per Use" Value="1" />
                                             <asp:ListItem Text="Leads" Value="2" />
-                                            <asp:ListItem Text="View All" Value="" />
+                                            <asp:ListItem Text="View All" Value="3" />
                                         </asp:DropDownList>
                                     </div>
                                 </div>

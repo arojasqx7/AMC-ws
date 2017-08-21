@@ -52,7 +52,7 @@
         /*end gridview */
         </style>
   
-       <div class="bodyBg"> 
+       <div class="bodyBg" style="height:800px;"> 
         <div class="content container">
             <div class="container">
                 <div class="row">
