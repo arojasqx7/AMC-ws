@@ -147,9 +147,8 @@
     <Content Include="CDsTracks.aspx" />
     <Content Include="ClientActivity.aspx" />
     <Content Include="clips\1_30.mp3" />
-    <Content Include="clips\2948_30.mp3" />
-    <Content Include="clips\2949_30.mp3" />
-    <Content Include="clips\2950_30.mp3" />
+    <Content Include="clips\6_30.mp3" />
+    <Content Include="clips\7_30.mp3" />
     <Content Include="clips\2951_30.mp3" />
     <Content Include="clips\2952_30.mp3" />
     <Content Include="clips\2953_30.mp3" />
@@ -161,6 +160,7 @@
     <Content Include="clips\2_30.mp3" />
     <Content Include="clips\3_30.mp3" />
     <Content Include="clips\4_30.mp3" />
+    <Content Include="clips\5_30.mp3" />
     <Content Include="composer.aspx" />
     <Content Include="Composers.aspx" />
     <Content Include="contactus.aspx" />

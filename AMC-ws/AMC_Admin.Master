@@ -8,9 +8,6 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/typeahead.css" />
     <link href="css/styles.css" rel="stylesheet" />
-    <script src="js/jquery-2.2.3.min.js"></script>
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="dist/sweetalert.min.js"></script>
     <link rel="stylesheet" type="text/css" href="dist/sweetalert.css" />
 
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -36,11 +33,12 @@
                         <button id="bt_login" runat="server" type="button" class="btn btn-sign"
                             data-toggle="modal" data-target="#SignInForm" visible="false">
                             <span class="glyphicon glyphicon-log-in"
-                                aria-hidden="true"></span>Sign in
+                                aria-hidden="true"></span>Log In
                         </button>
                     </section>
                 </div>
             </div>
+            <br />
             <nav class="nav navbar-inverse" role="navigation">
                 <div class="container">
                     <div class="navbar-header">
@@ -53,7 +51,7 @@
                         <li><a href="Users.aspx">Users</a></li>
                         <li><a href="Publishers.aspx">Publishers</a></li>
                         <li><a href="Composers.aspx">Composers</a></li>
-                        <li><a href="CDsTracks.aspx">CD´s & Tracks</a></li>
+                        <li><a href="CDsTracks.aspx">Albums</a></li>
                         <li><a href="#">Licences</a></li>
                         <li><a href="ClientActivity.aspx">Client Activity</a></li>
                         <li id="m_usuario" runat="server" visible="false" hidden="hidden"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -64,7 +62,7 @@
                         </a>
                             <ul class="dropdown-menu" aria-labelledby="userMenu">
                                 <li>
-                                    <asp:LinkButton ID="LB_Logout" runat="server">Logout</asp:LinkButton>
+                                    <asp:LinkButton ID="LB_Logout" runat="server" style="z-index: 9999;">Logout</asp:LinkButton>
                                 </li>
                             </ul>
                         </li>
@@ -92,6 +90,7 @@
         <script src="js/jquery-2.2.3.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/script.js"></script>
+        <script src="dist/sweetalert.min.js"></script>
     </form>
 </body>
 </html>

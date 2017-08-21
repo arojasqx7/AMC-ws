@@ -215,12 +215,16 @@ body::-webkit-scrollbar-thumb {
 
 .catalogBox {
 	border-radius: 4px;
-	margin-left: 5px;
 	margin-right: 5px;
 	background-color: #EFF5FF;
 	margin-top: 2px;
 	margin-bottom: 2px;
 }
+
+.catalogBox:hover{
+    background-color: #e6ecff;
+}
+
 .subH2 {
 	padding-left: 10px;
 }

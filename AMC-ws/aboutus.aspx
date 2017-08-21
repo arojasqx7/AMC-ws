@@ -71,11 +71,11 @@
         </div>
         <div class="container col-sm-6 col-sm-offset-3"> 
             <a href="composer.aspx"
-            class="btn btn-primary" role="button">Meet Our Composers</a> 
+            class="btn btn-default" role="button">Meet Our Composers</a> 
             <a href="helpfulhints.aspx"
-            class="btn btn-primary" role="button">Helpful Hints</a> 
+            class="btn btn-default" role="button">Helpful Hints</a> 
             <a href="join.aspx"
-            class="btn btn-primary" role="button">Join Us</a>
+            class="btn btn-default" role="button">Join Us</a>
         </div>
       </div>
 </asp:Content>

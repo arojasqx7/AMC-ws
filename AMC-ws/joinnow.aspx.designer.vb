@@ -131,6 +131,15 @@ Partial Public Class join_t
     Protected WithEvents Tzip As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
+    '''RegularExpressionValidator2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator2 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+    
+    '''<summary>
     '''Temail control.
     '''</summary>
     '''<remarks>
@@ -239,6 +248,15 @@ Partial Public Class join_t
     Protected WithEvents Tpin1 As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
+    '''RegularExpressionValidator1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator1 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+    
+    '''<summary>
     '''Tpin2 control.
     '''</summary>
     '''<remarks>
@@ -246,6 +264,15 @@ Partial Public Class join_t
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Tpin2 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''RegularExpressionValidator3 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator3 As Global.System.Web.UI.WebControls.RegularExpressionValidator
     
     '''<summary>
     '''regSubmit control.

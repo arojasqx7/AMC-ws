@@ -1,5 +1,11 @@
-﻿Imports System.Web
-Imports System.IO
+﻿Imports System.IO
+Imports System.Net
+Imports System.Net.Mail
+Imports System.Drawing
+Imports System.Configuration
+Imports System.Data.SqlClient
+
+
 Public Class AMC_master
     Inherits System.Web.UI.MasterPage
 
@@ -7,7 +13,6 @@ Public Class AMC_master
         Dim pageName As String = Path.GetFileName(Request.Path)
         If (Session("fullname") IsNot Nothing) Then
             Me.bt_login.Visible = False
-            Me.bt_loginarrow.Visible = False
             Me.m_usuario.Visible = True
             Me.L_UserName.Text = Session("fullname")
             Me.m_joinus.Visible = False
@@ -45,7 +50,6 @@ Public Class AMC_master
             Session.Timeout = 10
             Me.m_usuario.Visible = True
             Me.bt_login.Visible = False
-            Me.bt_loginarrow.Visible = False
 
             Dim strHostName As String
             Dim strIPAddress As String
@@ -56,8 +60,10 @@ Public Class AMC_master
             Dim type = t_user(0).type
 
             Select Case type
+                Case "0"
+                    Response.Redirect("default.aspx")
                 Case "1"
-                    Response.Redirect("welcome.aspx")
+                    Response.Redirect("default.aspx")
                 Case "8"
                     Response.Redirect("Users.aspx")
             End Select
@@ -67,6 +73,45 @@ Public Class AMC_master
         Else
             ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "ErrorLogin();", True)
 
+        End If
+    End Sub
+
+    Protected Sub B_subEmail_Click(sender As Object, e As EventArgs)
+        Dim Username As String = String.Empty
+        Dim Password As String = String.Empty
+        Using conn As New SqlConnection("Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29")
+            Using cmd As New SqlCommand()
+                cmd.CommandText = "SELECT username,password FROM users WHERE email = @email"
+                cmd.Parameters.AddWithValue("@email", useremail.Text.Trim())
+                cmd.Connection = conn
+                conn.Open()
+                Using sdr As SqlDataReader = cmd.ExecuteReader()
+                    If sdr.Read() Then
+                        Username = sdr("username").ToString()
+                        Password = sdr("password").ToString()
+                    End If
+                End Using
+                conn.Close()
+            End Using
+        End Using
+        If Not String.IsNullOrEmpty(Password) Then
+            Dim mm As New MailMessage("josue.victorioso77@gmail.com", useremail.Text.Trim)
+            mm.Subject = "Password Recovery - No-Reply"
+            mm.Body = String.Format("Hi {0},<br /><br />Your password is {1}.<br /><br />Thank You!!!", Username, Password)
+            mm.IsBodyHtml = True
+            Dim smtp As New SmtpClient()
+            smtp.Host = "smtp.gmail.com"
+            smtp.EnableSsl = True
+            Dim NetworkCred As New NetworkCredential()
+            NetworkCred.UserName = "josue.victorioso77@gmail.com"
+            NetworkCred.Password = "dioseslaluzdemivida"
+            smtp.UseDefaultCredentials = False
+            smtp.Credentials = NetworkCred
+            smtp.Port = 25
+            smtp.Send(mm)
+            ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "PasswordSent();", True)
+        Else
+            ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "PasswordNotSent();", True)
         End If
     End Sub
 End Class

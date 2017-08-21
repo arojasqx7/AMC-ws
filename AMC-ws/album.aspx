@@ -232,9 +232,8 @@
         #Player {
             position: fixed;
             bottom: 0;
-            margin-bottom: 50px;
-            align-content: center;
-            background-color:lightgrey;            /*a:link{cursor:pointer}a:link{color:#1a0dab}*/
+            margin-bottom: 55px;
+            align-content: center;            /*a:link{cursor:pointer}a:link{color:#1a0dab}*/
                 }
     </style>
 
@@ -242,11 +241,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.4/wavesurfer.min.js"></script>
     <!-- Define los elementos HTML donde waveform se cargara -->
     <div id="Player">
-        <div id="waveform">
-            <asp:Label ID="L_titlePlayer" runat="server"></asp:Label>
+        <div id="waveform" style="text-align:center; color:blue;">
+            <asp:Label ID="L_titlePlayer" runat="server"  ></asp:Label>
         </div>
         <div class="controls">
-            <button class="btn btn-primary" onclick="wavesurfer.skipBackward();return false">
+            <button class="btn btn-danger" onclick="wavesurfer.skipBackward();return false">
                 <span class="glyphicon glyphicon-backward" aria-hidden="true"></span>
             </button>
 
@@ -256,11 +255,11 @@
                         <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
             </button>
 
-            <button class="btn btn-primary" onclick="wavesurfer.skipForward();return false">
+            <button class="btn btn-danger" onclick="wavesurfer.skipForward();return false">
                 <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
             </button>
 
-            <button class="btn btn-primary" onclick="wavesurfer.toggleMute();return false">
+            <button class="btn btn-default" onclick="wavesurfer.toggleMute();return false">
                 <span class="glyphicon glyphicon-volume-off" aria-hidden="true"></span>
             </button>
         </div>
@@ -273,7 +272,8 @@
             container: '#waveform',
             waveColor: 'blue',
             progressColor: 'red',
-            height: 50
+            height: 80,
+            width:1000
         });
 
 
@@ -319,7 +319,4 @@
 
     </script>
 
-<%--    </div>
-              <span class="glyphicons glyphicons-download-alt"></span></div>
-            </div> --%>
 </asp:Content>

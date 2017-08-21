@@ -10,7 +10,7 @@
      }
     </style>
     <link href="css/bootstrap-datetimepicker.css" rel="stylesheet" />
-        <div class="bodyBg">
+        <div class="bodyBg" style="height:800px;">
         <div class="content container">
             <div class="container">
                 <div class="row">
