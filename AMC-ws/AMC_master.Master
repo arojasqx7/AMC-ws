@@ -20,7 +20,7 @@
     <script type="text/javascript">
         function ErrorLogin() {
             swal({
-                title: 'Loggin',
+                title: 'Log In',
                 text: 'User or password invalid',
                 type: 'error'
             });
@@ -47,9 +47,8 @@
             });
         }
     </script>
-    <!-- InstanceBeginEditable name="doctitle" -->
     <title>American Music Company</title>
-    <!-- InstanceEndEditable -->
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -67,7 +66,7 @@
           </section>
           <section class="col-sm-3 sign-in" align="right">  <button id="bt_login" runat="server" type="button" class="btn btn-sign"
 
-              data-toggle="modal" data-target="#SignInForm"> <span class="glyphicon glyphicon-log-in"
+              data-toggle="modal" data-target="#SignInForm" > <span class="glyphicon glyphicon-log-in"
 
                 aria-hidden="true"></span> Log In </button>
 
@@ -97,7 +96,7 @@
 
                       <br />
 
-                      <asp:Button ID="LogIn" runat="server" Text="Sign In" CssClass="btn btn-primary" Width="270px" OnClick="LogIn_Click" />
+                      <asp:Button ID="LogIn" runat="server" Text="Log In" CssClass="btn btn-primary" Width="270px" OnClick="LogIn_Click" UseSubmitBehavior="false"  />
                   </div>
 
                   <div class="modal-footer" style="text-align:center;">
@@ -108,6 +107,7 @@
                 </div>
               </div>
             </div>
+
               <!--ForgotPassword-->
             <div class="modal fade" id="forPass" align="left">
               <div class="modal-dialog modal-sm">
@@ -135,6 +135,7 @@
                 </div>
               </div>
             </div>
+              <!-- End forgot password modal -->      
           </section>
             
         </div>
@@ -183,7 +184,7 @@
 
     <div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        
+            
         </asp:ContentPlaceHolder>
     </div>
 <!-- InstanceEndEditable --> 
@@ -201,5 +202,6 @@
     <script src="js/script.js"></script>
     <script src="js/bootstrap3-typeahead.min.js"></script>
 </form>
+
 </body>
 </html>

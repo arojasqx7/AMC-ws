@@ -298,6 +298,7 @@
     <Content Include="src\webaudio.js" />
     <Content Include="UnauthorizedAccess.aspx" />
     <Content Include="Users.aspx" />
+    <Content Include="WaitingConfirmation.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -525,6 +526,13 @@
     </Compile>
     <Compile Include="Users.aspx.vb">
       <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="WaitingConfirmation.aspx.designer.vb">
+      <DependentUpon>WaitingConfirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WaitingConfirmation.aspx.vb">
+      <DependentUpon>WaitingConfirmation.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="WebForm2.aspx.designer.vb">

@@ -134,8 +134,8 @@
             <div class="modal-dialog modal-sm" style="width: 600px;">
                 <div class="modal-content" style="width: 600px;">
                     <div class="modal-header song_sel_panel-header">
-                        <button type="button" class="close" data-dismiss="modal">×</button>
-                        <h3 class="modal-title"><span class="glyphicon glyphicon-cd"></span>Add new CD</h3>
+                        <button type="button" class="close" data-dismiss="modal">x</button>
+                        <h3 class="modal-title"><span class="glyphicon glyphicon-cd"></span>    Add new Album</h3>
                     </div>
 
                     <div class="modal-body" style="width: 610px;">
