@@ -32,6 +32,7 @@ Public Class album
     End Sub
 
     Protected Sub track_Click(sender As Object, e As EventArgs)
+        ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "openPlayer();", True)
         Dim lno As LinkButton = sender
         Dim Track_cd = New AMC_ws.DataSet2TableAdapters.map_clipsTableAdapter()
         Dim T_track = Track_cd.GetData(lno.CommandArgument)
@@ -56,14 +57,13 @@ Public Class album
             G_mp3.DataBind()
             Me.G_wav.DataSource = T_wav
             G_wav.DataBind()
+            Dim Dt_tracks = New DataSet3TableAdapters.trackDownloadInfoTableAdapter()
+            Dim T_tracks = Dt_tracks.GetData(lno.CommandArgument)
 
-            'Dim Dt_tracks = New DataSet3TableAdapters.track_infoTableAdapter()
-            'Dim T_tracks = Dt_tracks.GetData(lno.CommandArgument)
-
-            'Me.T_titlePop.Text = T_tracks(3).title
+            Me.T_titlePop.Text = T_tracks(0).title
             'Me.T_trackId.Text = T_tracks(1).cd_number
             'Me.T_compPop.Text = T_tracks(0).fname & " " & T_tracks(0).lname
-            'Me.T_pubPop.Text = T_tracks(0)._alias & " " & T_tracks(0).name
+            Me.T_pubPop.Text = T_tracks(0)._alias & " " & T_tracks(0).name
             ScriptManager.RegisterStartupScript(Me, Page.GetType, "songS", "$('#songS').modal();", True)
 
         Else
@@ -145,4 +145,5 @@ Public Class album
             End If
         Next
     End Sub
+
 End Class

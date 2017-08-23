@@ -50,15 +50,6 @@ Partial Public Class album
     Protected WithEvents T_trackId As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''T_compPop control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents T_compPop As Global.System.Web.UI.WebControls.Label
-    
-    '''<summary>
     '''T_pubPop control.
     '''</summary>
     '''<remarks>
