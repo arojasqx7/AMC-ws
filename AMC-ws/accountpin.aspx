@@ -12,7 +12,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="bodyBg"> 
+    <div class="bodyBg" style="height:500px;"> 
     <div class="content container">
         <div class="container">
           <div class="row">
@@ -36,7 +36,7 @@
                       </div>
                         <br />
                         
-                            <asp:Button ID="B_forgotPin" runat="server" class="btn btn-search" Text="I Forgot My PIN" />
+                            <asp:Button ID="B_forgotPin" runat="server" class="btn btn-warning" Text="I Forgot My PIN" style="margin-left:15px;"/>
                         
                             
 
