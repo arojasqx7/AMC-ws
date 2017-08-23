@@ -2,6 +2,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0; 
+        }
+    </style>
     <div class="form-horizontal" id="registrationForm"> 
     <div class="bodyBg"> 
     <div class="content container">
@@ -26,6 +33,7 @@
                                         <asp:RequiredFieldValidator id="RequiredFieldValidator1" runat="server"
                                           ControlToValidate="Tfname"
                                           ErrorMessage="First name is a required field."
+                                          ValidationGroup="testValidationgGroup"
                                           ForeColor="Red">
                                         </asp:RequiredFieldValidator>
                                     </div>
@@ -38,6 +46,7 @@
                                         <asp:RequiredFieldValidator id="RequiredFieldValidator2" runat="server"
                                           ControlToValidate="Tlname"
                                           ErrorMessage="Last name is a required field."
+                                          ValidationGroup="testValidationgGroup"
                                           ForeColor="Red">
                                         </asp:RequiredFieldValidator>
                                     </div>
@@ -57,6 +66,7 @@
                                         <asp:RequiredFieldValidator id="RequiredFieldValidator3" runat="server"
                                           ControlToValidate="Taddress1"
                                           ErrorMessage="Address is a required field."
+                                          ValidationGroup="testValidationgGroup"
                                           ForeColor="Red">
                                         </asp:RequiredFieldValidator>
                                     </div>
@@ -76,6 +86,7 @@
                                         <asp:RequiredFieldValidator id="RequiredFieldValidator4" runat="server"
                                           ControlToValidate="Tcity"
                                           ErrorMessage="City is a required field."
+                                          ValidationGroup="testValidationgGroup"
                                           ForeColor="Red">
                                         </asp:RequiredFieldValidator>
                                     </div>
@@ -363,7 +374,7 @@
                                         id="Lzip">Zip Code</label>
                                         <div class="col-sm-10">
                                             <asp:TextBox ID="Tzip" runat="server" class="form-control" placeholder="Zip Code" TextMode="Number" ></asp:TextBox>
-                                            <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "Tzip" ID="RegularExpressionValidator2" ValidationExpression = "^[\s\S]{4,}$" runat="server" ErrorMessage="Minimum 4 characters required." ForeColor="Red"></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "Tzip" ID="RegularExpressionValidator2" ValidationExpression = "^[\s\S]{4,}$" runat="server" ErrorMessage="Minimum 4 characters required." ForeColor="Red" ValidationGroup="testValidationgGroup"></asp:RegularExpressionValidator>
                                         </div>
                                     </div>
                                      <div class="form-group">
@@ -374,6 +385,7 @@
                                             <asp:RequiredFieldValidator id="RequiredFieldValidator5" runat="server"
                                               ControlToValidate="Temail"
                                               ErrorMessage="Email is a required field."
+                                              ValidationGroup="testValidationgGroup"
                                               ForeColor="Red">
                                             </asp:RequiredFieldValidator>
                                         </div>
@@ -405,6 +417,7 @@
                                 <asp:RequiredFieldValidator id="RequiredFieldValidator6" runat="server"
                                           ControlToValidate="Tusern"
                                           ErrorMessage="Username is a required field."
+                                          ValidationGroup="testValidationgGroup"
                                           ForeColor="Red">
                                         </asp:RequiredFieldValidator>
                             </div>
@@ -420,6 +433,7 @@
                                 <asp:RequiredFieldValidator id="RequiredFieldValidator7" runat="server"
                                           ControlToValidate="Tpassword1"
                                           ErrorMessage="Password is a required field."
+                                          ValidationGroup="testValidationgGroup"
                                           ForeColor="Red">
                                         </asp:RequiredFieldValidator>
                             </div>
@@ -432,6 +446,7 @@
                                 <asp:RequiredFieldValidator id="RequiredFieldValidator8" runat="server"
                                           ControlToValidate="Tpassword2"
                                           ErrorMessage="Password is a required field."
+                                          ValidationGroup="testValidationgGroup"
                                           ForeColor="Red">
                                         </asp:RequiredFieldValidator>
                                 <asp:CompareValidator id="comparePasswords" 
@@ -439,6 +454,7 @@
                                   ControlToCompare="Tpassword1"
                                   ControlToValidate="Tpassword2"
                                   ErrorMessage="Your passwords do not match up!"
+                                  ValidationGroup="testValidationgGroup"
                                   ForeColor="Red"
                                   Display="Dynamic" />
                             </div>
@@ -450,22 +466,22 @@
                             <label class="col-sm-2 control-label"
                             id="Lpin1">Pin</label>
                             <div class="col-sm-10">
-                                <asp:TextBox ID="Tpin1" runat="server" class="form-control" placeholder="Pin" TextMode="Number"></asp:TextBox>
-                                <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "Tpin1" ID="RegularExpressionValidator1" ValidationExpression = "^[\s\S]{4,}$" runat="server" ErrorMessage="Minimum 4 characters required." ForeColor="Red"></asp:RegularExpressionValidator>
+                                <asp:TextBox ID="Tpin1" runat="server" class="form-control" placeholder="Pin" TextMode="Password"></asp:TextBox>
+                                <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "Tpin1" ID="RegularExpressionValidator1" ValidationExpression = "^[\s\S]{4,}$" runat="server" ErrorMessage="Minimum 4 characters required." ForeColor="Red" ValidationGroup="testValidationgGroup"></asp:RegularExpressionValidator>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label"
                             id="Lpin2">Verify Pin</label>
                             <div class="col-sm-10">
-                                <asp:TextBox ID="Tpin2" runat="server" class="form-control" placeholder="Verify Pin" TextMode="Number"></asp:TextBox>
-                             <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "Tpin2" ID="RegularExpressionValidator3" ValidationExpression = "^[\s\S]{4,}$" runat="server" ErrorMessage="Minimum 4 characters required." ForeColor="Red"></asp:RegularExpressionValidator>
+                                <asp:TextBox ID="Tpin2" runat="server" class="form-control" placeholder="Verify Pin" TextMode="Password"></asp:TextBox>
+                             <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "Tpin2" ID="RegularExpressionValidator3" ValidationExpression = "^[\s\S]{4,}$" runat="server" ErrorMessage="Minimum 4 characters required." ForeColor="Red" ValidationGroup="testValidationgGroup"></asp:RegularExpressionValidator>
                             </div>
                             </div>
                         </fieldset>
                         <div class="form-group">
                             <div class="col-sm-10 col-sm-offset-2"> 
-                                <asp:Button ID="regSubmit" runat="server" Text="Submit" CssClass="btn btn-search" />
+                                <asp:Button ID="regSubmit" runat="server" Text="Submit" CssClass="btn btn-search" ValidationGroup="testValidationgGroup"/>
                             </div>
                             
                          </div>
@@ -511,5 +527,6 @@
                       window.location.href = 'default.aspx';
                   });
         }
+
     </script>
 </asp:Content>

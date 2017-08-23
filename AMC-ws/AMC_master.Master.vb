@@ -58,18 +58,22 @@ Public Class AMC_master
             Dim userloggin = New DataSet2TableAdapters.userloginsTableAdapter
             userloggin.Insert(t_user(0).id, Now, strIPAddress)
             Dim type = t_user(0).type
+            Dim standing = t_user(0).standing
 
-            Select Case type
-                Case "0"
-                    Response.Redirect("default.aspx")
-                Case "1"
-                    Response.Redirect("default.aspx")
-                Case "8"
-                    Response.Redirect("Users.aspx")
-            End Select
+            If type = 0 And standing = 1 Then
+                Response.Redirect("welcome.aspx")
 
+            ElseIf standing = 2 Then
+                Me.m_usuario.Visible = False
+                Me.bt_login.Visible = True
+                Session.Abandon()
+                Session.RemoveAll()
+                Response.Redirect("WaitingConfirmation.aspx")
 
+            ElseIf type = 8 Then
+                Response.Redirect("Users.aspx")
 
+            End If
         Else
             ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "ErrorLogin();", True)
 
@@ -114,4 +118,5 @@ Public Class AMC_master
             ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "PasswordNotSent();", True)
         End If
     End Sub
+
 End Class

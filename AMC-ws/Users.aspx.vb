@@ -65,12 +65,12 @@ Public Class Users
 
     Protected Sub btnUpdateUserInfo_Click(sender As Object, e As EventArgs)
         Dim v_ID = CType(FormView1.Row.FindControl("lblID"), HiddenField)
-        Dim dropUT = CType(FormView1.FindControl("DropUserTypeToUpdate"), DropDownList)
+        Dim DropUserTypeToUpdate = CType(FormView1.FindControl("DropUserTypeToUpdate"), DropDownList)
         Dim dropSt = CType(FormView1.FindControl("DropUserStatus"), DropDownList)
         Dim sqlConnection1 As New SqlClient.SqlConnection(connection)
         Dim cmd As New SqlClient.SqlCommand
         cmd.CommandType = CommandType.Text
-        cmd.CommandText = "UPDATE [users] SET [type] = '" & dropUT.SelectedItem.Value & "', [standing] = '" & dropSt.SelectedItem.Value & "' WHERE [id]='" & v_ID.Value & "'"
+        cmd.CommandText = "UPDATE [users] SET [type] = '" & DropUserTypeToUpdate.SelectedItem.Value & "', [standing] = '" & dropSt.SelectedItem.Value & "' WHERE [id]='" & v_ID.Value & "'"
         cmd.Connection = sqlConnection1
         sqlConnection1.Open()
         cmd.ExecuteNonQuery()
