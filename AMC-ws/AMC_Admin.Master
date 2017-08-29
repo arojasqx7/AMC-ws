@@ -57,12 +57,11 @@
                         <li id="m_usuario" runat="server" visible="false" hidden="hidden"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                             aria-haspopup="true" aria-expanded="false" tag="username">
                             <asp:Label ID="L_UserName" runat="server" Text="Label"></asp:Label>
-                            <asp:Label ID="Label1" runat="server" Text="Label" Visible="false"></asp:Label>
                             <span class="caret"></span>
                         </a>
                             <ul class="dropdown-menu" aria-labelledby="userMenu">
                                 <li>
-                                    <asp:LinkButton ID="LB_Logout" runat="server" style="z-index: 9999;">Logout</asp:LinkButton>
+                                    <asp:LinkButton ID="LB_Logout2" runat="server" OnClick="LB_Logout2_Click" CausesValidation="false" Visible="false">Log Out</asp:LinkButton>
                                 </li>
                             </ul>
                         </li>

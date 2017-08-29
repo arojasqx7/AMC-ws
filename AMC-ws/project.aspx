@@ -9,7 +9,7 @@
                     <section class="col-sm-1"> </section>
                     <section class="col-sm-9">
                         <div class="subTitle">
-                            <h2 class="subH2" style="text-align:center;">My Projects</h2>
+                            <h2 class="subH2">My Projects</h2>
                         </div>
                     </section>
                     <br />
@@ -35,7 +35,7 @@
                         </div>   
                         
                         <div class="col-sm-4">
-                            <h4>Here is an easy and simple way for you to save all of your various music searches. Create your own project folders instantly. Manage your own files and keep track of your clients music jobs. It's as quick as snapping your fingers!</h4>
+                            <h5>Here is an easy and simple way for you to save all of your various music searches. Create your own project folders instantly. Manage your own files and keep track of your clients music jobs. It's as quick as snapping your fingers!</h5>
                         </div>         
                     </section>                  
                 </div>

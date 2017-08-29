@@ -12,6 +12,7 @@ Public Class AMC_Admin
                 Me.bt_loginarrow.Visible = False
                 Me.m_usuario.Visible = True
                 Me.L_UserName.Text = Session("fullname")
+                LB_Logout2.Visible = True
             Else
                 Response.Redirect("UnauthorizedAccess.aspx")
             End If
@@ -20,10 +21,9 @@ Public Class AMC_Admin
         End If
     End Sub
 
-    Protected Sub LB_Logout_Click(sender As Object, e As EventArgs) Handles LB_Logout.Click
+    Protected Sub LB_Logout2_Click(sender As Object, e As EventArgs)
         Session.Abandon()
         Session.RemoveAll()
         Response.Redirect("default.aspx")
     End Sub
-
 End Class

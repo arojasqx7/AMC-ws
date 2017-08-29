@@ -6,7 +6,6 @@ Public Class album
 
     Dim connection As String = "Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29"
 
-
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Me.GV_tracks.Rows.Count() <= 0 Then
             Dim idAlbum As String = Request.QueryString("idAlbum")
@@ -16,14 +15,11 @@ Public Class album
             Me.T_albumTitle.Text = W_cd(0).cd_title
             Me.T_trackId.Text = W_cd(0).id
             Dim Dt_tracks = New DataSet2TableAdapters.tracksTableAdapter()
-
             Dim T_tracks = Dt_tracks.GetData(L_idAlbum)
-
             Me.GV_tracks.DataSource = T_tracks
             GV_tracks.DataBind()
         End If
     End Sub
-
 
     Protected Sub OnSelectedIndexChanged(sender As Object, e As EventArgs)
         Dim row As GridViewRow = GV_tracks.SelectedRow
@@ -37,15 +33,11 @@ Public Class album
         Dim Track_cd = New AMC_ws.DataSet2TableAdapters.map_clipsTableAdapter()
         Dim T_track = Track_cd.GetData(lno.CommandArgument)
         Dim FileName = "/clips/" & T_track(0).fk_trackID & "_30.mp3"
-
         ClientScript.RegisterStartupScript(Me.GetType(), "LoadSong", "cargarCancion('" & FileName & "');", True)
-
         Dim Dt_tracks = New DataSet2TableAdapters.tracksTableAdapter()
-
-        Dim T_tracks = Dt_tracks.GetData(lno.CommandArgument)
+        Dim T_tracks = Dt_tracks.GetDataByTrackID(lno.CommandArgument)
         Me.L_titlePlayer.Text = T_tracks(0).title
     End Sub
-
 
     Protected Sub T_songMain(sender As Object, e As EventArgs)
         If (Session("fullname") IsNot Nothing) Then
@@ -59,18 +51,14 @@ Public Class album
             G_wav.DataBind()
             Dim Dt_tracks = New DataSet3TableAdapters.trackDownloadInfoTableAdapter()
             Dim T_tracks = Dt_tracks.GetData(lno.CommandArgument)
-
             Me.T_titlePop.Text = T_tracks(0).title
             'Me.T_trackId.Text = T_tracks(1).cd_number
             'Me.T_compPop.Text = T_tracks(0).fname & " " & T_tracks(0).lname
             Me.T_pubPop.Text = T_tracks(0)._alias & " " & T_tracks(0).name
             ScriptManager.RegisterStartupScript(Me, Page.GetType, "songS", "$('#songS').modal();", True)
-
         Else
             ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "ErrorLogin();", True)
         End If
-
-
     End Sub
 
     Protected Sub track_Click_download(sender As Object, e As EventArgs)
@@ -83,27 +71,19 @@ Public Class album
         userID = cmd.ExecuteScalar()
         loginID = cmd2.ExecuteScalar()
         conn.Close()
-
         Dim lno As LinkButton = sender
         Dim destFileName = lno.CommandArgument
         Dim Pos_g = InStr(destFileName, "_30.mp3")
         Dim FK_trackID As Long = lno.CommandArgument
         Dim cancion = destFileName + "_30.mp3"
-
-        'Dim Pos_p = InStr(destFileName, ".") - destFileName.Length
-        'Dim file_lenght = Mid(destFileName, Pos_g + 2)
-
         Dim DT_download = New DataSet2TableAdapters.map_downloadTableAdapter()
         DT_download.Insert(FK_trackID, userID, Now.Date, loginID, cancion)
-
         Response.ContentType = "APPLICATION/OCTET-STREAM"
-        Dim Header As [String] = "Attachment; Filename=" & destFileName
+        Dim Header As [String] = "Attachment; Filename=" & cancion
         Response.AppendHeader("Content-Disposition", Header)
         Dim Dfile As New System.IO.FileInfo(Server.MapPath("/clips/" & cancion))
         Response.WriteFile(Dfile.FullName)
-        'Don't forget to add the following line
         Response.[End]()
-
     End Sub
 
     Protected Sub lnkSelect_Click(sender As Object, e As EventArgs)
@@ -129,7 +109,6 @@ Public Class album
                     cmd0.Parameters.AddWithValue("@fk_projectID", projectId.Text)
                     cmd0.Parameters.AddWithValue("@fk_trackID", t_id)
                     cmd0.Parameters.AddWithValue("@userName", Session("Username"))
-
                     Dim reader0 As SqlDataReader = cmd0.ExecuteReader()
                     If (reader0.HasRows) Then
                         ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "TrackExists();", True)

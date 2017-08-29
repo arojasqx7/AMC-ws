@@ -86,7 +86,7 @@ Public Class musicsearch
     End Sub
 
     Protected Sub btnAddProjects_Click(sender As Object, e As EventArgs)
-        Dim conn As String = "Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29"
+        Dim conn As String = connection
         Dim sqlCon As New SqlConnection(conn)
         Dim t_id = Me.Label2.Text
 
@@ -192,5 +192,62 @@ Public Class musicsearch
         Me.btnSearchComposers.Visible = False
         Me.btnSearchAlbums.Visible = False
         Me.lblOneFilter.Visible = False
+    End Sub
+
+    Protected Sub T_songMain_Click(sender As Object, e As EventArgs)
+        If (Session("fullname") IsNot Nothing) Then
+            Dim lno As LinkButton = sender
+            Dim Track_cd = New DataSet2TableAdapters.map_clipsTableAdapter()
+            Dim T_mp3 = Track_cd.GetDataByFormat(lno.CommandArgument, "mp3")
+            Dim T_wav = Track_cd.GetDataByFormat(lno.CommandArgument, "wav")
+            Me.G_mp3.DataSource = T_mp3
+            G_mp3.DataBind()
+            Me.G_wav.DataSource = T_wav
+            G_wav.DataBind()
+            Dim Dt_tracks = New DataSet3TableAdapters.trackDownloadInfoTableAdapter()
+            Dim T_tracks = Dt_tracks.GetData(lno.CommandArgument)
+            Me.T_titlePop.Text = T_tracks(0).title
+            Me.T_pubPop.Text = T_tracks(0)._alias & " " & T_tracks(0).name
+            ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "openDownloadModal();", True)
+        Else
+            ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "ErrorLogin();", True)
+        End If
+    End Sub
+
+    Protected Sub track_Click_download_Click(sender As Object, e As EventArgs)
+        Dim conn As SqlConnection = New SqlConnection(connection)
+        Dim userID As Int32
+        Dim loginID As Int32
+        conn.Open()
+        Dim cmd As SqlCommand = New SqlCommand("SELECT TOP 1 [users].[id] FROM [users] WHERE [users].[username] ='" & Session("Username") & "'", conn)
+        Dim cmd2 As SqlCommand = New SqlCommand("SELECT (MAX([userlogins].[id])+1) from [userlogins]", conn)
+        userID = cmd.ExecuteScalar()
+        loginID = cmd2.ExecuteScalar()
+        conn.Close()
+        Dim lno As LinkButton = sender
+        Dim destFileName = lno.CommandArgument
+        Dim Pos_g = InStr(destFileName, "_30.mp3")
+        Dim FK_trackID As Long = lno.CommandArgument
+        Dim cancion = destFileName + "_30.mp3"
+        Dim DT_download = New DataSet2TableAdapters.map_downloadTableAdapter()
+        DT_download.Insert(FK_trackID, userID, Now.Date, loginID, cancion)
+        Response.ContentType = "APPLICATION/OCTET-STREAM"
+        Dim Header As [String] = "Attachment; Filename=" & cancion
+        Response.AppendHeader("Content-Disposition", Header)
+        Dim Dfile As New System.IO.FileInfo(Server.MapPath("/clips/" & cancion))
+        Response.WriteFile(Dfile.FullName)
+        Response.[End]()
+    End Sub
+
+    Protected Sub T_title_Click(sender As Object, e As EventArgs)
+        ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "openPlayer();", True)
+        Dim lno As LinkButton = sender
+        Dim Track_cd = New DataSet2TableAdapters.map_clipsTableAdapter()
+        Dim T_track = Track_cd.GetData(lno.CommandArgument)
+        Dim FileName = "/clips/" & T_track(0).fk_trackID & "_30.mp3"
+        ClientScript.RegisterStartupScript(Me.GetType(), "LoadSong", "cargarCancion('" & FileName & "');", True)
+        Dim Dt_tracks = New DataSet2TableAdapters.tracksTableAdapter()
+        Dim T_tracks = Dt_tracks.GetData(lno.CommandArgument)
+        Me.L_titlePlayer.Text = T_tracks(0).title
     End Sub
 End Class

@@ -42,7 +42,7 @@
                                 <asp:Label ID="T_albumTitle" runat="server" Text="Label"></asp:Label></h2>
                         </div>
                         <div class="container col-sm-12">
-                            <asp:GridView ID="GV_tracks" runat="server" AutoGenerateColumns="False" GridLines="None" OnSelectedIndexChanged ="OnSelectedIndexChanged" DataKeyNames="id">
+                            <asp:GridView ID="GV_tracks" runat="server" AutoGenerateColumns="False" GridLines="None" OnSelectedIndexChanged ="OnSelectedIndexChanged" DataKeyNames="id" >
                                 <Columns>
 
                                     <asp:TemplateField HeaderText="Id" Visible="false">
@@ -230,14 +230,15 @@
                 <div class="modal-content">
                     <div class="modal-header song_sel_panel-header">
                         <button type="button" class="close" data-dismiss="modal" onclick="wavesurfer.toggleMute();return false">X</button>
-                        <h3 class="modal-title"><span class="glyphicon glyphicon-volume-up"></span>   Song Player</h3>
+                        <h3 class="modal-title" style="text-align:center;">  <asp:Label ID="L_titlePlayer" runat="server"></asp:Label></h3>
                     </div>
                     <div class="modal-body">
                         <!-- Define los elementos HTML donde waveform se cargara -->
                         <div id="Player">
                             <div id="waveform" style="text-align: center; color: royalblue;font-size: 16px;">
-                                <asp:Label ID="L_titlePlayer" runat="server"></asp:Label>
+                                
                             </div>
+                            <br />
                             <div class="controls" style="text-align:center;">
                                 <button class="btn btn-danger" onclick="wavesurfer.skipBackward();return false">
                                     <span class="glyphicon glyphicon-backward" aria-hidden="true"></span>

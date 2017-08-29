@@ -51,7 +51,29 @@ Public Class ClientActivity
         GridClientActivity.DataSource = ds
         GridClientActivity.DataBind()
         sqlConnection1.Close()
-        ',(SELECT COUNT(md2.fk_userID) FROM [map_download] md2 JOIN [users] u2 ON (md2.fk_userID=u2.id) where u2.companyName='" & DropDownList1.SelectedItem.Text & "') as Downloads
     End Sub
 
+    Protected Sub BindGridClientActivityAll()
+        Dim sqlConnection1 As New SqlConnection(connection)
+        sqlConnection1.Open()
+        Dim query As String = "SELECT DISTINCT (CONVERT(VARCHAR(40),[userlogins].[dated],101)) AS Dated, COUNT([userlogins].[dated]) AS Logins FROM [userlogins] INNER JOIN [users] ON [userlogins].[userid] = [users].[id] WHERE Dated BETWEEN '" & txtDateFrom.Text & "' AND '" & txtDateTo.Text & "' GROUP BY Dated ORDER BY 1"
+        Dim Adpt As New SqlDataAdapter(query, sqlConnection1)
+        Dim ds As New DataSet()
+        Adpt.Fill(ds)
+        GridClientActivity.DataSource = ds
+        GridClientActivity.DataBind()
+        sqlConnection1.Close()
+    End Sub
+
+    Protected Sub DropDownList1_SelectedIndexChanged(sender As Object, e As EventArgs)
+        If DropDownList1.SelectedValue <> "All" Then
+            GridClientActivity.Visible = True
+            BindGridClientActivity()
+        ElseIf DropDownList1.SelectedValue = "Neutro" Then
+            GridClientActivity.Visible = False
+        Else
+            GridClientActivity.Visible = True
+            BindGridClientActivityAll()
+        End If
+    End Sub
 End Class

@@ -26,8 +26,8 @@
                         <div class="form-group">
                             <div class="col-xs-10" style="width: 1000px;">
                                 <br />
-                                <button id="btnAddCD" runat="server" type="button" class="btn btn-primary" data-toggle="modal" data-target="#newCD" style="margin-left: 90px;">Add an Album </button>
-                                <button id="btnAddTrack" runat="server" type="button" class="btn btn-danger" data-toggle="modal" data-target="#newTrack" style="margin-left: 20px;">Add a Track </button>
+                                <button id="btnAddCD" runat="server" type="button" class="btn btn-warning" data-toggle="modal" data-target="#newCD" style="margin-left: 90px;">Add an Album </button>
+                                <button id="btnAddTrack" runat="server" type="button" class="btn btn-primary" data-toggle="modal" data-target="#newTrack" style="margin-left: 20px;">Add a Track </button>
 <%--                            <button id="Button1" runat="server" type="button" class="btn btn-default" data-toggle="modal" data-target="#ViewIDTrack" style="margin-left: 20px;">View ID numbers of Tracks</button>--%>
                                 <asp:LinkButton ID="btnPublish" runat="server" CssClass="btn btn-default" OnClick="btnPublish_Click" Style="margin-left: 60px; display: none;" CausesValidation="false"><span aria-hidden="true" class="glyphicon glyphicon-cloud-upload"></span>  Publish</asp:LinkButton>
                                 <asp:LinkButton ID="btnUnPublish" runat="server" CssClass="btn btn-default" OnClick="btnUnPublish_Click" Style="margin-left: 10px; display: none;" CausesValidation="false"><span aria-hidden="true" class="glyphicon glyphicon-cloud-download"></span>  Unpublish</asp:LinkButton>
@@ -41,7 +41,7 @@
                             <div class="col-sm-10">
                                 <br />
                                 <asp:DropDownList ID="DropDownCDS" runat="server" DataSourceID="SqlCDS" AppendDataBoundItems="true" CssClass="form-control" Style="margin-left: 90px;" DataTextField="cdResult" DataValueField="id" OnSelectedIndexChanged="DropDownCDS_SelectedIndexChanged" AutoPostBack="true" CausesValidation="false">
-                                    <asp:ListItem Text="Select Album to edit any information" Value="" />
+                                    <asp:ListItem Text="Select an Album" Value="0" />
                                 </asp:DropDownList>
                                 <asp:SqlDataSource ID="SqlCDS" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [id], CONCAT([cd_number] ,' - ', [cd_title]) AS cdResult FROM [cd] ORDER BY [cd_number]"></asp:SqlDataSource>
                             </div>
@@ -142,7 +142,7 @@
 
                         <div class="input-group" style="width: 575px;">
                             <label>Catalog Number:</label>
-                            <asp:TextBox ID="txtCatalogNo" runat="server" class="form-control" placeholder="Catalog Number.."></asp:TextBox>
+                            <asp:TextBox ID="txtCatalogNo" runat="server" class="form-control" placeholder="Catalog Number.." Text="AM"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                                 ControlToValidate="txtCatalogNo"
                                 ErrorMessage="Required field."
@@ -525,7 +525,7 @@
                         <div class="input-group" style="width: 610px;">
                             <label>CD:</label>
                             <asp:DropDownList ID="DropCD2" runat="server" DataSourceID="SqlCDS2" AppendDataBoundItems="true" CssClass="form-control" DataTextField="cdResult" DataValueField="id">
-                                <asp:ListItem Text="Select a CD" Value="" />
+                                <asp:ListItem Text="Select an Album" Value="0" />
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
                                 ControlToValidate="DropCD2"
@@ -1503,7 +1503,7 @@
     <script>
         $(document).ready(function ($) {
             $(function () {
-                $('input[id$="txtClipDuration"]').inputmask("hh:mm", { placeholder: "HH:MM", insertMode: false, showMaskOnHover: false, hourFormat: 12 });
+                $('input[id$="txtClipDuration"]').inputmask("hh:mm", { placeholder: "MM:SS", insertMode: false, showMaskOnHover: false, hourFormat: 12 });
             });
         });
 

@@ -10,7 +10,6 @@ Public Class project
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         BindGridTracksInProject()
-
     End Sub
 
     Private Sub B_addfolder_Click(sender As System.Object, e As System.EventArgs) Handles B_addfolder.Click
