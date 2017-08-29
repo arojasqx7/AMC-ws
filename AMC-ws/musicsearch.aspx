@@ -65,7 +65,6 @@ border-color: #ddd;
 /*end gridview */
 </style>
 
-
     <script type="text/javascript">
     $(function () {
         $('[id*=T_mainsearch]').typeahead({
@@ -244,7 +243,7 @@ border-color: #ddd;
                                 <asp:TemplateField HeaderText="Track Name">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="T_title" runat="server" Text='<%# Bind("title") %>'
-                                            CommandArgument='<%# Bind("id") %>'>
+                                            CommandArgument='<%# Bind("id") %>' OnClick="T_title_Click">
                                         </asp:LinkButton>
                                     </ItemTemplate>
                                     <ItemStyle Width="30%" HorizontalAlign="Left" VerticalAlign="Top" />
@@ -269,13 +268,11 @@ border-color: #ddd;
                                 </asp:TemplateField>
 
                                 <asp:TemplateField HeaderText="Download">
-
                                     <ItemTemplate>
                                         <asp:LinkButton ID="T_songMain" CssClass="btn btn-info" runat="server"
-                                            CommandArgument='<%# Bind("id") %>'>
+                                            CommandArgument='<%# Bind("id") %>' CommandName="Select" OnClick="T_songMain_Click">
                                 <span class="glyphicons glyphicon glyphicon-save"/>
                                         </asp:LinkButton>
-
                                     </ItemTemplate>
                                     <ItemStyle Width="5%" HorizontalAlign="Center" VerticalAlign="Top" />
                                 </asp:TemplateField>
@@ -307,7 +304,7 @@ border-color: #ddd;
                                 <asp:TemplateField HeaderText="Track Name">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="T_title" runat="server" Text='<%# Bind("title") %>'
-                                            CommandArgument='<%# Bind("id") %>'>
+                                            CommandArgument='<%# Bind("id") %>' OnClick="T_title_Click">
                                         </asp:LinkButton>
                                     </ItemTemplate>
                                     <ItemStyle Width="30%" HorizontalAlign="Left" VerticalAlign="Top" />
@@ -330,15 +327,12 @@ border-color: #ddd;
                                     </ItemTemplate>
                                     <ItemStyle Width="5%" HorizontalAlign="Center" VerticalAlign="Top" ForeColor="White" />
                                 </asp:TemplateField>
-
                                 <asp:TemplateField HeaderText="Download">
-
                                     <ItemTemplate>
                                         <asp:LinkButton ID="T_songMain" CssClass="btn btn-info" runat="server"
-                                            CommandArgument='<%# Bind("id") %>'>
+                                            CommandArgument='<%# Bind("id") %>' CommandName="Select" OnClick="T_songMain_Click">
                                 <span class="glyphicons glyphicon glyphicon-save"/>
                                         </asp:LinkButton>
-
                                     </ItemTemplate>
                                     <ItemStyle Width="5%" HorizontalAlign="Center" VerticalAlign="Top" />
                                 </asp:TemplateField>
@@ -373,7 +367,7 @@ border-color: #ddd;
                                 <asp:TemplateField HeaderText="Track Name">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="T_title" runat="server" Text='<%# Bind("title") %>'
-                                            CommandArgument='<%# Bind("id") %>'>
+                                            CommandArgument='<%# Bind("id") %>' OnClick="T_title_Click">
                                         </asp:LinkButton>
                                     </ItemTemplate>
                                     <ItemStyle Width="30%" HorizontalAlign="Left" VerticalAlign="Top" />
@@ -398,17 +392,14 @@ border-color: #ddd;
                                 </asp:TemplateField>
 
                                 <asp:TemplateField HeaderText="Download">
-
                                     <ItemTemplate>
                                         <asp:LinkButton ID="T_songMain" CssClass="btn btn-info" runat="server"
-                                            CommandArgument='<%# Bind("id") %>'>
+                                            CommandArgument='<%# Bind("id") %>' CommandName="Select" OnClick="T_songMain_Click">
                                 <span class="glyphicons glyphicon glyphicon-save"/>
                                         </asp:LinkButton>
-
                                     </ItemTemplate>
                                     <ItemStyle Width="5%" HorizontalAlign="Center" VerticalAlign="Top" />
                                 </asp:TemplateField>
-
                             </Columns>
                         </asp:GridView>
                          <asp:SqlDataSource ID="SqlCDs" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [tracks].[id],[cd].[cd_title],[tracks].[title], [tracks].[descrip], [tracks].[instruments] FROM [tracks] JOIN [cd] ON [tracks].[fk_cd_id] = [cd].[id] WHERE ([cd].[cd_title] = @cd_title)">
@@ -438,7 +429,7 @@ border-color: #ddd;
                                 <asp:TemplateField HeaderText="Track Name">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="T_title" runat="server" Text='<%# Bind("title") %>'
-                                            CommandArgument='<%# Bind("id") %>'>
+                                            CommandArgument='<%# Bind("id") %>' OnClick="T_title_Click">
                                         </asp:LinkButton>
                                     </ItemTemplate>
                                     <ItemStyle Width="30%" HorizontalAlign="Left" VerticalAlign="Top" />
@@ -458,17 +449,15 @@ border-color: #ddd;
                                     <ItemStyle Width="5%" HorizontalAlign="Center" VerticalAlign="Top" ForeColor="White" />
                                 </asp:TemplateField>
 
-                                <asp:TemplateField HeaderText="Download">
-
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="T_songMain" CssClass="btn btn-info" runat="server"
-                                            CommandArgument='<%# Bind("id") %>'>
+                               <asp:TemplateField HeaderText="Download">
+                                   <ItemTemplate>
+                                       <asp:LinkButton ID="T_songMain" CssClass="btn btn-info" runat="server"
+                                           CommandArgument='<%# Bind("id") %>' CommandName="Select" OnClick="T_songMain_Click">
                                 <span class="glyphicons glyphicon glyphicon-save"/>
-                                        </asp:LinkButton>
-
-                                    </ItemTemplate>
-                                    <ItemStyle Width="5%" HorizontalAlign="Center" VerticalAlign="Top" />
-                                </asp:TemplateField>
+                                       </asp:LinkButton>
+                                   </ItemTemplate>
+                                   <ItemStyle Width="5%" HorizontalAlign="Center" VerticalAlign="Top" />
+                               </asp:TemplateField>
 
                             </Columns>
                         </asp:GridView>
@@ -554,32 +543,164 @@ border-color: #ddd;
         </div>
         <!-- Termina Pop up-->
 
+        <div class="modal fade" id="DownloadPopUp" align="left">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header song_sel_panel-header" style="background-color: #1A6ECD;color:#fff;">
+                        <div>
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                            <h3 class="modal-title" align="left">
+                                <asp:Label ID="T_titlePop" runat="server"></asp:Label>
+                            </h3>
+                            <h5><i>
+                                <asp:Label ID="T_trackId" runat="server" Visible="false"></asp:Label></i> </h5>
+                        </div>
+                        <div>
+                            <h5>Published By:
+                                <asp:Label ID="T_pubPop" runat="server"></asp:Label></h5>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <table style="width: 100%;">
+                            <tr>
+                                <td><b>mp3</b></td>
+                                <td><b>wav</b></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:GridView ID="G_mp3" ShowHeader="false" runat="server" AutoGenerateColumns="False" GridLines="None">
+                                        <Columns>
+                                            <asp:TemplateField HeaderText="Track Name">
+                                                <ItemTemplate>
+                                                    <span class="glyphicons glyphicons-disk-save" aria-hidden="true"></span>
+                                                    <asp:LinkButton ID="T_title" runat="server" Text='<%# Bind("clip_length") %>'
+                                                        CommandArgument='<%# Bind("id") %>' OnClick="track_Click_download_Click">
+                                                    </asp:LinkButton>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                        </Columns>
+                                    </asp:GridView>
+                                </td>
+                                <td>
+                                    <asp:GridView ID="G_wav" ShowHeader="false" runat="server" AutoGenerateColumns="False" GridLines="None">
+                                        <Columns>
+                                            <asp:TemplateField HeaderText="Track Name">
+                                                <ItemTemplate>
+                                                    <span class="glyphicons glyphicons-disk-save" aria-hidden="true"></span>
+                                                    <asp:LinkButton ID="T_title" runat="server" Text='<%# Bind("clip_length") %>'
+                                                        CommandArgument='<%# Bind("id") %>'>
+                                                    </asp:LinkButton>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
+                                        </Columns>
+                                    </asp:GridView>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <div class="modal-footer song_sel_panel-footer" style="background-color: #ebebeb;color: #CC1635;">
+                        <h6>Only one music file may be downloaded at a time.</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!--Pop Up Player-->
+        <div class="modal fade" id="PlayerPop" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header song_sel_panel-header">
+                        <button type="button" class="close" data-dismiss="modal" onclick="wavesurfer.toggleMute();return false">X</button>
+                        <h3 class="modal-title" style="text-align:center;">  <asp:Label ID="L_titlePlayer" runat="server"></asp:Label></h3>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Define los elementos HTML donde waveform se cargara -->
+                        <div id="Player">
+                            <div id="waveform" style="text-align: center; color: royalblue;font-size: 16px;">
+                                
+                            </div>
+                            <br />
+                            <div class="controls" style="text-align:center;">
+                                <button class="btn btn-danger" onclick="wavesurfer.skipBackward();return false">
+                                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span>
+                                </button>
+
+                                <button class="btn btn-primary" onclick="wavesurfer.playPause();return false">
+                                    <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                                    /
+                        <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
+                                </button>
+
+                                <button class="btn btn-danger" onclick="wavesurfer.skipForward();return false">
+                                    <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                                </button>
+
+                                <button class="btn btn-default" onclick="wavesurfer.toggleMute();return false">
+                                    <span class="glyphicon glyphicon-volume-off" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- end div player -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Termina Pop up-->
       </div>
 
+    <style type="text/css">
+        #Player {
+            align-content: center;
+                }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.4/wavesurfer.min.js"></script>
     <script>
-     function openModal() {
+        var wavesurfer = WaveSurfer.create({
+            container: '#waveform',
+            waveColor: 'blue',
+            progressColor: 'red',
+            height: 80,
+            width: 1000
+        });
+
+        function cargarCancion(Cancion) {
+            wavesurfer.load(Cancion);
+            wavesurfer.on('ready', function () {
+                wavesurfer.playPause();
+            });
+        }
+        function openModal() {
             $('#ProjectList').modal('show');
-     }
+        }
 
-     function ErrorLogin() {
-         swal({
-             title: 'Log In',
-             text: 'You must be logged in to use this feature',
-             type: 'error'
-         });
-     }
+        function openDownloadModal() {
+            $('#DownloadPopUp').modal('show');
+        }
 
+        function openPlayer() {
+            $('#PlayerPop').modal('show');
+        }
 
-     function AddSuccess() {
-         swal({
-             title: 'Track Added!',
-             text: 'The track selected was added successfully to project(s)',
-             type: 'success'
-         });
-     }
+        function ErrorLogin() {
+            swal({
+                title: 'Log In',
+                text: 'You must be logged in to use this feature',
+                type: 'error'
+            });
+        }
 
-     function TrackExists() {
-         swal("Track to Project", "This track already exists in this project!", "warning")
-     }
+        function AddSuccess() {
+            swal({
+                title: 'Track Added!',
+                text: 'The track selected was added successfully to project(s)',
+                type: 'success'
+            });
+        }
+
+        function TrackExists() {
+            swal("Track to Project", "This track already exists in this project!", "warning")
+        }
     </script>
 </asp:Content>

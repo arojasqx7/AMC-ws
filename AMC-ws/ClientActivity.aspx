@@ -10,6 +10,7 @@
      }
     </style>
     <link href="css/bootstrap-datetimepicker.css" rel="stylesheet" />
+
         <div class="bodyBg" style="height:800px;">
         <div class="content container">
             <div class="container">
@@ -33,8 +34,9 @@
                                     <asp:TextBox ID="txtDateFrom" runat="server" CssClass="form-control datetimepicker" Width="170px" placeholder="Date From"></asp:TextBox>
                                     <asp:TextBox ID="txtDateTo" runat="server" CssClass="form-control datetimepicker" Width="170px" placeholder="Date To" style="margin-left:25px;"></asp:TextBox>
 
-                                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" CssClass="form-control" Width="300px" style="margin-left:25px;" DataTextField="NAME" DataValueField="NAME" AppendDataBoundItems="true">
-                                        <asp:ListItem Text="All" Value="" />
+                                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" CssClass="form-control" Width="300px" style="margin-left:25px;" DataTextField="NAME" DataValueField="NAME" AppendDataBoundItems="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                                        <asp:ListItem Text="Select Company" Value="Neutro"/>
+                                        <asp:ListItem Text="View All" Value="All"/>
                                     </asp:DropDownList>
                                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT * FROM [COMPANIES] ORDER BY [NAME]"></asp:SqlDataSource>
                                     
@@ -110,6 +112,7 @@
          </div>
 
     <script src="js/jquery-2.2.3.min.js"></script>
+    <script src="js/bootstrap.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/moment.js"></script>
     <script src="js/moment-with-locales.js"></script>

@@ -67,6 +67,7 @@ Public Class CDsTracks
     Protected Sub DropDownCDS_SelectedIndexChanged(sender As Object, e As EventArgs)
         GridCDSelected.Visible = True
         GridTracksInCD.Visible = True
+        DropCD2.SelectedValue = DropDownCDS.SelectedValue
 
         If (DropDownCDS.SelectedItem.Text = "Select CD to edit any information") Then
             btnPublish.Style.Add("display", "none")
@@ -188,4 +189,5 @@ Public Class CDsTracks
         ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "SuccessUnPublished();", True)
         sqlConnection1.Close()
     End Sub
+
 End Class
