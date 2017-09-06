@@ -6,9 +6,15 @@
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
             -webkit-appearance: none;
-            margin: 0; 
+            margin: 0;
+        }
+
+        .amp300 {
+            width: 300px;
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="dist/sweetalert.css"/>
+
     <div class="form-horizontal" id="registrationForm"> 
     <div class="bodyBg"> 
     <div class="content container">
@@ -20,16 +26,16 @@
                     <h2 class="subH2">Registration Form</h2>
                   </div>
                 </section>
-                <section class="col-sm-10 col-sm-offset-2">
+                <div class="col-sm-10 col-sm-offset-2">
                     <div class="form-group">
                          
-                             <br>
-                             <fieldset>
+                             <br/>
+                        
                                  <div class="form-group">
                                     <label class="col-sm-2 control-label"
                                     id="LfName">* First Name</label>
                                     <div class="col-sm-10">
-                                        <asp:TextBox ID="Tfname" runat="server" class="form-control" placeholder="First Name"></asp:TextBox>
+                                        <asp:TextBox ID="Tfname" runat="server" class="form-control amp300" placeholder="First Name" ></asp:TextBox>
                                         <asp:RequiredFieldValidator id="RequiredFieldValidator1" runat="server"
                                           ControlToValidate="Tfname"
                                           ErrorMessage="First name is a required field."
@@ -42,7 +48,7 @@
                                     <label class="col-sm-2 control-label"
                                     id="LlName">* Last Name</label>
                                     <div class="col-sm-10">
-                                        <asp:TextBox ID="Tlname" runat="server" class="form-control" placeholder="Last Name"></asp:TextBox>
+                                        <asp:TextBox ID="Tlname" runat="server" class="form-control amp300" placeholder="Last Name"></asp:TextBox>
                                         <asp:RequiredFieldValidator id="RequiredFieldValidator2" runat="server"
                                           ControlToValidate="Tlname"
                                           ErrorMessage="Last name is a required field."
@@ -52,17 +58,15 @@
                                     </div>
                                  </div>
                                  <div class="form-group">
-                                    <label class="col-sm-2 control-label"
-                                    ID="Lcompany">Company</label>
+                                    <label class="col-sm-2 control-label">Company</label>
                                     <div class="col-sm-10">
-                                        <asp:TextBox ID="Tcompany" runat="server" class="form-control" placeholder="Company Name"></asp:TextBox>
+                                        <asp:TextBox ID="Tcompany" runat="server" class="form-control amp300" placeholder="Company Name"></asp:TextBox>
                                     </div>
                                  </div>
                                  <div class="form-group">
-                                    <label class="col-sm-2 control-label"
-                                    ID="Laddress">* Address</label>
+                                    <label class="col-sm-2 control-label" >* Address</label>
                                     <div class="col-sm-10">
-                                        <asp:TextBox ID="Taddress1" runat="server" class="form-control" placeholder="Address"></asp:TextBox>
+                                        <asp:TextBox ID="Taddress1" runat="server" class="form-control amp300" placeholder="Address"></asp:TextBox>
                                         <asp:RequiredFieldValidator id="RequiredFieldValidator3" runat="server"
                                           ControlToValidate="Taddress1"
                                           ErrorMessage="Address is a required field."
@@ -73,16 +77,16 @@
                                  </div>
                                  <div class="form-group"> 
                                      <label class="col-sm-2 control-label"
-                                      id="Laddress2"></label>
+                                      id="Laddress2">Address 2</label>
                                      <div class="col-sm-10">
-                                        <asp:TextBox ID="Taddress2" runat="server" class="form-control" placeholder="Address"></asp:TextBox>
+                                        <asp:TextBox ID="Taddress2" runat="server" class="form-control amp300" placeholder="Address 2"></asp:TextBox>
                                     </div>
                                  </div>
                                  <div class="form-group">
                                     <label class="col-sm-2 control-label"
                                     id="Lcity">* City</label>
                                     <div class="col-sm-10">
-                                        <asp:TextBox ID="Tcity" runat="server" class="form-control" placeholder="City"></asp:TextBox>
+                                        <asp:TextBox ID="Tcity" runat="server" class="form-control amp300" placeholder="City"></asp:TextBox>
                                         <asp:RequiredFieldValidator id="RequiredFieldValidator4" runat="server"
                                           ControlToValidate="Tcity"
                                           ErrorMessage="City is a required field."
@@ -95,14 +99,14 @@
                                     <label class="col-sm-2 control-label"
                                     id="Lstate">State or Province</label>
                                     <div class="col-sm-10">
-                                        <asp:TextBox ID="Tstate" runat="server" class="form-control" placeholder="State or Province"></asp:TextBox>
+                                        <asp:TextBox ID="Tstate" runat="server" class="form-control amp300" placeholder="State or Province"></asp:TextBox>
                                     </div>
                                  </div>
                                  <div class="form-group">
                                     <label class="col-sm-2 control-label"
                                     id="Lcountry">Country</label>
                                      <div class="col-sm-10">
-                                        <asp:DropDownList ID="DLcountry" runat="server" class="form-control">
+                                        <asp:DropDownList ID="DLcountry" runat="server" class="form-control amp300">
                                             <asp:ListItem>USA</asp:ListItem>
                                             <asp:ListItem>Albania</asp:ListItem>
                                           <asp:ListItem>Algeria</asp:ListItem>
@@ -373,7 +377,7 @@
                                         <label class="col-sm-2 control-label"
                                         id="Lzip">Zip Code</label>
                                         <div class="col-sm-10">
-                                            <asp:TextBox ID="Tzip" runat="server" class="form-control" placeholder="Zip Code" TextMode="Number" ></asp:TextBox>
+                                            <asp:TextBox ID="Tzip" runat="server" class="form-control amp300" placeholder="Zip Code" TextMode="Number" ></asp:TextBox>
                                             <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "Tzip" ID="RegularExpressionValidator2" ValidationExpression = "^[\s\S]{4,}$" runat="server" ErrorMessage="Minimum 4 characters required." ForeColor="Red" ValidationGroup="testValidationgGroup"></asp:RegularExpressionValidator>
                                         </div>
                                     </div>
@@ -381,7 +385,7 @@
                                         <label class="col-sm-2 control-label"
                                         id="Lemail">* E-mail</label>
                                         <div class="col-sm-10">
-                                            <asp:TextBox ID="Temail" runat="server" class="form-control" placeholder="email" TextMode="Email"></asp:TextBox>
+                                            <asp:TextBox ID="Temail" runat="server" class="form-control amp300" placeholder="email" TextMode="Email"></asp:TextBox>
                                             <asp:RequiredFieldValidator id="RequiredFieldValidator5" runat="server"
                                               ControlToValidate="Temail"
                                               ErrorMessage="Email is a required field."
@@ -392,28 +396,34 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label"
-                                        id="Lphone1">Telephone</label>
+                                        id="Lphone1">* Phone</label>
                                         <div class="col-sm-10">
-                                            <asp:TextBox ID="Tphone1" runat="server" class="form-control" placeholder="Telephone" TextMode="Phone"></asp:TextBox>
+                                            <asp:TextBox ID="Tphone1" runat="server" class="form-control amp300" placeholder="Phone" TextMode="Phone"></asp:TextBox>
+                                                 <asp:RequiredFieldValidator id="RequiredFieldValidator9" runat="server"
+                                              ControlToValidate="Tphone1"
+                                              ErrorMessage="Phone is a required field."
+                                              ValidationGroup="testValidationgGroup"
+                                              ForeColor="Red">
+                                            </asp:RequiredFieldValidator>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label"
-                                        id="Lphone2"></label>
+                                        id="Lphone2">Mobile</label>
                                         <div class="col-sm-10">
-                                            <asp:TextBox ID="Tphone2" runat="server" class="form-control" placeholder="Telephone" TextMode="Phone"></asp:TextBox>
+                                            <asp:TextBox ID="Tphone2" runat="server" class="form-control amp300" placeholder="Mobile" TextMode="Phone"></asp:TextBox>
                                         </div>
                                     </div>
                                  </div>
-                             </fieldset>
+                          
                     <br />
                     <fieldset>
-                        <legend>Username / Password / PIN</legend>
+                        <legend><strong> Username / Password / PIN</strong></legend>
                         <div class="form-group">
                             <label class="col-sm-2 control-label"
                             id="Lusern">User Name</label>
                             <div class="col-sm-10">
-                                <asp:TextBox ID="Tusern" runat="server" class="form-control" placeholder="User Name"></asp:TextBox>
+                                <asp:TextBox ID="Tusern" runat="server" class="form-control amp300" placeholder="User Name"></asp:TextBox>
                                 <asp:RequiredFieldValidator id="RequiredFieldValidator6" runat="server"
                                           ControlToValidate="Tusern"
                                           ErrorMessage="Username is a required field."
@@ -429,7 +439,7 @@
                             <label class="col-sm-2 control-label"
                             id="Lpassword1">Password</label>
                             <div class="col-sm-10">
-                                <asp:TextBox ID="Tpassword1" runat="server" class="form-control" placeholder="Password" TextMode="Password"></asp:TextBox>
+                                <asp:TextBox ID="Tpassword1" runat="server" class="form-control amp300" placeholder="Password"></asp:TextBox>
                                 <asp:RequiredFieldValidator id="RequiredFieldValidator7" runat="server"
                                           ControlToValidate="Tpassword1"
                                           ErrorMessage="Password is a required field."
@@ -440,23 +450,24 @@
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label"
-                            id="Lpassword2">Verify Password</label>
+                                id="Lpassword2">
+                                Verify Password</label>
                             <div class="col-sm-10">
-                                <asp:TextBox ID="Tpassword2" runat="server" class="form-control" placeholder="Verify Password" TextMode="Password"></asp:TextBox>
-                                <asp:RequiredFieldValidator id="RequiredFieldValidator8" runat="server"
-                                          ControlToValidate="Tpassword2"
-                                          ErrorMessage="Password is a required field."
-                                          ValidationGroup="testValidationgGroup"
-                                          ForeColor="Red">
-                                        </asp:RequiredFieldValidator>
-                                <asp:CompareValidator id="comparePasswords" 
-                                  runat="server"
-                                  ControlToCompare="Tpassword1"
-                                  ControlToValidate="Tpassword2"
-                                  ErrorMessage="Your passwords do not match up!"
-                                  ValidationGroup="testValidationgGroup"
-                                  ForeColor="Red"
-                                  Display="Dynamic" />
+                                <asp:TextBox ID="Tpassword2" runat="server" class="form-control amp300" placeholder="Verify Password"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server"
+                                    ControlToValidate="Tpassword2"
+                                    ErrorMessage="Password is a required field."
+                                    ValidationGroup="testValidationgGroup"
+                                    ForeColor="Red">
+                                </asp:RequiredFieldValidator>
+                                <asp:CompareValidator ID="comparePasswords"
+                                    runat="server"
+                                    ControlToCompare="Tpassword1"
+                                    ControlToValidate="Tpassword2"
+                                    ErrorMessage="Your passwords do not match up!"
+                                    ValidationGroup="testValidationgGroup"
+                                    ForeColor="Red"
+                                    Display="Dynamic" />
                             </div>
                         </div>
                         <div>
@@ -466,7 +477,7 @@
                             <label class="col-sm-2 control-label"
                             id="Lpin1">Pin</label>
                             <div class="col-sm-10">
-                                <asp:TextBox ID="Tpin1" runat="server" class="form-control" placeholder="Pin" TextMode="Password"></asp:TextBox>
+                                <asp:TextBox ID="Tpin1" runat="server" class="form-control amp300" placeholder="Pin"></asp:TextBox>
                                 <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "Tpin1" ID="RegularExpressionValidator1" ValidationExpression = "^[\s\S]{4,}$" runat="server" ErrorMessage="Minimum 4 characters required." ForeColor="Red" ValidationGroup="testValidationgGroup"></asp:RegularExpressionValidator>
                             </div>
                         </div>
@@ -474,28 +485,38 @@
                             <label class="col-sm-2 control-label"
                             id="Lpin2">Verify Pin</label>
                             <div class="col-sm-10">
-                                <asp:TextBox ID="Tpin2" runat="server" class="form-control" placeholder="Verify Pin" TextMode="Password"></asp:TextBox>
+                                <asp:TextBox ID="Tpin2" runat="server" class="form-control amp300" placeholder="Verify Pin"></asp:TextBox>
                              <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "Tpin2" ID="RegularExpressionValidator3" ValidationExpression = "^[\s\S]{4,}$" runat="server" ErrorMessage="Minimum 4 characters required." ForeColor="Red" ValidationGroup="testValidationgGroup"></asp:RegularExpressionValidator>
                             </div>
                             </div>
                         </fieldset>
+                    <br />
                         <div class="form-group">
                             <div class="col-sm-10 col-sm-offset-2"> 
                                 <asp:Button ID="regSubmit" runat="server" Text="Submit" CssClass="btn btn-search" ValidationGroup="testValidationgGroup"/>
                             </div>
                             
                          </div>
-                        
+                        </div>
                     </div>
-                </section>          
+                   
             </div>
         </div>       
     </div>   
 
- </div>  
- <script src="dist/sweetalert.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
-    <script type="text/javascript">
+ </div>
+   
+    <script src="js/jquery-2.2.4.js"></script>
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/jquery.maskedinput.js"></script>
+   <script>
+       $(document).ready(function() {
+           $(function () {
+               $('#Tphone1').mask('99/99/9999');
+               $('#Tphone2').mask('99/99/9999');
+           });
+       });
+
         function ErrorUsername() {
             swal({
                 title: 'Username',
@@ -527,6 +548,8 @@
                       window.location.href = 'default.aspx';
                   });
         }
+
+       
 
     </script>
 </asp:Content>

@@ -68,6 +68,24 @@ Partial Public Class ClientActivity
     Protected WithEvents btnApply As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
+    '''TblHeader control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TblHeader As Global.System.Web.UI.WebControls.Table
+    
+    '''<summary>
+    '''lblCompanyName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblCompanyName As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
     '''GridClientActivity control.
     '''</summary>
     '''<remarks>

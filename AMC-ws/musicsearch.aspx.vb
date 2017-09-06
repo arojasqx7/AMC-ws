@@ -86,6 +86,7 @@ Public Class musicsearch
     End Sub
 
     Protected Sub btnAddProjects_Click(sender As Object, e As EventArgs)
+#Region "Add Projects code"
         Dim conn As String = connection
         Dim sqlCon As New SqlConnection(conn)
         Dim t_id = Me.Label2.Text
@@ -115,6 +116,7 @@ Public Class musicsearch
                 End If
             End If
         Next
+#End Region
     End Sub
 
     Protected Sub CheckAlbum_CheckedChanged(sender As Object, e As EventArgs)
@@ -240,6 +242,7 @@ Public Class musicsearch
     End Sub
 
     Protected Sub T_title_Click(sender As Object, e As EventArgs)
+#Region "Track Click Code"
         ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "openPlayer();", True)
         Dim lno As LinkButton = sender
         Dim Track_cd = New DataSet2TableAdapters.map_clipsTableAdapter()
@@ -247,7 +250,8 @@ Public Class musicsearch
         Dim FileName = "/clips/" & T_track(0).fk_trackID & "_30.mp3"
         ClientScript.RegisterStartupScript(Me.GetType(), "LoadSong", "cargarCancion('" & FileName & "');", True)
         Dim Dt_tracks = New DataSet2TableAdapters.tracksTableAdapter()
-        Dim T_tracks = Dt_tracks.GetData(lno.CommandArgument)
+        Dim T_tracks = Dt_tracks.GetDataByTrackID(lno.CommandArgument)
         Me.L_titlePlayer.Text = T_tracks(0).title
+#End Region
     End Sub
 End Class
