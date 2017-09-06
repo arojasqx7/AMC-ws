@@ -1,5 +1,5 @@
-﻿Imports System.Data.SqlClient
-Imports System.Security.Cryptography
+﻿
+Imports System.Data.SqlClient
 
 Public Class project
     Inherits System.Web.UI.Page
@@ -13,8 +13,8 @@ Public Class project
     End Sub
 
     Private Sub B_addfolder_Click(sender As System.Object, e As System.EventArgs) Handles B_addfolder.Click
-        Dim conn As SqlConnection = New SqlConnection("Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29")
-        Dim conn2 As SqlConnection = New SqlConnection("Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29")
+        Dim conn As SqlConnection = New SqlConnection(connection)
+        Dim conn2 As SqlConnection = New SqlConnection(connection)
         If Me.T_newfolder.Text = "" Then
             ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "ValidateEmptyFolder();", True)
         Else
@@ -33,8 +33,8 @@ Public Class project
                     conn2.Open()
                     Dim cmd As SqlCommand = New SqlCommand("INSERT INTO projects (projectName,fk_userID) VALUES ('" & T_newfolder.Text & "',(SELECT TOP 1 [users].[id] FROM [users] WHERE [users].[username] ='" & Session("Username") & "'))", conn2)
                     cmd.ExecuteNonQuery()
+                    ScriptManager.RegisterStartupScript(Me, Page.GetType, "Redirect", "FolderAdded();window.location='project.aspx';", True)
                     DD_project1.DataBind()
-                    Response.Redirect("project.aspx")
                     conn2.Close()
                 End If
             End Using
@@ -55,7 +55,7 @@ Public Class project
     Protected Sub BindGridTracksInProject()
         Dim sqlConnection1 As New SqlConnection(connection)
         sqlConnection1.Open()
-        Dim query As String = "SELECT [map_projects].[fk_trackID],[tracks].[title] FROM [tracks] JOIN [map_projects] ON [tracks].[id] = [map_projects].[fk_trackID] JOIN [projects] ON [map_projects].[fk_projectID] = [projects].[id] JOIN [users] ON [projects].[fk_userID] = [users].[id] WHERE [projectName]='" & Me.DD_project1.SelectedValue & "' AND [users].[username] ='" & Session("Username") & "' ORDER BY [tracks].[title]"
+        Dim query As String = "Select [map_projects].[fk_trackID],[tracks].[title] FROM [tracks] JOIN [map_projects] On [tracks].[id] = [map_projects].[fk_trackID] JOIN [projects] On [map_projects].[fk_projectID] = [projects].[id] JOIN [users] On [projects].[fk_userID] = [users].[id] WHERE [projectName]='" & Me.DD_project1.SelectedValue & "' AND [users].[username] ='" & Session("Username") & "' ORDER BY [tracks].[title]"
         Dim Adpt As New SqlDataAdapter(query, sqlConnection1)
         Dim ds As New DataSet()
         Adpt.Fill(ds)
@@ -106,5 +106,18 @@ Public Class project
                 End If
             Next
         End If
+    End Sub
+
+    Protected Sub T_title_Click(sender As Object, e As EventArgs)
+#Region "Track Click Code"
+        Dim lno As LinkButton = sender
+        Dim Track_cd = New AMC_ws.DataSet2TableAdapters.map_clipsTableAdapter()
+        Dim T_track = Track_cd.GetData(lno.CommandArgument)
+        Dim FileName = "/clips/" & T_track(0).fk_trackID & "_30.mp3"
+        ClientScript.RegisterStartupScript(Me.GetType(), "LoadSong", "cargarCancion('" & FileName & "');", True)
+        Dim Dt_tracks = New DataSet2TableAdapters.tracksTableAdapter()
+        Dim T_tracks = Dt_tracks.GetDataByTrackID(lno.CommandArgument)
+        Me.L_titlePlayer.Text = T_tracks(0).title
+#End Region
     End Sub
 End Class

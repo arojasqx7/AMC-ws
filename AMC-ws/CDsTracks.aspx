@@ -1498,7 +1498,7 @@
     </div>
 
     <script src="dist/sweetalert.min.js"></script>
-    <script src="js/jquery-2.2.3.min.js"></script>
+    <script src="js/jquery-2.2.4.min.js"></script>
     <script src="js/jquery_inputmask_bundle.js"></script>
     <script>
         $(document).ready(function ($) {

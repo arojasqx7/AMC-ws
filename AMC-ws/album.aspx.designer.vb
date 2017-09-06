@@ -23,6 +23,15 @@ Partial Public Class album
     Protected WithEvents T_albumTitle As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
+    '''L_titlePlayer control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents L_titlePlayer As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
     '''GV_tracks control.
     '''</summary>
     '''<remarks>
@@ -120,13 +129,4 @@ Partial Public Class album
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnAddProjects As Global.System.Web.UI.WebControls.Button
-    
-    '''<summary>
-    '''L_titlePlayer control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents L_titlePlayer As Global.System.Web.UI.WebControls.Label
 End Class

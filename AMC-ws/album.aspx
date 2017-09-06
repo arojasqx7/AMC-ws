@@ -29,6 +29,10 @@
         {
             padding-left: 5px;
         }
+
+        #Player {
+            align-content: center;
+        }
     </style>
 
     <div class="bodyBg" style="height:500px;">
@@ -41,6 +45,39 @@
                             <h2 class="subH2">
                                 <asp:Label ID="T_albumTitle" runat="server" Text="Label"></asp:Label></h2>
                         </div>
+                        <br />
+                     <!-- Define los elementos HTML donde waveform se cargara -->
+                        <div id="Player">
+                          
+                            <div id="waveform" style="text-align: center; color: royalblue;font-size: 16px;">
+                                <h4><asp:Label ID="L_titlePlayer" runat="server" ForeColor="RoyalBlue"></asp:Label></h4>
+                            </div>
+                            <br />
+                            <div class="controls" style="text-align:center;">
+                                <button class="btn btn-danger" onclick="wavesurfer.skipBackward();return false">
+                                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span>
+                                </button>
+
+                                <button class="btn btn-primary" onclick="wavesurfer.playPause();return false">
+                                    <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                                        /
+                                     <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
+                                </button>
+
+                                <button class="btn btn-danger" onclick="wavesurfer.skipForward();return false">
+                                    <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                                </button>
+
+                                <button class="btn btn-default" onclick="wavesurfer.toggleMute();return false">
+                                    <span class="glyphicon glyphicon-volume-off" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                             
+                        </div>
+                        <!-- end div player -->
+                        
+                        <br />
+
                         <div class="container col-sm-12">
                             <asp:GridView ID="GV_tracks" runat="server" AutoGenerateColumns="False" GridLines="None" OnSelectedIndexChanged ="OnSelectedIndexChanged" DataKeyNames="id" >
                                 <Columns>
@@ -222,68 +259,14 @@
                 </div>
             </div>
         </div>
-        <!-- Termina Pop up-->
-
-         <!--Pop Up Player-->
-        <div class="modal fade" id="PlayerPop" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header song_sel_panel-header">
-                        <button type="button" class="close" data-dismiss="modal" onclick="wavesurfer.toggleMute();return false">X</button>
-                        <h3 class="modal-title" style="text-align:center;">  <asp:Label ID="L_titlePlayer" runat="server"></asp:Label></h3>
-                    </div>
-                    <div class="modal-body">
-                        <!-- Define los elementos HTML donde waveform se cargara -->
-                        <div id="Player">
-                            <div id="waveform" style="text-align: center; color: royalblue;font-size: 16px;">
-                                
-                            </div>
-                            <br />
-                            <div class="controls" style="text-align:center;">
-                                <button class="btn btn-danger" onclick="wavesurfer.skipBackward();return false">
-                                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span>
-                                </button>
-
-                                <button class="btn btn-primary" onclick="wavesurfer.playPause();return false">
-                                    <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-                                    /
-                        <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
-                                </button>
-
-                                <button class="btn btn-danger" onclick="wavesurfer.skipForward();return false">
-                                    <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
-                                </button>
-
-                                <button class="btn btn-default" onclick="wavesurfer.toggleMute();return false">
-                                    <span class="glyphicon glyphicon-volume-off" aria-hidden="true"></span>
-                                </button>
-                            </div>
-                        </div>
-                        <!-- end div player -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Termina Pop up-->
+     
 
 
     </div>
     <!-- End div main body -->
 
-
-    <style type="text/css">
-        #Player {
-            /*position: fixed;
-            bottom: 0;
-            margin-bottom: 55px;*/
-            align-content: center;            /*a:link{cursor:pointer}a:link{color:#1a0dab}*/
-                }
-    </style>
-
     <!-- Incluimos wavesurfer.js desde cdnjs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.4/wavesurfer.min.js"></script>
-
-
     <script>
 
         var wavesurfer = WaveSurfer.create({

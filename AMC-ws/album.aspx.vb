@@ -7,6 +7,7 @@ Public Class album
     Dim connection As String = "Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29"
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+#Region "Load Code"
         If Me.GV_tracks.Rows.Count() <= 0 Then
             Dim idAlbum As String = Request.QueryString("idAlbum")
             Dim L_idAlbum = Long.Parse(idAlbum)
@@ -19,6 +20,7 @@ Public Class album
             Me.GV_tracks.DataSource = T_tracks
             GV_tracks.DataBind()
         End If
+#End Region
     End Sub
 
     Protected Sub OnSelectedIndexChanged(sender As Object, e As EventArgs)
@@ -28,7 +30,7 @@ Public Class album
     End Sub
 
     Protected Sub track_Click(sender As Object, e As EventArgs)
-        ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "openPlayer();", True)
+#Region "Track Click Code"
         Dim lno As LinkButton = sender
         Dim Track_cd = New AMC_ws.DataSet2TableAdapters.map_clipsTableAdapter()
         Dim T_track = Track_cd.GetData(lno.CommandArgument)
@@ -37,9 +39,11 @@ Public Class album
         Dim Dt_tracks = New DataSet2TableAdapters.tracksTableAdapter()
         Dim T_tracks = Dt_tracks.GetDataByTrackID(lno.CommandArgument)
         Me.L_titlePlayer.Text = T_tracks(0).title
+#End Region
     End Sub
 
     Protected Sub T_songMain(sender As Object, e As EventArgs)
+#Region "Song Code"
         If (Session("fullname") IsNot Nothing) Then
             Dim lno As LinkButton = sender
             Dim Track_cd = New DataSet2TableAdapters.map_clipsTableAdapter()
@@ -59,9 +63,11 @@ Public Class album
         Else
             ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "ErrorLogin();", True)
         End If
+#End Region
     End Sub
 
     Protected Sub track_Click_download(sender As Object, e As EventArgs)
+#Region "Track Click Code"
         Dim conn As SqlConnection = New SqlConnection("Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29")
         Dim userID As Int32
         Dim loginID As Int32
@@ -84,6 +90,7 @@ Public Class album
         Dim Dfile As New System.IO.FileInfo(Server.MapPath("/clips/" & cancion))
         Response.WriteFile(Dfile.FullName)
         Response.[End]()
+#End Region
     End Sub
 
     Protected Sub lnkSelect_Click(sender As Object, e As EventArgs)
@@ -95,6 +102,7 @@ Public Class album
     End Sub
 
     Protected Sub btnAddProjects_Click(sender As Object, e As EventArgs)
+#Region "Add Projects Code"
         Dim conn As String = "Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29"
         Dim sqlCon As New SqlConnection(conn)
         Dim t_id = Me.Label2.Text
@@ -123,6 +131,7 @@ Public Class album
                 End If
             End If
         Next
+#End Region
     End Sub
 
 End Class

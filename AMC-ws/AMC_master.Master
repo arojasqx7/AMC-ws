@@ -12,8 +12,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/typeahead.css" />
     <link href="css/styles.css" rel="stylesheet" />
-    <script src="js/jquery-2.2.3.min.js"></script>
-    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery-2.2.4.min.js"></script>
     <script src="dist/sweetalert.min.js"></script>
     <link rel="stylesheet" type="text/css" href="dist/sweetalert.css"/>
     
@@ -96,7 +95,7 @@
 
                       <br />
 
-                      <asp:Button ID="LogIn" runat="server" Text="Log In" CssClass="btn btn-primary" Width="270px" OnClick="LogIn_Click" UseSubmitBehavior="false"  />
+                      <asp:Button ID="LogIn" runat="server" Text="Log In" CssClass="btn btn-primary" Width="270px" OnClick="LogIn_Click"  />
                   </div>
 
                   <div class="modal-footer" style="text-align:center;">
@@ -197,7 +196,7 @@
     </div>
  </footer>
 
-    <script src="js/jquery-2.2.3.min.js"></script>
+    <script src="js/jquery-2.2.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/script.js"></script>
     <script src="js/bootstrap3-typeahead.min.js"></script>

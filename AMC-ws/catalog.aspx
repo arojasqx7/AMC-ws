@@ -94,12 +94,11 @@
                                     <a >                                 
                                         <h5 class="project">
                                             <span class="glyphicon glyphicon-cd" aria-hidden="true"></span>
-                                            <asp:LinkButton ID="Label2" runat="server" Text='<%# Bind("cd_number") %>'
-                                                CommandArgument='<%# Bind("id") %>'  OnClick="Label1_Click"></asp:LinkButton> - 
-                                            <asp:LinkButton ID="Label1" runat="server" Text='<%# Bind("cd_title") %>' 
+                                            <asp:LinkButton ID="Label2" runat="server" Text='<%# Eval("cd_number") + " - " + Eval("cd_title")%>'
+                                                CommandArgument='<%# Bind("id") %>'  OnClick="Label1_Click"></asp:LinkButton>
+<%--                                            <asp:LinkButton ID="Label1" runat="server" Text='<%# Bind("cd_title") %>' 
                                                 CommandArgument='<%# Bind("id") %>' OnClick="Label1_Click">
-
-                                            </asp:LinkButton>
+                                            </asp:LinkButton>--%>
                                         </h5>
                                     </a> 
                                 </div>

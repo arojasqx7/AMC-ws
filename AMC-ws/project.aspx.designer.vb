@@ -68,6 +68,15 @@ Partial Public Class project
     Protected WithEvents GridTracksInProject As Global.System.Web.UI.WebControls.GridView
     
     '''<summary>
+    '''L_titlePlayer control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents L_titlePlayer As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
     '''T_newfolder control.
     '''</summary>
     '''<remarks>

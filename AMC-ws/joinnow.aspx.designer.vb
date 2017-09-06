@@ -167,6 +167,15 @@ Partial Public Class join_t
     Protected WithEvents Tphone1 As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
+    '''RequiredFieldValidator9 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RequiredFieldValidator9 As Global.System.Web.UI.WebControls.RequiredFieldValidator
+    
+    '''<summary>
     '''Tphone2 control.
     '''</summary>
     '''<remarks>
