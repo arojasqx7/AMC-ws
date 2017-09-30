@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/AMC_Admin.Master" CodeBehind="CDsTracks.aspx.vb" Inherits="AMC_ws.CDsTracks" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="css/TablesStyle.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -79,8 +80,10 @@
 
                         <!-- ************ GRID TRACKS IN CD -->
 
-                        <asp:GridView ID="GridTracksInCD" runat="server" Style="margin-left: 110px;" DataKeyNames="TrackId" AutoGenerateColumns="False" DataSourceID="SqlTracksInCD" Width="590px" Visible="False" CssClass="table table-bordered" AlternatingRowStyle-BackColor="#d3d3d3" ShowHeader="False" OnSelectedIndexChanged="GridTracksInCD_SelectedIndexChanged">
+                        <asp:GridView ID="GridTracksInCD" runat="server" Style="margin-left: 110px;" DataKeyNames="TrackId" AutoGenerateColumns="False" DataSourceID="SqlTracksInCD" Width="590px" Visible="False" CssClass="table table-bordered" AlternatingRowStyle-BackColor="#d3d3d3" ShowHeader="False" OnSelectedIndexChanged="GridTracksInCD_SelectedIndexChanged" AllowPaging="true" PageSize="10">
                             <AlternatingRowStyle BackColor="LightGray"></AlternatingRowStyle>
+                            <pagersettings  mode="Numeric" position="Bottom" pagebuttoncount="10" />
+                                <PagerStyle CssClass="pagination-ys" HorizontalAlign="Center"/>
                             <Columns>
                                 <asp:BoundField DataField="TrackId" HeaderText="TrackId" SortExpression="TrackId" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
                                 <asp:BoundField DataField="track_number" HeaderText="Track #" SortExpression="track_number" HeaderStyle-Width="20%" ItemStyle-Width="20%">
@@ -116,7 +119,7 @@
                             </Columns>
                         </asp:GridView>
 
-                        <asp:SqlDataSource ID="SqlTracksInCD" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [id] AS TrackId,[track_number], [title],[fk_cd_id],[descrip],[sounds_like],[keywords],[instruments] FROM [tracks] WHERE ([fk_cd_id] = @fk_cd_id)" DeleteCommand="DELETE FROM [tracks] WHERE [id]=@TrackId">
+                        <asp:SqlDataSource ID="SqlTracksInCD" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [id] AS TrackId,[track_number], [title],[fk_cd_id],[descrip],[sounds_like],[keywords],[instruments] FROM [tracks] WHERE ([fk_cd_id] = @fk_cd_id) ORDER BY [track_number]" DeleteCommand="DELETE FROM [tracks] WHERE [id]=@TrackId">
                             <DeleteParameters>
                                 <asp:ControlParameter ControlID="hd_trackID" Name="TrackId" PropertyName="Value" Type="Int64" />
                             </DeleteParameters>
@@ -1353,7 +1356,7 @@
 
                                 <br />
                                 <div>
-                                    <asp:Button ID="btnApplyEdit" runat="server" Text="Apply Changes" CssClass="btn btn-success form-control" Style="margin-top: 25px;" OnClick="btnApplyEdit_Click" /></div>
+                                    <asp:Button ID="btnApplyEdit" runat="server" Text="Apply Changes" CausesValidation="false" CssClass="btn btn-success form-control" Style="margin-top: 25px;" OnClick="btnApplyEdit_Click" /></div>
                             </div>
 
                         </div>
@@ -1382,7 +1385,7 @@
                             <asp:SqlDataSource ID="SqlComposersList" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT [id], CONCAT([lname] , ' , ' , [fname]) AS ComposerName FROM [composers] ORDER BY [ComposerName]"></asp:SqlDataSource>
                             <br />
                             <div>
-                                <asp:Button ID="btnAddComposerToTrack" runat="server" Text="Add" CssClass="btn btn-success form-control" Style="margin-top: 25px;" OnClick="btnAddComposerToTrack_Click" /></div>
+                                <asp:Button ID="btnAddComposerToTrack" runat="server" Text="Add" CssClass="btn btn-success form-control" Style="margin-top: 25px;" OnClick="btnAddComposerToTrack_Click" CausesValidation="false"/></div>
                             <br />
                             <br />
 

@@ -1,56 +1,14 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/AMC_Admin.Master" CodeBehind="Composers.aspx.vb" Inherits="AMC_ws.Composers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="css/TablesStyle.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
-        /*gridview*/
-        .table table  tbody  tr  td a ,
-        .table table  tbody  tr  td  span {
-        position: relative;
-        float: left;
-        padding: 6px 12px;
-
-        margin-left: -1px;
-        line-height: 1.42857143;
-        color: #337ab7;
-        text-decoration: none;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        }
-
-        .table table > tbody > tr > td > span {
-        z-index: 3;
-        color: #fff;
-        cursor: default;
-        background-color: #337ab7;
-        border-color: #337ab7;
-        }
-
-        .table table > tbody > tr > td:first-child > a,
-        .table table > tbody > tr > td:first-child > span {
-        margin-left: 0;
-        border-top-left-radius: 4px;
-        border-bottom-left-radius: 4px;
-        }
-
-        .table table > tbody > tr > td:last-child > a,
-        .table table > tbody > tr > td:last-child > span {
-        border-top-right-radius: 4px;
-        border-bottom-right-radius: 4px;
-        }
-
-        .table table > tbody > tr > td > a:hover,
-        .table   table > tbody > tr > td > span:hover,
-        .table table > tbody > tr > td > a:focus,
-        .table table > tbody > tr > td > span:focus {
-        z-index: 2;
-        color: #23527c;
-        background-color: #eee;
-        border-color: #ddd;
-        }
-        /*end gridview */
-        </style>
+         .bl{
+                color:#fff;
+            }
+    </style>
   
        <div class="bodyBg" style="height:800px;"> 
         <div class="content container">
@@ -76,7 +34,9 @@
 
                    <section class="col-sm-9" style="margin-left:100px;">
                          <br />
-                       <asp:GridView ID="GridComposers" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlComposerss" Width="601px" AllowPaging="True" PageSize="10" CssClass="table table-bordered table-hover">
+                       <asp:GridView ID="GridComposers" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlComposerss" Width="601px" AllowPaging="True" PageSize="10" GridLines="None" CssClass="gridViewRow">
+                           <pagersettings  mode="Numeric" position="Bottom" pagebuttoncount="10" />
+                                <PagerStyle CssClass="pagination-ys" HorizontalAlign="Center"/>
                            <Columns>
                                <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" Visible="false"/>
                                <asp:BoundField DataField="fname" HeaderText="First Name" SortExpression="fname" />
@@ -84,19 +44,27 @@
                                <asp:BoundField DataField="lname" HeaderText="Last Name" SortExpression="lname" />
                                <asp:BoundField DataField="fk_publisher" HeaderText="fk_publisher" SortExpression="fk_publisher" Visible="false" />
                                <asp:BoundField DataField="bio" HeaderText="bio" SortExpression="bio" Visible="false"/>
-                               <asp:TemplateField ShowHeader="False">
+                               <asp:TemplateField HeaderText="Edit">
                                    <EditItemTemplate>
-                                       <asp:LinkButton ID="UpdateLink" runat="server" CausesValidation="false" CommandName="Update" Text="Update"></asp:LinkButton>
-                                       &nbsp;<asp:LinkButton ID="CancelLink" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel"></asp:LinkButton>
+                                        <asp:LinkButton ID="UpdateLink" runat="server" CausesValidation="False" CommandName="Update" CssClass="btn btn-success">
+                                             <span class="glyphicon glyphicon-ok bl"/>
+                                        </asp:LinkButton>
+                                  &nbsp;<asp:LinkButton ID="CancelLink" runat="server" CausesValidation="False" CommandName="Cancel" CssClass="btn btn-danger">
+                                             <span class="glyphicon glyphicon-remove bl" />
+                                        </asp:LinkButton>
                                    </EditItemTemplate>
                                    <ItemTemplate>
-                                       <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit"></asp:LinkButton>
+                                         <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Edit" CssClass="btn btn-primary bl">
+                                            <span class="glyphicon glyphicon-edit bl"/>
+                                        </asp:LinkButton>
                                    </ItemTemplate>
                                    <ControlStyle ForeColor="Blue" />
                                </asp:TemplateField>
-                               <asp:TemplateField ShowHeader="False">
+                               <asp:TemplateField HeaderText="Delete">
                                      <ItemTemplate>
-                                         <asp:LinkButton ID="LinkDeleteComposer" runat="server" CausesValidation="false"  CommandName="Delete" Text="Delete" OnClientClick="return confirm('Are you sure you want to delete this composer?');" ForeColor="Red"></asp:LinkButton>
+                                         <asp:LinkButton ID="LinkDeleteComposer" runat="server" CausesValidation="false"  CommandName="Delete" Text="Delete" CssClass="btn btn-danger" OnClientClick="return confirm('Are you sure you want to delete this composer?');">
+                                             <span class="glyphicon glyphicon-trash"/>
+                                         </asp:LinkButton>
                                      </ItemTemplate>
                                  </asp:TemplateField>
                             </Columns>

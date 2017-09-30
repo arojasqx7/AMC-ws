@@ -5,6 +5,9 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
         <style>
+            .bl{
+                color:#fff;
+            }
         /*gridview*/
         .table table  tbody  tr  td a ,
         .table table  tbody  tr  td  span {
@@ -51,6 +54,10 @@
         border-color: #ddd;
         }
         /*end gridview */
+
+          .gridViewRow td{
+            padding-bottom: 15px;
+        }
         </style>
 
     <div class="bodyBg" style="height:800px;"> 
@@ -77,24 +84,32 @@
 
                    <section class="col-sm-9" style="margin-left:100px;">
                          <br />
-                       <asp:GridView ID="GridPublishers" runat="server" EnableViewState="True"  AutoGenerateColumns="False" DataSourceID="SqlPublishers" Width="500px" CssClass="table table-bordered table-hover" DataKeyNames="id">
+                       <asp:GridView ID="GridPublishers" runat="server" EnableViewState="True"  AutoGenerateColumns="False" DataSourceID="SqlPublishers" Width="500px" GridLines="None" DataKeyNames="id" RowStyle-CssClass="gridViewRow">
                            <Columns>                             
                                <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" InsertVisible="False" ReadOnly="false" Visible="false"/>
                                <asp:BoundField DataField="name" HeaderText="Publisher Name" SortExpression="name" />
                                <asp:BoundField DataField="alias" HeaderText="Alias" SortExpression="alias" />
-                                <asp:TemplateField ShowHeader="False">
+                                <asp:TemplateField HeaderText="Edit">
                                     <EditItemTemplate>
-                                        <asp:LinkButton ID="UpdateLink" runat="server" CausesValidation="False" CommandName="Update" Text="Update"></asp:LinkButton>
-                                  &nbsp;<asp:LinkButton ID="CancelLink" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel"></asp:LinkButton>
+                                        <asp:LinkButton ID="UpdateLink" runat="server" CausesValidation="False" CommandName="Update" CssClass="btn btn-success">
+                                             <span class="glyphicon glyphicon-ok bl"/>
+                                        </asp:LinkButton>
+                                  &nbsp;<asp:LinkButton ID="CancelLink" runat="server" CausesValidation="False" CommandName="Cancel" CssClass="btn btn-danger">
+                                             <span class="glyphicon glyphicon-remove bl" />
+                                        </asp:LinkButton>
                                     </EditItemTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit"></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Edit" CssClass="btn btn-primary bl">
+                                            <span class="glyphicon glyphicon-edit bl"/>
+                                        </asp:LinkButton>
                                     </ItemTemplate>
                                     <ControlStyle ForeColor="Blue" />
                                </asp:TemplateField>
-                               <asp:TemplateField ShowHeader="False">
+                               <asp:TemplateField HeaderText="Delete">
                                      <ItemTemplate>
-                                         <asp:LinkButton ID="LinkDeletePublisher" runat="server" CausesValidation="false"  CommandName="Delete" Text="Delete" OnClientClick="return confirm('Are you sure you want to delete this publisher?');" ForeColor="Red"></asp:LinkButton>
+                                         <asp:LinkButton ID="LinkDeletePublisher" runat="server" CausesValidation="false"  CommandName="Delete" CssClass="btn btn-danger" OnClientClick="return confirm('Are you sure you want to delete this publisher?');">
+                                             <span class="glyphicon glyphicon-trash"/>
+                                         </asp:LinkButton>
                                      </ItemTemplate>
                                  </asp:TemplateField>
                            </Columns>

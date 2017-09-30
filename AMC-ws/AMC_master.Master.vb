@@ -60,17 +60,17 @@ Public Class AMC_master
             Dim type = t_user(0).type
             Dim standing = t_user(0).standing
 
-            If type = 0 And standing = 1 Then
+            If type = 1 And standing = 1 And t_user(0).username = username1.Text And t_user(0).password = password1.Text Then
                 Response.Redirect("welcome.aspx")
 
-            ElseIf standing = 2 Then
+            ElseIf standing = 2 And type = 0 And t_user(0).username = username1.Text And t_user(0).password = password1.Text Then
                 Me.m_usuario.Visible = False
                 Me.bt_login.Visible = True
                 Session.Abandon()
                 Session.RemoveAll()
                 Response.Redirect("WaitingConfirmation.aspx")
 
-            ElseIf type = 8 Then
+            ElseIf type = 2 And t_user(0).username = username1.Text And t_user(0).password = password1.Text Then
                 Response.Redirect("Users.aspx")
 
             End If
@@ -83,7 +83,7 @@ Public Class AMC_master
     Protected Sub B_subEmail_Click(sender As Object, e As EventArgs)
         Dim Username As String = String.Empty
         Dim Password As String = String.Empty
-        Using conn As New SqlConnection("Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29")
+        Using conn As New SqlConnection("Server=172.24.16.68\PROD;Database=americanmusicco;User Id=amcuser;Password=amccma;")
             Using cmd As New SqlCommand()
                 cmd.CommandText = "SELECT username,password FROM users WHERE email = @email"
                 cmd.Parameters.AddWithValue("@email", useremail.Text.Trim())

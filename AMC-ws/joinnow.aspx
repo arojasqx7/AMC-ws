@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/AMC_master.Master" CodeBehind="joinnow.aspx.vb" Inherits="AMC_ws.join_t" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -395,8 +396,11 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label"
-                                        id="Lphone1">* Phone</label>
+
+                                        <asp:ScriptManager ID="ToolkitScriptManager1" runat="server">
+                                        </asp:ScriptManager>
+
+                                        <label class="col-sm-2 control-label" id="Lphone1">* Phone</label>
                                         <div class="col-sm-10">
                                             <asp:TextBox ID="Tphone1" runat="server" class="form-control amp300" placeholder="Phone" TextMode="Phone"></asp:TextBox>
                                                  <asp:RequiredFieldValidator id="RequiredFieldValidator9" runat="server"
@@ -405,6 +409,9 @@
                                               ValidationGroup="testValidationgGroup"
                                               ForeColor="Red">
                                             </asp:RequiredFieldValidator>
+                                             <asp:MaskedEditExtender ID="MaskedEditExtender1" runat="server" TargetControlID="Tphone1"
+                                                Mask="(999)-999-9999" MessageValidatorTip="true" ErrorTooltipEnabled="True" >
+                                            </asp:MaskedEditExtender>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -412,6 +419,9 @@
                                         id="Lphone2">Mobile</label>
                                         <div class="col-sm-10">
                                             <asp:TextBox ID="Tphone2" runat="server" class="form-control amp300" placeholder="Mobile" TextMode="Phone"></asp:TextBox>
+                                               <asp:MaskedEditExtender ID="MaskedEditExtender2" runat="server" TargetControlID="Tphone2"
+                                                Mask="(999)-999-9999" MessageValidatorTip="true" ErrorTooltipEnabled="True" >
+                                            </asp:MaskedEditExtender>
                                         </div>
                                     </div>
                                  </div>

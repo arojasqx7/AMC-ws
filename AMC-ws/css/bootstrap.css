@@ -489,6 +489,7 @@ th {
 }
 .glyphicon-edit:before {
   content: "\e065";
+  color:#fff;
 }
 .glyphicon-share:before {
   content: "\e066";
@@ -1270,7 +1271,7 @@ h1,
 }
 h2,
 .h2 {
-  font-size: 30px;
+  font-size: 25px;
 }
 h3,
 .h3 {
@@ -5706,13 +5707,11 @@ button.list-group-item-danger.active:focus {
 .panel-default > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #ddd;
 }
-.panel-primary {
-  border-color: #337ab7;
-}
+
 .panel-primary > .panel-heading {
   color: #fff;
-  background-color: #337ab7;
-  border-color: #337ab7;
+  background-color: #3385ff;
+  /*border-color: #3385ff;*/
 }
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #337ab7;

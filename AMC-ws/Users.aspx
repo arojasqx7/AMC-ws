@@ -1,15 +1,23 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/AMC_Admin.Master" CodeBehind="Users.aspx.vb" Inherits="AMC_ws.Users" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="css/TablesStyle.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style type="text/css">
-     .hidden
-     {
-         display:none;
-     }
+        .hidden {
+            display: none;
+        }
 
+        .gridViewRow td{
+            padding-bottom: 15px;
+        }
+
+        .gridViewHead th{
+            padding-bottom:10px;
+        }     
     </style>
+
      <div class="bodyBg" style="height:800px;"> 
         <div class="content container">
             <div class="container">
@@ -31,22 +39,22 @@
                                         <label >Select Filter:</label>
                                         <asp:DropDownList ID="DropUserType" runat="server" CssClass="form-control" AppendDataBoundItems="true" style="margin-left: 20px;" AutoPostBack="true" OnSelectedIndexChanged="DropUserType_SelectedIndexChanged" CausesValidation="false">
                                             <asp:ListItem Text="Select User Type" Value="" />
-                                            <asp:ListItem Text="Blanket" Value="0" />
-                                            <asp:ListItem Text="Per Use" Value="1" />
-                                            <asp:ListItem Text="Leads" Value="2" />
+                                            <asp:ListItem Text="Active" Value="1" />
+                                            <asp:ListItem Text="Inactive" Value="0" />
                                             <asp:ListItem Text="View All" Value="3" />
                                         </asp:DropDownList>
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                    </section>
 
                     <section class="col-sm-1"></section>
                     <section class="col-sm-9">
                         <br />
-                        <asp:GridView ID="GridUserBlanket" runat="server" style="margin-left:110px;" Width="590px" CssClass="table table-bordered" AlternatingRowStyle-BackColor="#d3d3d3" AutoGenerateColumns="False" DataKeyNames="id" OnSelectedIndexChanged="GridUserBlanket_SelectedIndexChanged">
-                            <AlternatingRowStyle BackColor="LightGray"></AlternatingRowStyle>
-                            <Columns>
+                        <asp:GridView ID="GridUserBlanket" runat="server" style="margin-left:110px;margin-bottom:10px;" Width="590px"  AutoGenerateColumns="False" DataKeyNames="id" OnSelectedIndexChanged="GridUserBlanket_SelectedIndexChanged" GridLines="None" RowStyle-CssClass="table table-hover gridViewRow" HeaderStyle-CssClass="gridViewHead" PageSize="10" AllowPaging="true" OnPageIndexChanging="GridUserBlanket_PageIndexChanging">
+                           <pagersettings  mode="Numeric" position="Bottom" pagebuttoncount="10" />
+                                <PagerStyle CssClass="pagination-ys" HorizontalAlign="Center"/>
+                             <Columns>
                                 <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
                                 <asp:BoundField DataField="UserCompany" HeaderText="User" SortExpression="UserCompany" />
                                 <asp:BoundField DataField="ConvertedDate" HeaderText="Created" SortExpression="ConvertedDate" />
@@ -59,7 +67,7 @@
                                 <asp:BoundField DataField="LastLogin" HeaderText="Last Login" SortExpression="LastLogin"/>
                                 <asp:BoundField DataField="totalLogins" HeaderText="totalLogins" SortExpression="totalLogins" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
                                 <asp:BoundField DataField="Downloads" HeaderText="Downloads" SortExpression="Downloads" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
-                                <asp:ButtonField Text="View Details" CommandName="Select"/>
+                                <asp:ButtonField Text="View Details" CommandName="Select" ControlStyle-CssClass="btn btn-info btn-xs"/>
                             </Columns>
                         </asp:GridView>        
                     </section>
@@ -97,9 +105,8 @@
                                             <td class="col-sm-2"><label>User Type:</label> </td>
                                             <td class="col-sm-10">
                                                 <asp:DropDownList ID="DropUserTypeToUpdate" runat="server" CssClass="form-control" style="width:160px;" CausesValidation="false">
-                                                     <asp:ListItem Text="Blanket" Value="0" />
-                                                     <asp:ListItem Text="Per Use" Value="1" />
-                                                     <asp:ListItem Text="Leads"   Value="2" />
+                                                     <asp:ListItem Text="Active" Value="1" />
+                                                     <asp:ListItem Text="Inactive" Value="0" />             
                                                  </asp:DropDownList>
                                             </td>
                                         </tr>

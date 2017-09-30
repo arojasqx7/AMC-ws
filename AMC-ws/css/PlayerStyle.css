@@ -1,0 +1,29 @@
+﻿        .song_sel_panel-header {
+            color: #ffffff;
+            background-color: #1A6ECD;
+        }
+
+        .song_sel_panel-footer {
+            color: #CC1635;
+            background-color: #ebebeb;
+        }
+
+        .glyColor {
+            color: white;
+        }
+
+        .colpad {
+            padding-left: 5px;
+        }
+        .hiddencol
+          {
+            display: none;
+          }
+        .Headerpad
+        {
+            padding-left: 5px;
+        }
+
+        #Player {
+            align-content: center;
+        }

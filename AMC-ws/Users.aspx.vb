@@ -2,14 +2,14 @@
 
 Public Class Users
     Inherits System.Web.UI.Page
-
 #Region "Conn String"
     Dim IdPerson As Integer
-    Dim connection As String = "Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29"
+    Dim connection As String = "Data Source=172.24.16.68\PROD;Initial Catalog=americanmusicco;User ID=amcuser;Password=amccma;"
 #End Region
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If (Session("fullname") IsNot Nothing) Then
-            If Session("fullname") = "Admin1" Then
+            If Session("fullname") = "Mitchel Greenspan" Then
                 Me.L_UserName.Text = Session("fullname")
                 Me.L_UserName.Visible = False
             Else
@@ -96,7 +96,7 @@ Public Class Users
     Protected Sub BindGridUsers()
         Dim sqlConnection1 As New SqlConnection(connection)
         sqlConnection1.Open()
-        Dim query As String = "SELECT distinct [users].[id],CONCAT([users].[companyName],' (', [users].[fullname],')') AS UserCompany,CONVERT(VARCHAR(40),[users].[timeStamped],101) AS ConvertedDate, phone1,address1,username,password,accountpin,comments, MAX(CONVERT(VARCHAR(10), [userlogins].[dated], 101)) as LastLogin, count([userlogins].[userid]) as totalLogins,(SELECT COUNT(md2.fk_userID) FROM [AMC].[dbo].[map_download] md2 JOIN [AMC].[dbo].[users] u2  on(md2.fk_userID=u2.id) where u2.type='" & DropUserType.SelectedValue & "') as Downloads FROM [users] INNER JOIN [userlogins] ON [users].[id] = [userlogins].[userid] WHERE ([users].[type] = '" & DropUserType.SelectedValue & "') group by [users].[id],CONCAT([users].[companyName],' (', [users].[fullname],')'),[users].[timeStamped],phone1,address1,username,password,accountpin,comments"
+        Dim query As String = "SELECT distinct [users].[id],CONCAT([users].[companyName],' (', [users].[fullname],')') AS UserCompany,CONVERT(VARCHAR(40),[users].[timeStamped],101) AS ConvertedDate, phone1,address1,username,password,accountpin,comments, MAX(CONVERT(VARCHAR(10), [userlogins].[dated], 101)) as LastLogin, count([userlogins].[userid]) as totalLogins,(SELECT COUNT(md2.fk_userID) FROM [dbo].[map_download] md2 JOIN [dbo].[users] u2  on(md2.fk_userID=u2.id) where u2.type='" & DropUserType.SelectedValue & "') as Downloads FROM [users] INNER JOIN [userlogins] ON [users].[id] = [userlogins].[userid] WHERE ([users].[type] = '" & DropUserType.SelectedValue & "') group by [users].[id],CONCAT([users].[companyName],' (', [users].[fullname],')'),[users].[timeStamped],phone1,address1,username,password,accountpin,comments"
         Dim Adpt As New SqlDataAdapter(query, sqlConnection1)
         Dim ds As New DataSet()
         Adpt.Fill(ds)
@@ -108,7 +108,7 @@ Public Class Users
     Protected Sub BindAllUsers()
         Dim sqlConnection1 As New SqlConnection(connection)
         sqlConnection1.Open()
-        Dim query As String = "SELECT distinct [users].[id],CONCAT([users].[companyName],' (', [users].[fullname],')') AS UserCompany,CONVERT(VARCHAR(40),[users].[timeStamped],101) AS ConvertedDate, phone1,address1,username,password,accountpin,comments, MAX(CONVERT(VARCHAR(10), [userlogins].[dated], 101)) as LastLogin, count([userlogins].[userid]) as totalLogins,(SELECT COUNT(md2.fk_userID) FROM [AMC].[dbo].[map_download] md2 JOIN [AMC].[dbo].[users] u2  on(md2.fk_userID=u2.id) where u2.type='" & DropUserType.SelectedValue & "') as Downloads FROM [users] INNER JOIN [userlogins] ON [users].[id] = [userlogins].[userid] where [users].[companyName] <> 'AMC' group by [users].[id],CONCAT([users].[companyName],' (', [users].[fullname],')'),[users].[timeStamped],phone1,address1,username,password,accountpin,comments"
+        Dim query As String = "SELECT distinct [users].[id],CONCAT([users].[companyName],' (', [users].[fullname],')') AS UserCompany,CONVERT(VARCHAR(40),[users].[timeStamped],101) AS ConvertedDate, phone1,address1,username,password,accountpin,comments, MAX(CONVERT(VARCHAR(10), [userlogins].[dated], 101)) as LastLogin, count([userlogins].[userid]) as totalLogins,(SELECT COUNT(md2.fk_userID) FROM [map_download] md2 JOIN [dbo].[users] u2  on(md2.fk_userID=u2.id) where u2.type='" & DropUserType.SelectedValue & "') as Downloads FROM [users] INNER JOIN [userlogins] ON [users].[id] = [userlogins].[userid] where [users].[companyName] <> 'AMC' group by [users].[id],CONCAT([users].[companyName],' (', [users].[fullname],')'),[users].[timeStamped],phone1,address1,username,password,accountpin,comments"
         Dim Adpt As New SqlDataAdapter(query, sqlConnection1)
         Dim ds As New DataSet()
         Adpt.Fill(ds)
@@ -117,4 +117,12 @@ Public Class Users
         sqlConnection1.Close()
     End Sub
 
+    Protected Sub GridUserBlanket_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
+        GridUserBlanket.PageIndex = e.NewPageIndex
+        If DropUserType.SelectedItem.Text <> "View All" Then
+            BindGridUsers()
+        Else
+            BindAllUsers()
+        End If
+    End Sub
 End Class

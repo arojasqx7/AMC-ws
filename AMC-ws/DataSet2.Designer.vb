@@ -4183,8 +4183,6 @@ Partial Public Class DataSet2
         
         Private columnaccountpin As Global.System.Data.DataColumn
         
-        Private columnroles As Global.System.Data.DataColumn
-        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -4397,14 +4395,6 @@ Partial Public Class DataSet2
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property rolesColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnroles
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -4462,10 +4452,9 @@ Partial Public Class DataSet2
                     ByVal comments As String,  _
                     ByVal timeStamped As Date,  _
                     ByVal country As String,  _
-                    ByVal accountpin As String,  _
-                    ByVal roles As String) As usersRow
+                    ByVal accountpin As String) As usersRow
             Dim rowusersRow As usersRow = CType(Me.NewRow,usersRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, fname, lname, fullname, companyName, phone1, phone2, fax, email, address1, address2, city, state, zip, username, password, type, standing, comments, timeStamped, country, accountpin, roles}
+            Dim columnValuesArray() As Object = New Object() {Nothing, fname, lname, fullname, companyName, phone1, phone2, fax, email, address1, address2, city, state, zip, username, password, type, standing, comments, timeStamped, country, accountpin}
             rowusersRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowusersRow)
             Return rowusersRow
@@ -4516,7 +4505,6 @@ Partial Public Class DataSet2
             Me.columntimeStamped = MyBase.Columns("timeStamped")
             Me.columncountry = MyBase.Columns("country")
             Me.columnaccountpin = MyBase.Columns("accountpin")
-            Me.columnroles = MyBase.Columns("roles")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4566,8 +4554,6 @@ Partial Public Class DataSet2
             MyBase.Columns.Add(Me.columncountry)
             Me.columnaccountpin = New Global.System.Data.DataColumn("accountpin", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnaccountpin)
-            Me.columnroles = New Global.System.Data.DataColumn("roles", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnroles)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid}, true))
             Me.columnid.AutoIncrement = true
             Me.columnid.AutoIncrementSeed = -1
@@ -4594,7 +4580,6 @@ Partial Public Class DataSet2
             Me.columncomments.MaxLength = 500
             Me.columncountry.MaxLength = 100
             Me.columnaccountpin.MaxLength = 4
-            Me.columnroles.MaxLength = 50
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6518,21 +6503,6 @@ Partial Public Class DataSet2
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property roles() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableusers.rolesColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'roles' in table 'users' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableusers.rolesColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsfnameNull() As Boolean
             Return Me.IsNull(Me.tableusers.fnameColumn)
         End Function
@@ -6781,18 +6751,6 @@ Partial Public Class DataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetaccountpinNull()
             Me(Me.tableusers.accountpinColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsrolesNull() As Boolean
-            Return Me.IsNull(Me.tableusers.rolesColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetrolesNull()
-            Me(Me.tableusers.rolesColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9179,44 +9137,44 @@ Namespace DataSet2TableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT id, fk_cd_id, track_number, title, descrip, sounds_like, keywords, instrum" &
-                "ents FROM dbo.tracks" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "WHERE fk_cd_id=@fk_cd_id"
+            Me._commandCollection(0).CommandText = "SELECT id, fk_cd_id, track_number, title, descrip, sounds_like, keywords, instrum"& _ 
+                "ents FROM dbo.tracks"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE fk_cd_id=@fk_cd_id"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fk_cd_id", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fk_cd_id", Global.System.Data.DataRowVersion.Current, False, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fk_cd_id", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fk_cd_id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT        id, fk_cd_id, track_number, title, descrip, sounds_like, keywords, " &
-                "instruments" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FROM            tracks" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "WHERE        (id = @id)"
+            Me._commandCollection(1).CommandText = "SELECT        id, fk_cd_id, track_number, title, descrip, sounds_like, keywords, "& _ 
+                "instruments"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            tracks"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (id = @id)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "id", Global.System.Data.DataRowVersion.Current, False, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, True)>
-        Public Overridable Overloads Function Fill(ByVal dataTable As DataSet2.tracksDataTable, ByVal fk_cd_id As Global.System.Nullable(Of Long)) As Integer
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As DataSet2.tracksDataTable, ByVal fk_cd_id As Global.System.Nullable(Of Long)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (fk_cd_id.HasValue = True) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(fk_cd_id.Value, Long)
+            If (fk_cd_id.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(fk_cd_id.Value,Long)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
-            If (Me.ClearBeforeFill = True) Then
-                dataTable.Clear()
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
             End If
             Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
             Return returnValue
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], True)>
-        Public Overridable Overloads Function GetData(ByVal fk_cd_id As Global.System.Nullable(Of Long)) As DataSet2.tracksDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData(ByVal fk_cd_id As Global.System.Nullable(Of Long)) As DataSet2.tracksDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (fk_cd_id.HasValue = True) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(fk_cd_id.Value, Long)
+            If (fk_cd_id.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(fk_cd_id.Value,Long)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
@@ -9224,40 +9182,40 @@ Namespace DataSet2TableAdapters
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, False)>
-        Public Overridable Overloads Function FillByTrackID(ByVal dataTable As DataSet2.tracksDataTable, ByVal id As Long) As Integer
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByTrackID(ByVal dataTable As DataSet2.tracksDataTable, ByVal id As Long) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
-            Me.Adapter.SelectCommand.Parameters(0).Value = CType(id, Long)
-            If (Me.ClearBeforeFill = True) Then
-                dataTable.Clear()
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(id,Long)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
             End If
             Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
             Return returnValue
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], False)>
-        Public Overridable Overloads Function GetDataByTrackID(ByVal id As Long) As DataSet2.tracksDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataByTrackID(ByVal id As Long) As DataSet2.tracksDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
-            Me.Adapter.SelectCommand.Parameters(0).Value = CType(id, Long)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(id,Long)
             Dim dataTable As DataSet2.tracksDataTable = New DataSet2.tracksDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>
-        Public Overridable Overloads Function Update(ByVal dataTable As DataSet2.tracksDataTable) As Integer
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As DataSet2.tracksDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
-
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
@@ -10767,7 +10725,6 @@ Namespace DataSet2TableAdapters
             tableMapping.ColumnMappings.Add("timeStamped", "timeStamped")
             tableMapping.ColumnMappings.Add("country", "country")
             tableMapping.ColumnMappings.Add("accountpin", "accountpin")
-            tableMapping.ColumnMappings.Add("roles", "roles")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -10778,10 +10735,10 @@ Namespace DataSet2TableAdapters
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [users] ([fname], [lname], [companyName], [phone1], [phone2], [fax], "& _ 
                 "[email], [address1], [address2], [city], [state], [zip], [username], [password],"& _ 
-                " [type], [standing], [comments], [timeStamped], [country], [accountpin], [roles]"& _ 
-                ") VALUES (@fname, @lname, @companyName, @phone1, @phone2, @fax, @email, @address"& _ 
-                "1, @address2, @city, @state, @zip, @username, @password, @type, @standing, @comm"& _ 
-                "ents, @timeStamped, @country, @accountpin, @roles)"
+                " [type], [standing], [comments], [timeStamped], [country], [accountpin]) VALUES "& _ 
+                "(@fname, @lname, @companyName, @phone1, @phone2, @fax, @email, @address1, @addre"& _ 
+                "ss2, @city, @state, @zip, @username, @password, @type, @standing, @comments, @ti"& _ 
+                "meStamped, @country, @accountpin)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fname", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fname", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@lname", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "lname", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -10803,7 +10760,6 @@ Namespace DataSet2TableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@timeStamped", Global.System.Data.SqlDbType.SmallDateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "timeStamped", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@country", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "country", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@accountpin", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "accountpin", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@roles", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "roles", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [users] SET [fname] = @fname, [lname] = @lname, [companyName] = @companyNa"& _ 
@@ -10811,8 +10767,7 @@ Namespace DataSet2TableAdapters
                 "ress1] = @address1, [address2] = @address2, [city] = @city, [state] = @state, [z"& _ 
                 "ip] = @zip, [username] = @username, [password] = @password, [type] = @type, [sta"& _ 
                 "nding] = @standing, [comments] = @comments, [timeStamped] = @timeStamped, [count"& _ 
-                "ry] = @country, [accountpin] = @accountpin, [roles] = @roles WHERE (([id] = @Ori"& _ 
-                "ginal_id))"
+                "ry] = @country, [accountpin] = @accountpin WHERE (([id] = @Original_id))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fname", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fname", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@lname", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "lname", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -10834,7 +10789,6 @@ Namespace DataSet2TableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@timeStamped", Global.System.Data.SqlDbType.SmallDateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "timeStamped", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@country", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "country", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@accountpin", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "accountpin", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@roles", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "roles", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
@@ -10853,8 +10807,8 @@ Namespace DataSet2TableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        id, fname, lname, fullname, companyName, phone1, phone2, fax, email"& _ 
                 ", address1, address2, city, state, zip, username, password, type, standing, comm"& _ 
-                "ents, timeStamped, country, accountpin,roles"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            users"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE      "& _ 
-                "  (username = @username) AND (password = @password)"
+                "ents, timeStamped, country, accountpin"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            users"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (use"& _ 
+                "rname = @username) AND (password = @password)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@username", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "username", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@password", Global.System.Data.SqlDbType.VarChar, 12, Global.System.Data.ParameterDirection.Input, 0, 0, "password", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -11058,8 +11012,7 @@ Namespace DataSet2TableAdapters
                     ByVal comments As String,  _
                     ByVal timeStamped As Global.System.Nullable(Of Date),  _
                     ByVal country As String,  _
-                    ByVal accountpin As String,  _
-                    ByVal roles As String) As Integer
+                    ByVal accountpin As String) As Integer
             If (fname Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -11160,11 +11113,6 @@ Namespace DataSet2TableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(19).Value = CType(accountpin,String)
             End If
-            If (roles Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(20).Value = CType(roles,String)
-            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -11205,7 +11153,6 @@ Namespace DataSet2TableAdapters
                     ByVal timeStamped As Global.System.Nullable(Of Date),  _
                     ByVal country As String,  _
                     ByVal accountpin As String,  _
-                    ByVal roles As String,  _
                     ByVal Original_id As Long) As Integer
             If (fname Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
@@ -11307,12 +11254,7 @@ Namespace DataSet2TableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(19).Value = CType(accountpin,String)
             End If
-            If (roles Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(roles,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_id,Long)
+            Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_id,Long)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then

@@ -4,23 +4,28 @@ Imports System.Web.UI.WebControls
 Public Class album
     Inherits System.Web.UI.Page
 
-    Dim connection As String = "Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29"
+    Dim connection As String = "Server=172.24.16.68\PROD;Database=amc-staging;User Id=amcuser;Password=amccma;"
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-#Region "Load Code"
-        If Me.GV_tracks.Rows.Count() <= 0 Then
-            Dim idAlbum As String = Request.QueryString("idAlbum")
-            Dim L_idAlbum = Long.Parse(idAlbum)
-            Dim T_cd = New DataSet2TableAdapters.cdTableAdapter()
-            Dim W_cd = T_cd.GetDataById(L_idAlbum)
-            Me.T_albumTitle.Text = W_cd(0).cd_title
-            Me.T_trackId.Text = W_cd(0).id
-            Dim Dt_tracks = New DataSet2TableAdapters.tracksTableAdapter()
-            Dim T_tracks = Dt_tracks.GetData(L_idAlbum)
-            Me.GV_tracks.DataSource = T_tracks
-            GV_tracks.DataBind()
-        End If
-#End Region
+        BindTracks()
+    End Sub
+
+    Sub BindTracks()
+        Dim idAlbum As String = Request.QueryString("idAlbum")
+        Dim L_idAlbum = Long.Parse(idAlbum)
+        Dim T_cd = New DataSet2TableAdapters.cdTableAdapter()
+        Dim W_cd = T_cd.GetDataById(L_idAlbum)
+        T_albumTitle.Text = W_cd(0).cd_title
+        T_trackId.Text = W_cd(0).id
+        Dim Dt_tracks = New DataSet2TableAdapters.tracksTableAdapter() 'datatable
+        Dim T_tracks = Dt_tracks.GetData(L_idAlbum) 'datasource
+        GV_tracks.DataSource = T_tracks
+        GV_tracks.DataBind()
+    End Sub
+
+    Protected Sub GV_tracks_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
+        GV_tracks.PageIndex = e.NewPageIndex
+        BindTracks()
     End Sub
 
     Protected Sub OnSelectedIndexChanged(sender As Object, e As EventArgs)
@@ -68,7 +73,7 @@ Public Class album
 
     Protected Sub track_Click_download(sender As Object, e As EventArgs)
 #Region "Track Click Code"
-        Dim conn As SqlConnection = New SqlConnection("Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29")
+        Dim conn As SqlConnection = New SqlConnection(connection)
         Dim userID As Int32
         Dim loginID As Int32
         conn.Open()
@@ -103,8 +108,7 @@ Public Class album
 
     Protected Sub btnAddProjects_Click(sender As Object, e As EventArgs)
 #Region "Add Projects Code"
-        Dim conn As String = "Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29"
-        Dim sqlCon As New SqlConnection(conn)
+        Dim sqlCon As New SqlConnection(connection)
         Dim t_id = Me.Label2.Text
 
         For Each row As GridViewRow In GridProjectList.Rows
@@ -133,5 +137,6 @@ Public Class album
         Next
 #End Region
     End Sub
+
 
 End Class

@@ -35,7 +35,7 @@
             <section class="col-sm-3 col-sm-offset-1"> 
                 <a class="btn-group subhead-blue"
 
-                href="catalog.html"> 
+                href="catalog.aspx"> 
                     <h3 class="subhead-blue" align="center">Music Catalog</h3>
                     <img src="images/NewReleasePict-icon.png"
 

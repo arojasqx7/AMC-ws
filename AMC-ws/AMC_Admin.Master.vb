@@ -5,9 +5,8 @@ Public Class AMC_Admin
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim pageName As String = Path.GetFileName(Request.Path)
-
         If (Session("fullname") IsNot Nothing) Then
-            If Session("fullname") = "Admin1" Then
+            If Session("fullname") = "Mitchel Greenspan" Then
                 Me.bt_login.Visible = False
                 Me.bt_loginarrow.Visible = False
                 Me.m_usuario.Visible = True
