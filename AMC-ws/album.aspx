@@ -1,41 +1,11 @@
 ﻿<%@ Page Title="American Music Company" Language="vb" AutoEventWireup="false" MasterPageFile="~/AMC_master.Master" CodeBehind="album.aspx.vb" Inherits="AMC_ws.album" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="css/PlayerStyle.css" rel="stylesheet" />
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <style type="text/css">
-        .song_sel_panel-header {
-            color: #ffffff;
-            background-color: #1A6ECD;
-        }
-
-        .song_sel_panel-footer {
-            color: #CC1635;
-            background-color: #ebebeb;
-        }
-
-        .glyColor {
-            color: white;
-        }
-
-        .colpad {
-            padding-left: 5px;
-        }
-        .hiddencol
-          {
-            display: none;
-          }
-        .Headerpad
-        {
-            padding-left: 5px;
-        }
-
-        #Player {
-            align-content: center;
-        }
-    </style>
-
-    <div class="bodyBg" style="height:500px;">
+    <div class="bodyBg" style="height:800px;">
         <div class="content container">
             <div class="container">
                 <div class="row">
@@ -54,17 +24,17 @@
                             </div>
                             <br />
                             <div class="controls" style="text-align:center;">
-                                <button class="btn btn-danger" onclick="wavesurfer.skipBackward();return false">
+                                <button class="btn btn-default" onclick="wavesurfer.skipBackward();return false">
                                     <span class="glyphicon glyphicon-backward" aria-hidden="true"></span>
                                 </button>
 
-                                <button class="btn btn-primary" onclick="wavesurfer.playPause();return false">
+                                <button class="btn btn-default" onclick="wavesurfer.playPause();return false">
                                     <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
                                         /
                                      <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
                                 </button>
 
-                                <button class="btn btn-danger" onclick="wavesurfer.skipForward();return false">
+                                <button class="btn btn-default" onclick="wavesurfer.skipForward();return false">
                                     <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
                                 </button>
 
@@ -79,9 +49,10 @@
                         <br />
 
                         <div class="container col-sm-12">
-                            <asp:GridView ID="GV_tracks" runat="server" AutoGenerateColumns="False" GridLines="None" OnSelectedIndexChanged ="OnSelectedIndexChanged" DataKeyNames="id" >
-                                <Columns>
-
+                            <asp:GridView ID="GV_tracks" runat="server" AutoGenerateColumns="False" GridLines="None" OnSelectedIndexChanged ="OnSelectedIndexChanged" DataKeyNames="id" AllowPaging="true" PageSize="7" OnPageIndexChanging="GV_tracks_PageIndexChanging">
+                                <pagersettings  mode="Numeric" position="Bottom" pagebuttoncount="10" />
+                                <PagerStyle CssClass="pagination-ys" HorizontalAlign="Center"/>
+                                 <Columns>
                                     <asp:TemplateField HeaderText="Id" Visible="false">
                                         <ItemTemplate>
                                         <asp:LinkButton ID="T_ID" runat="server" Text='<%# Bind("id") %>' CommandArgument='<%# Bind("id") %>'>
@@ -90,7 +61,7 @@
                                     </asp:TemplateField>
                                     
                                     <asp:BoundField DataField="track_number" HeaderText="Track #">
-                                        <ItemStyle Width="10%" HorizontalAlign="Center" VerticalAlign="Top" />
+                                        <ItemStyle Width="10%" HorizontalAlign="Center" VerticalAlign="Middle" />
                                     </asp:BoundField>                        
                                     
                                     <asp:TemplateField HeaderText="Track Name">
@@ -101,15 +72,15 @@
                                             </asp:LinkButton>
                                            <%-- <asp:Label ID="T_duration" runat="server" Text='<%# Bind("Duration") %>'></asp:Label>--%>
                                         </ItemTemplate>
-                                        <ItemStyle Width="30%" HorizontalAlign="Left" VerticalAlign="Top" />
+                                        <ItemStyle Width="30%" HorizontalAlign="Left" VerticalAlign="Middle" />
                                     </asp:TemplateField>
                                      
                                     <asp:BoundField DataField="descrip" HeaderText="Description">
-                                        <ItemStyle Width="20%" HorizontalAlign="Left" VerticalAlign="Top" />
+                                        <ItemStyle Width="30%" HorizontalAlign="Left" VerticalAlign="Middle" />
                                     </asp:BoundField>
 
                                     <asp:BoundField DataField="instruments" HeaderText="Instruments" HeaderStyle-CssClass="colpad">
-                                        <ItemStyle CssClass="colpad" Width="30%" HorizontalAlign="Left" VerticalAlign="Top" />
+                                        <ItemStyle CssClass="colpad" Width="40%" HorizontalAlign="Left" VerticalAlign="Middle" />
                                     </asp:BoundField>
 
                                     <asp:TemplateField HeaderText="Save">
@@ -119,7 +90,7 @@
                                                 <span class="glyColor glyphicons glyphicon glyphicon-folder-open" />
                                              </asp:LinkButton>
                                         </ItemTemplate>
-                                        <ItemStyle Width="5%" HorizontalAlign="Center" VerticalAlign="Top" ForeColor="White" />
+                                        <ItemStyle Width="8%" HorizontalAlign="Center" VerticalAlign="Top" ForeColor="White" />
                                     </asp:TemplateField>
 
                                     <asp:TemplateField HeaderText="Download">
@@ -129,7 +100,7 @@
                                                 <span class="glyphicons glyphicon glyphicon-save"/>
                                             </asp:LinkButton>
                                         </ItemTemplate>
-                                        <ItemStyle Width="5%" HorizontalAlign="Center" VerticalAlign="Top" />
+                                        <ItemStyle Width="8%" HorizontalAlign="Center" VerticalAlign="Top" />
                                     </asp:TemplateField>  
                                     
 <%--                                      <asp:TemplateField HeaderText="Play" HeaderStyle-CssClass="Headerpad">
@@ -288,7 +259,7 @@
     <script type="text/javascript">
         function ErrorLogin() {
             swal({
-                title: 'Loggin',
+                title: 'Log In',
                 text: 'You must be logged in to use this feature',
                 type: 'error'
             });

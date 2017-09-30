@@ -1,68 +1,22 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/AMC_master.Master" CodeBehind="musicsearch.aspx.vb" Inherits="AMC_ws.musicsearch" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="css/TablesStyle.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
 <style>
-.mycheckbox
+    .mycheckbox
     {
         margin-left:25px;
     } 
-.mycheckbox input[type="checkbox"] 
+    .mycheckbox input[type="checkbox"] 
     { 
         margin-right: 5px; 
     }
-.hiddencol
+    .hiddencol
     {
         display: none;
     }
-/*gridview*/
-.table table  tbody  tr  td a ,
-.table table  tbody  tr  td  span {
-position: relative;
-float: left;
-padding: 6px 12px;
-
-margin-left: -1px;
-line-height: 1.42857143;
-color: #337ab7;
-text-decoration: none;
-background-color: #fff;
-border: 1px solid #ddd;
-}
-
-.table table > tbody > tr > td > span {
-z-index: 3;
-color: #fff;
-cursor: default;
-background-color: #337ab7;
-border-color: #337ab7;
-}
-
-.table table > tbody > tr > td:first-child > a,
-.table table > tbody > tr > td:first-child > span {
-margin-left: 0;
-border-top-left-radius: 4px;
-border-bottom-left-radius: 4px;
-}
-
-.table table > tbody > tr > td:last-child > a,
-.table table > tbody > tr > td:last-child > span {
-border-top-right-radius: 4px;
-border-bottom-right-radius: 4px;
-}
-
-.table table > tbody > tr > td > a:hover,
-.table   table > tbody > tr > td > span:hover,
-.table table > tbody > tr > td > a:focus,
-.table table > tbody > tr > td > span:focus {
-z-index: 2;
-color: #23527c;
-background-color: #eee;
-border-color: #ddd;
-}
-/*end gridview */
 </style>
 
     <script type="text/javascript">
@@ -110,8 +64,6 @@ border-color: #ddd;
     </script>
 
     <div class="bodyBg">
-      <!-- InstanceBeginEditable name="Edit-content" -->
-      <!-- content -->
         <div class="content container">
             <div class="container">
                 <div class="row">
@@ -161,7 +113,7 @@ border-color: #ddd;
                                         <asp:DropDownList ID="DD_style" CssClass="form-control" runat="server" DataSourceID="SqlGenre" DataTextField="name" AppendDataBoundItems="true" Style="width: 200px;" Visible="false">
                                             <asp:ListItem Text="Select a style or Genre" Value="" />
                                         </asp:DropDownList>
-                                        <asp:SqlDataSource ID="SqlGenre" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT name FROM map_genres ORDER BY name"></asp:SqlDataSource>
+                                        <asp:SqlDataSource ID="SqlGenre" runat="server" ConnectionString="<%$ ConnectionStrings:AMC %>" SelectCommand="SELECT DISTINCT name FROM map_genres ORDER BY name"></asp:SqlDataSource>
 
                                         <div class="form-group" style="margin-left: 40px;">
                                             <asp:DropDownList ID="DD_tempo" CssClass="form-control" runat="server" DataSourceID="Sqltempo" DataTextField="name" DataValueField="name" Style="width: 200px;" Visible="false"></asp:DropDownList>
@@ -227,12 +179,14 @@ border-color: #ddd;
                     </div>
                   </div> <!-- end container panel -->
 
+                <br />
                 <div class="row">   <!-- Grid for Quick search -->
                     <section class="col-sm-1"></section>
                     <section class="col-sm-9">
-                        <asp:GridView ID="GV_tracks" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" DataKeyNames="id" OnSelectedIndexChanged ="OnSelectedIndexChanged" DataSourceID="SqlTrackInfo" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" Visible="false" PageSize="10" AllowPaging="true">
-                            <Columns>
-
+                        <asp:GridView ID="GV_tracks" runat="server" AutoGenerateColumns="False" DataKeyNames="id" OnSelectedIndexChanged ="OnSelectedIndexChanged" DataSourceID="SqlTrackInfo" HeaderStyle-ForeColor="Black" Visible="false" PageSize="10" AllowPaging="true" GridLines="None">
+                           <pagersettings  mode="Numeric" position="Bottom" pagebuttoncount="10" />
+                                <PagerStyle CssClass="pagination-ys" HorizontalAlign="Center"/>
+                             <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="false">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="T_ID" runat="server" Text='<%# Bind("id") %>' CommandArgument='<%# Bind("id") %>'>
@@ -260,7 +214,7 @@ border-color: #ddd;
                                 <asp:TemplateField HeaderText="Save">
                                     <ItemTemplate>
                                         <!-- Open select project pop up -->
-                                        <asp:LinkButton ID="lnkSelect" runat="server" CssClass="btn btn-danger" CommandName="Select" OnClick="lnkSelect_Click">
+                                        <asp:LinkButton ID="lnkSelect" runat="server" CssClass="btn btn-warning" CommandName="Select" OnClick="lnkSelect_Click">
                                  <span class="glyColor glyphicons glyphicon glyphicon-folder-open" />
                                         </asp:LinkButton>
                                     </ItemTemplate>
@@ -292,8 +246,10 @@ border-color: #ddd;
                     <section class="col-sm-1"></section>
                     <section class="col-sm-9">
                         <br />
-                        <asp:GridView ID="GridStylesGenre" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" DataKeyNames="id" DataSourceID="SqlStylesGenre" OnSelectedIndexChanged ="OnSelectedIndexChanged2" Visible="false" PageSize="10" AllowPaging="true">
-                            <Columns>
+                        <asp:GridView ID="GridStylesGenre" runat="server" AutoGenerateColumns="False" HeaderStyle-ForeColor="Black" DataKeyNames="id" DataSourceID="SqlStylesGenre" OnSelectedIndexChanged ="OnSelectedIndexChanged2" Visible="false" PageSize="10" AllowPaging="true" GridLines="None">
+                          <pagersettings  mode="Numeric" position="Bottom" pagebuttoncount="10" />
+                                <PagerStyle CssClass="pagination-ys" HorizontalAlign="Center"/>
+                              <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="false">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="T_ID" runat="server" Text='<%# Bind("id") %>' CommandArgument='<%# Bind("id") %>'>
@@ -321,7 +277,7 @@ border-color: #ddd;
                                 <asp:TemplateField HeaderText="Save">
                                     <ItemTemplate>
                                         <!-- Open select project pop up -->
-                                        <asp:LinkButton ID="lnkSelect" runat="server" CssClass="btn btn-danger" CommandName="Select" OnClick="lnkSelect_Click">
+                                        <asp:LinkButton ID="lnkSelect" runat="server" CssClass="btn btn-warning" CommandName="Select" OnClick="lnkSelect_Click">
                                  <span class="glyColor glyphicons glyphicon glyphicon-folder-open" />
                                         </asp:LinkButton>
                                     </ItemTemplate>
@@ -351,8 +307,10 @@ border-color: #ddd;
                 <div class="row"><!-- Grid for Albums -->
                     <section class="col-sm-1"></section>
                     <section class="col-sm-9">  
-                        <asp:GridView ID="GridCDs" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" DataSourceID="SqlCDs" OnSelectedIndexChanged ="OnSelectedIndexChanged3" Visible="false" PageSize="10" AllowPaging="true">
-                           <Columns>
+                        <asp:GridView ID="GridCDs" runat="server" AutoGenerateColumns="False" HeaderStyle-ForeColor="Black" DataSourceID="SqlCDs" OnSelectedIndexChanged ="OnSelectedIndexChanged3" Visible="false" PageSize="10" AllowPaging="true" GridLines="None">
+                         <pagersettings  mode="Numeric" position="Bottom" pagebuttoncount="10" />
+                                <PagerStyle CssClass="pagination-ys" HorizontalAlign="Center"/>
+                              <Columns>
                                <asp:TemplateField HeaderText="Id" Visible="false">
                                    <ItemTemplate>
                                        <asp:LinkButton ID="T_ID" runat="server" Text='<%# Bind("id") %>' CommandArgument='<%# Bind("id") %>'>
@@ -384,7 +342,7 @@ border-color: #ddd;
                                 <asp:TemplateField HeaderText="Save">
                                     <ItemTemplate>
                                         <!-- Open select project pop up -->
-                                        <asp:LinkButton ID="lnkSelect" runat="server" CssClass="btn btn-danger" CommandName="Select" OnClick="lnkSelect_Click">
+                                        <asp:LinkButton ID="lnkSelect" runat="server" CssClass="btn btn-warning" CommandName="Select" OnClick="lnkSelect_Click">
                                  <span class="glyColor glyphicons glyphicon glyphicon-folder-open" />
                                         </asp:LinkButton>
                                     </ItemTemplate>
@@ -413,8 +371,10 @@ border-color: #ddd;
                 <div class="row"><!-- Grid for Composers -->
                     <section class="col-sm-1"></section>
                     <section class="col-sm-9">  
-                        <asp:GridView ID="GridComposers" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" Style="text-align: center; margin-top: 0px;" HeaderStyle-BackColor="#1A6ECD" HeaderStyle-ForeColor="White" DataSourceID="SqlComposers" Visible="False" DataKeyNames="id" OnSelectedIndexChanged ="OnSelectedIndexChanged4" PageSize="10" AllowPaging="true">
-                           <Columns>
+                        <asp:GridView ID="GridComposers" runat="server" AutoGenerateColumns="False" HeaderStyle-ForeColor="Black" DataSourceID="SqlComposers" Visible="False" DataKeyNames="id" OnSelectedIndexChanged ="OnSelectedIndexChanged4" PageSize="10" AllowPaging="true" GridLines="None">
+                           <pagersettings  mode="Numeric" position="Bottom" pagebuttoncount="10" />
+                                <PagerStyle CssClass="pagination-ys" HorizontalAlign="Center"/>
+                            <Columns>
                                <asp:TemplateField HeaderText="Id" Visible="false">
                                    <ItemTemplate>
                                        <asp:LinkButton ID="T_ID" runat="server" Text='<%# Bind("id") %>' CommandArgument='<%# Bind("id") %>'>
@@ -442,7 +402,7 @@ border-color: #ddd;
                                 <asp:TemplateField HeaderText="Save">
                                     <ItemTemplate>
                                         <!-- Open select project pop up -->
-                                        <asp:LinkButton ID="lnkSelect" runat="server" CssClass="btn btn-danger" CommandName="Select" OnClick="lnkSelect_Click">
+                                        <asp:LinkButton ID="lnkSelect" runat="server" CssClass="btn btn-warning" CommandName="Select" OnClick="lnkSelect_Click">
                                  <span class="glyColor glyphicons glyphicon glyphicon-folder-open" />
                                         </asp:LinkButton>
                                     </ItemTemplate>
@@ -478,24 +438,7 @@ border-color: #ddd;
             <div>
                 <br />
             </div>
-            <div class="row">
-                <section class="col-sm-3 col-sm-offset-1">
-                    <a class="btn-group subhead-blue"
-                        href="#">
-                        <img src="images/licensing-hp-icon.png" class="img-responsive center-block" alt="headphoneIcon"/>
-                    </a>
-                </section>
-                <section class="col-sm-3">
-                    <a class="btn-group subhead-blue" href="#">
-                        <img src="images/licensing-bass-icon.png" class="img-responsive center-block"  alt="bassIcon"/>
-                    </a>
-                </section>
-                <section class="col-sm-3">
-                    <a class="btn-group subhead-blue" href="#">
-                        <img src="images/licensing-mic-icon.png" class="img-responsive center-block" alt="micIcon"/>
-                    </a>
-                </section>
-            </div>
+
           </div>
 
         <!--New Project Folder-->

@@ -4,14 +4,14 @@ Public Class ClientActivity
     Inherits System.Web.UI.Page
 
 #Region "Conn String"
-    Dim connection As String = "Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29"
+    Dim connection As String = "Server=172.24.16.68\PROD;Database=americanmusicco;User Id=amcuser;Password=amccma;"
 #End Region
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 #Region "Page load code"
         BindGridClientActivity()
         If (Session("fullname") IsNot Nothing) Then
-            If Session("fullname") = "Admin1" Then
+            If Session("fullname") = "Mitchel Greenspan" Then
                 Me.L_UserName.Text = Session("fullname")
                 Me.L_UserName.Visible = False
             Else

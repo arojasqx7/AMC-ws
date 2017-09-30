@@ -3,8 +3,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="bodyBg">
-      <!-- InstanceBeginEditable name="Edit-content" -->
-      <!-- content -->
       <div class="content container">
         <div class="container about">
           <div class="row">
@@ -13,15 +11,15 @@
               <div class="subTitle">
                 <h2 class="subH2">About Us</h2>
               </div>
-              <br>
+              <br/>
               <p>American Music Company, Inc’s music catalog currently consists
                 of thousands of tracks of music. Each of our main themes is
                 approximately 2-5 minutes in length, and includes pre-edited
                 :60’s, :30’s, :15’s and stings / tags that we created for each
                 main themes. Of course, your creative team is allowed to edit
                 our main themes anyway that they want.
-                <br>
-                <br>
+                <br/>
+                <br/>
                 Since 2004 we have produced quite an exceptional catalog of high
                 quality music, one that is very comprehensive and has a
                 wonderful diversity of musical styles and genres. Each year, we

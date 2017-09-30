@@ -4,7 +4,7 @@ Imports System.Data.SqlClient
 Public Class project
     Inherits System.Web.UI.Page
 #Region "Conn String"
-    Dim connection As String = "Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29"
+    Dim connection As String = "Server=172.24.16.68\PROD;Database=americanmusicco;User Id=amcuser;Password=amccma;"
 #End Region
     Dim dt As New DataTable()
 

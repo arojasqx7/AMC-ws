@@ -4,7 +4,7 @@
     Dim w_standing As Integer
     Dim w_comments As Integer
     Dim w_Original_id As Long
-    Dim connection As String = "Data Source=andrey.sapiens.co.cr;Initial Catalog=AMC;User ID=sa;Password=sa.1.29"
+    Dim connection As String = "Server=172.24.16.68\PROD;Database=amc-staging;User Id=amcuser;Password=amccma;"
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim t_user = New AMC_ws.DataSet2.usersDataTable()

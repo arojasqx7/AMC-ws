@@ -223,10 +223,12 @@ body::-webkit-scrollbar-thumb {
 
 .catalogBox:hover{
     background-color: #e6ecff;
+    font-size:14.4px;
 }
 
 .subH2 {
 	padding-left: 10px;
+    font-size:24px;
 }
 .catalogBody {
 	color: rgba(0,0,0,0.80);
@@ -243,7 +245,7 @@ body::-webkit-scrollbar-thumb {
 	font-weight: bold;
 }
 .subTitle {
-	background-color: #1A6ECD;
+	background-color: #3385ff;
 	color: rgba(252,252,252,1.00);
 	width: 100%;
 	height: 70px;

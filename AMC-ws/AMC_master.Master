@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="AMC_master.master.vb" Inherits="AMC_ws.AMC_master" %>
-
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/typeahead.css" />
+    <link href="css/TablesStyle.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <script src="js/jquery-2.2.4.min.js"></script>
     <script src="dist/sweetalert.min.js"></script>

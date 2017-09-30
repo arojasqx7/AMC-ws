@@ -3,7 +3,7 @@
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If (Session("fullname") IsNot Nothing) Then
-            If Session("fullname") = "Admin1" Then
+            If Session("fullname") = "Mitchel Greenspan" Then
                 Me.L_UserName.Text = Session("fullname")
                 Me.L_UserName.Visible = False
             Else

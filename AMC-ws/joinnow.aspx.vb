@@ -25,7 +25,7 @@
             ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "ErrorUsername();", True)
             Exit Sub
         End If
-        adapter.Insert(Me.Tfname.Text, Me.Tlname.Text, Me.Tcompany.Text, Me.Tphone1.Text, Me.Tphone2.Text, "", Me.Temail.Text, Me.Taddress1.Text, Me.Taddress2.Text, Me.Tcity.Text, Me.Tstate.Text, Me.Tzip.Text, Me.Tusern.Text, Me.Tpassword1.Text, 1, 2, "TEST", Now.Date, Me.DLcountry.SelectedValue, Me.Tpin1.Text, "User")
+        adapter.Insert(Me.Tfname.Text, Me.Tlname.Text, Me.Tcompany.Text, Me.Tphone1.Text, Me.Tphone2.Text, "", Me.Temail.Text, Me.Taddress1.Text, Me.Taddress2.Text, Me.Tcity.Text, Me.Tstate.Text, Me.Tzip.Text, Me.Tusern.Text, Me.Tpassword1.Text, 0, 2, "TEST", Now.Date, Me.DLcountry.SelectedValue, Me.Tpin1.Text)
         ScriptManager.RegisterStartupScript(Me, Page.GetType, "Popup", "SuccessRegistration();", True)
     End Sub
 End Class
